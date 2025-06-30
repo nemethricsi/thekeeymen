@@ -20,7 +20,7 @@ const EventCard = ({ event }: { event: BandsInTownEvent }) => {
   const eventUrl = event.offers[0]?.url;
 
   return (
-    <div className="flex flex-col items-center justify-between gap-6 px-0 py-2 hover:bg-[#b367ce] sm:flex-row sm:gap-4 sm:p-4 [&:not(:last-child)]:border-b [&:not(:last-child)]:border-[#edd9f5]">
+    <div className="flex flex-col items-center justify-between gap-6 px-0 py-2 hover:bg-[#b367ce] sm:flex-row sm:gap-4 sm:p-4 [&:not(:last-child)]:border-b [&:not(:last-child)]:border-[#cc92e0]">
       <div className="flex w-full items-center gap-4 sm:gap-8">
         {/* Date */}
         <div className="flex flex-shrink-0 items-center gap-3">
@@ -35,7 +35,7 @@ const EventCard = ({ event }: { event: BandsInTownEvent }) => {
           </div>
         </div>
         {/*Separator*/}
-        <div className="h-10 w-px bg-[#edd9f5]" />
+        <div className="h-10 w-px bg-[#cc92e0]" />
         {/*Name and venue*/}
         <div className="flex flex-col">
           <div className="text-base font-medium uppercase sm:text-xl">
@@ -51,7 +51,7 @@ const EventCard = ({ event }: { event: BandsInTownEvent }) => {
           href={eventUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex w-full flex-shrink-0 items-center justify-center gap-2 border px-4 py-2 font-bold uppercase hover:bg-[#fefefe] hover:text-[#8e43a5] sm:w-auto sm:bg-transparent"
+          className="flex w-full flex-shrink-0 items-center justify-center gap-2 border border-[#f5edfa] px-4 py-2 font-bold uppercase hover:bg-[#f5edfa] hover:text-[#8e43a5] sm:w-auto sm:bg-transparent"
         >
           <span>Tickets</span>
           <ArrowUpRightIcon />
