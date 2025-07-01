@@ -1,4 +1,5 @@
 import { EventsList } from '@/components/EventsList';
+import { MenuIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -6,48 +7,43 @@ export const revalidate = 60;
 
 export default async function Home() {
   return (
-    <>
+    <main>
       <section
-        className="w-full bg-cover bg-center bg-no-repeat p-4 py-16 text-white bg-blend-lighten"
+        className="relative flex h-screen w-full flex-col items-start justify-end bg-cover bg-center bg-no-repeat p-3 text-white bg-blend-lighten md:p-4 md:py-14"
         style={{
           backgroundImage: `linear-gradient(to bottom, #25147B, #8E43A5), url('/images/hero_2.png')`,
         }}
       >
-        <div className="container mx-auto flex max-w-4xl flex-col items-center justify-center gap-3 px-4">
-          <Image
-            src="/images/svg/keeymen_logo.svg"
-            alt="The Keeymen logo"
-            width={800}
-            height={800}
-          />
-          <div className="mt-[400px] hidden w-full items-center justify-center gap-10 font-serif text-2xl font-bold uppercase md:flex">
-            {[
-              { href: '#events', label: 'Events' },
-              { href: '#media', label: 'Media' },
-              { href: '#press-kit', label: 'Press kit' },
-            ].map(({ href, label }) => (
-              <Link
-                key={href}
-                href={href}
-                className="group relative transition-opacity"
-              >
-                <span className="relative z-10">{label}</span>
-                <span
-                  className="absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 bg-[#fefefe] transition-all duration-300 group-hover:w-full"
-                  aria-hidden="true"
-                />
-              </Link>
-            ))}
-          </div>
-        </div>
+        <DesktopHeroContent />
+        <MobileHeroContent />
       </section>
-      <section id="events" className="bg-[#8e43a5] py-16">
-        <div className="container mx-auto flex max-w-4xl flex-col items-center justify-center gap-3 px-4 sm:px-0">
+      <section id="gigs" className="bg-[#8e43a5] py-16">
+        <div className="container mx-auto flex max-w-3xl flex-col items-center justify-center gap-3 px-4 sm:px-0">
+          <h2 className="self-start font-serif text-3xl font-bold uppercase">
+            Gigs
+          </h2>
           <EventsList />
         </div>
       </section>
       <section id="media" className="bg-[#8e43a5] py-16">
-        <div className="container mx-auto flex max-w-4xl flex-col items-center justify-center gap-3 px-4">
+        <div className="container mx-auto flex max-w-3xl flex-col items-center justify-center gap-3 px-4">
+          <h2 className="self-start font-serif text-3xl font-bold uppercase">
+            Media
+          </h2>
+          <p className="text-lg">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde autem
+            voluptatibus ducimus sint voluptate. Iure quas dolore, nobis eveniet
+            atque mollitia similique! Non consectetur sed quos, possimus
+            exercitationem ipsa, nobis nostrum modi hic fugiat qui. Repellat
+            consequatur ad cum saepe repellendus?
+          </p>
+        </div>
+      </section>
+      <section id="press-kit" className="bg-[#8e43a5] py-16">
+        <div className="container mx-auto flex max-w-3xl flex-col items-center justify-center gap-3 px-4">
+          <h2 className="self-start font-serif text-3xl font-bold uppercase">
+            Press kit
+          </h2>
           <p className="text-lg">
             A The Keeymen egy 2013-ban alakult instrumentális surf supergroup.
             Tagjai nevéhez fűződnek a Néhai Bárány, Bozo, The Punch, Padkarosda
@@ -64,69 +60,63 @@ export default async function Home() {
             MOLDVAI elnevezésű - moldvai csángó dallamokra épülő albumuk
             felvétele is.
           </p>
-          <p className="text-lg">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde autem
-            voluptatibus ducimus sint voluptate. Iure quas dolore, nobis eveniet
-            atque mollitia similique! Non consectetur sed quos, possimus
-            exercitationem ipsa, nobis nostrum modi hic fugiat qui. Repellat
-            consequatur ad cum saepe repellendus?
-          </p>
-          <p className="text-lg">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde autem
-            voluptatibus ducimus sint voluptate. Iure quas dolore, nobis eveniet
-            atque mollitia similique! Non consectetur sed quos, possimus
-            exercitationem ipsa, nobis nostrum modi hic fugiat qui. Repellat
-            consequatur ad cum saepe repellendus?
-          </p>
-          <p className="text-lg">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde autem
-            voluptatibus ducimus sint voluptate. Iure quas dolore, nobis eveniet
-            atque mollitia similique! Non consectetur sed quos, possimus
-            exercitationem ipsa, nobis nostrum modi hic fugiat qui. Repellat
-            consequatur ad cum saepe repellendus?
-          </p>
-          <p className="text-lg">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde autem
-            voluptatibus ducimus sint voluptate. Iure quas dolore, nobis eveniet
-            atque mollitia similique! Non consectetur sed quos, possimus
-            exercitationem ipsa, nobis nostrum modi hic fugiat qui. Repellat
-            consequatur ad cum saepe repellendus?
-          </p>
         </div>
       </section>
-      <section id="press-kit" className="bg-[#8e43a5] py-16">
-        <div className="container mx-auto flex max-w-4xl flex-col items-center justify-center gap-3 px-4">
-          <h1 className="text-4xl font-bold">Press kit</h1>
-          <p className="text-lg">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde autem
-            voluptatibus ducimus sint voluptate. Iure quas dolore, nobis eveniet
-            atque mollitia similique! Non consectetur sed quos, possimus
-            exercitationem ipsa, nobis nostrum modi hic fugiat qui. Repellat
-            consequatur ad cum saepe repellendus?
-          </p>
-          <p className="text-lg">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde autem
-            voluptatibus ducimus sint voluptate. Iure quas dolore, nobis eveniet
-            atque mollitia similique! Non consectetur sed quos, possimus
-            exercitationem ipsa, nobis nostrum modi hic fugiat qui. Repellat
-            consequatur ad cum saepe repellendus?
-          </p>
-          <p className="text-lg">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde autem
-            voluptatibus ducimus sint voluptate. Iure quas dolore, nobis eveniet
-            atque mollitia similique! Non consectetur sed quos, possimus
-            exercitationem ipsa, nobis nostrum modi hic fugiat qui. Repellat
-            consequatur ad cum saepe repellendus?
-          </p>
-          <p className="text-lg">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde autem
-            voluptatibus ducimus sint voluptate. Iure quas dolore, nobis eveniet
-            atque mollitia similique! Non consectetur sed quos, possimus
-            exercitationem ipsa, nobis nostrum modi hic fugiat qui. Repellat
-            consequatur ad cum saepe repellendus?
-          </p>
+      <footer className="bg-linear-to-b from-[#8e43a5] to-[#25147B] py-16 pt-32">
+        <div className="container mx-auto flex max-w-3xl flex-col items-center justify-center gap-3 px-4">
+          <p className="text-lg uppercase">© The Keeymen 2025</p>
         </div>
-      </section>
-    </>
+      </footer>
+    </main>
   );
 }
+
+const DesktopHeroContent = () => {
+  return (
+    <div className="container mx-auto hidden h-full w-full max-w-3xl flex-col justify-between gap-3 px-4 md:flex">
+      <Image
+        src="/images/svg/keeymen_logo.svg"
+        alt="The Keeymen logo"
+        width={800}
+        height={800}
+      />
+      <div className="sticky top-0 flex w-full items-center justify-center gap-10 font-serif text-2xl font-bold uppercase">
+        {[
+          { href: '#gigs', label: 'Gigs', external: false },
+          { href: '#media', label: 'Media', external: false },
+          { href: '/epk', label: 'Press kit', external: true },
+        ].map(({ href, label, external }) => (
+          <Link
+            key={href}
+            href={href}
+            target={external ? '_blank' : '_self'}
+            rel={external ? 'noopener noreferrer' : undefined}
+            className="group relative transition-opacity"
+          >
+            <span>{label}</span>
+            <span
+              className="absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 bg-[#fefefe] transition-all duration-300 group-hover:w-full"
+              aria-hidden="true"
+            />
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const MobileHeroContent = () => {
+  return (
+    <div className="container mx-auto flex h-full w-full flex-col justify-between gap-3 px-4 md:hidden">
+      <div className="flex items-center justify-between">
+        <Image
+          src="/images/svg/keeymen_logo.svg"
+          alt="The Keeymen logo"
+          width={200}
+          height={200}
+        />
+        <MenuIcon />
+      </div>
+    </div>
+  );
+};
