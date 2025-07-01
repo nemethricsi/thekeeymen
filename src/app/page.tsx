@@ -1,4 +1,6 @@
+import { Container } from '@/components/Container';
 import { EventsList } from '@/components/EventsList';
+import { HeroSection } from '@/components/HeroSection';
 import { MenuIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,25 +10,20 @@ export const revalidate = 60;
 export default async function Home() {
   return (
     <main>
-      <section
-        className="relative flex h-screen w-full flex-col items-start justify-end bg-cover bg-center bg-no-repeat p-3 text-white bg-blend-lighten md:p-4 md:py-14"
-        style={{
-          backgroundImage: `linear-gradient(to bottom, #25147B, #8E43A5), url('/images/hero_2.png')`,
-        }}
-      >
+      <HeroSection>
         <DesktopHeroContent />
         <MobileHeroContent />
-      </section>
+      </HeroSection>
       <section id="gigs" className="bg-[#8e43a5] py-16">
-        <div className="container mx-auto flex max-w-3xl flex-col items-center justify-center gap-3 px-4 sm:px-0">
+        <Container>
           <h2 className="self-start font-serif text-3xl font-bold uppercase">
             Gigs
           </h2>
           <EventsList />
-        </div>
+        </Container>
       </section>
       <section id="media" className="bg-[#8e43a5] py-16">
-        <div className="container mx-auto flex max-w-3xl flex-col items-center justify-center gap-3 px-4">
+        <Container>
           <h2 className="self-start font-serif text-3xl font-bold uppercase">
             Media
           </h2>
@@ -37,10 +34,10 @@ export default async function Home() {
             exercitationem ipsa, nobis nostrum modi hic fugiat qui. Repellat
             consequatur ad cum saepe repellendus?
           </p>
-        </div>
+        </Container>
       </section>
       <section id="press-kit" className="bg-[#8e43a5] py-16">
-        <div className="container mx-auto flex max-w-3xl flex-col items-center justify-center gap-3 px-4">
+        <Container>
           <h2 className="self-start font-serif text-3xl font-bold uppercase">
             Press kit
           </h2>
@@ -60,12 +57,12 @@ export default async function Home() {
             MOLDVAI elnevezésű - moldvai csángó dallamokra épülő albumuk
             felvétele is.
           </p>
-        </div>
+        </Container>
       </section>
       <footer className="bg-linear-to-b from-[#8e43a5] to-[#25147B] py-16 pt-32">
-        <div className="container mx-auto flex max-w-3xl flex-col items-center justify-center gap-3 px-4">
+        <Container>
           <p className="text-lg uppercase">© The Keeymen 2025</p>
-        </div>
+        </Container>
       </footer>
     </main>
   );
@@ -73,7 +70,7 @@ export default async function Home() {
 
 const DesktopHeroContent = () => {
   return (
-    <div className="container mx-auto hidden h-full w-full max-w-3xl flex-col justify-between gap-3 px-4 md:flex">
+    <div className="container mx-auto hidden h-full w-full max-w-3xl flex-col justify-between gap-3 px-4 sm:flex">
       <Image
         src="/images/svg/keeymen_logo.svg"
         alt="The Keeymen logo"
@@ -107,7 +104,7 @@ const DesktopHeroContent = () => {
 
 const MobileHeroContent = () => {
   return (
-    <div className="container mx-auto flex h-full w-full flex-col justify-between gap-3 px-4 md:hidden">
+    <div className="container mx-auto flex h-full w-full flex-col justify-between gap-3 px-4 sm:hidden">
       <div className="flex items-center justify-between">
         <Image
           src="/images/svg/keeymen_logo.svg"
