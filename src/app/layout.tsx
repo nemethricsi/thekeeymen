@@ -17,7 +17,8 @@ const bitterSansSerif = Bitter({
 
 export const metadata: Metadata = {
   title: 'The Keeymen',
-  description: 'Surf supergroup from lake Balaton.',
+  description:
+    'The Keeymen is a surf rock supergroup from Lake Balaton, blending vintage guitar tones with modern energy. Check out our latest gigs, media, and press kit.',
 };
 
 export default function RootLayout({
