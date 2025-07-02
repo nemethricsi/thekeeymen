@@ -1,7 +1,6 @@
 import { Container } from '@/components/Container';
 import { EventsList } from '@/components/EventsList';
 import { HeroSection } from '@/components/HeroSection';
-import { MenuIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -14,7 +13,7 @@ export default async function Home() {
         <DesktopHeroContent />
         <MobileHeroContent />
       </HeroSection>
-      <section id="gigs" className="bg-[#8e43a5] py-16">
+      <section id="gigs" className="bg-[#8e43a5] py-8">
         <Container>
           <h2 className="self-start font-serif text-3xl font-bold uppercase">
             Gigs
@@ -22,7 +21,7 @@ export default async function Home() {
           <EventsList />
         </Container>
       </section>
-      <section id="media" className="bg-[#8e43a5] py-16">
+      <section id="media" className="bg-[#8e43a5] py-8">
         <Container>
           <h2 className="self-start font-serif text-3xl font-bold uppercase">
             Media
@@ -36,7 +35,7 @@ export default async function Home() {
           </p>
         </Container>
       </section>
-      <section id="press-kit" className="bg-[#8e43a5] py-16">
+      <section id="press-kit" className="bg-[#8e43a5] py-8">
         <Container>
           <h2 className="self-start font-serif text-3xl font-bold uppercase">
             Press kit
@@ -112,7 +111,6 @@ const MobileHeroContent = () => {
           width={200}
           height={200}
         />
-        <MenuIcon />
       </div>
     </div>
   );
