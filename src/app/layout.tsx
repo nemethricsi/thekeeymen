@@ -3,6 +3,7 @@ import { Reddit_Sans, Bitter } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { BackToTop } from '@/components/BackToTop';
+import MobileMenu from '@/components/MobileMenu';
 
 const redditSans = Reddit_Sans({
   variable: '--font-sans',
@@ -35,6 +36,7 @@ export default function RootLayout({
       >
         {children}
         <BackToTop />
+        <MobileMenu />
       </body>
     </html>
   );
