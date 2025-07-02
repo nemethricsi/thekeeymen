@@ -3,6 +3,8 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
+import { ArrowUpRightIcon } from 'lucide-react';
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -89,27 +91,30 @@ export default function MobileMenu() {
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
             className="fixed top-0 left-0 z-50 flex h-full w-[75%] flex-col bg-[#25147B]/75 p-6 text-white shadow-lg backdrop-blur-sm md:hidden"
           >
-            <a
-              href="#gigs"
-              onClick={() => setIsOpen(false)}
-              className="mb-4 flex justify-center border p-3 text-lg font-semibold hover:text-indigo-400"
-            >
-              Gigs
-            </a>
-            <a
-              href="#media"
-              onClick={() => setIsOpen(false)}
-              className="mb-4 flex justify-center border p-3 text-lg font-semibold hover:text-indigo-400"
-            >
-              Media
-            </a>
-            <a
-              href="#press-kit"
-              onClick={() => setIsOpen(false)}
-              className="mb-4 flex justify-center border p-3 text-lg font-semibold hover:text-indigo-400"
-            >
-              Press kit
-            </a>
+            {[
+              { href: '#gigs', label: 'Gigs', external: false },
+              { href: '#media', label: 'Media', external: false },
+              { href: '/epk', label: 'Press kit', external: true },
+            ].map(({ label, href, external }) => {
+              const isActive = href === window.location.hash;
+
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  onClick={() => setIsOpen(false)}
+                  className={cn(
+                    'mb-4 flex items-center justify-center gap-2 bg-[#edd9f5]/25 p-3 text-lg font-semibold',
+                    isActive && 'border-2',
+                  )}
+                >
+                  <span className="text-xl font-semibold uppercase">
+                    {label}
+                  </span>
+                  {external && <ArrowUpRightIcon className="flex-shrink-0" />}
+                </Link>
+              );
+            })}
           </motion.nav>
         )}
       </AnimatePresence>
