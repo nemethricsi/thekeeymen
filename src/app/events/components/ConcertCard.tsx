@@ -1,21 +1,8 @@
 import { parseBandsInTownDate } from '@/app/events/parseBandsInTownDate';
 import { BandsInTownEvent } from '@/lib/bands-in-town';
-import { fetchBandsInTownEvents } from '@/server/actions';
 import { ArrowUpRightIcon, BanIcon } from 'lucide-react';
 
-export const EventsList = async () => {
-  const events = await fetchBandsInTownEvents();
-
-  return (
-    <div className="flex w-full flex-col gap-6 sm:gap-0">
-      {events.map((event) => {
-        return <EventCard key={event.id} event={event} />;
-      })}
-    </div>
-  );
-};
-
-const EventCard = ({ event }: { event: BandsInTownEvent }) => {
+export const ConcertCard = ({ event }: { event: BandsInTownEvent }) => {
   const { day, month, year } = parseBandsInTownDate(event.datetime);
   const eventUrl = event.offers[0]?.url;
 
