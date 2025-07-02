@@ -1,14 +1,16 @@
 import { Container } from '@/components/Container';
 import { EmbedBandcamp } from '@/components/EmbedBandcamp';
-import { EventsList } from '@/components/EventsList';
 import { HeroSection } from '@/components/HeroSection';
 import { EmbedYoutube } from '@/components/EmbedYoutube';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ConcertList } from '@/app/events/components/ConcertList';
+import { fetchBandsInTownEvents } from '@/server/actions';
 
 export const revalidate = 60;
 
 export default async function Home() {
+  const events = await fetchBandsInTownEvents();
   return (
     <main>
       <HeroSection>
@@ -20,7 +22,7 @@ export default async function Home() {
           <h2 className="w-full self-start text-center font-serif text-3xl font-bold text-[#f5edfa] uppercase sm:w-fit sm:text-left">
             Gigs
           </h2>
-          <EventsList />
+          <ConcertList concerts={events} numberToShow={1} />
         </Container>
       </section>
       <section id="media" className="scroll-mt-0.5 bg-[#8e43a5] py-8">
@@ -58,7 +60,7 @@ const DesktopHeroContent = () => {
         width={800}
         height={800}
       />
-      <div className="sticky top-0 flex w-full items-center justify-center gap-10 font-serif text-2xl font-bold uppercase">
+      <div className="flex w-full items-center justify-center gap-10 pb-8 font-serif text-4xl font-bold uppercase">
         {[
           { href: '#gigs', label: 'Gigs', external: false },
           { href: '#media', label: 'Media', external: false },
@@ -73,7 +75,7 @@ const DesktopHeroContent = () => {
           >
             <span>{label}</span>
             <span
-              className="absolute bottom-0 left-1/2 h-0.5 w-0 -translate-x-1/2 bg-[#fefefe] transition-all duration-300 group-hover:w-full"
+              className="absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 bg-[#fefefe] transition-all duration-300 group-hover:w-full"
               aria-hidden="true"
             />
           </Link>
