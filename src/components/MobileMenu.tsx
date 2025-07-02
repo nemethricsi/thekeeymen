@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { cn } from '@/lib/utils';
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,21 +39,30 @@ export default function MobileMenu() {
       <button
         aria-label="Toggle menu"
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-6 right-6 z-50 flex h-14 w-14 cursor-pointer flex-col items-center justify-center gap-1 rounded-full bg-[#fefefe] p-1 text-[#25147B] shadow-lg transition-all sm:hidden"
+        className={cn(
+          'fixed top-6 right-6 z-50 flex h-14 w-14 cursor-pointer flex-col items-center justify-center gap-1 rounded-full bg-transparent p-1 text-[#fefefe] shadow-none transition-all sm:hidden',
+          isOpen && 'bg-[#fefefe] text-[#25147B] shadow-lg',
+        )}
       >
         {/* Hamburger lines */}
         <motion.span
-          animate={isOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-          className="block h-0.5 w-6 origin-center bg-[#25147B]"
+          animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+          className={cn(
+            'block h-1 w-6 origin-center bg-[#fefefe]',
+            isOpen && 'bg-[#25147B]',
+          )}
         />
         <motion.span
           animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
           transition={{ duration: 0.1 }}
-          className="block h-0.5 w-6 bg-[#25147B]"
+          className={cn('block h-1 w-6 bg-[#fefefe]', isOpen && 'bg-[#25147B]')}
         />
         <motion.span
-          animate={isOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-          className="block h-0.5 w-6 origin-center bg-[#25147B]"
+          animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+          className={cn(
+            'block h-1 w-6 origin-center bg-[#fefefe]',
+            isOpen && 'bg-[#25147B]',
+          )}
         />
       </button>
 

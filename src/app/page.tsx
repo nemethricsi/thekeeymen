@@ -108,8 +108,8 @@ const MobileHeroContent = () => {
         <Image
           src="/images/svg/keeymen_logo.svg"
           alt="The Keeymen logo"
-          width={200}
-          height={200}
+          width={165}
+          height={165}
         />
       </div>
     </div>
