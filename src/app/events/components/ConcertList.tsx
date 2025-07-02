@@ -13,13 +13,16 @@ interface ConcertListProps {
 export const ConcertList = ({ concerts, numberToShow }: ConcertListProps) => {
   const [open, setOpen] = useState(false);
 
+  const visibleConcerts = concerts.slice(0, numberToShow);
+  const hiddenConcerts = concerts.slice(numberToShow);
+
   return (
     <Collapsible.Root open={open} onOpenChange={setOpen} className="w-full">
-      {concerts.slice(0, numberToShow).map((event) => {
+      {visibleConcerts.map((event) => {
         return <ConcertCard key={event.id} event={event} />;
       })}
       <Collapsible.Content>
-        {concerts.slice(numberToShow).map((event) => {
+        {hiddenConcerts.map((event) => {
           return <ConcertCard key={event.id} event={event} />;
         })}
       </Collapsible.Content>

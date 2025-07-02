@@ -4,28 +4,30 @@ import { HeroSection } from '@/components/HeroSection';
 import { EmbedYoutube } from '@/components/EmbedYoutube';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ConcertList } from '@/app/events/components/ConcertList';
+// import { ConcertList } from '@/app/events/components/ConcertList';
 import { fetchBandsInTownEvents } from '@/server/actions';
+import { EventList } from './events/components/EventList';
 
 export const revalidate = 60;
 
 export default async function Home() {
   const events = await fetchBandsInTownEvents();
   return (
-    <main>
+    <main className="flex flex-col gap-20 bg-[#8e43a5]">
       <HeroSection>
         <DesktopHeroContent />
         <MobileHeroContent />
       </HeroSection>
-      <section id="gigs" className="scroll-mt-0.5 bg-[#8e43a5] py-8">
+      <section id="gigs" className="scroll-mt-9 bg-[#8e43a5]">
         <Container className="gap-10">
           <h2 className="w-full self-start text-center font-serif text-3xl font-bold text-[#f5edfa] uppercase sm:w-fit sm:text-left">
             Gigs
           </h2>
-          <ConcertList concerts={events} numberToShow={1} />
+          {/* <ConcertList concerts={events} numberToShow={1} /> */}
+          <EventList events={events} numberToShow={3} />
         </Container>
       </section>
-      <section id="media" className="scroll-mt-0.5 bg-[#8e43a5] py-8">
+      <section id="media" className="scroll-mt-9 bg-[#8e43a5]">
         <Container className="gap-10">
           <h2 className="w-full self-start text-center font-serif text-3xl font-bold text-[#f5edfa] uppercase sm:w-fit sm:text-left">
             Media
@@ -60,7 +62,7 @@ const DesktopHeroContent = () => {
         width={800}
         height={800}
       />
-      <div className="flex w-full items-center justify-center gap-10 pb-8 font-serif text-4xl font-bold uppercase">
+      <div className="flex w-full items-center justify-center gap-10 pb-8 font-serif text-4xl font-bold tracking-wider uppercase">
         {[
           { href: '#gigs', label: 'Gigs', external: false },
           { href: '#media', label: 'Media', external: false },
@@ -75,7 +77,7 @@ const DesktopHeroContent = () => {
           >
             <span>{label}</span>
             <span
-              className="absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 bg-[#fefefe] transition-all duration-300 group-hover:w-full"
+              className="absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 bg-[#fefefe] transition-all duration-200 group-hover:w-full"
               aria-hidden="true"
             />
           </Link>
