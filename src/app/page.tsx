@@ -1,6 +1,8 @@
 import { Container } from '@/components/Container';
+import { EmbedBandcamp } from '@/components/EmbedBandcamp';
 import { EventsList } from '@/components/EventsList';
 import { HeroSection } from '@/components/HeroSection';
+import { EmbedYoutube } from '@/components/EmbedYoutube';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -13,49 +15,29 @@ export default async function Home() {
         <DesktopHeroContent />
         <MobileHeroContent />
       </HeroSection>
-      <section id="gigs" className="bg-[#8e43a5] py-8">
-        <Container>
-          <h2 className="self-start font-serif text-3xl font-bold uppercase">
+      <section id="gigs" className="scroll-mt-0.5 bg-[#8e43a5] py-8">
+        <Container className="gap-10">
+          <h2 className="w-full self-start text-center font-serif text-3xl font-bold text-[#f5edfa] uppercase sm:w-fit sm:text-left">
             Gigs
           </h2>
           <EventsList />
         </Container>
       </section>
-      <section id="media" className="bg-[#8e43a5] py-8">
-        <Container>
-          <h2 className="self-start font-serif text-3xl font-bold uppercase">
+      <section id="media" className="scroll-mt-0.5 bg-[#8e43a5] py-8">
+        <Container className="gap-10">
+          <h2 className="w-full self-start text-center font-serif text-3xl font-bold text-[#f5edfa] uppercase sm:w-fit sm:text-left">
             Media
           </h2>
-          <p className="text-lg">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde autem
-            voluptatibus ducimus sint voluptate. Iure quas dolore, nobis eveniet
-            atque mollitia similique! Non consectetur sed quos, possimus
-            exercitationem ipsa, nobis nostrum modi hic fugiat qui. Repellat
-            consequatur ad cum saepe repellendus?
-          </p>
-        </Container>
-      </section>
-      <section id="press-kit" className="bg-[#8e43a5] py-8">
-        <Container>
-          <h2 className="self-start font-serif text-3xl font-bold uppercase">
-            Press kit
-          </h2>
-          <p className="text-lg">
-            A The Keeymen egy 2013-ban alakult instrumentális surf supergroup.
-            Tagjai nevéhez fűződnek a Néhai Bárány, Bozo, The Punch, Padkarosda
-            stb. produkciók. A zenekar hamar megszerezte stabil helyét a
-            budapesti alternatív Klub- és Fesztiválélet rendszeres fellépői
-            között. Játszottak közösen számos neves zenekarral (pl. Carson Coma,
-            Csaknekedkislány, The Qualitons, Ricsárdgír, Dope Calypso…) a
-            legismertebb budapesti klubokban (pl. A38, Akvárium, TOLDI Dürer
-            Kert, Pontoon, Turbina, Gólya…), valamint az underground szcéna
-            egyre népszerűbb fesztiváljain (Kolorádó, Bánkitó, Ubik, Fekete zaj,
-            TILOS maraton, KERET…). 2021-ben jelent meg második nagylemezük t
-            címmel, amit idén tavasszal a 4SEASONS - négy évszak tematikájú
-            kazetta követ majd 4 bonus trackkel, valamint folyamatban van a
-            MOLDVAI elnevezésű - moldvai csángó dallamokra épülő albumuk
-            felvétele is.
-          </p>
+          <div className="flex w-full flex-col gap-3">
+            <p className="text-center">
+              The Keeymen a Partizán Sessions adásában - 2023
+            </p>
+            <EmbedYoutube src="https://www.youtube.com/watch?v=PbZBMtoxhZU" />
+          </div>
+          <div className="flex w-full flex-col gap-0">
+            <p className="text-center">The Keeymen - 2 (LP, 2021)</p>
+            <EmbedBandcamp />
+          </div>
         </Container>
       </section>
       <footer className="bg-linear-to-b from-[#8e43a5] to-[#25147B] py-16 pt-32">
