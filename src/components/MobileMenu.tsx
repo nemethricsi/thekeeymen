@@ -38,7 +38,7 @@ export default function MobileMenu() {
       <button
         aria-label="Toggle menu"
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-6 right-6 z-50 flex h-12 w-12 cursor-pointer flex-col items-center justify-center gap-1 rounded-full bg-[#fefefe] p-1 text-[#25147B] shadow-lg transition-all sm:hidden"
+        className="fixed top-6 right-6 z-50 flex h-14 w-14 cursor-pointer flex-col items-center justify-center gap-1 rounded-full bg-[#fefefe] p-1 text-[#25147B] shadow-lg transition-all sm:hidden"
       >
         {/* Hamburger lines */}
         <motion.span
