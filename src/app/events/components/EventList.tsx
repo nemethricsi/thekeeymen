@@ -2,7 +2,7 @@
 
 import { ConcertCard } from '@/app/events/components/ConcertCard';
 import { BandsInTownEvent } from '@/lib/bands-in-town';
-import { CalendarClockIcon } from 'lucide-react';
+import { GuitarIcon, HandMetalIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
 
@@ -20,16 +20,17 @@ export const EventList = ({ events, numberToShow }: EventListProps) => {
   if (events.length === 0) {
     return (
       <div className="flex w-full items-start gap-3 border border-dashed border-[#edd9f5] bg-[#b367ce] p-4 sm:items-center">
-        <CalendarClockIcon className="h-6 w-6 flex-shrink-0 text-[#edd9f5]" />
+        <GuitarIcon className="h-6 w-6 flex-shrink-0 text-[#edd9f5]" />
         <p className="text-lg font-semibold text-[#fbf6fd]">
-          No gigs right now — we’re cooking up the next ones.
+          No gigs right now — we&apos;re cooking up the next ones.
         </p>
+        <HandMetalIcon className="h-6 w-6 flex-shrink-0 text-[#edd9f5]" />
       </div>
     );
   }
 
   return (
-    <div className="w-full">
+    <div className="flex w-full flex-col gap-6 sm:gap-0">
       {/* Always visible concerts */}
       {visibleEvents.map((event) => (
         <ConcertCard key={event.id} event={event} />

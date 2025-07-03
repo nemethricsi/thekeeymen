@@ -38,7 +38,7 @@ export const ConcertCard = ({ event }: { event: BandsInTownEvent }) => {
           href={eventUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex w-full flex-shrink-0 items-center justify-center gap-2 border border-[#f5edfa] px-4 py-2 font-bold uppercase hover:bg-[#f5edfa] hover:text-[#8e43a5] sm:w-auto sm:bg-transparent"
+          className="flex w-full flex-shrink-0 items-center justify-center gap-2 border border-[#f5edfa] bg-[#f5edfa] px-4 py-2 font-bold text-[#8e43a5] uppercase hover:bg-[#f5edfa] hover:text-[#8e43a5] sm:w-auto sm:bg-transparent sm:text-[#f5edfa]"
         >
           <span>Tickets</span>
           <ArrowUpRightIcon />

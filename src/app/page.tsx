@@ -18,20 +18,20 @@ export default async function Home() {
         <DesktopHeroContent />
         <MobileHeroContent />
       </HeroSection>
-      <section id="gigs" className="scroll-mt-9 bg-[#8e43a5]">
+      <section id="gigs" className="scroll-mt-20 bg-[#8e43a5]">
         <Container className="gap-10">
-          <h2 className="w-full self-start text-center font-serif text-3xl font-bold text-[#f5edfa] uppercase sm:w-fit sm:text-left">
+          {/* <h2 className="w-full self-start text-center font-serif text-3xl font-bold text-[#f5edfa] uppercase sm:w-fit sm:text-left">
             Gigs
-          </h2>
+          </h2> */}
           {/* <ConcertList concerts={events} numberToShow={1} /> */}
           <EventList events={events} numberToShow={3} />
         </Container>
       </section>
-      <section id="media" className="scroll-mt-9 bg-[#8e43a5]">
+      <section id="media" className="scroll-mt-20 bg-[#8e43a5]">
         <Container className="gap-10">
-          <h2 className="w-full self-start text-center font-serif text-3xl font-bold text-[#f5edfa] uppercase sm:w-fit sm:text-left">
+          {/* <h2 className="w-full self-start text-center font-serif text-3xl font-bold text-[#f5edfa] uppercase sm:w-fit sm:text-left">
             Media
-          </h2>
+          </h2> */}
           <div className="flex w-full flex-col gap-3">
             <p className="text-center">
               The Keeymen a Partizán Sessions adásában - 2023
