@@ -62,17 +62,15 @@ const DesktopHeroContent = () => {
         width={800}
         height={800}
       />
-      <div className="flex w-full items-center justify-center gap-10 pb-8 font-serif text-4xl font-bold tracking-wider uppercase">
+      <div className="flex w-full items-center justify-center gap-11 pb-8 font-serif text-3xl font-bold tracking-wider uppercase">
         {[
-          { href: '#gigs', label: 'Gigs', external: false },
-          { href: '#media', label: 'Media', external: false },
-          { href: '/epk', label: 'Press kit', external: true },
-        ].map(({ href, label, external }) => (
+          { href: '#gigs', label: 'Gigs' },
+          { href: '#media', label: 'Media' },
+          { href: '/epk', label: 'Press kit' },
+        ].map(({ href, label }) => (
           <Link
             key={href}
             href={href}
-            target={external ? '_blank' : '_self'}
-            rel={external ? 'noopener noreferrer' : undefined}
             className="group relative transition-opacity"
           >
             <span>{label}</span>
