@@ -3,7 +3,7 @@ export const HeroSection = ({ children }: { children: React.ReactNode }) => {
     <section
       className="relative flex h-screen w-full flex-col items-start justify-end bg-cover bg-center bg-no-repeat px-3 py-6 text-white bg-blend-lighten md:p-4 md:py-14"
       style={{
-        backgroundImage: `linear-gradient(to bottom, #25147B, #8E43A5), url('/images/hero_2.png')`,
+        backgroundImage: `linear-gradient(to bottom, #25147B, #8E43A5), url('/images/hero_2_blur_3.png')`,
       }}
     >
       {children}

@@ -46,7 +46,7 @@ export default async function Home() {
       </section>
       <footer className="bg-linear-to-b from-[#8e43a5] to-[#25147B] py-16 pt-32">
         <Container>
-          <p className="text-lg uppercase">© The Keeymen 2025</p>
+          <p className="text-sm uppercase">© The Keeymen 2025</p>
         </Container>
       </footer>
     </main>
