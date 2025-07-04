@@ -1,5 +1,5 @@
 import { Container } from '@/components/Container';
-import { EmbedBandcamp } from '@/components/EmbedBandcamp';
+//import { EmbedBandcamp } from '@/components/EmbedBandcamp';
 import { HeroSection } from '@/components/HeroSection';
 import { EmbedYoutube } from '@/components/EmbedYoutube';
 import Image from 'next/image';
@@ -39,8 +39,17 @@ export default async function Home() {
             <EmbedYoutube src="https://www.youtube.com/watch?v=PbZBMtoxhZU" />
           </div>
           <div className="flex w-full flex-col gap-0">
-            <p className="text-center">The Keeymen - 2 (LP, 2021)</p>
-            <EmbedBandcamp />
+            {/* <p className="text-center">The Keeymen - 2 (LP, 2021)</p>
+            <EmbedBandcamp /> */}
+            <iframe
+              style={{ borderRadius: 12 }}
+              src="https://open.spotify.com/embed/artist/70r42zt8pupSRwWRGq8b7M?utm_source=generator&theme=0"
+              width="100%"
+              height="352"
+              allowFullScreen
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+            ></iframe>
           </div>
         </Container>
       </section>
