@@ -1,10 +1,14 @@
 import { parseBandsInTownDate } from '@/app/events/parseBandsInTownDate';
 import { BandsInTownEvent } from '@/lib/bands-in-town';
-import { ArrowUpRightIcon, BanIcon } from 'lucide-react';
+import { cn } from '@/lib/utils';
+import { ArrowUpRightIcon, BellRingIcon } from 'lucide-react';
 
 export const ConcertCard = ({ event }: { event: BandsInTownEvent }) => {
   const { day, month, year } = parseBandsInTownDate(event.datetime);
-  const eventUrl = event.offers[0]?.url;
+
+  const offer = event.offers.length > 0 ? event.offers[0] : undefined;
+  const eventUrl = offer?.url;
+  const notifyMeUrl = `${event.url}&trigger=notify_me`;
 
   return (
     <div className="flex flex-col items-center justify-between gap-2 px-0 py-2 hover:bg-[#b367ce] sm:flex-row sm:gap-4 sm:p-4 sm:[&:not(:last-child)]:border-b sm:[&:not(:last-child)]:border-[#cc92e0]">
@@ -33,22 +37,19 @@ export const ConcertCard = ({ event }: { event: BandsInTownEvent }) => {
           </div>
         </div>
       </div>
-      {eventUrl ? (
-        <a
-          href={eventUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex w-full flex-shrink-0 items-center justify-center gap-2 border border-[#f5edfa] bg-[#f5edfa] px-4 py-2 font-bold text-[#8e43a5] uppercase hover:bg-[#f5edfa] hover:text-[#8e43a5] sm:w-auto sm:bg-transparent sm:text-[#f5edfa]"
-        >
-          <span>Tickets</span>
-          <ArrowUpRightIcon />
-        </a>
-      ) : (
-        <div className="flex w-full flex-shrink-0 items-center justify-center gap-2 border px-4 py-2 font-bold uppercase opacity-50 hover:cursor-not-allowed sm:w-auto">
-          <span>Tickets</span>
-          <BanIcon />
-        </div>
-      )}
+      <a
+        href={eventUrl || notifyMeUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={cn(
+          'flex w-full flex-shrink-0 items-center justify-center gap-2 border border-[#f5edfa] bg-[#f5edfa] px-4 py-2 font-bold text-[#8e43a5] uppercase hover:bg-[#f5edfa] hover:text-[#8e43a5] sm:w-auto sm:bg-transparent sm:text-[#f5edfa]',
+          !eventUrl && 'border-dashed bg-transparent text-[#fefefe]',
+        )}
+      >
+        {!eventUrl && <BellRingIcon className="h-5 w-5" />}
+        <span>{eventUrl ? 'Tickets' : 'Notify me'}</span>
+        {eventUrl && <ArrowUpRightIcon />}
+      </a>
     </div>
   );
 };
