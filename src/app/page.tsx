@@ -12,6 +12,7 @@ export const revalidate = 60;
 
 export default async function Home() {
   const events = await fetchBandsInTownEvents();
+
   return (
     <main className="flex flex-col gap-20 bg-[#8e43a5]">
       <HeroSection>
