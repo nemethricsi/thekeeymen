@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { ArrowUpRightIcon } from 'lucide-react';
 
-export default function MobileMenu() {
+export const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ export default function MobileMenu() {
         aria-label="Toggle menu"
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          'fixed top-6 right-6 z-50 flex h-14 w-14 cursor-pointer flex-col items-center justify-center gap-1 rounded-full bg-transparent p-1 text-[#fefefe] shadow-none transition-all sm:hidden',
+          'fixed top-3 right-3 z-50 flex h-14 w-14 cursor-pointer flex-col items-center justify-center gap-1 rounded-full bg-transparent p-1 text-[#fefefe] shadow-none transition-all sm:hidden',
           isOpen && 'bg-[#fefefe] text-[#25147B] shadow-lg',
         )}
       >
@@ -89,7 +89,7 @@ export default function MobileMenu() {
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed top-0 left-0 z-50 flex h-full w-[75%] flex-col bg-[#25147B]/75 p-6 text-white shadow-lg backdrop-blur-sm md:hidden"
+            className="fixed top-0 left-0 z-50 flex h-full w-[75%] flex-col bg-[#25147B] p-6 text-white shadow-lg backdrop-blur-sm md:hidden"
           >
             {[
               { href: '#gigs', label: 'Gigs', external: false },
@@ -120,4 +120,4 @@ export default function MobileMenu() {
       </AnimatePresence>
     </>
   );
-}
+};

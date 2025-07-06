@@ -44,7 +44,7 @@ export const ConcertCard = ({ event }: { event: BandsInTownEvent }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-between gap-2 px-0 py-2 hover:bg-[#b367ce] sm:flex-row sm:gap-4 sm:p-4 sm:[&:not(:last-child)]:border-b sm:[&:not(:last-child)]:border-[#cc92e0]">
+    <div className="flex flex-col items-center justify-between gap-2 px-0 hover:bg-[#b367ce] sm:flex-row sm:gap-4 sm:p-4 sm:[&:not(:last-child)]:border-b sm:[&:not(:last-child)]:border-[#cc92e0]">
       <div className="flex w-full items-center gap-4 sm:gap-8">
         {/* Date */}
         <div className="flex flex-shrink-0 items-center gap-3">

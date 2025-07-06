@@ -3,7 +3,8 @@ import { Reddit_Sans, Bitter } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { BackToTop } from '@/components/BackToTop';
-import MobileMenu from '@/components/MobileMenu';
+import { MobileMenu } from '@/components/MobileMenu';
+import { Footer } from '@/components/Footer';
 
 const redditSans = Reddit_Sans({
   variable: '--font-sans',
@@ -32,12 +33,13 @@ export default function RootLayout({
         className={cn(
           redditSans.variable,
           bitterSansSerif.variable,
-          'min-h-screen bg-[#fefefe] font-sans leading-normal text-[#fefefe] antialiased',
+          'min-h-screen bg-[#8e43a5] font-sans text-lg leading-relaxed text-[#fefefe] antialiased',
         )}
       >
         {children}
         <BackToTop />
         <MobileMenu />
+        <Footer />
       </body>
     </html>
   );
