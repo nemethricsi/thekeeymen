@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { BackToTop } from '@/components/BackToTop';
 import { MobileMenu } from '@/components/MobileMenu';
 import { Footer } from '@/components/Footer';
+import { SanityLive } from '@/sanity/lib/live';
 
 const redditSans = Reddit_Sans({
   variable: '--font-sans',
@@ -40,6 +41,7 @@ export default function RootLayout({
         <BackToTop />
         <MobileMenu />
         <Footer />
+        <SanityLive />
       </body>
     </html>
   );
