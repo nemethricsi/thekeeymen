@@ -8,11 +8,13 @@ import { EventList } from './events/components/EventList';
 import { WaveDivider } from '@/components/WaveDivider';
 import { StaticNavbar } from '@/components/StaticNavbar';
 import { EmbedSpotify } from '@/components/EmbedSpotify';
+import { fetchHomePage } from '@/sanity/lib/queries';
 
 export const revalidate = 60;
 
 export default async function Home() {
   const events = await fetchBandsInTownEvents();
+  const homePageData = await fetchHomePage();
 
   return (
     <main className="flex flex-col bg-[#8e43a5]">
@@ -29,9 +31,7 @@ export default async function Home() {
         <Container className="gap-10">
           <div className="flex w-full flex-col gap-3">
             <EmbedYoutube src="https://www.youtube.com/watch?v=PbZBMtoxhZU" />
-            <p className="text-center">
-              The Keeymen a Partizán Sessions adásában - 2023
-            </p>
+            <p className="text-center">{homePageData?.title}</p>
           </div>
           <EmbedSpotify />
         </Container>
