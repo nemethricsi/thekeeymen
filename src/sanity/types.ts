@@ -250,6 +250,31 @@ export type PAGE_SETTINGS_QUERYResult =
       seoDescription: null;
     }
   | null;
+// Variable: METADATA_QUERY
+// Query: *[_id == "pageSettings"][0]{    "seoTitle": seoTitle[_key == $locale][0].value,    "seoDescription": seoDescription[_key == $locale][0].value,  }
+export type METADATA_QUERYResult =
+  | {
+      seoTitle: null;
+      seoDescription: null;
+    }
+  | {
+      seoTitle: string | null;
+      seoDescription: string | null;
+    }
+  | null;
+// Variable: NAVIGATION_QUERY
+// Query: *[_id == "pageSettings"][0]{    "navigation": navigation[]{      href,      "label": label[_key == $locale][0].value,    }  }
+export type NAVIGATION_QUERYResult =
+  | {
+      navigation: Array<{
+        href: string;
+        label: string | null;
+      }>;
+    }
+  | {
+      navigation: null;
+    }
+  | null;
 
 // Query TypeMap
 import '@sanity/client';
@@ -257,5 +282,7 @@ declare module '@sanity/client' {
   interface SanityQueries {
     '\n  *[_id == "homePage"][0]{\n    "title": title[_key == $locale][0].value,\n    youtubeUrl,\n  }\n': HOME_PAGE_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    navigation,\n    "seoTitle": seoTitle[_key == $locale][0].value,\n    "seoDescription": seoDescription[_key == $locale][0].value,\n  }\n': PAGE_SETTINGS_QUERYResult;
+    '\n  *[_id == "pageSettings"][0]{\n    "seoTitle": seoTitle[_key == $locale][0].value,\n    "seoDescription": seoDescription[_key == $locale][0].value,\n  }\n': METADATA_QUERYResult;
+    '\n  *[_id == "pageSettings"][0]{\n    "navigation": navigation[]{\n      href,\n      "label": label[_key == $locale][0].value,\n    }\n  }\n': NAVIGATION_QUERYResult;
   }
 }
