@@ -7,7 +7,7 @@ import Link from 'next/link';
 // import { ArrowUpRightIcon } from 'lucide-react';
 import { useLocaleSwitcher } from '@/hooks/useLocaleSwitcher';
 
-type ProcessedMenuItem = {
+export type ProcessedMenuItem = {
   href: string;
   label: string | null;
 };

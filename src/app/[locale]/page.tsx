@@ -1,15 +1,15 @@
 import { Container } from '@/components/Container';
 import { HeroSection } from '@/components/HeroSection';
 import { EmbedYoutube } from '@/components/EmbedYoutube';
-import Link from 'next/link';
 import { fetchBandsInTownEvents } from '@/server/actions';
 import { EventList } from '@/app/events/components/EventList';
 import { WaveDivider } from '@/components/WaveDivider';
 import { StaticNavbar } from '@/components/StaticNavbar';
 import { EmbedSpotify } from '@/components/EmbedSpotify';
-import { fetchHomePage } from '@/sanity/lib/queries';
+import { fetchHomePage, fetchNavigation } from '@/sanity/lib/queries';
 import { Locale } from '@/i18n-config';
 import { LogoWithLocaleSwitcher } from '@/components/LogoWithLocaleSwitcher';
+import { DesktopNavigation } from '@/components/DesktopNavigation';
 
 export const revalidate = 60;
 
@@ -25,7 +25,7 @@ export default async function Home({
   return (
     <main className="flex flex-col bg-[#8e43a5]">
       <HeroSection>
-        <DesktopHeroContent />
+        <DesktopHeroContent locale={locale} />
         <MobileHeroContent />
       </HeroSection>
       <section id="gigs" className="border py-10">
@@ -49,29 +49,13 @@ export default async function Home({
   );
 }
 
-const DesktopHeroContent = () => {
+const DesktopHeroContent = async ({ locale }: { locale: Locale }) => {
+  const data = await fetchNavigation({ locale });
+
   return (
     <div className="container mx-auto hidden h-full w-full max-w-3xl flex-col justify-between gap-3 px-4 sm:flex">
       <LogoWithLocaleSwitcher />
-      <div className="flex w-full items-center justify-center gap-11 pb-8 font-serif text-3xl font-bold tracking-wider uppercase">
-        {[
-          { href: '#gigs', label: 'Gigs' },
-          { href: '#media', label: 'Media' },
-          { href: '/epk', label: 'Press kit' },
-        ].map(({ href, label }) => (
-          <Link
-            key={href}
-            href={href}
-            className="group relative transition-opacity"
-          >
-            <span>{label}</span>
-            <span
-              className="absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 bg-[#fefefe] transition-all duration-200 group-hover:w-full"
-              aria-hidden="true"
-            />
-          </Link>
-        ))}
-      </div>
+      {data?.navigation && <DesktopNavigation navigation={data.navigation} />}
     </div>
   );
 };
