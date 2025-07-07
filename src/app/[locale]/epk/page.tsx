@@ -1,11 +1,20 @@
 import { Container } from '@/components/Container';
 import { StaticNavbar } from '@/components/StaticNavbar';
+import { fetchNavigation } from '@/sanity/lib/queries';
 import { CopyIcon } from 'lucide-react';
+import { Locale } from '@/i18n-config';
 
-export default function ElectronicPressKitPage() {
+export default async function ElectronicPressKitPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const data = await fetchNavigation({ locale });
+
   return (
     <div className="min-h-screen bg-[#8e43a5]">
-      <StaticNavbar />
+      {data?.navigation && <StaticNavbar navItems={data.navigation} />}
       <main className="pt-[calc(80px+2rem)]">
         <Container className="gap-10">
           <h1 className="text-3xl">Short bio</h1>

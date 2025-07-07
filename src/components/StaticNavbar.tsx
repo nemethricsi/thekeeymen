@@ -4,8 +4,14 @@ import { Container } from '@/components/Container';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 import Link from 'next/link';
+import { type ProcessedMenuItem } from '@/components/MobileMenu';
+import { LocalizedLink } from './LocalizedLink';
 
-export const StaticNavbar = () => {
+interface StaticNavbarProps {
+  navItems: ProcessedMenuItem[];
+}
+
+export const StaticNavbar = ({ navItems }: StaticNavbarProps) => {
   return (
     <header className="fixed top-0 left-0 z-40 flex h-20 w-full bg-[#25147B]/50 drop-shadow-xl drop-shadow-black/20 backdrop-blur-sm">
       <Container className="flex flex-row items-center justify-between">
@@ -18,10 +24,15 @@ export const StaticNavbar = () => {
           />
         </Link>
         <nav className="hidden flex-row items-center gap-10 font-serif uppercase sm:flex">
-          <NavLink href="/">Home</NavLink>
-          <NavLink href="/#gigs">Gigs</NavLink>
-          <NavLink href="/#media">Media</NavLink>
-          <NavLink href="/epk">Press kit</NavLink>
+          {navItems.map(({ href, label }) => (
+            <NavLink key={href} href={href}>
+              <span>{label}</span>
+              <span
+                className="absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 bg-[#fefefe] transition-all duration-200 group-hover:w-full"
+                aria-hidden="true"
+              />
+            </NavLink>
+          ))}
         </nav>
       </Container>
     </header>
@@ -36,8 +47,13 @@ const NavLink = ({
   children: React.ReactNode;
 }) => {
   return (
-    <Link href={href} className={cn('text-xl font-semibold text-white')}>
+    <LocalizedLink
+      href={href}
+      className={cn(
+        'group relative text-xl font-semibold text-white transition-opacity',
+      )}
+    >
       {children}
-    </Link>
+    </LocalizedLink>
   );
 };

@@ -26,7 +26,7 @@ export default async function Home({
     <main className="flex flex-col bg-[#8e43a5]">
       <HeroSection>
         <DesktopHeroContent locale={locale} />
-        <MobileHeroContent />
+        <MobileHeroContent locale={locale} />
       </HeroSection>
       <section id="gigs" className="border py-10">
         <Container className="gap-10">
@@ -60,10 +60,11 @@ const DesktopHeroContent = async ({ locale }: { locale: Locale }) => {
   );
 };
 
-const MobileHeroContent = () => {
+const MobileHeroContent = async ({ locale }: { locale: Locale }) => {
+  const data = await fetchNavigation({ locale });
   return (
     <div className="container mx-auto flex h-full w-full flex-col justify-between gap-3 px-4 sm:hidden">
-      <StaticNavbar />
+      {data?.navigation && <StaticNavbar navItems={data.navigation} />}
     </div>
   );
 };
