@@ -1,6 +1,14 @@
-import { type SchemaTypeDefinition } from 'sanity';
 import { homePage } from '@/sanity/schemaTypes/homePage';
+import type { SchemaPluginOptions } from 'sanity';
 
-export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [homePage],
+import { pageSettings } from '@/sanity/schemaTypes/pageSettings';
+
+import { menuItem } from '@/sanity/schemaTypes/objects/menuItem';
+import { navigation } from '@/sanity/schemaTypes/navigation';
+import { singletonTypes } from '@/sanity.config';
+
+export const schema: SchemaPluginOptions = {
+  types: [homePage, pageSettings, menuItem, navigation],
+  templates: (templates) =>
+    templates.filter(({ schemaType }) => !singletonTypes.has(schemaType)),
 };

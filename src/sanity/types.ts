@@ -13,14 +13,76 @@
  */
 
 // Source: schema.json
+export type Navigation = Array<
+  {
+    _key: string;
+  } & MenuItem
+>;
+
+export type MenuItem = {
+  _type: 'menuItem';
+  label: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
+  href: string;
+};
+
+export type PageSettings = {
+  _id: string;
+  _type: 'pageSettings';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  navigation: Navigation;
+  seoTitle: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
+  seoDescription: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayTextValue
+  >;
+};
+
 export type HomePage = {
   _id: string;
   _type: 'homePage';
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  title: string;
+  title?: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
+  youtubeUrl: string;
 };
+
+export type InternationalizedArrayTextValue = {
+  _type: 'internationalizedArrayTextValue';
+  value?: string;
+};
+
+export type InternationalizedArrayStringValue = {
+  _type: 'internationalizedArrayStringValue';
+  value?: string;
+};
+
+export type InternationalizedArrayText = Array<
+  {
+    _key: string;
+  } & InternationalizedArrayTextValue
+>;
+
+export type InternationalizedArrayString = Array<
+  {
+    _key: string;
+  } & InternationalizedArrayStringValue
+>;
 
 export type SanityImagePaletteSwatch = {
   _type: 'sanity.imagePaletteSwatch';
@@ -141,7 +203,14 @@ export type SanityAssetSourceData = {
 };
 
 export type AllSanitySchemaTypes =
+  | Navigation
+  | MenuItem
+  | PageSettings
   | HomePage
+  | InternationalizedArrayTextValue
+  | InternationalizedArrayStringValue
+  | InternationalizedArrayText
+  | InternationalizedArrayString
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
@@ -156,13 +225,29 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: HOME_PAGE_QUERY
-// Query: *[_id == "homePage"][0]{ title }
+// Query: *[_id == "homePage"][0]{    "title": title[_key == $locale][0].value,    youtubeUrl,  }
 export type HOME_PAGE_QUERYResult =
   | {
-      title: string;
+      title: null;
+      youtubeUrl: null;
     }
   | {
       title: string | null;
+      youtubeUrl: string;
+    }
+  | null;
+// Variable: PAGE_SETTINGS_QUERY
+// Query: *[_id == "pageSettings"][0]{    navigation,    "seoTitle": seoTitle[_key == $locale][0].value,    "seoDescription": seoDescription[_key == $locale][0].value,  }
+export type PAGE_SETTINGS_QUERYResult =
+  | {
+      navigation: Navigation;
+      seoTitle: string | null;
+      seoDescription: string | null;
+    }
+  | {
+      navigation: null;
+      seoTitle: null;
+      seoDescription: null;
     }
   | null;
 
@@ -170,6 +255,7 @@ export type HOME_PAGE_QUERYResult =
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
-    '*[_id == "homePage"][0]{ title }': HOME_PAGE_QUERYResult;
+    '\n  *[_id == "homePage"][0]{\n    "title": title[_key == $locale][0].value,\n    youtubeUrl,\n  }\n': HOME_PAGE_QUERYResult;
+    '\n  *[_id == "pageSettings"][0]{\n    navigation,\n    "seoTitle": seoTitle[_key == $locale][0].value,\n    "seoDescription": seoDescription[_key == $locale][0].value,\n  }\n': PAGE_SETTINGS_QUERYResult;
   }
 }
