@@ -5,9 +5,16 @@ import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { ArrowUpRightIcon } from 'lucide-react';
+import { MenuItem } from '@/sanity/types';
 
-export const MobileMenu = () => {
+interface MobileMenuProps {
+  navItems?: MenuItem[];
+}
+
+export const MobileMenu = ({ navItems }: MobileMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  console.log({ navItems });
 
   useEffect(() => {
     if (isOpen) {
@@ -92,8 +99,8 @@ export const MobileMenu = () => {
             className="fixed top-0 left-0 z-50 flex h-full w-[75%] flex-col bg-[#25147B] p-6 text-white shadow-lg backdrop-blur-sm md:hidden"
           >
             {[
-              { href: '#gigs', label: 'Gigs', external: false },
-              { href: '#media', label: 'Media', external: false },
+              { href: '/#gigs', label: 'Gigs', external: false },
+              { href: '/#media', label: 'Media', external: false },
               { href: '/epk', label: 'Press kit', external: true },
             ].map(({ label, href, external }) => {
               const isActive = href === window.location.hash;
