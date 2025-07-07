@@ -1,9 +1,63 @@
 import { defineQuery } from 'next-sanity';
 import { sanityFetch } from '@/sanity/lib/live';
+import { type Locale } from '@/i18n-config';
 
-export const HOME_PAGE_QUERY = defineQuery(`*[_id == "homePage"][0]{ title }`);
+export const HOME_PAGE_QUERY = defineQuery(`
+  *[_id == "homePage"][0]{
+    "title": title[_key == $locale][0].value,
+    youtubeUrl,
+  }
+`);
 
-export const fetchHomePage = async () => {
-  const result = await sanityFetch({ query: HOME_PAGE_QUERY });
+export const fetchHomePage = async ({ locale }: { locale: Locale }) => {
+  const result = await sanityFetch({
+    query: HOME_PAGE_QUERY,
+    params: { locale },
+  });
+  return result.data;
+};
+
+export const PAGE_SETTINGS_QUERY = defineQuery(`
+  *[_id == "pageSettings"][0]{
+    navigation,
+    "seoTitle": seoTitle[_key == $locale][0].value,
+    "seoDescription": seoDescription[_key == $locale][0].value,
+  }
+`);
+export const fetchPageSettings = async ({ locale }: { locale: Locale }) => {
+  const result = await sanityFetch({
+    query: PAGE_SETTINGS_QUERY,
+    params: { locale },
+  });
+  return result.data;
+};
+
+export const METADATA_QUERY = defineQuery(`
+  *[_id == "pageSettings"][0]{
+    "seoTitle": seoTitle[_key == $locale][0].value,
+    "seoDescription": seoDescription[_key == $locale][0].value,
+  }
+`);
+export const fetchMetadata = async ({ locale }: { locale: Locale }) => {
+  const result = await sanityFetch({
+    query: METADATA_QUERY,
+    params: { locale },
+  });
+  return result.data;
+};
+
+export const NAVIGATION_QUERY = defineQuery(`
+  *[_id == "pageSettings"][0]{
+    "navigation": navigation[]{
+      href,
+      "label": label[_key == $locale][0].value,
+    }
+  }
+`);
+export const fetchNavigation = async ({ locale }: { locale: Locale }) => {
+  const result = await sanityFetch({
+    query: NAVIGATION_QUERY,
+    params: { locale },
+  });
   return result.data;
 };

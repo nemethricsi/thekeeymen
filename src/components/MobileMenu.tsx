@@ -4,10 +4,21 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
-import { ArrowUpRightIcon } from 'lucide-react';
+// import { ArrowUpRightIcon } from 'lucide-react';
+import { useLocaleSwitcher } from '@/hooks/useLocaleSwitcher';
 
-export const MobileMenu = () => {
+type ProcessedMenuItem = {
+  href: string;
+  label: string | null;
+};
+
+interface MobileMenuProps {
+  navItems?: ProcessedMenuItem[];
+}
+
+export const MobileMenu = ({ navItems }: MobileMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
+  const { i18n, currentLocale, redirectedPathname } = useLocaleSwitcher();
 
   useEffect(() => {
     if (isOpen) {
@@ -34,6 +45,8 @@ export const MobileMenu = () => {
       window.removeEventListener('scroll', closeMenuWhenReachedTop);
     };
   }, []);
+
+  if (!navItems) return null;
 
   return (
     <>
@@ -89,32 +102,46 @@ export const MobileMenu = () => {
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed top-0 left-0 z-50 flex h-full w-[75%] flex-col bg-[#25147B] p-6 text-white shadow-lg backdrop-blur-sm md:hidden"
+            className="fixed top-0 left-0 z-50 flex h-full w-[75%] flex-col justify-between bg-[#25147B] p-8 text-white shadow-lg backdrop-blur-sm md:hidden"
           >
-            {[
-              { href: '#gigs', label: 'Gigs', external: false },
-              { href: '#media', label: 'Media', external: false },
-              { href: '/epk', label: 'Press kit', external: true },
-            ].map(({ label, href, external }) => {
-              const isActive = href === window.location.hash;
+            <div className="flex flex-col">
+              {navItems.map(({ label, href }) => {
+                const isActive = href === window.location.hash;
 
-              return (
-                <Link
-                  key={href}
-                  href={href}
-                  onClick={() => setIsOpen(false)}
-                  className={cn(
-                    'mb-4 flex items-center justify-center gap-2 bg-[#edd9f5]/25 p-3 text-lg font-semibold',
-                    isActive && 'border-2',
-                  )}
-                >
-                  <span className="text-xl font-semibold uppercase">
-                    {label}
-                  </span>
-                  {external && <ArrowUpRightIcon className="flex-shrink-0" />}
-                </Link>
-              );
-            })}
+                return (
+                  <Link
+                    key={href}
+                    href={href}
+                    onClick={() => setIsOpen(false)}
+                    className={cn(
+                      'mb-4 flex items-center justify-center gap-2 bg-[#edd9f5]/25 p-3 text-lg font-semibold',
+                      isActive && 'border-2',
+                    )}
+                  >
+                    <span className="text-xl font-semibold uppercase">
+                      {label}
+                    </span>
+                    {/* {external && <ArrowUpRightIcon className="flex-shrink-0" />} */}
+                  </Link>
+                );
+              })}
+            </div>
+            <div className="flex gap-2">
+              {i18n.locales.map((locale) => {
+                return (
+                  <Link
+                    key={locale}
+                    href={redirectedPathname(locale)}
+                    className={cn(
+                      'flex-1 border border-[#edd9f5]/25 p-2 text-center uppercase',
+                      locale === currentLocale && 'bg-[#edd9f5]/25',
+                    )}
+                  >
+                    {locale}
+                  </Link>
+                );
+              })}
+            </div>
           </motion.nav>
         )}
       </AnimatePresence>

@@ -8,15 +8,28 @@ export const structure: StructureResolver = (S) =>
       S.listItem()
         .id('homePage')
         .schemaType('homePage')
-        .title('Home Page')
+        .title('Főoldal')
         .child(
           S.editor()
             .id('homePage')
             .schemaType('homePage')
             .documentId('homePage'),
         ),
+      S.listItem()
+        .id('pageSettings')
+        .schemaType('pageSettings')
+        .title('Oldal beállítások')
+        .child(
+          S.editor()
+            .id('pageSettings')
+            .schemaType('pageSettings')
+            .documentId('pageSettings'),
+        ),
       S.divider(),
       ...S.documentTypeListItems().filter(
-        (item) => item.getId() !== 'homePage',
+        (item) =>
+          item.getId() !== 'homePage' &&
+          item.getId() !== 'navigation' &&
+          item.getId() !== 'pageSettings',
       ),
     ]);
