@@ -16,7 +16,12 @@ import { structure } from './src/sanity/structure';
 
 const singletonActions = new Set(['publish', 'discardChanges', 'restore']);
 
-export const singletonTypes = new Set(['homePage', 'pageSettings', 'socials']);
+export const singletonTypes = new Set([
+  'homePage',
+  'pageSettings',
+  'socials',
+  'epk',
+]);
 
 export default defineConfig({
   basePath: '/admin',
@@ -42,7 +47,10 @@ export default defineConfig({
     newDocumentOptions: (prev) =>
       prev.filter(
         (item) =>
-          item.templateId !== 'homePage' && item.templateId !== 'pageSettings',
+          item.templateId !== 'homePage' &&
+          item.templateId !== 'pageSettings' &&
+          item.templateId !== 'socials' &&
+          item.templateId !== 'epk',
       ),
     actions: (input, context) =>
       singletonTypes.has(context.schemaType)

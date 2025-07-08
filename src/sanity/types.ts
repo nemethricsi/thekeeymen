@@ -13,6 +13,24 @@
  */
 
 // Source: schema.json
+export type Epk = {
+  _id: string;
+  _type: 'epk';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
+  shortBio: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayTextValue
+  >;
+};
+
 export type Socials = {
   _id: string;
   _type: 'socials';
@@ -214,6 +232,7 @@ export type SanityAssetSourceData = {
 };
 
 export type AllSanitySchemaTypes =
+  | Epk
   | Socials
   | Navigation
   | MenuItem
@@ -241,6 +260,10 @@ export declare const internalGroqTypeReferenceTo: unique symbol;
 export type HOME_PAGE_QUERYResult =
   | {
       title: null;
+      youtubeUrl: null;
+    }
+  | {
+      title: string | null;
       youtubeUrl: null;
     }
   | {
@@ -301,6 +324,22 @@ export type SOCIALS_QUERYResult =
       appleMusic: string | null;
     }
   | null;
+// Variable: EPK_QUERY
+// Query: *[_id == "epk"][0]{    "title": title[_key == $locale][0].value,    "shortBio": shortBio[_key == $locale][0].value,  }
+export type EPK_QUERYResult =
+  | {
+      title: null;
+      shortBio: null;
+    }
+  | {
+      title: string | null;
+      shortBio: null;
+    }
+  | {
+      title: string | null;
+      shortBio: string | null;
+    }
+  | null;
 
 // Query TypeMap
 import '@sanity/client';
@@ -311,5 +350,6 @@ declare module '@sanity/client' {
     '\n  *[_id == "pageSettings"][0]{\n    "seoTitle": seoTitle[_key == $locale][0].value,\n    "seoDescription": seoDescription[_key == $locale][0].value,\n  }\n': METADATA_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    "navigation": navigation[]{\n      href,\n      "label": label[_key == $locale][0].value,\n    }\n  }\n': NAVIGATION_QUERYResult;
     '\n  *[_id == "socials"][0]{\n    spotify,\n    bandcamp,\n    appleMusic,\n  }\n': SOCIALS_QUERYResult;
+    '\n  *[_id == "epk"][0]{\n    "title": title[_key == $locale][0].value,\n    "shortBio": shortBio[_key == $locale][0].value,\n  }\n': EPK_QUERYResult;
   }
 }
