@@ -15,8 +15,6 @@ export default async function ElectronicPressKitPage({
   const epk = await fetchEpk({ locale });
   const mediaMentions = epk?.mediaMentions;
 
-  console.log({ mediaMentions });
-
   return (
     <div className="min-h-screen bg-[#fbf6fd] text-[#38133f]">
       {data?.navigation && <StaticNavbar navItems={data.navigation} />}
