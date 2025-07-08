@@ -20,9 +20,11 @@ export default async function ElectronicPressKitPage({
       {data?.navigation && <StaticNavbar navItems={data.navigation} />}
       <main className="pt-[calc(80px+2rem)]">
         <Container className="gap-10 pb-8 sm:gap-16">
-          <h1 className="text-center text-4xl font-bold">{epk?.title}</h1>
+          <h1 className="text-center font-serif text-4xl font-bold">
+            {epk?.title}
+          </h1>
           <section className="flex flex-col gap-4">
-            <h2 className="text-3xl font-semibold">Rövid bio</h2>
+            <h2 className="font-serif text-3xl font-semibold">Rövid bio</h2>
             {epk?.shortBio && (
               <div className="relative rounded-md border bg-[#f5edfa] p-4 pr-16 text-left text-base">
                 <CopyButton
@@ -36,7 +38,9 @@ export default async function ElectronicPressKitPage({
           </section>
           {Array.isArray(mediaMentions) && mediaMentions.length > 0 && (
             <section className="flex flex-col gap-4">
-              <h2 className="text-3xl font-semibold">Rólunk mondták</h2>
+              <h2 className="font-serif text-3xl font-semibold">
+                Rólunk mondták
+              </h2>
               <div className="flex flex-col gap-4">
                 {mediaMentions?.map((mention) => (
                   <article
@@ -51,7 +55,7 @@ export default async function ElectronicPressKitPage({
             </section>
           )}
           <section className="flex flex-col gap-4">
-            <h2 className="text-3xl font-semibold">Képek</h2>
+            <h2 className="font-serif text-3xl font-semibold">Képek</h2>
             <div className="flex flex-col gap-4">
               <Image
                 src="/images/press/Keeymen_5.jpg"
