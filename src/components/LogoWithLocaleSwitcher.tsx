@@ -25,7 +25,7 @@ export const LogoWithLocaleSwitcher = () => {
         ))}
       </div>
       <Image
-        src="/images/svg/keeymen_logo.svg"
+        src="/svg/keeymen_logo.svg"
         alt="The Keeymen logo"
         width={800}
         height={800}

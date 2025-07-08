@@ -6,6 +6,7 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 // import { ArrowUpRightIcon } from 'lucide-react';
 import { useLocaleSwitcher } from '@/hooks/useLocaleSwitcher';
+import { LocalizedLink } from '@/components/LocalizedLink';
 
 export type ProcessedMenuItem = {
   href: string;
@@ -109,7 +110,7 @@ export const MobileMenu = ({ navItems }: MobileMenuProps) => {
                 const isActive = href === window.location.hash;
 
                 return (
-                  <Link
+                  <LocalizedLink
                     key={href}
                     href={href}
                     onClick={() => setIsOpen(false)}
@@ -122,7 +123,7 @@ export const MobileMenu = ({ navItems }: MobileMenuProps) => {
                       {label}
                     </span>
                     {/* {external && <ArrowUpRightIcon className="flex-shrink-0" />} */}
-                  </Link>
+                  </LocalizedLink>
                 );
               })}
             </div>
