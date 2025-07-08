@@ -32,6 +32,7 @@ export const CopyButton = ({
   return (
     <button
       type="button"
+      title="Copy to clipboard"
       className={cn(
         'hover:bg-neutral-20 grid h-7 w-7 place-content-center rounded-full transition-all',
         copyState === 'copied' && 'bg-green-10 hover:bg-green-10',

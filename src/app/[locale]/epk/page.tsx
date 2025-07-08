@@ -18,7 +18,7 @@ export default async function ElectronicPressKitPage({
   return (
     <div className="min-h-screen bg-[#fbf6fd] text-[#38133f]">
       {data?.navigation && <StaticNavbar navItems={data.navigation} />}
-      <main className="pt-[calc(80px+2rem)]">
+      <main className="pt-[calc(80px+3rem)]">
         <Container className="gap-10 pb-8 sm:gap-16">
           <h1 className="text-center font-serif text-4xl font-bold">
             {epk?.title}
@@ -26,7 +26,7 @@ export default async function ElectronicPressKitPage({
           <section className="flex flex-col gap-4">
             <h2 className="font-serif text-3xl font-semibold">Rövid bio</h2>
             {epk?.shortBio && (
-              <div className="relative rounded-md border bg-[#f5edfa] p-4 pr-16 text-left text-base">
+              <div className="relative rounded-md border bg-[#f5edfa] p-4 pt-12 text-left text-base leading-relaxed">
                 <CopyButton
                   text={epk.shortBio}
                   className="absolute top-4 right-4 cursor-pointer rounded-md p-4 transition-colors hover:bg-[#edd9f5]"
@@ -36,24 +36,6 @@ export default async function ElectronicPressKitPage({
               </div>
             )}
           </section>
-          {Array.isArray(mediaMentions) && mediaMentions.length > 0 && (
-            <section className="flex flex-col gap-4">
-              <h2 className="font-serif text-3xl font-semibold">
-                Rólunk mondták
-              </h2>
-              <div className="flex flex-col gap-4">
-                {mediaMentions?.map((mention) => (
-                  <article
-                    key={mention._key}
-                    className="rounded border bg-[#f5edfa] p-2 text-base leading-relaxed text-neutral-900"
-                  >
-                    <p>&ldquo;{mention.quote}&rdquo;</p>
-                    <p>{mention.publication}</p>
-                  </article>
-                ))}
-              </div>
-            </section>
-          )}
           <section className="flex flex-col gap-4">
             <h2 className="font-serif text-3xl font-semibold">Képek</h2>
             <div className="flex flex-col gap-4">
@@ -80,6 +62,26 @@ export default async function ElectronicPressKitPage({
               />
             </div>
           </section>
+          {Array.isArray(mediaMentions) && mediaMentions.length > 0 && (
+            <section className="flex flex-col gap-4">
+              <h2 className="font-serif text-3xl font-semibold">
+                Rólunk mondták
+              </h2>
+              <div className="flex flex-col gap-4">
+                {mediaMentions?.map((mention) => (
+                  <article
+                    key={mention._key}
+                    className="flex flex-col gap-1 rounded border bg-[#f5edfa] p-3 text-base leading-relaxed text-neutral-900"
+                  >
+                    <p className="italic">&ldquo;{mention.quote}&rdquo;</p>
+                    <p className="text-sm font-semibold">
+                      &mdash; {mention.publication}
+                    </p>
+                  </article>
+                ))}
+              </div>
+            </section>
+          )}
         </Container>
       </main>
     </div>

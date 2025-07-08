@@ -1,32 +1,29 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
-import { i18n, type Locale } from '@/i18n-config';
-import { cn, getLocaleFromPathname } from '@/lib/utils';
+import { cn } from '@/lib/utils';
+import { useLocaleSwitcher } from '@/hooks/useLocaleSwitcher';
 
 export const LocaleSwitcher = () => {
-  const pathname = usePathname();
-  const currentLocale = getLocaleFromPathname(pathname);
-
-  const redirectedPathname = (locale: Locale) => {
-    if (!pathname) return '/';
-    const segments = pathname.split('/');
-    segments[1] = locale;
-    return segments.join('/');
-  };
+  const { i18n, currentLocale, redirectedPathname } = useLocaleSwitcher();
 
   return (
-    <div>
+    <div className="flex items-center gap-2">
       {i18n.locales.map((locale) => (
-        <Link
-          key={locale}
-          href={redirectedPathname(locale)}
-          className={cn(locale === currentLocale && 'underline')}
-        >
-          {locale}
-        </Link>
+        <>
+          <Link
+            key={locale}
+            href={redirectedPathname(locale)}
+            className={cn(
+              'text-white',
+              locale === currentLocale && 'underline',
+            )}
+          >
+            {locale}
+          </Link>
+          <div className="rounded-full bg-white [&:not(:last-child)]:h-4 [&:not(:last-child)]:w-px" />
+        </>
       ))}
     </div>
   );

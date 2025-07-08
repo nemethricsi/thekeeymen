@@ -1,11 +1,11 @@
 'use client';
 
-import { Container } from '@/components/Container';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 
 import { LocalizedLink } from './LocalizedLink';
 import { ProcessedMenuItem } from '@/types';
+import { LocaleSwitcher } from './LocaleSwitcher';
 
 interface StaticNavbarProps {
   navItems: ProcessedMenuItem[];
@@ -13,8 +13,8 @@ interface StaticNavbarProps {
 
 export const StaticNavbar = ({ navItems }: StaticNavbarProps) => {
   return (
-    <header className="fixed top-0 left-0 z-40 hidden h-20 w-full bg-[#25147B]/50 drop-shadow-xl drop-shadow-black/20 backdrop-blur-sm sm:flex">
-      <Container className="flex flex-row items-center justify-between">
+    <header className="fixed top-0 left-0 z-40 hidden h-20 w-full bg-linear-to-b from-[#25147B] to-[#25147B]/80 drop-shadow-xl drop-shadow-black/20 backdrop-blur-sm sm:flex">
+      <div className="container mx-auto flex max-w-5xl flex-row items-center justify-between px-4">
         <LocalizedLink href="/">
           <Image
             src="/svg/keeymen_logo.svg"
@@ -23,18 +23,21 @@ export const StaticNavbar = ({ navItems }: StaticNavbarProps) => {
             height={150}
           />
         </LocalizedLink>
-        <nav className="hidden flex-row items-center gap-10 font-serif uppercase sm:flex">
-          {navItems.map(({ href, label }) => (
-            <NavLink key={href} href={href}>
-              <span>{label}</span>
-              <span
-                className="absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 bg-[#fefefe] transition-all duration-200 group-hover:w-full"
-                aria-hidden="true"
-              />
-            </NavLink>
-          ))}
-        </nav>
-      </Container>
+        <div className="flex items-center gap-10">
+          <nav className="hidden flex-row items-center gap-10 font-serif uppercase sm:flex">
+            {navItems.map(({ href, label }) => (
+              <NavLink key={href} href={href}>
+                <span>{label}</span>
+                <span
+                  className="absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 bg-[#fefefe] transition-all duration-200 group-hover:w-full"
+                  aria-hidden="true"
+                />
+              </NavLink>
+            ))}
+          </nav>
+          <LocaleSwitcher />
+        </div>
+      </div>
     </header>
   );
 };
