@@ -3,13 +3,13 @@ import { HeroSection } from '@/components/HeroSection';
 import { EmbedYoutube } from '@/components/EmbedYoutube';
 import { fetchBandsInTownEvents } from '@/server/actions';
 import { EventList } from '@/app/events/components/EventList';
-import { WaveDivider } from '@/components/WaveDivider';
 import { StaticNavbar } from '@/components/StaticNavbar';
 import { EmbedSpotify } from '@/components/EmbedSpotify';
 import { fetchHomePage, fetchNavigation } from '@/sanity/lib/queries';
 import { Locale } from '@/i18n-config';
 import { LogoWithLocaleSwitcher } from '@/components/LogoWithLocaleSwitcher';
 import { DesktopNavigation } from '@/components/DesktopNavigation';
+import { WaveOpacityDivider } from '@/components/WaveOpacityDivider';
 
 export const revalidate = 60;
 
@@ -46,7 +46,8 @@ export default async function Home({
           </div>
           <EmbedSpotify />
         </Container>
-        <WaveDivider />
+        {/* <WaveDivider /> */}
+        <WaveOpacityDivider />
       </section>
     </main>
   );
