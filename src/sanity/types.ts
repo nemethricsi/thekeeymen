@@ -13,6 +13,20 @@
  */
 
 // Source: schema.json
+export type MediaMention = {
+  _type: 'mediaMention';
+  quote: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayTextValue
+  >;
+  publication: string;
+  url?: string;
+  title?: string;
+  author?: string;
+  date?: string;
+};
+
 export type Epk = {
   _id: string;
   _type: 'epk';
@@ -28,6 +42,11 @@ export type Epk = {
     {
       _key: string;
     } & InternationalizedArrayTextValue
+  >;
+  mediaMentions?: Array<
+    {
+      _key: string;
+    } & MediaMention
   >;
 };
 
@@ -232,6 +251,7 @@ export type SanityAssetSourceData = {
 };
 
 export type AllSanitySchemaTypes =
+  | MediaMention
   | Epk
   | Socials
   | Navigation
@@ -325,19 +345,31 @@ export type SOCIALS_QUERYResult =
     }
   | null;
 // Variable: EPK_QUERY
-// Query: *[_id == "epk"][0]{    "title": title[_key == $locale][0].value,    "shortBio": shortBio[_key == $locale][0].value,  }
+// Query: *[_id == "epk"][0]{    "title": title[_key == $locale][0].value,    "shortBio": shortBio[_key == $locale][0].value,    "mediaMentions": mediaMentions[]{      ...,      "quote": quote[_key == $locale][0].value,      publication,      url,      title,      author,      date,    }  }
 export type EPK_QUERYResult =
   | {
       title: null;
       shortBio: null;
+      mediaMentions: null;
     }
   | {
       title: string | null;
       shortBio: null;
+      mediaMentions: null;
     }
   | {
       title: string | null;
       shortBio: string | null;
+      mediaMentions: Array<{
+        _key: string;
+        _type: 'mediaMention';
+        quote: string | null;
+        publication: string;
+        url: string | null;
+        title: string | null;
+        author: string | null;
+        date: string | null;
+      }> | null;
     }
   | null;
 
@@ -350,6 +382,6 @@ declare module '@sanity/client' {
     '\n  *[_id == "pageSettings"][0]{\n    "seoTitle": seoTitle[_key == $locale][0].value,\n    "seoDescription": seoDescription[_key == $locale][0].value,\n  }\n': METADATA_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    "navigation": navigation[]{\n      href,\n      "label": label[_key == $locale][0].value,\n    }\n  }\n': NAVIGATION_QUERYResult;
     '\n  *[_id == "socials"][0]{\n    spotify,\n    bandcamp,\n    appleMusic,\n  }\n': SOCIALS_QUERYResult;
-    '\n  *[_id == "epk"][0]{\n    "title": title[_key == $locale][0].value,\n    "shortBio": shortBio[_key == $locale][0].value,\n  }\n': EPK_QUERYResult;
+    '\n  *[_id == "epk"][0]{\n    "title": title[_key == $locale][0].value,\n    "shortBio": shortBio[_key == $locale][0].value,\n    "mediaMentions": mediaMentions[]{\n      ...,\n      "quote": quote[_key == $locale][0].value,\n      publication,\n      url,\n      title,\n      author,\n      date,\n    }\n  }\n': EPK_QUERYResult;
   }
 }

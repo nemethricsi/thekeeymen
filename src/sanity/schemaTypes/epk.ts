@@ -18,6 +18,12 @@ export const epk = defineType({
       type: 'internationalizedArrayText',
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: 'mediaMentions',
+      title: 'Média hivatkozások',
+      type: 'array',
+      of: [{ type: 'mediaMention' }],
+    }),
   ],
   preview: {
     prepare() {
