@@ -75,3 +75,26 @@ export const fetchSocials = async () => {
   });
   return result.data;
 };
+
+export const EPK_QUERY = defineQuery(`
+  *[_id == "epk"][0]{
+    "title": title[_key == $locale][0].value,
+    "shortBio": shortBio[_key == $locale][0].value,
+    "mediaMentions": mediaMentions[]{
+      ...,
+      "quote": quote[_key == $locale][0].value,
+      publication,
+      url,
+      title,
+      author,
+      date,
+    }
+  }
+`);
+export const fetchEpk = async ({ locale }: { locale: Locale }) => {
+  const result = await sanityFetch({
+    query: EPK_QUERY,
+    params: { locale },
+  });
+  return result.data;
+};
