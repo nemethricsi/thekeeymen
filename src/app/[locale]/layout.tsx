@@ -3,7 +3,7 @@ import { Locale } from '@/i18n-config';
 
 import { fetchMetadata, fetchNavigation } from '@/sanity/lib/queries';
 import { BackToTop } from '@/components/BackToTop';
-import { MobileMenu } from '@/components/MobileMenu';
+import { MobileNavbar } from '@/components/MobileNavbar';
 
 export async function generateMetadata({
   params,
@@ -42,7 +42,7 @@ export default async function LocalizedLayout({
     <>
       <BackToTop />
       {navigation?.navigation && (
-        <MobileMenu navItems={navigation.navigation} />
+        <MobileNavbar navItems={navigation.navigation} />
       )}
       {children}
       <Footer />
