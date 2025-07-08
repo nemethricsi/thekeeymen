@@ -25,11 +25,19 @@ export const structure: StructureResolver = (S) =>
             .schemaType('pageSettings')
             .documentId('pageSettings'),
         ),
+      S.listItem()
+        .id('socials')
+        .schemaType('socials')
+        .title('Streaming linkek')
+        .child(
+          S.editor().id('socials').schemaType('socials').documentId('socials'),
+        ),
       S.divider(),
       ...S.documentTypeListItems().filter(
         (item) =>
           item.getId() !== 'homePage' &&
           item.getId() !== 'navigation' &&
-          item.getId() !== 'pageSettings',
+          item.getId() !== 'pageSettings' &&
+          item.getId() !== 'socials',
       ),
     ]);

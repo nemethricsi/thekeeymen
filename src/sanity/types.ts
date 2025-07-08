@@ -13,6 +13,17 @@
  */
 
 // Source: schema.json
+export type Socials = {
+  _id: string;
+  _type: 'socials';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  spotify?: string;
+  bandcamp?: string;
+  appleMusic?: string;
+};
+
 export type Navigation = Array<
   {
     _key: string;
@@ -203,6 +214,7 @@ export type SanityAssetSourceData = {
 };
 
 export type AllSanitySchemaTypes =
+  | Socials
   | Navigation
   | MenuItem
   | PageSettings
@@ -275,6 +287,20 @@ export type NAVIGATION_QUERYResult =
       navigation: null;
     }
   | null;
+// Variable: SOCIALS_QUERY
+// Query: *[_id == "socials"][0]{    spotify,    bandcamp,    appleMusic,  }
+export type SOCIALS_QUERYResult =
+  | {
+      spotify: null;
+      bandcamp: null;
+      appleMusic: null;
+    }
+  | {
+      spotify: string | null;
+      bandcamp: string | null;
+      appleMusic: string | null;
+    }
+  | null;
 
 // Query TypeMap
 import '@sanity/client';
@@ -284,5 +310,6 @@ declare module '@sanity/client' {
     '\n  *[_id == "pageSettings"][0]{\n    navigation,\n    "seoTitle": seoTitle[_key == $locale][0].value,\n    "seoDescription": seoDescription[_key == $locale][0].value,\n  }\n': PAGE_SETTINGS_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    "seoTitle": seoTitle[_key == $locale][0].value,\n    "seoDescription": seoDescription[_key == $locale][0].value,\n  }\n': METADATA_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    "navigation": navigation[]{\n      href,\n      "label": label[_key == $locale][0].value,\n    }\n  }\n': NAVIGATION_QUERYResult;
+    '\n  *[_id == "socials"][0]{\n    spotify,\n    bandcamp,\n    appleMusic,\n  }\n': SOCIALS_QUERYResult;
   }
 }
