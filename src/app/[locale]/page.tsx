@@ -3,7 +3,6 @@ import { HeroSection } from '@/components/HeroSection';
 import { EmbedYoutube } from '@/components/EmbedYoutube';
 import { fetchBandsInTownEvents } from '@/server/actions';
 import { EventList } from '@/app/events/components/EventList';
-import { StaticNavbar } from '@/components/StaticNavbar';
 import { EmbedSpotify } from '@/components/EmbedSpotify';
 import { fetchHomePage, fetchNavigation } from '@/sanity/lib/queries';
 import { Locale } from '@/i18n-config';
@@ -26,9 +25,11 @@ export default async function Home({
     <main className="flex flex-col bg-[#8e43a5]">
       <HeroSection>
         <DesktopHeroContent locale={locale} />
-        <MobileHeroContent locale={locale} />
       </HeroSection>
-      <section id="gigs" className="scroll-mt-20 py-10">
+      <section
+        id="gigs"
+        className="scroll-mt-14 bg-linear-to-b from-transparent to-[#8e43a5] py-10 sm:scroll-mt-20"
+      >
         <Container className="gap-10">
           <EventList events={events} numberToShow={3} />
         </Container>
@@ -46,7 +47,6 @@ export default async function Home({
           </div>
           <EmbedSpotify />
         </Container>
-        {/* <WaveDivider /> */}
         <WaveOpacityDivider />
       </section>
     </main>
@@ -60,15 +60,6 @@ const DesktopHeroContent = async ({ locale }: { locale: Locale }) => {
     <div className="container mx-auto hidden h-full w-full max-w-3xl flex-col justify-between gap-3 px-4 sm:flex">
       <LogoWithLocaleSwitcher />
       {data?.navigation && <DesktopNavigation navigation={data.navigation} />}
-    </div>
-  );
-};
-
-const MobileHeroContent = async ({ locale }: { locale: Locale }) => {
-  const data = await fetchNavigation({ locale });
-  return (
-    <div className="container mx-auto flex h-full w-full flex-col justify-between gap-3 px-4 sm:hidden">
-      {data?.navigation && <StaticNavbar navItems={data.navigation} />}
     </div>
   );
 };

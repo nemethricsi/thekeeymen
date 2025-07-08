@@ -1,6 +1,6 @@
 'use client';
 
-import { ProcessedMenuItem } from '@/components/MobileMenu';
+import { ProcessedMenuItem } from '@/types';
 import { LocalizedLink } from './LocalizedLink';
 
 export const DesktopNavigation = ({

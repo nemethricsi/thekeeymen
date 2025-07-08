@@ -3,8 +3,9 @@
 import { Container } from '@/components/Container';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
-import { type ProcessedMenuItem } from '@/components/MobileMenu';
+
 import { LocalizedLink } from './LocalizedLink';
+import { ProcessedMenuItem } from '@/types';
 
 interface StaticNavbarProps {
   navItems: ProcessedMenuItem[];
@@ -12,7 +13,7 @@ interface StaticNavbarProps {
 
 export const StaticNavbar = ({ navItems }: StaticNavbarProps) => {
   return (
-    <header className="fixed top-0 left-0 z-40 flex h-20 w-full bg-[#25147B]/50 drop-shadow-xl drop-shadow-black/20 backdrop-blur-sm">
+    <header className="fixed top-0 left-0 z-40 hidden h-20 w-full bg-[#25147B]/50 drop-shadow-xl drop-shadow-black/20 backdrop-blur-sm sm:flex">
       <Container className="flex flex-row items-center justify-between">
         <LocalizedLink href="/">
           <Image

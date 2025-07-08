@@ -13,5 +13,9 @@ export const useLocaleSwitcher = () => {
     return segments.join('/');
   };
 
-  return { currentLocale, redirectedPathname, i18n };
+  const isHomePage = i18n.locales
+    .map((locale) => `/${locale}`)
+    .includes(pathname);
+
+  return { currentLocale, redirectedPathname, i18n, isHomePage };
 };
