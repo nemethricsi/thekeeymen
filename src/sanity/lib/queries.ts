@@ -79,7 +79,10 @@ export const fetchSocials = async () => {
 export const EPK_QUERY = defineQuery(`
   *[_id == "epk"][0]{
     "title": title[_key == $locale][0].value,
+    "shortBioTitle": shortBioTitle[_key == $locale][0].value,
     "shortBio": shortBio[_key == $locale][0].value,
+    "photosTitle": photosTitle[_key == $locale][0].value,
+    "mediaMentionsTitle": mediaMentionsTitle[_key == $locale][0].value,
     "mediaMentions": mediaMentions[]{
       ...,
       "quote": quote[_key == $locale][0].value,

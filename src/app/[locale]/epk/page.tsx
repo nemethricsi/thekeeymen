@@ -23,8 +23,10 @@ export default async function ElectronicPressKitPage({
           <h1 className="text-center font-serif text-4xl font-bold">
             {epk?.title}
           </h1>
-          <section className="flex flex-col gap-4">
-            <h2 className="font-serif text-3xl font-semibold">Rövid bio</h2>
+          <section className="flex flex-col gap-6">
+            <h2 className="font-serif text-3xl font-semibold">
+              {epk?.shortBioTitle}
+            </h2>
             {epk?.shortBio && (
               <div className="relative rounded-md border bg-[#f5edfa] p-4 pt-12 text-left text-base leading-relaxed">
                 <CopyButton
@@ -36,8 +38,10 @@ export default async function ElectronicPressKitPage({
               </div>
             )}
           </section>
-          <section className="flex flex-col gap-4">
-            <h2 className="font-serif text-3xl font-semibold">Képek</h2>
+          <section className="flex flex-col gap-6">
+            <h2 className="font-serif text-3xl font-semibold">
+              {epk?.photosTitle}
+            </h2>
             <div className="flex flex-col gap-4">
               <Image
                 src="/images/press/Keeymen_5.jpg"
@@ -63,9 +67,9 @@ export default async function ElectronicPressKitPage({
             </div>
           </section>
           {Array.isArray(mediaMentions) && mediaMentions.length > 0 && (
-            <section className="flex flex-col gap-4">
+            <section className="flex flex-col gap-6">
               <h2 className="font-serif text-3xl font-semibold">
-                Rólunk mondták
+                {epk?.mediaMentionsTitle}
               </h2>
               <div className="flex flex-col gap-4">
                 {mediaMentions?.map((mention) => (

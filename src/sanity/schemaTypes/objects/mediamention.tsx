@@ -40,7 +40,13 @@ export const mediaMention = defineType({
   ],
   preview: {
     select: {
-      title: 'publication',
+      publication: 'publication',
+    },
+    prepare({ publication }) {
+      return {
+        title: publication,
+        media: <span style={{ fontSize: '1.5rem' }}>📰</span>,
+      };
     },
   },
 });

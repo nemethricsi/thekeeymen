@@ -38,10 +38,25 @@ export type Epk = {
       _key: string;
     } & InternationalizedArrayStringValue
   >;
+  shortBioTitle: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
   shortBio: Array<
     {
       _key: string;
     } & InternationalizedArrayTextValue
+  >;
+  photosTitle: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
+  mediaMentionsTitle: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
   >;
   mediaMentions?: Array<
     {
@@ -345,21 +360,30 @@ export type SOCIALS_QUERYResult =
     }
   | null;
 // Variable: EPK_QUERY
-// Query: *[_id == "epk"][0]{    "title": title[_key == $locale][0].value,    "shortBio": shortBio[_key == $locale][0].value,    "mediaMentions": mediaMentions[]{      ...,      "quote": quote[_key == $locale][0].value,      publication,      url,      title,      author,      date,    }  }
+// Query: *[_id == "epk"][0]{    "title": title[_key == $locale][0].value,    "shortBioTitle": shortBioTitle[_key == $locale][0].value,    "shortBio": shortBio[_key == $locale][0].value,    "photosTitle": photosTitle[_key == $locale][0].value,    "mediaMentionsTitle": mediaMentionsTitle[_key == $locale][0].value,    "mediaMentions": mediaMentions[]{      ...,      "quote": quote[_key == $locale][0].value,      publication,      url,      title,      author,      date,    }  }
 export type EPK_QUERYResult =
   | {
       title: null;
+      shortBioTitle: null;
       shortBio: null;
+      photosTitle: null;
+      mediaMentionsTitle: null;
       mediaMentions: null;
     }
   | {
       title: string | null;
+      shortBioTitle: null;
       shortBio: null;
+      photosTitle: null;
+      mediaMentionsTitle: null;
       mediaMentions: null;
     }
   | {
       title: string | null;
+      shortBioTitle: string | null;
       shortBio: string | null;
+      photosTitle: string | null;
+      mediaMentionsTitle: string | null;
       mediaMentions: Array<{
         _key: string;
         _type: 'mediaMention';
@@ -382,6 +406,6 @@ declare module '@sanity/client' {
     '\n  *[_id == "pageSettings"][0]{\n    "seoTitle": seoTitle[_key == $locale][0].value,\n    "seoDescription": seoDescription[_key == $locale][0].value,\n  }\n': METADATA_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    "navigation": navigation[]{\n      href,\n      "label": label[_key == $locale][0].value,\n    }\n  }\n': NAVIGATION_QUERYResult;
     '\n  *[_id == "socials"][0]{\n    spotify,\n    bandcamp,\n    appleMusic,\n  }\n': SOCIALS_QUERYResult;
-    '\n  *[_id == "epk"][0]{\n    "title": title[_key == $locale][0].value,\n    "shortBio": shortBio[_key == $locale][0].value,\n    "mediaMentions": mediaMentions[]{\n      ...,\n      "quote": quote[_key == $locale][0].value,\n      publication,\n      url,\n      title,\n      author,\n      date,\n    }\n  }\n': EPK_QUERYResult;
+    '\n  *[_id == "epk"][0]{\n    "title": title[_key == $locale][0].value,\n    "shortBioTitle": shortBioTitle[_key == $locale][0].value,\n    "shortBio": shortBio[_key == $locale][0].value,\n    "photosTitle": photosTitle[_key == $locale][0].value,\n    "mediaMentionsTitle": mediaMentionsTitle[_key == $locale][0].value,\n    "mediaMentions": mediaMentions[]{\n      ...,\n      "quote": quote[_key == $locale][0].value,\n      publication,\n      url,\n      title,\n      author,\n      date,\n    }\n  }\n': EPK_QUERYResult;
   }
 }

@@ -13,9 +13,27 @@ export const epk = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'shortBioTitle',
+      title: 'Rövid bio címe',
+      type: 'internationalizedArrayString',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'shortBio',
       title: 'Rövid bio',
       type: 'internationalizedArrayText',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'photosTitle',
+      title: 'Képek címe',
+      type: 'internationalizedArrayString',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'mediaMentionsTitle',
+      title: 'Média hivatkozások címe',
+      type: 'internationalizedArrayString',
       validation: (Rule) => Rule.required(),
     }),
     defineField({
