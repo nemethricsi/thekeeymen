@@ -28,14 +28,14 @@ export default async function Home({
         <DesktopHeroContent locale={locale} />
         <MobileHeroContent locale={locale} />
       </HeroSection>
-      <section id="gigs" className="scroll-mt-20 border py-10">
+      <section id="gigs" className="scroll-mt-20 py-10">
         <Container className="gap-10">
           <EventList events={events} numberToShow={3} />
         </Container>
       </section>
       <section
         id="media"
-        className="relative scroll-mt-20 border bg-[#8e43a5] py-10 pb-20"
+        className="relative scroll-mt-20 bg-[#8e43a5] py-10 pb-20"
       >
         <Container className="gap-10">
           <div className="flex w-full flex-col gap-3">
