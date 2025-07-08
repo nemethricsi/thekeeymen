@@ -45,7 +45,7 @@ export const MobileNavbar = ({
     <>
       <nav
         className={cn(
-          'fixed top-0 z-50 flex w-full justify-center px-4 py-2 text-white transition-colors duration-200 ease-in-out sm:hidden',
+          'fixed top-0 z-50 flex w-full justify-center p-4 pb-2 text-white transition-colors duration-200 ease-in-out sm:hidden',
           scrolled && 'bg-[#25147B]/80 p-1 backdrop-blur-sm',
           !initiallyTransparent && 'bg-[#25147B]/80',
           initiallyTransparent &&
