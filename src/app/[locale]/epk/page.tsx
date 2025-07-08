@@ -3,6 +3,7 @@ import { StaticNavbar } from '@/components/StaticNavbar';
 import { fetchEpk, fetchNavigation } from '@/sanity/lib/queries';
 import { CopyIcon } from 'lucide-react';
 import { Locale } from '@/i18n-config';
+import { CopyButton } from '@/components/CopyButton';
 
 export default async function ElectronicPressKitPage({
   params,
@@ -19,12 +20,16 @@ export default async function ElectronicPressKitPage({
       <main className="pt-[calc(80px+2rem)]">
         <Container className="gap-10 pb-8">
           <h1 className="text-3xl">{epk?.title}</h1>
-          <div className="relative rounded-md bg-black/10 p-4 pr-16 text-left shadow-inner">
-            <button className="absolute top-4 right-4 cursor-pointer rounded-md border border-white/40 p-2 hover:bg-white/20">
-              <CopyIcon className="h-4 w-4" />
-            </button>
-            {epk?.shortBio}
-          </div>
+          {epk?.shortBio && (
+            <div className="relative rounded-md bg-black/10 p-4 pr-16 text-left shadow-inner">
+              <CopyButton
+                text={epk.shortBio}
+                className="absolute top-4 right-4 cursor-pointer rounded-md border border-white/40 p-4 hover:bg-white/20"
+              />
+
+              {epk.shortBio}
+            </div>
+          )}
         </Container>
       </main>
     </div>
