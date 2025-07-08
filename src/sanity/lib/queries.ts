@@ -61,3 +61,17 @@ export const fetchNavigation = async ({ locale }: { locale: Locale }) => {
   });
   return result.data;
 };
+
+export const SOCIALS_QUERY = defineQuery(`
+  *[_id == "socials"][0]{
+    spotify,
+    bandcamp,
+    appleMusic,
+  }
+`);
+export const fetchSocials = async () => {
+  const result = await sanityFetch({
+    query: SOCIALS_QUERY,
+  });
+  return result.data;
+};

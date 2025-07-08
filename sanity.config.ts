@@ -16,7 +16,7 @@ import { structure } from './src/sanity/structure';
 
 const singletonActions = new Set(['publish', 'discardChanges', 'restore']);
 
-export const singletonTypes = new Set(['homePage', 'pageSettings']);
+export const singletonTypes = new Set(['homePage', 'pageSettings', 'socials']);
 
 export default defineConfig({
   basePath: '/admin',
