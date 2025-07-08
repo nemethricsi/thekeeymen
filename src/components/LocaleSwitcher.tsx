@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
 import { useLocaleSwitcher } from '@/hooks/useLocaleSwitcher';
+import { Fragment } from 'react';
 
 export const LocaleSwitcher = () => {
   const { i18n, currentLocale, redirectedPathname } = useLocaleSwitcher();
@@ -11,9 +12,8 @@ export const LocaleSwitcher = () => {
   return (
     <div className="flex items-center gap-2">
       {i18n.locales.map((locale) => (
-        <>
+        <Fragment key={locale}>
           <Link
-            key={locale}
             href={redirectedPathname(locale)}
             className={cn(
               'text-white',
@@ -23,7 +23,7 @@ export const LocaleSwitcher = () => {
             {locale}
           </Link>
           <div className="rounded-full bg-white [&:not(:last-child)]:h-4 [&:not(:last-child)]:w-px" />
-        </>
+        </Fragment>
       ))}
     </div>
   );
