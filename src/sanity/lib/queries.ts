@@ -109,3 +109,20 @@ export const fetchEpk = async ({ locale }: { locale: Locale }) => {
   });
   return result.data;
 };
+
+export const OPEN_GRAPH_IMAGE_QUERY = defineQuery(`
+  *[_id == "pageSettings"][0]{
+    openGraphImage{
+      asset->{
+        url,
+      }
+    }
+  }
+`);
+
+export const fetchOpenGraphImage = async () => {
+  const result = await sanityFetch({
+    query: OPEN_GRAPH_IMAGE_QUERY,
+  });
+  return result.data;
+};
