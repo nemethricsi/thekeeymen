@@ -45,10 +45,10 @@ export default async function ElectronicPressKitPage({
               {epk?.shortBioTitle}
             </h2>
             {epk?.shortBio && (
-              <div className="relative rounded-md border border-dashed bg-[#f5edfa] p-4 pt-12 text-left text-base leading-relaxed">
+              <div className="relative border border-dashed bg-[#f5edfa] p-4 pt-12 text-left text-base leading-relaxed">
                 <CopyButton
                   text={epk.shortBio}
-                  className="absolute top-4 right-4 cursor-pointer rounded-md p-4 transition-colors hover:bg-[#edd9f5]"
+                  className="absolute top-4 right-4 cursor-pointer p-4 transition-colors hover:bg-[#edd9f5]"
                 />
 
                 {epk.shortBio}
