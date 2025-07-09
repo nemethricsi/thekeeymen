@@ -79,6 +79,10 @@ export const fetchSocials = async () => {
 export const EPK_QUERY = defineQuery(`
   *[_id == "epk"][0]{
     "title": title[_key == $locale][0].value,
+    downloadablePressKit{
+      "label": label[_key == $locale][0].value,
+      url,
+    },
     "shortBioTitle": shortBioTitle[_key == $locale][0].value,
     "shortBio": shortBio[_key == $locale][0].value,
     "photosTitle": photosTitle[_key == $locale][0].value,

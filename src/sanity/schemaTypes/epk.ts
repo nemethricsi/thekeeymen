@@ -19,6 +19,27 @@ export const epk = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'downloadablePressKit',
+      type: 'object',
+      title: 'Letölthető press kit',
+      fields: [
+        defineField({
+          name: 'label',
+          title: 'Letölthető press kit címe',
+          type: 'internationalizedArrayString',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'url',
+          title: 'Press kit link',
+          description:
+            'Például Google Drive link, ahonnan le tudják tölteni a csomagot.',
+          type: 'url',
+          validation: (Rule) => Rule.required(),
+        }),
+      ],
+    }),
+    defineField({
       name: 'shortBio',
       title: 'Rövid bio',
       type: 'internationalizedArrayText',

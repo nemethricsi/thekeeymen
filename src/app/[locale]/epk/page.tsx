@@ -4,6 +4,8 @@ import { fetchEpk, fetchNavigation } from '@/sanity/lib/queries';
 import { Locale } from '@/i18n-config';
 import { CopyButton } from '@/components/CopyButton';
 import Image from 'next/image';
+import Link from 'next/link';
+import { ArrowUpRightIcon, CloudDownloadIcon } from 'lucide-react';
 
 export default async function ElectronicPressKitPage({
   params,
@@ -20,9 +22,24 @@ export default async function ElectronicPressKitPage({
       {data?.navigation && <StaticNavbar navItems={data.navigation} />}
       <main className="pt-[calc(80px+3rem)]">
         <Container className="gap-10 pb-8 sm:gap-16">
-          <h1 className="text-center font-serif text-4xl font-bold">
-            {epk?.title}
-          </h1>
+          <div className="flex flex-col items-center gap-6">
+            <h1 className="text-center font-serif text-4xl font-bold">
+              {epk?.title}
+            </h1>
+            {epk?.downloadablePressKit != null && (
+              <div>
+                <Link
+                  href={epk.downloadablePressKit.url}
+                  target="_blank"
+                  className="flex items-center gap-2 border border-dashed bg-[#f5edfa] px-4 py-2 transition-colors hover:bg-[#edd9f5]"
+                >
+                  <CloudDownloadIcon />
+                  <span>{epk.downloadablePressKit.label}</span>
+                  <ArrowUpRightIcon />
+                </Link>
+              </div>
+            )}
+          </div>
           <section className="flex flex-col gap-6">
             <h2 className="font-serif text-3xl font-semibold">
               {epk?.shortBioTitle}
