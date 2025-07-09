@@ -59,19 +59,19 @@ export const MobileNavbar = ({
         <motion.div
           initial={false}
           animate={{
-            scale: scrolled ? 0.7 : 1,
-            x: scrolled ? '-70px' : '0px',
-            transition: { duration: 0.3 },
+            scale: scrolled ? 0.5 : 1,
+            x: scrolled ? '-100px' : '0px',
+            transition: { duration: 0.1 },
             opacity: isOpen ? 0 : 1,
           }}
-          className="origin-left"
+          // className="origin-left"
         >
           <LocalizedLink href="/">
             <Image
               src="/svg/keeymen_logo.svg"
               alt="The Keeymen logo"
-              width={200}
-              height={200}
+              width={240}
+              height={240}
             />
           </LocalizedLink>
         </motion.div>
