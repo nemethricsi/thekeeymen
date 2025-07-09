@@ -75,11 +75,23 @@ export default async function ElectronicPressKitPage({
                 {mediaMentions?.map((mention) => (
                   <article
                     key={mention._key}
-                    className="flex flex-col gap-1 rounded border bg-[#f5edfa] p-3 text-base leading-relaxed text-neutral-900"
+                    className="flex flex-col gap-1 rounded border border-dashed border-[#28133f]/50 bg-[#f5edfa] p-3 text-base leading-relaxed text-neutral-900"
                   >
                     <p className="italic">&ldquo;{mention.quote}&rdquo;</p>
                     <p className="text-sm font-semibold">
-                      &mdash; {mention.publication}
+                      &mdash;{' '}
+                      {mention.url != null ? (
+                        <a
+                          href={mention.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="underline underline-offset-2"
+                        >
+                          {mention.publication}
+                        </a>
+                      ) : (
+                        <span>{mention.publication}</span>
+                      )}
                     </p>
                   </article>
                 ))}

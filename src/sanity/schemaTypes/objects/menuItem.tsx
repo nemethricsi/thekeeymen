@@ -25,6 +25,7 @@ export const menuItem = defineType({
       const huLabel = label?.find((l: { _key: string }) => l._key === 'hu');
       return {
         title: huLabel?.value || 'No Hungarian label',
+        media: <span style={{ fontSize: '1.5rem' }}>🔗</span>,
       };
     },
   },

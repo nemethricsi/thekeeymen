@@ -46,7 +46,7 @@ const SocialIcon = ({
     <a
       href={href}
       title={title}
-      className="flex h-12 w-12 items-center justify-center rounded-full opacity-90 transition-opacity duration-300 hover:bg-white/10 hover:opacity-100"
+      className="flex h-12 w-12 items-center justify-center rounded-full opacity-90 transition-all duration-300 hover:-rotate-12 hover:bg-white/10 hover:opacity-100"
       target="_blank"
       rel="noopener noreferrer"
     >
