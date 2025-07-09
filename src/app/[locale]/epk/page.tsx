@@ -61,22 +61,29 @@ export default async function ElectronicPressKitPage({
             </h2>
             <div className="flex flex-col gap-4">
               <Image
+                src="/images/press/Keeymen.jpg"
+                alt="Keeymen"
+                width={1000}
+                height={1000}
+                className="rounded-md"
+              />
+              <Image
                 src="/images/press/Keeymen_5.jpg"
-                alt="Hero"
+                alt="Keeymen5"
                 width={1000}
                 height={1000}
                 className="rounded-md"
               />
               <Image
                 src="/images/press/Keeymen_7.jpg"
-                alt="Hero"
+                alt="Keeymen7"
                 width={1000}
                 height={1000}
                 className="rounded-md"
               />
               <Image
                 src="/images/press/Keeymen_8.jpg"
-                alt="Hero"
+                alt="Keeymen8"
                 width={1000}
                 height={1000}
                 className="rounded-md"
