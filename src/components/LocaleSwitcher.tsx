@@ -16,8 +16,8 @@ export const LocaleSwitcher = () => {
           <Link
             href={redirectedPathname(locale)}
             className={cn(
-              'text-white',
-              locale === currentLocale && 'underline',
+              'text-white uppercase',
+              locale === currentLocale && 'underline underline-offset-4',
             )}
           >
             {locale}

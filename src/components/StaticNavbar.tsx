@@ -13,7 +13,7 @@ interface StaticNavbarProps {
 
 export const StaticNavbar = ({ navItems }: StaticNavbarProps) => {
   return (
-    <header className="fixed top-0 left-0 z-40 hidden h-20 w-full bg-linear-to-b from-[#25147B] to-[#25147B]/80 drop-shadow-xl drop-shadow-black/20 backdrop-blur-sm sm:flex">
+    <header className="fixed top-0 left-0 z-40 hidden h-20 w-full bg-linear-to-b from-[#367084] to-[#367084]/80 drop-shadow-xl drop-shadow-black/20 backdrop-blur-sm sm:flex">
       <div className="container mx-auto flex max-w-5xl flex-row items-center justify-between px-4">
         <LocalizedLink href="/">
           <Image

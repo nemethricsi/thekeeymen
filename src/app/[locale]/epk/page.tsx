@@ -31,7 +31,7 @@ export default async function ElectronicPressKitPage({
                 <Link
                   href={epk.downloadablePressKit.url}
                   target="_blank"
-                  className="flex items-center gap-2 border border-dashed bg-[#f5edfa] px-4 py-2 transition-colors hover:bg-[#edd9f5]"
+                  className="flex items-center gap-2 border bg-[#f5edfa] px-4 py-2 transition-colors hover:bg-[#edd9f5]"
                 >
                   <CloudDownloadIcon />
                   <span>{epk.downloadablePressKit.label}</span>
@@ -45,7 +45,7 @@ export default async function ElectronicPressKitPage({
               {epk?.shortBioTitle}
             </h2>
             {epk?.shortBio && (
-              <div className="relative border border-dashed bg-[#f5edfa] p-4 pt-12 text-left text-base leading-relaxed">
+              <div className="relative bg-[#f5edfa] p-8 pt-12 text-left text-base leading-relaxed">
                 <CopyButton
                   text={epk.shortBio}
                   className="absolute top-4 right-4 cursor-pointer p-4 transition-colors hover:bg-[#edd9f5]"
@@ -99,7 +99,7 @@ export default async function ElectronicPressKitPage({
                 {mediaMentions?.map((mention) => (
                   <article
                     key={mention._key}
-                    className="flex flex-col gap-1 rounded border border-dashed border-[#28133f]/50 bg-[#f5edfa] p-3 text-base leading-relaxed text-neutral-900"
+                    className="flex flex-col gap-1 bg-[#f5edfa] p-8 text-base leading-relaxed text-neutral-900"
                   >
                     <p className="italic">&ldquo;{mention.quote}&rdquo;</p>
                     <p className="text-sm font-semibold">

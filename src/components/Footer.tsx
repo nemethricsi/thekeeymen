@@ -6,7 +6,7 @@ export const Footer = async () => {
   const socials = await fetchSocials();
 
   return (
-    <footer className="relative bg-[#25147B] pb-5">
+    <footer className="relative bg-[#367084] pb-5">
       <Container className="pt-5">
         <div className="flex justify-center gap-5 p-4 sm:gap-10">
           {socials?.bandcamp && (

@@ -47,11 +47,11 @@ export const MobileNavbar = ({
         className={cn(
           'fixed top-0 z-50 flex w-full justify-center p-4 pb-2 text-white transition-colors duration-200 ease-in-out sm:hidden',
           !initiallyTransparent &&
-            'bg-linear-to-b from-[#25147B] to-[#25147B]/80',
+            'bg-linear-to-b from-[#367084] to-[#367084]/80',
           initiallyTransparent &&
-            'bg-linear-to-b from-[#25147B] to-transparent',
+            'bg-linear-to-b from-[#367084] to-transparent',
           scrolled &&
-            'bg-linear-to-b from-[#25147B] to-[#25147B]/80 p-1 backdrop-blur-sm',
+            'bg-linear-to-b from-[#367084] to-[#367084]/80 p-1 backdrop-blur-sm',
           isOpen && 'bg-none',
         )}
       >
@@ -96,7 +96,7 @@ export const MobileNavbar = ({
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed top-0 left-0 z-50 flex h-full w-[80%] flex-col justify-between bg-[#25147B]/80 backdrop-blur-sm"
+            className="fixed top-0 left-0 z-50 flex h-full w-[80%] flex-col justify-between bg-[#367084]/80 backdrop-blur-sm"
           >
             <div className="flex flex-col px-4 py-8">
               {navItems.map(({ label, href }) => {
@@ -156,7 +156,7 @@ const HamburgerButton = ({
       onClick={() => setIsOpen(!isOpen)}
       className={cn(
         'fixed top-3 right-3 z-50 flex h-14 w-14 cursor-pointer flex-col items-center justify-center gap-1 rounded-full bg-transparent p-1 text-[#fefefe] shadow-none transition-all sm:hidden',
-        isOpen && 'bg-[#fefefe] text-[#25147B] shadow-lg',
+        isOpen && 'bg-[#fefefe] text-[#367084] shadow-lg',
       )}
     >
       {/* Hamburger lines */}
@@ -164,19 +164,19 @@ const HamburgerButton = ({
         animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
         className={cn(
           'block h-1 w-6 origin-center bg-[#fefefe]',
-          isOpen && 'bg-[#25147B]',
+          isOpen && 'bg-[#367084]',
         )}
       />
       <motion.span
         animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
         transition={{ duration: 0.1 }}
-        className={cn('block h-1 w-6 bg-[#fefefe]', isOpen && 'bg-[#25147B]')}
+        className={cn('block h-1 w-6 bg-[#fefefe]', isOpen && 'bg-[#367084]')}
       />
       <motion.span
         animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
         className={cn(
           'block h-1 w-6 origin-center bg-[#fefefe]',
-          isOpen && 'bg-[#25147B]',
+          isOpen && 'bg-[#367084]',
         )}
       />
     </button>
