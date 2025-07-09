@@ -24,7 +24,7 @@ export default function RootLayout({
         className={cn(
           redditSans.variable,
           bitterSansSerif.variable,
-          'min-h-screen bg-[#367084] font-sans text-lg leading-relaxed text-[#fefefe] antialiased',
+          'min-h-screen bg-[#408ea3] font-sans text-lg leading-relaxed text-[#fefefe] antialiased',
         )}
       >
         {children}
