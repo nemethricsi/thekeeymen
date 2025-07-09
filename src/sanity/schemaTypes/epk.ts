@@ -13,12 +13,6 @@ export const epk = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
-      name: 'shortBioTitle',
-      title: 'Rövid bio címe',
-      type: 'internationalizedArrayString',
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
       name: 'downloadablePressKit',
       type: 'object',
       title: 'Letölthető press kit',
@@ -38,6 +32,12 @@ export const epk = defineType({
           validation: (Rule) => Rule.required(),
         }),
       ],
+    }),
+    defineField({
+      name: 'shortBioTitle',
+      title: 'Rövid bio címe',
+      type: 'internationalizedArrayString',
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: 'shortBio',
@@ -62,6 +62,23 @@ export const epk = defineType({
       title: 'Média hivatkozások',
       type: 'array',
       of: [{ type: 'mediaMention' }],
+    }),
+    defineField({
+      name: 'socialMediaSection',
+      title: 'Közösségi Média',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'title',
+          title: 'Cím',
+          type: 'internationalizedArrayString',
+        }),
+        defineField({
+          name: 'description',
+          title: 'Leírás',
+          type: 'internationalizedArrayText',
+        }),
+      ],
     }),
   ],
   preview: {

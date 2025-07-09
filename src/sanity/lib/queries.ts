@@ -83,6 +83,10 @@ export const EPK_QUERY = defineQuery(`
       "label": label[_key == $locale][0].value,
       url,
     },
+    socialMediaSection{
+      "title": title[_key == $locale][0].value,
+      "description": description[_key == $locale][0].value,
+    },
     "shortBioTitle": shortBioTitle[_key == $locale][0].value,
     "shortBio": shortBio[_key == $locale][0].value,
     "photosTitle": photosTitle[_key == $locale][0].value,

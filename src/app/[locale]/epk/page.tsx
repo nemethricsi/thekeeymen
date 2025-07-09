@@ -21,7 +21,7 @@ export default async function ElectronicPressKitPage({
     <div className="min-h-screen bg-[#fbf6fd] text-[#38133f]">
       {data?.navigation && <StaticNavbar navItems={data.navigation} />}
       <main className="pt-[calc(80px+3rem)]">
-        <Container className="gap-10 pb-8 sm:gap-16">
+        <Container className="gap-10 pb-12 sm:gap-16">
           <div className="flex flex-col items-center gap-6">
             <h1 className="text-center font-serif text-4xl font-bold">
               {epk?.title}
@@ -45,7 +45,7 @@ export default async function ElectronicPressKitPage({
               {epk?.shortBioTitle}
             </h2>
             {epk?.shortBio && (
-              <div className="relative rounded-md border bg-[#f5edfa] p-4 pt-12 text-left text-base leading-relaxed">
+              <div className="relative rounded-md border border-dashed bg-[#f5edfa] p-4 pt-12 text-left text-base leading-relaxed">
                 <CopyButton
                   text={epk.shortBio}
                   className="absolute top-4 right-4 cursor-pointer rounded-md p-4 transition-colors hover:bg-[#edd9f5]"
@@ -113,6 +113,14 @@ export default async function ElectronicPressKitPage({
                   </article>
                 ))}
               </div>
+            </section>
+          )}
+          {epk?.socialMediaSection && (
+            <section className="flex flex-col gap-6">
+              <h2 className="font-serif text-3xl font-semibold">
+                {epk.socialMediaSection.title}
+              </h2>
+              <p>{epk.socialMediaSection.description}</p>
             </section>
           )}
         </Container>

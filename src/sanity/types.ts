@@ -38,11 +38,6 @@ export type Epk = {
       _key: string;
     } & InternationalizedArrayStringValue
   >;
-  shortBioTitle: Array<
-    {
-      _key: string;
-    } & InternationalizedArrayStringValue
-  >;
   downloadablePressKit?: {
     label: Array<
       {
@@ -51,6 +46,11 @@ export type Epk = {
     >;
     url: string;
   };
+  shortBioTitle: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
   shortBio: Array<
     {
       _key: string;
@@ -71,6 +71,18 @@ export type Epk = {
       _key: string;
     } & MediaMention
   >;
+  socialMediaSection?: {
+    title?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    description?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayTextValue
+    >;
+  };
 };
 
 export type Socials = {
@@ -368,11 +380,12 @@ export type SOCIALS_QUERYResult =
     }
   | null;
 // Variable: EPK_QUERY
-// Query: *[_id == "epk"][0]{    "title": title[_key == $locale][0].value,    downloadablePressKit{      "label": label[_key == $locale][0].value,      url,    },    "shortBioTitle": shortBioTitle[_key == $locale][0].value,    "shortBio": shortBio[_key == $locale][0].value,    "photosTitle": photosTitle[_key == $locale][0].value,    "mediaMentionsTitle": mediaMentionsTitle[_key == $locale][0].value,    "mediaMentions": mediaMentions[]{      ...,      "quote": quote[_key == $locale][0].value,      publication,      url,      title,      author,      date,    }  }
+// Query: *[_id == "epk"][0]{    "title": title[_key == $locale][0].value,    downloadablePressKit{      "label": label[_key == $locale][0].value,      url,    },    socialMediaSection{      "title": title[_key == $locale][0].value,      "description": description[_key == $locale][0].value,    },    "shortBioTitle": shortBioTitle[_key == $locale][0].value,    "shortBio": shortBio[_key == $locale][0].value,    "photosTitle": photosTitle[_key == $locale][0].value,    "mediaMentionsTitle": mediaMentionsTitle[_key == $locale][0].value,    "mediaMentions": mediaMentions[]{      ...,      "quote": quote[_key == $locale][0].value,      publication,      url,      title,      author,      date,    }  }
 export type EPK_QUERYResult =
   | {
       title: null;
       downloadablePressKit: null;
+      socialMediaSection: null;
       shortBioTitle: null;
       shortBio: null;
       photosTitle: null;
@@ -382,6 +395,7 @@ export type EPK_QUERYResult =
   | {
       title: string | null;
       downloadablePressKit: null;
+      socialMediaSection: null;
       shortBioTitle: null;
       shortBio: null;
       photosTitle: null;
@@ -393,6 +407,10 @@ export type EPK_QUERYResult =
       downloadablePressKit: {
         label: string | null;
         url: string;
+      } | null;
+      socialMediaSection: {
+        title: string | null;
+        description: string | null;
       } | null;
       shortBioTitle: string | null;
       shortBio: string | null;
@@ -420,6 +438,6 @@ declare module '@sanity/client' {
     '\n  *[_id == "pageSettings"][0]{\n    "seoTitle": seoTitle[_key == $locale][0].value,\n    "seoDescription": seoDescription[_key == $locale][0].value,\n  }\n': METADATA_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    "navigation": navigation[]{\n      href,\n      "label": label[_key == $locale][0].value,\n    }\n  }\n': NAVIGATION_QUERYResult;
     '\n  *[_id == "socials"][0]{\n    spotify,\n    bandcamp,\n    appleMusic,\n  }\n': SOCIALS_QUERYResult;
-    '\n  *[_id == "epk"][0]{\n    "title": title[_key == $locale][0].value,\n    downloadablePressKit{\n      "label": label[_key == $locale][0].value,\n      url,\n    },\n    "shortBioTitle": shortBioTitle[_key == $locale][0].value,\n    "shortBio": shortBio[_key == $locale][0].value,\n    "photosTitle": photosTitle[_key == $locale][0].value,\n    "mediaMentionsTitle": mediaMentionsTitle[_key == $locale][0].value,\n    "mediaMentions": mediaMentions[]{\n      ...,\n      "quote": quote[_key == $locale][0].value,\n      publication,\n      url,\n      title,\n      author,\n      date,\n    }\n  }\n': EPK_QUERYResult;
+    '\n  *[_id == "epk"][0]{\n    "title": title[_key == $locale][0].value,\n    downloadablePressKit{\n      "label": label[_key == $locale][0].value,\n      url,\n    },\n    socialMediaSection{\n      "title": title[_key == $locale][0].value,\n      "description": description[_key == $locale][0].value,\n    },\n    "shortBioTitle": shortBioTitle[_key == $locale][0].value,\n    "shortBio": shortBio[_key == $locale][0].value,\n    "photosTitle": photosTitle[_key == $locale][0].value,\n    "mediaMentionsTitle": mediaMentionsTitle[_key == $locale][0].value,\n    "mediaMentions": mediaMentions[]{\n      ...,\n      "quote": quote[_key == $locale][0].value,\n      publication,\n      url,\n      title,\n      author,\n      date,\n    }\n  }\n': EPK_QUERYResult;
   }
 }
