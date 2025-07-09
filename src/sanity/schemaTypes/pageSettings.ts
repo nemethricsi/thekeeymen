@@ -25,6 +25,13 @@ export const pageSettings = defineType({
       title: 'SEO Description',
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: 'openGraphImage',
+      type: 'image',
+      title: 'Open Graph Image',
+      description: 'A kép, ami a share-nél jelenik meg. 1200 x 630px legyen.',
+      validation: (Rule) => Rule.required(),
+    }),
   ],
   preview: {
     prepare() {

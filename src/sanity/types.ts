@@ -129,6 +129,18 @@ export type PageSettings = {
       _key: string;
     } & InternationalizedArrayTextValue
   >;
+  openGraphImage: {
+    asset?: {
+      _ref: string;
+      _type: 'reference';
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: 'image';
+  };
 };
 
 export type HomePage = {
@@ -428,6 +440,20 @@ export type EPK_QUERYResult =
       }> | null;
     }
   | null;
+// Variable: OPEN_GRAPH_IMAGE_QUERY
+// Query: *[_id == "pageSettings"][0]{    openGraphImage{      asset->{        url,      }    }  }
+export type OPEN_GRAPH_IMAGE_QUERYResult =
+  | {
+      openGraphImage: null;
+    }
+  | {
+      openGraphImage: {
+        asset: {
+          url: string | null;
+        } | null;
+      };
+    }
+  | null;
 
 // Query TypeMap
 import '@sanity/client';
@@ -439,5 +465,6 @@ declare module '@sanity/client' {
     '\n  *[_id == "pageSettings"][0]{\n    "navigation": navigation[]{\n      href,\n      "label": label[_key == $locale][0].value,\n    }\n  }\n': NAVIGATION_QUERYResult;
     '\n  *[_id == "socials"][0]{\n    spotify,\n    bandcamp,\n    appleMusic,\n  }\n': SOCIALS_QUERYResult;
     '\n  *[_id == "epk"][0]{\n    "title": title[_key == $locale][0].value,\n    downloadablePressKit{\n      "label": label[_key == $locale][0].value,\n      url,\n    },\n    socialMediaSection{\n      "title": title[_key == $locale][0].value,\n      "description": description[_key == $locale][0].value,\n    },\n    "shortBioTitle": shortBioTitle[_key == $locale][0].value,\n    "shortBio": shortBio[_key == $locale][0].value,\n    "photosTitle": photosTitle[_key == $locale][0].value,\n    "mediaMentionsTitle": mediaMentionsTitle[_key == $locale][0].value,\n    "mediaMentions": mediaMentions[]{\n      ...,\n      "quote": quote[_key == $locale][0].value,\n      publication,\n      url,\n      title,\n      author,\n      date,\n    }\n  }\n': EPK_QUERYResult;
+    '\n  *[_id == "pageSettings"][0]{\n    openGraphImage{\n      asset->{\n        url,\n      }\n    }\n  }\n': OPEN_GRAPH_IMAGE_QUERYResult;
   }
 }
