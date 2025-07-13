@@ -34,7 +34,7 @@ export const MobileNavbar = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 60);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -43,39 +43,56 @@ export const MobileNavbar = ({
 
   return (
     <>
-      <nav
-        className={cn(
-          'fixed top-0 z-50 flex w-full justify-center p-4 pb-2 text-white transition-colors duration-200 ease-in-out sm:hidden',
-          !initiallyTransparent &&
-            'bg-linear-to-b from-[#408ea3] to-[#408ea3]/80',
-          initiallyTransparent &&
-            'bg-linear-to-b from-[#408ea3] to-transparent',
-          scrolled &&
-            'bg-linear-to-b from-[#408ea3] to-[#408ea3]/80 p-1 backdrop-blur-sm',
-          isOpen && 'bg-none',
-        )}
-      >
-        <HamburgerButton isOpen={isOpen} setIsOpen={setIsOpen} />
-        <motion.div
+      <AnimatePresence>
+        <motion.nav
+          className={cn(
+            'fixed top-0 z-50 flex w-full border border-[deeppink] p-4 pb-2 text-white transition-colors duration-200 ease-in-out sm:hidden',
+            !initiallyTransparent &&
+              'bg-linear-to-b from-[#408ea3] to-[#408ea3]/80',
+            initiallyTransparent &&
+              'bg-linear-to-b from-[#408ea3] to-transparent',
+            scrolled &&
+              'bg-linear-to-b from-[#408ea3] to-[#408ea3]/80 p-1 backdrop-blur-sm',
+            isOpen && 'bg-none',
+          )}
+          layout={true}
           initial={false}
-          animate={{
-            scale: scrolled ? 0.5 : 1,
-            x: scrolled ? '-100px' : '0px',
-            transition: { duration: 0.15 },
-            opacity: isOpen ? 0 : 1,
+          animate={{ justifyContent: scrolled ? 'flex-start' : 'center' }}
+          exit={{ justifyContent: scrolled ? 'flex-start' : 'center' }}
+          transition={{
+            duration: 0.2,
+            type: 'spring',
+            stiffness: 300,
+            damping: 30,
           }}
-          // className="origin-left"
         >
-          <LocalizedLink href="/">
-            <Image
-              src="/svg/keeymen_logo.svg"
-              alt="The Keeymen logo"
-              width={240}
-              height={240}
-            />
-          </LocalizedLink>
-        </motion.div>
-      </nav>
+          <HamburgerButton isOpen={isOpen} setIsOpen={setIsOpen} />
+          <motion.div
+            layout="position"
+            initial={false}
+            animate={{
+              width: scrolled ? '120px' : '240px',
+              transition: {
+                duration: 0.2,
+                type: 'spring',
+                stiffness: 300,
+                damping: 30,
+              },
+              opacity: isOpen ? 0 : 1,
+            }}
+            className="border border-red-500"
+          >
+            <LocalizedLink href="/">
+              <Image
+                src="/svg/keeymen_logo.svg"
+                alt="The Keeymen logo"
+                width={240}
+                height={240}
+              />
+            </LocalizedLink>
+          </motion.div>
+        </motion.nav>
+      </AnimatePresence>
       {/* Overlay background */}
       <AnimatePresence>
         {isOpen && (
