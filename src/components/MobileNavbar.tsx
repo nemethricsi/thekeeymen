@@ -1,7 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
+import {
+  AnimatePresence,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+} from 'motion/react';
 import { LocalizedLink } from '@/components/LocalizedLink';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
@@ -14,8 +19,10 @@ export const MobileNavbar = ({
 }: {
   navItems: ProcessedMenuItem[];
 }) => {
-  const [scrolled, setScrolled] = useState(false);
+  const scrollThreshold = 60;
   const [isOpen, setIsOpen] = useState(false);
+  const { scrollY } = useScroll();
+  const [scrolled, setScrolled] = useState<boolean>(scrollY.get() > 100);
   const { i18n, currentLocale, redirectedPathname, isHomePage } =
     useLocaleSwitcher();
   const initiallyTransparent = isHomePage;
@@ -34,65 +41,51 @@ export const MobileNavbar = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 60);
+      setScrolled(window.scrollY > scrollThreshold);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useMotionValueEvent(scrollY, 'change', (current) => {
+    setScrolled(current > scrollThreshold);
+  });
+
   return (
     <>
-      <AnimatePresence>
-        <motion.nav
-          className={cn(
-            'fixed top-0 z-50 flex w-full border border-[deeppink] p-4 pb-2 text-white transition-colors duration-200 ease-in-out sm:hidden',
-            !initiallyTransparent &&
-              'bg-linear-to-b from-[#408ea3] to-[#408ea3]/80',
-            initiallyTransparent &&
-              'bg-linear-to-b from-[#408ea3] to-transparent',
-            scrolled &&
-              'bg-linear-to-b from-[#408ea3] to-[#408ea3]/80 p-1 backdrop-blur-sm',
-            isOpen && 'bg-none',
-          )}
-          layout={true}
+      <div
+        className={cn(
+          'fixed top-0 left-0 z-50 flex w-full items-center px-4 py-2 drop-shadow-2xl sm:hidden',
+          !initiallyTransparent &&
+            'bg-linear-to-b from-[#408ea3] to-[#408ea3]/80',
+          initiallyTransparent &&
+            'bg-linear-to-b from-[#408ea3] to-transparent',
+          scrolled &&
+            'bg-linear-to-b from-[#408ea3] to-[#408ea3]/80 backdrop-blur-sm',
+          isOpen && 'bg-none',
+        )}
+      >
+        <motion.div
           initial={false}
-          animate={{ justifyContent: scrolled ? 'flex-start' : 'center' }}
-          exit={{ justifyContent: scrolled ? 'flex-start' : 'center' }}
-          transition={{
-            duration: 0.2,
-            type: 'spring',
-            stiffness: 300,
-            damping: 30,
+          animate={{
+            width: scrolled ? 120 : '100%',
+            opacity: isOpen ? 0 : 1,
           }}
         >
+          <LocalizedLink href="/">
+            <Image
+              src="/svg/keeymen_logo.svg"
+              alt="The Keeymen logo"
+              width={240}
+              height={240}
+            />
+          </LocalizedLink>
+        </motion.div>
+        <div className="ml-auto">
           <HamburgerButton isOpen={isOpen} setIsOpen={setIsOpen} />
-          <motion.div
-            layout="position"
-            initial={false}
-            animate={{
-              width: scrolled ? '120px' : '240px',
-              transition: {
-                duration: 0.2,
-                type: 'spring',
-                stiffness: 300,
-                damping: 30,
-              },
-              opacity: isOpen ? 0 : 1,
-            }}
-            className="border border-red-500"
-          >
-            <LocalizedLink href="/">
-              <Image
-                src="/svg/keeymen_logo.svg"
-                alt="The Keeymen logo"
-                width={240}
-                height={240}
-              />
-            </LocalizedLink>
-          </motion.div>
-        </motion.nav>
-      </AnimatePresence>
+        </div>
+      </div>
       {/* Overlay background */}
       <AnimatePresence>
         {isOpen && (
@@ -172,7 +165,7 @@ const HamburgerButton = ({
       aria-label="Toggle menu"
       onClick={() => setIsOpen(!isOpen)}
       className={cn(
-        'fixed top-3 right-3 z-50 flex h-14 w-14 cursor-pointer flex-col items-center justify-center gap-1 rounded-full bg-transparent p-1 text-[#fefefe] shadow-none transition-all sm:hidden',
+        'z-50 flex h-10 w-10 cursor-pointer flex-col items-center justify-center gap-1 rounded-full bg-transparent p-1 text-[#fefefe] shadow-none transition-all',
         isOpen && 'bg-[#fefefe] text-[#408ea3] shadow-lg',
       )}
     >
