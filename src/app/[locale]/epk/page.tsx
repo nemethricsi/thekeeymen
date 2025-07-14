@@ -4,7 +4,7 @@ import { fetchEpk, fetchNavigation, fetchReleases } from '@/sanity/lib/queries';
 import { Locale } from '@/i18n-config';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRightIcon, CloudDownloadIcon, IconNode } from 'lucide-react';
+import { ArrowUpRightIcon, CloudDownloadIcon } from 'lucide-react';
 import { CopyTextButton } from '@/components/CopyTextButton';
 import { IconType } from 'react-icons/lib';
 import { SiApplemusic, SiBandcamp, SiSpotify, SiYoutube } from 'react-icons/si';
