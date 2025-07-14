@@ -13,6 +13,60 @@
  */
 
 // Source: schema.json
+export type ContactForm = {
+  _id: string;
+  _type: 'contactForm';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
+  placeholders?: {
+    message?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    email?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    phone?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+  };
+  submitButton?: {
+    sendLabel?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    sendingLabel?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+  };
+  messages?: {
+    success?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    error?: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+  };
+};
+
 export type MediaMention = {
   _type: 'mediaMention';
   quote: Array<
@@ -298,6 +352,7 @@ export type SanityAssetSourceData = {
 };
 
 export type AllSanitySchemaTypes =
+  | ContactForm
   | MediaMention
   | Epk
   | Socials
