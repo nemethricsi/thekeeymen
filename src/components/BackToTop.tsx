@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { ArrowUpToLineIcon } from 'lucide-react';
+import { ReusableTooltip } from '@/components/ReusableTooltip';
 
 export const BackToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -39,15 +40,16 @@ export const BackToTop = () => {
   return (
     <>
       {isVisible && (
-        <button
-          title="Back to top"
-          className="fixed right-6 bottom-6 z-50 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-[#fefefe] text-[#408ea3] opacity-0 shadow-lg transition-all duration-300 hover:scale-110 hover:bg-[#e5e5e5] active:scale-95 data-[state=visible]:opacity-100"
-          aria-label="Back to top"
-          data-state={isVisible ? 'visible' : 'hidden'}
-          onClick={scrollToTop}
-        >
-          <ArrowUpToLineIcon />
-        </button>
+        <ReusableTooltip message="Back to top">
+          <button
+            className="fixed right-6 bottom-6 z-50 flex h-14 w-14 cursor-pointer items-center justify-center rounded-full bg-[#fefefe] text-[#408ea3] opacity-0 shadow-lg transition-all duration-300 hover:scale-110 hover:bg-[#e5e5e5] active:scale-95 data-[state=visible]:opacity-100"
+            aria-label="Back to top"
+            data-state={isVisible ? 'visible' : 'hidden'}
+            onClick={scrollToTop}
+          >
+            <ArrowUpToLineIcon />
+          </button>
+        </ReusableTooltip>
       )}
     </>
   );
