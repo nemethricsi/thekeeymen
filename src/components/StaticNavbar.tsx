@@ -13,7 +13,7 @@ interface StaticNavbarProps {
 
 export const StaticNavbar = ({ navItems }: StaticNavbarProps) => {
   return (
-    <header className="fixed top-0 left-0 z-40 hidden h-20 w-full bg-linear-to-b from-[#408ea3] to-[#408ea3]/80 drop-shadow-xl drop-shadow-black/20 backdrop-blur-sm sm:flex">
+    <header className="fixed top-0 left-0 z-40 hidden h-20 w-full bg-linear-to-b from-[#408ea3] to-[#408ea3]/80 drop-shadow-xl drop-shadow-black/20 backdrop-blur-sm lg:flex">
       <div className="container mx-auto flex max-w-5xl flex-row items-center justify-between px-4">
         <LocalizedLink href="/">
           <Image
@@ -24,7 +24,7 @@ export const StaticNavbar = ({ navItems }: StaticNavbarProps) => {
           />
         </LocalizedLink>
         <div className="flex items-center gap-10">
-          <nav className="hidden flex-row items-center gap-10 font-serif uppercase sm:flex">
+          <nav className="hidden flex-row items-center gap-10 font-serif uppercase lg:flex">
             {navItems.map(({ href, label }) => (
               <NavLink key={href} href={href}>
                 <span>{label}</span>

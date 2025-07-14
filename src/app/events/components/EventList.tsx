@@ -19,7 +19,7 @@ export const EventList = ({ events, numberToShow }: EventListProps) => {
 
   if (events.length === 0) {
     return (
-      <div className="flex w-full items-start gap-3 border border-dashed border-[#edd9f5] bg-[#b367ce] p-4 sm:items-center">
+      <div className="flex w-full items-start gap-3 border border-dashed border-[#edd9f5] bg-[#b367ce] p-4 lg:items-center">
         <GuitarIcon className="h-6 w-6 flex-shrink-0 text-[#edd9f5]" />
         <p className="text-lg font-semibold text-[#fbf6fd]">
           No gigs right now — we&apos;re cooking up the next ones.
@@ -30,7 +30,7 @@ export const EventList = ({ events, numberToShow }: EventListProps) => {
   }
 
   return (
-    <div className="flex w-full flex-col gap-6 sm:gap-0">
+    <div className="flex w-full flex-col gap-6 lg:gap-0">
       {/* Always visible concerts */}
       {visibleEvents.map((event) => (
         <ConcertCard key={event.id} event={event} />

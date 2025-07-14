@@ -407,49 +407,66 @@
         },
         "optional": true
       },
-      "shortBioTitle": {
+      "shortBioSection": {
         "type": "objectAttribute",
         "value": {
-          "type": "array",
-          "of": {
-            "type": "object",
-            "attributes": {
-              "_key": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "string"
+          "type": "object",
+          "attributes": {
+            "shortBioTitle": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "array",
+                "of": {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "internationalizedArrayStringValue"
+                  }
                 }
-              }
+              },
+              "optional": false
             },
-            "rest": {
-              "type": "inline",
-              "name": "internationalizedArrayStringValue"
+            "shortBio": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "array",
+                "of": {
+                  "type": "object",
+                  "attributes": {
+                    "_key": {
+                      "type": "objectAttribute",
+                      "value": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "rest": {
+                    "type": "inline",
+                    "name": "internationalizedArrayTextValue"
+                  }
+                }
+              },
+              "optional": false
+            },
+            "copyButtonLabels": {
+              "type": "objectAttribute",
+              "value": {
+                "type": "inline",
+                "name": "copyButton"
+              },
+              "optional": true
             }
           }
         },
-        "optional": false
-      },
-      "shortBio": {
-        "type": "objectAttribute",
-        "value": {
-          "type": "array",
-          "of": {
-            "type": "object",
-            "attributes": {
-              "_key": {
-                "type": "objectAttribute",
-                "value": {
-                  "type": "string"
-                }
-              }
-            },
-            "rest": {
-              "type": "inline",
-              "name": "internationalizedArrayTextValue"
-            }
-          }
-        },
-        "optional": false
+        "optional": true
       },
       "photosTitle": {
         "type": "objectAttribute",
@@ -569,6 +586,88 @@
           }
         },
         "optional": true
+      }
+    }
+  },
+  {
+    "name": "copyButton",
+    "type": "type",
+    "value": {
+      "type": "object",
+      "attributes": {
+        "_type": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "string",
+            "value": "copyButton"
+          }
+        },
+        "copyLabel": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "array",
+            "of": {
+              "type": "object",
+              "attributes": {
+                "_key": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "rest": {
+                "type": "inline",
+                "name": "internationalizedArrayStringValue"
+              }
+            }
+          },
+          "optional": false
+        },
+        "successLabel": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "array",
+            "of": {
+              "type": "object",
+              "attributes": {
+                "_key": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "rest": {
+                "type": "inline",
+                "name": "internationalizedArrayStringValue"
+              }
+            }
+          },
+          "optional": false
+        },
+        "errorLabel": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "array",
+            "of": {
+              "type": "object",
+              "attributes": {
+                "_key": {
+                  "type": "objectAttribute",
+                  "value": {
+                    "type": "string"
+                  }
+                }
+              },
+              "rest": {
+                "type": "inline",
+                "name": "internationalizedArrayStringValue"
+              }
+            }
+          },
+          "optional": false
+        }
       }
     }
   },

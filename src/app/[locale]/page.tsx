@@ -34,7 +34,7 @@ export default async function Home({
       </HeroSection>
       <section
         id="gigs"
-        className="scroll-mt-14 bg-linear-to-b from-transparent to-[#8e43a5] py-10 sm:scroll-mt-20"
+        className="scroll-mt-14 bg-linear-to-b from-transparent to-[#8e43a5] py-10 lg:scroll-mt-20"
       >
         <Container className="gap-10">
           <EventList events={events} numberToShow={3} />
@@ -61,7 +61,7 @@ export default async function Home({
         contactFormData.messages?.error && (
           <section id="contact" className="relative scroll-mt-6 py-10 pb-30">
             <Container className="gap-4">
-              <h2 className="text-center font-serif text-2xl font-bold uppercase sm:text-3xl">
+              <h2 className="text-center font-serif text-2xl font-bold uppercase lg:text-3xl">
                 {contactFormData.title}
               </h2>
               <ContactFormComponent
@@ -87,7 +87,7 @@ const DesktopHeroContent = async ({ locale }: { locale: Locale }) => {
   const data = await fetchNavigation({ locale });
 
   return (
-    <div className="container mx-auto hidden h-full w-full max-w-3xl flex-col justify-between gap-3 px-4 sm:flex">
+    <div className="container mx-auto hidden h-full w-full max-w-3xl flex-col justify-between gap-3 px-4 lg:flex">
       <LogoWithLocaleSwitcher />
       {data?.navigation && <DesktopNavigation navigation={data.navigation} />}
     </div>

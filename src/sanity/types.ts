@@ -100,16 +100,19 @@ export type Epk = {
     >;
     url: string;
   };
-  shortBioTitle: Array<
-    {
-      _key: string;
-    } & InternationalizedArrayStringValue
-  >;
-  shortBio: Array<
-    {
-      _key: string;
-    } & InternationalizedArrayTextValue
-  >;
+  shortBioSection?: {
+    shortBioTitle: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    shortBio: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayTextValue
+    >;
+    copyButtonLabels?: CopyButton;
+  };
   photosTitle: Array<
     {
       _key: string;
@@ -137,6 +140,25 @@ export type Epk = {
       } & InternationalizedArrayTextValue
     >;
   };
+};
+
+export type CopyButton = {
+  _type: 'copyButton';
+  copyLabel: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
+  successLabel: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
+  errorLabel: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
 };
 
 export type Socials = {
@@ -355,6 +377,7 @@ export type AllSanitySchemaTypes =
   | ContactForm
   | MediaMention
   | Epk
+  | CopyButton
   | Socials
   | Navigation
   | MenuItem
@@ -447,14 +470,13 @@ export type SOCIALS_QUERYResult =
     }
   | null;
 // Variable: EPK_QUERY
-// Query: *[_id == "epk"][0]{    "title": title[_key == $locale][0].value,    downloadablePressKit{      "label": label[_key == $locale][0].value,      url,    },    socialMediaSection{      "title": title[_key == $locale][0].value,      "description": description[_key == $locale][0].value,    },    "shortBioTitle": shortBioTitle[_key == $locale][0].value,    "shortBio": shortBio[_key == $locale][0].value,    "photosTitle": photosTitle[_key == $locale][0].value,    "mediaMentionsTitle": mediaMentionsTitle[_key == $locale][0].value,    "mediaMentions": mediaMentions[]{      ...,      "quote": quote[_key == $locale][0].value,      publication,      url,      title,      author,      date,    }  }
+// Query: *[_id == "epk"][0]{    "title": title[_key == $locale][0].value,    downloadablePressKit{      "label": label[_key == $locale][0].value,      url,    },    shortBioSection{      "shortBioTitle": shortBioTitle[_key == $locale][0].value,      "shortBio": shortBio[_key == $locale][0].value,      copyButtonLabels{        "copyLabel": copyLabel[_key == $locale][0].value,        "successLabel": successLabel[_key == $locale][0].value,        "errorLabel": errorLabel[_key == $locale][0].value,      }    },    socialMediaSection{      "title": title[_key == $locale][0].value,      "description": description[_key == $locale][0].value,    },    "photosTitle": photosTitle[_key == $locale][0].value,    "mediaMentionsTitle": mediaMentionsTitle[_key == $locale][0].value,    "mediaMentions": mediaMentions[]{      ...,      "quote": quote[_key == $locale][0].value,      publication,      url,      title,      author,      date,    }  }
 export type EPK_QUERYResult =
   | {
       title: null;
       downloadablePressKit: null;
+      shortBioSection: null;
       socialMediaSection: null;
-      shortBioTitle: null;
-      shortBio: null;
       photosTitle: null;
       mediaMentionsTitle: null;
       mediaMentions: null;
@@ -462,9 +484,8 @@ export type EPK_QUERYResult =
   | {
       title: string | null;
       downloadablePressKit: null;
+      shortBioSection: null;
       socialMediaSection: null;
-      shortBioTitle: null;
-      shortBio: null;
       photosTitle: null;
       mediaMentionsTitle: null;
       mediaMentions: null;
@@ -475,12 +496,19 @@ export type EPK_QUERYResult =
         label: string | null;
         url: string;
       } | null;
+      shortBioSection: {
+        shortBioTitle: string | null;
+        shortBio: string | null;
+        copyButtonLabels: {
+          copyLabel: string | null;
+          successLabel: string | null;
+          errorLabel: string | null;
+        } | null;
+      } | null;
       socialMediaSection: {
         title: string | null;
         description: string | null;
       } | null;
-      shortBioTitle: string | null;
-      shortBio: string | null;
       photosTitle: string | null;
       mediaMentionsTitle: string | null;
       mediaMentions: Array<{
@@ -551,7 +579,7 @@ declare module '@sanity/client' {
     '\n  *[_id == "pageSettings"][0]{\n    "seoTitle": seoTitle[_key == $locale][0].value,\n    "seoDescription": seoDescription[_key == $locale][0].value,\n  }\n': METADATA_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    "navigation": navigation[]{\n      href,\n      "label": label[_key == $locale][0].value,\n    }\n  }\n': NAVIGATION_QUERYResult;
     '\n  *[_id == "socials"][0]{\n    spotify,\n    bandcamp,\n    appleMusic,\n  }\n': SOCIALS_QUERYResult;
-    '\n  *[_id == "epk"][0]{\n    "title": title[_key == $locale][0].value,\n    downloadablePressKit{\n      "label": label[_key == $locale][0].value,\n      url,\n    },\n    socialMediaSection{\n      "title": title[_key == $locale][0].value,\n      "description": description[_key == $locale][0].value,\n    },\n    "shortBioTitle": shortBioTitle[_key == $locale][0].value,\n    "shortBio": shortBio[_key == $locale][0].value,\n    "photosTitle": photosTitle[_key == $locale][0].value,\n    "mediaMentionsTitle": mediaMentionsTitle[_key == $locale][0].value,\n    "mediaMentions": mediaMentions[]{\n      ...,\n      "quote": quote[_key == $locale][0].value,\n      publication,\n      url,\n      title,\n      author,\n      date,\n    }\n  }\n': EPK_QUERYResult;
+    '\n  *[_id == "epk"][0]{\n    "title": title[_key == $locale][0].value,\n    downloadablePressKit{\n      "label": label[_key == $locale][0].value,\n      url,\n    },\n    shortBioSection{\n      "shortBioTitle": shortBioTitle[_key == $locale][0].value,\n      "shortBio": shortBio[_key == $locale][0].value,\n      copyButtonLabels{\n        "copyLabel": copyLabel[_key == $locale][0].value,\n        "successLabel": successLabel[_key == $locale][0].value,\n        "errorLabel": errorLabel[_key == $locale][0].value,\n      }\n    },\n    socialMediaSection{\n      "title": title[_key == $locale][0].value,\n      "description": description[_key == $locale][0].value,\n    },\n    "photosTitle": photosTitle[_key == $locale][0].value,\n    "mediaMentionsTitle": mediaMentionsTitle[_key == $locale][0].value,\n    "mediaMentions": mediaMentions[]{\n      ...,\n      "quote": quote[_key == $locale][0].value,\n      publication,\n      url,\n      title,\n      author,\n      date,\n    }\n  }\n': EPK_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    openGraphImage{\n      asset->{\n        url,\n      }\n    }\n  }\n': OPEN_GRAPH_IMAGE_QUERYResult;
     '\n  *[_id == "contactForm"][0]{\n    "title": title[_key == $locale][0].value,\n    placeholders{\n      "message": message[_key == $locale][0].value,\n      "email": email[_key == $locale][0].value,\n      "phone": phone[_key == $locale][0].value,\n    },\n    submitButton{\n      "sendLabel": sendLabel[_key == $locale][0].value,\n      "sendingLabel": sendingLabel[_key == $locale][0].value,\n    },\n    messages{\n      "success": success[_key == $locale][0].value,\n      "error": error[_key == $locale][0].value,\n    },\n  }\n': CONTACT_FORM_QUERYResult;
   }

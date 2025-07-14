@@ -1,10 +1,9 @@
 'use client';
 
 import { AnimatePresence, motion } from 'motion/react';
-import { CheckIcon, CopyIcon, CopyXIcon } from 'lucide-react';
-import { useState } from 'react';
 
 import { cn } from '@/lib/utils';
+import { useCopyButton } from '@/hooks/useCopyButton';
 
 export const CopyButton = ({
   text,
@@ -13,21 +12,9 @@ export const CopyButton = ({
   text: string;
   className?: string;
 }) => {
-  type CopyState = 'idle' | 'copied' | 'error';
-  const [copyState, setCopyState] = useState<CopyState>('idle');
-
-  const getCopyIcon = (copyState: CopyState) => {
-    switch (copyState) {
-      case 'idle':
-        return CopyIcon;
-      case 'copied':
-        return CheckIcon;
-      case 'error':
-        return CopyXIcon;
-    }
-  };
-
-  const Icon = getCopyIcon(copyState);
+  const { copyState, handleClick, getCopyIcon, getCopyText } =
+    useCopyButton(text);
+  const Icon = getCopyIcon();
 
   return (
     <button
@@ -39,18 +26,7 @@ export const CopyButton = ({
         copyState === 'error' && 'bg-red-10 hover:bg-red-10',
         className,
       )}
-      onClick={() => {
-        navigator.clipboard
-          .writeText(text)
-          .then(() => {
-            setCopyState('copied');
-            setTimeout(() => setCopyState('idle'), 1000);
-          })
-          .catch(() => {
-            setCopyState('error');
-            setTimeout(() => setCopyState('idle'), 1000);
-          });
-      }}
+      onClick={handleClick}
     >
       <AnimatePresence mode="wait">
         <motion.div
@@ -69,6 +45,7 @@ export const CopyButton = ({
           />
         </motion.div>
       </AnimatePresence>
+      <span className="sr-only">{getCopyText()}</span>
     </button>
   );
 };

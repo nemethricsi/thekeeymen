@@ -13,6 +13,7 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { useLocaleSwitcher } from '@/hooks/useLocaleSwitcher';
 import { ProcessedMenuItem } from '@/types';
+import { Container } from './Container';
 
 export const MobileNavbar = ({
   navItems,
@@ -56,7 +57,7 @@ export const MobileNavbar = ({
     <>
       <div
         className={cn(
-          'fixed top-0 left-0 z-50 flex w-full items-center gap-3 px-4 py-2 drop-shadow-2xl sm:hidden',
+          'fixed top-0 left-0 z-50 flex w-full items-center gap-3 px-4 py-2 drop-shadow-2xl lg:hidden',
           !initiallyTransparent &&
             'bg-linear-to-b from-[#408ea3] to-[#408ea3]/80',
           initiallyTransparent &&
@@ -66,25 +67,32 @@ export const MobileNavbar = ({
           isOpen && 'bg-none',
         )}
       >
-        <motion.div
-          initial={false}
-          animate={{
-            width: scrolled ? 120 : '100%',
-            opacity: isOpen ? 0 : 1,
-          }}
+        <Container
+          className={cn(
+            'flex-row items-center gap-3',
+            !scrolled && 'pt-4 sm:pt-8',
+          )}
         >
-          <LocalizedLink href="/">
-            <Image
-              src="/svg/keeymen_logo.svg"
-              alt="The Keeymen logo"
-              width={500}
-              height={500}
-            />
-          </LocalizedLink>
-        </motion.div>
-        <div className="ml-auto">
-          <HamburgerButton isOpen={isOpen} setIsOpen={setIsOpen} />
-        </div>
+          <motion.div
+            initial={false}
+            animate={{
+              width: scrolled ? 120 : '100%',
+              opacity: isOpen ? 0 : 1,
+            }}
+          >
+            <LocalizedLink href="/">
+              <Image
+                src="/svg/keeymen_logo.svg"
+                alt="The Keeymen logo"
+                width={500}
+                height={500}
+              />
+            </LocalizedLink>
+          </motion.div>
+          <div className="ml-auto">
+            <HamburgerButton isOpen={isOpen} setIsOpen={setIsOpen} />
+          </div>
+        </Container>
       </div>
       {/* Overlay background */}
       <AnimatePresence>

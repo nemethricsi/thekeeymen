@@ -2,10 +2,10 @@ import { Container } from '@/components/Container';
 import { StaticNavbar } from '@/components/StaticNavbar';
 import { fetchEpk, fetchNavigation } from '@/sanity/lib/queries';
 import { Locale } from '@/i18n-config';
-import { CopyButton } from '@/components/CopyButton';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRightIcon, CloudDownloadIcon } from 'lucide-react';
+import { CopyTextButton } from '@/components/CopyTextButton';
 
 export default async function ElectronicPressKitPage({
   params,
@@ -18,10 +18,10 @@ export default async function ElectronicPressKitPage({
   const mediaMentions = epk?.mediaMentions;
 
   return (
-    <div className="min-h-screen bg-[#fbf6fd] text-[#38133f]">
+    <div className="min-h-screen bg-[#fbf6fd] text-[#38133f] sm:pt-28 lg:pt-0">
       {data?.navigation && <StaticNavbar navItems={data.navigation} />}
       <main className="pt-[calc(80px+3rem)]">
-        <Container className="gap-10 pb-12 sm:gap-16">
+        <Container className="gap-10 pb-12 lg:gap-16">
           <div className="flex flex-col items-center gap-6">
             <h1 className="text-center font-serif text-4xl font-bold">
               {epk?.title}
@@ -42,9 +42,29 @@ export default async function ElectronicPressKitPage({
           </div>
           <section className="flex flex-col gap-6">
             <h2 className="font-serif text-3xl font-semibold">
-              {epk?.shortBioTitle}
+              {epk?.shortBioSection?.shortBioTitle}
             </h2>
-            {epk?.shortBio && (
+            {epk?.shortBioSection?.shortBio && (
+              <div className="flex flex-col-reverse items-center gap-2 lg:flex-col">
+                <CopyTextButton
+                  textToCopy={epk.shortBioSection.shortBio}
+                  copyLabel={
+                    epk.shortBioSection.copyButtonLabels?.copyLabel || 'Copy'
+                  }
+                  successLabel={
+                    epk.shortBioSection.copyButtonLabels?.successLabel ||
+                    'Copied!'
+                  }
+                  errorLabel={
+                    epk.shortBioSection.copyButtonLabels?.errorLabel ||
+                    'Error copying bio'
+                  }
+                  className="w-full justify-center lg:w-fit lg:self-start"
+                />
+                <p>{epk.shortBioSection.shortBio}</p>
+              </div>
+            )}
+            {/* {epk?.shortBio && (
               <div className="relative bg-[#f5edfa] p-8 pt-12 text-left text-base leading-relaxed">
                 <CopyButton
                   text={epk.shortBio}
@@ -53,7 +73,7 @@ export default async function ElectronicPressKitPage({
 
                 {epk.shortBio}
               </div>
-            )}
+            )} */}
           </section>
           <section className="flex flex-col gap-6">
             <h2 className="font-serif text-3xl font-semibold">

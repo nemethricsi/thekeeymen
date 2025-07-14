@@ -50,7 +50,7 @@ export const ContactFormComponent = ({
     <form
       ref={formRef}
       onSubmit={submitForm}
-      className="flex w-full flex-col gap-3 sm:mx-auto sm:max-w-lg"
+      className="flex w-full flex-col gap-3 lg:mx-auto lg:max-w-lg"
     >
       <div className="flex flex-col gap-1">
         <textarea

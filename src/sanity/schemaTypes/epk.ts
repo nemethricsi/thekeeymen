@@ -34,16 +34,28 @@ export const epk = defineType({
       ],
     }),
     defineField({
-      name: 'shortBioTitle',
-      title: 'Rövid bio címe',
-      type: 'internationalizedArrayString',
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'shortBio',
+      name: 'shortBioSection',
       title: 'Rövid bio',
-      type: 'internationalizedArrayText',
-      validation: (Rule) => Rule.required(),
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'shortBioTitle',
+          title: 'Rövid bio címe',
+          type: 'internationalizedArrayString',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'shortBio',
+          title: 'Rövid bio',
+          type: 'internationalizedArrayText',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'copyButtonLabels',
+          title: 'Copy Button',
+          type: 'copyButton',
+        }),
+      ],
     }),
     defineField({
       name: 'photosTitle',
