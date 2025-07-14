@@ -29,7 +29,7 @@ export const StaticNavbar = ({ navItems }: StaticNavbarProps) => {
               <NavLink key={href} href={href}>
                 <span>{label}</span>
                 <span
-                  className="absolute -bottom-0.5 left-1/2 h-1 w-0 -translate-x-1/2 bg-[#fefefe] transition-all duration-200 group-hover:w-full"
+                  className="absolute -bottom-0.5 left-1/2 h-0.5 w-0 -translate-x-1/2 bg-[#fefefe] transition-all duration-200 group-hover:w-full"
                   aria-hidden="true"
                 />
               </NavLink>

@@ -56,7 +56,7 @@ export const MobileNavbar = ({
     <>
       <div
         className={cn(
-          'fixed top-0 left-0 z-50 flex w-full items-center px-4 py-2 drop-shadow-2xl sm:hidden',
+          'fixed top-0 left-0 z-50 flex w-full items-center gap-3 px-4 py-2 drop-shadow-2xl sm:hidden',
           !initiallyTransparent &&
             'bg-linear-to-b from-[#408ea3] to-[#408ea3]/80',
           initiallyTransparent &&
@@ -77,8 +77,8 @@ export const MobileNavbar = ({
             <Image
               src="/svg/keeymen_logo.svg"
               alt="The Keeymen logo"
-              width={240}
-              height={240}
+              width={500}
+              height={500}
             />
           </LocalizedLink>
         </motion.div>

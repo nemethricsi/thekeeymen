@@ -37,6 +37,16 @@ export const structure: StructureResolver = (S) =>
         .schemaType('epk')
         .title('Press Kit')
         .child(S.editor().id('epk').schemaType('epk').documentId('epk')),
+      S.listItem()
+        .id('contactForm')
+        .schemaType('contactForm')
+        .title('Kontakt form')
+        .child(
+          S.editor()
+            .id('contactForm')
+            .schemaType('contactForm')
+            .documentId('contactForm'),
+        ),
       S.divider(),
       ...S.documentTypeListItems().filter(
         (item) =>
@@ -44,6 +54,7 @@ export const structure: StructureResolver = (S) =>
           item.getId() !== 'navigation' &&
           item.getId() !== 'pageSettings' &&
           item.getId() !== 'socials' &&
-          item.getId() !== 'epk',
+          item.getId() !== 'epk' &&
+          item.getId() !== 'contactForm',
       ),
     ]);

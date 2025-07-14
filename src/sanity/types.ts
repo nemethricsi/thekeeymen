@@ -13,6 +13,60 @@
  */
 
 // Source: schema.json
+export type ContactForm = {
+  _id: string;
+  _type: 'contactForm';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
+  placeholders: {
+    message: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    email: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    phone: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+  };
+  submitButton: {
+    sendLabel: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    sendingLabel: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+  };
+  messages: {
+    success: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    error: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+  };
+};
+
 export type MediaMention = {
   _type: 'mediaMention';
   quote: Array<
@@ -298,6 +352,7 @@ export type SanityAssetSourceData = {
 };
 
 export type AllSanitySchemaTypes =
+  | ContactForm
   | MediaMention
   | Epk
   | Socials
@@ -454,6 +509,38 @@ export type OPEN_GRAPH_IMAGE_QUERYResult =
       };
     }
   | null;
+// Variable: CONTACT_FORM_QUERY
+// Query: *[_id == "contactForm"][0]{    "title": title[_key == $locale][0].value,    placeholders{      "message": message[_key == $locale][0].value,      "email": email[_key == $locale][0].value,      "phone": phone[_key == $locale][0].value,    },    submitButton{      "sendLabel": sendLabel[_key == $locale][0].value,      "sendingLabel": sendingLabel[_key == $locale][0].value,    },    messages{      "success": success[_key == $locale][0].value,      "error": error[_key == $locale][0].value,    },  }
+export type CONTACT_FORM_QUERYResult =
+  | {
+      title: null;
+      placeholders: null;
+      submitButton: null;
+      messages: null;
+    }
+  | {
+      title: string | null;
+      placeholders: null;
+      submitButton: null;
+      messages: null;
+    }
+  | {
+      title: string | null;
+      placeholders: {
+        message: string | null;
+        email: string | null;
+        phone: string | null;
+      };
+      submitButton: {
+        sendLabel: string | null;
+        sendingLabel: string | null;
+      };
+      messages: {
+        success: string | null;
+        error: string | null;
+      };
+    }
+  | null;
 
 // Query TypeMap
 import '@sanity/client';
@@ -466,5 +553,6 @@ declare module '@sanity/client' {
     '\n  *[_id == "socials"][0]{\n    spotify,\n    bandcamp,\n    appleMusic,\n  }\n': SOCIALS_QUERYResult;
     '\n  *[_id == "epk"][0]{\n    "title": title[_key == $locale][0].value,\n    downloadablePressKit{\n      "label": label[_key == $locale][0].value,\n      url,\n    },\n    socialMediaSection{\n      "title": title[_key == $locale][0].value,\n      "description": description[_key == $locale][0].value,\n    },\n    "shortBioTitle": shortBioTitle[_key == $locale][0].value,\n    "shortBio": shortBio[_key == $locale][0].value,\n    "photosTitle": photosTitle[_key == $locale][0].value,\n    "mediaMentionsTitle": mediaMentionsTitle[_key == $locale][0].value,\n    "mediaMentions": mediaMentions[]{\n      ...,\n      "quote": quote[_key == $locale][0].value,\n      publication,\n      url,\n      title,\n      author,\n      date,\n    }\n  }\n': EPK_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    openGraphImage{\n      asset->{\n        url,\n      }\n    }\n  }\n': OPEN_GRAPH_IMAGE_QUERYResult;
+    '\n  *[_id == "contactForm"][0]{\n    "title": title[_key == $locale][0].value,\n    placeholders{\n      "message": message[_key == $locale][0].value,\n      "email": email[_key == $locale][0].value,\n      "phone": phone[_key == $locale][0].value,\n    },\n    submitButton{\n      "sendLabel": sendLabel[_key == $locale][0].value,\n      "sendingLabel": sendingLabel[_key == $locale][0].value,\n    },\n    messages{\n      "success": success[_key == $locale][0].value,\n      "error": error[_key == $locale][0].value,\n    },\n  }\n': CONTACT_FORM_QUERYResult;
   }
 }

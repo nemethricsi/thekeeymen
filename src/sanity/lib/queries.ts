@@ -126,3 +126,29 @@ export const fetchOpenGraphImage = async () => {
   });
   return result.data;
 };
+
+export const CONTACT_FORM_QUERY = defineQuery(`
+  *[_id == "contactForm"][0]{
+    "title": title[_key == $locale][0].value,
+    placeholders{
+      "message": message[_key == $locale][0].value,
+      "email": email[_key == $locale][0].value,
+      "phone": phone[_key == $locale][0].value,
+    },
+    submitButton{
+      "sendLabel": sendLabel[_key == $locale][0].value,
+      "sendingLabel": sendingLabel[_key == $locale][0].value,
+    },
+    messages{
+      "success": success[_key == $locale][0].value,
+      "error": error[_key == $locale][0].value,
+    },
+  }
+`);
+export const fetchContactForm = async ({ locale }: { locale: Locale }) => {
+  const result = await sanityFetch({
+    query: CONTACT_FORM_QUERY,
+    params: { locale },
+  });
+  return result.data;
+};
