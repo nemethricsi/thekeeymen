@@ -54,7 +54,7 @@
             }
           }
         },
-        "optional": true
+        "optional": false
       },
       "placeholders": {
         "type": "objectAttribute",
@@ -81,7 +81,7 @@
                   }
                 }
               },
-              "optional": true
+              "optional": false
             },
             "email": {
               "type": "objectAttribute",
@@ -103,7 +103,7 @@
                   }
                 }
               },
-              "optional": true
+              "optional": false
             },
             "phone": {
               "type": "objectAttribute",
@@ -125,11 +125,11 @@
                   }
                 }
               },
-              "optional": true
+              "optional": false
             }
           }
         },
-        "optional": true
+        "optional": false
       },
       "submitButton": {
         "type": "objectAttribute",
@@ -156,7 +156,7 @@
                   }
                 }
               },
-              "optional": true
+              "optional": false
             },
             "sendingLabel": {
               "type": "objectAttribute",
@@ -178,11 +178,11 @@
                   }
                 }
               },
-              "optional": true
+              "optional": false
             }
           }
         },
-        "optional": true
+        "optional": false
       },
       "messages": {
         "type": "objectAttribute",
@@ -209,7 +209,7 @@
                   }
                 }
               },
-              "optional": true
+              "optional": false
             },
             "error": {
               "type": "objectAttribute",
@@ -231,11 +231,11 @@
                   }
                 }
               },
-              "optional": true
+              "optional": false
             }
           }
         },
-        "optional": true
+        "optional": false
       }
     }
   },

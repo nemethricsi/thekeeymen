@@ -5,7 +5,25 @@ import { useForm, ValidationError } from '@formspree/react';
 import { LoaderIcon, SendIcon, XIcon } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 
-export const ContactForm = () => {
+interface ContactFormProps {
+  messagePlaceholder: string;
+  emailPlaceholder: string;
+  phonePlaceholder: string;
+  submitButtonLabel: string;
+  submitButtonSendingLabel: string;
+  successMessage: string;
+  errorMessage: string;
+}
+
+export const ContactFormComponent = ({
+  messagePlaceholder,
+  emailPlaceholder,
+  phonePlaceholder,
+  submitButtonLabel,
+  submitButtonSendingLabel,
+  successMessage,
+  errorMessage,
+}: ContactFormProps) => {
   const formRef = useRef<HTMLFormElement>(null);
   const [state, handleSubmit, reset] = useForm(
     process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID!,
@@ -40,11 +58,11 @@ export const ContactForm = () => {
           rows={5}
           required
           className={cn(
-            'w-full resize-none border border-[#fefefe]/50 p-4 text-base font-medium focus:bg-[#fefefe]/5 focus:outline-2 focus:outline-offset-3 focus:outline-[#fefefe]',
+            'w-full resize-none border border-[#fefefe]/50 p-4 text-lg font-medium focus:bg-[#fefefe]/5 focus:outline-2 focus:outline-offset-3 focus:outline-[#fefefe]',
             (state.errors?.getFieldErrors('message').length || 0 > 0) &&
               'outline-2 outline-offset-2 outline-rose-300',
           )}
-          placeholder="Type your message here..."
+          placeholder={messagePlaceholder}
         />
         <ValidationError
           prefix="Message"
@@ -59,11 +77,11 @@ export const ContactForm = () => {
           type="email"
           required
           className={cn(
-            'w-full border border-[#fefefe]/50 p-4 text-base font-medium outline-[#fefefe] focus:bg-[#fefefe]/5 focus:outline-2 focus:outline-offset-3',
+            'w-full border border-[#fefefe]/50 p-4 text-lg font-medium outline-[#fefefe] focus:bg-[#fefefe]/5 focus:outline-2 focus:outline-offset-3',
             (state.errors?.getFieldErrors('email').length || 0 > 0) &&
               'outline-2 outline-offset-2 outline-rose-300',
           )}
-          placeholder="Email"
+          placeholder={emailPlaceholder}
         />
         <ValidationError
           prefix="Email"
@@ -77,11 +95,11 @@ export const ContactForm = () => {
           name="phone"
           type="tel"
           className={cn(
-            'w-full border border-[#fefefe]/50 p-4 text-base font-medium outline-[#fefefe] focus:bg-[#fefefe]/5 focus:outline-2 focus:outline-offset-3',
+            'w-full border border-[#fefefe]/50 p-4 text-lg font-medium outline-[#fefefe] focus:bg-[#fefefe]/5 focus:outline-2 focus:outline-offset-3',
             (state.errors?.getFieldErrors('phone').length || 0 > 0) &&
               'outline-2 outline-offset-2 outline-rose-300',
           )}
-          placeholder="Phone number (optional)"
+          placeholder={phonePlaceholder}
         />
         <ValidationError
           prefix="Phone"
@@ -96,14 +114,16 @@ export const ContactForm = () => {
         className="group flex w-full items-center justify-center gap-2 bg-[#fefefe] px-4 py-2 font-bold text-[#8e43a5] uppercase transition-colors hover:cursor-pointer focus:outline-2 focus:outline-offset-3 focus:outline-[#fefefe] active:bg-[#fefefe]/75 active:outline-none disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-[#fefefe]"
       >
         {state.submitting && <LoaderIcon className="animate-spin" />}
-        <span>{state.submitting ? 'Sending...' : 'Send message'}</span>
+        <span>
+          {state.submitting ? submitButtonSendingLabel : submitButtonLabel}
+        </span>
         {!state.submitting && (
           <SendIcon className="transition-transform group-hover:rotate-45 group-focus:rotate-45 group-active:translate-x-2" />
         )}
       </button>
       {state.succeeded && (
         <div className="flex items-center justify-between border border-lime-600 bg-lime-100 px-2 py-1 font-medium text-lime-700 select-none">
-          <span>Message sent successfully!</span>
+          <span>{successMessage}</span>
           <button
             type="button"
             className="cursor-pointer rounded-full p-1 transition-colors hover:bg-lime-200"
@@ -115,7 +135,7 @@ export const ContactForm = () => {
       )}
       {state.errors != null && (
         <div className="flex items-center justify-between border border-rose-300 bg-rose-100 px-2 py-1 font-medium text-rose-700 select-none">
-          <span>Something went wrong. Please try again.</span>
+          <span>{errorMessage}</span>
           <button
             type="button"
             className="cursor-pointer rounded-full p-1 transition-colors hover:bg-rose-200"
