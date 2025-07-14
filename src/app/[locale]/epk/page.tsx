@@ -28,8 +28,6 @@ export default async function ElectronicPressKitPage({
   const releases = await fetchReleases();
   const mediaMentions = epk?.mediaMentions;
 
-  console.log(releases);
-
   return (
     <div className="min-h-screen bg-[#fbf6fd] text-[#38133f] sm:pt-28 lg:pt-0">
       {data?.navigation && <StaticNavbar navItems={data.navigation} />}

@@ -1,6 +1,7 @@
 import { Container } from '@/components/Container';
 import { SiBandcamp, SiSpotify, SiApplemusic } from 'react-icons/si';
 import { fetchSocials } from '@/sanity/lib/queries';
+import { ReusableTooltip } from './ReusableTooltip';
 
 export const Footer = async () => {
   const socials = await fetchSocials();
@@ -10,19 +11,25 @@ export const Footer = async () => {
       <Container className="pt-5">
         <div className="flex justify-center gap-5 p-4 lg:gap-10">
           {socials?.bandcamp && (
-            <SocialIcon href={socials.bandcamp} title="Bandcamp">
-              <SiBandcamp size={30} />
-            </SocialIcon>
+            <ReusableTooltip message="Bandcamp">
+              <SocialIcon href={socials.bandcamp}>
+                <SiBandcamp size={30} />
+              </SocialIcon>
+            </ReusableTooltip>
           )}
           {socials?.spotify && (
-            <SocialIcon href={socials.spotify} title="Spotify">
-              <SiSpotify size={30} />
-            </SocialIcon>
+            <ReusableTooltip message="Spotify">
+              <SocialIcon href={socials.spotify}>
+                <SiSpotify size={30} />
+              </SocialIcon>
+            </ReusableTooltip>
           )}
           {socials?.appleMusic && (
-            <SocialIcon href={socials.appleMusic} title="Apple music">
-              <SiApplemusic size={30} />
-            </SocialIcon>
+            <ReusableTooltip message="Apple music">
+              <SocialIcon href={socials.appleMusic}>
+                <SiApplemusic size={30} />
+              </SocialIcon>
+            </ReusableTooltip>
           )}
         </div>
         <p className="text-center text-sm text-neutral-200">
@@ -36,16 +43,13 @@ export const Footer = async () => {
 const SocialIcon = ({
   children,
   href,
-  title,
 }: {
   children: React.ReactNode;
   href: string;
-  title: string;
 }) => {
   return (
     <a
       href={href}
-      title={title}
       className="flex h-12 w-12 items-center justify-center rounded-full opacity-90 transition-all duration-300 hover:-rotate-12 hover:bg-white/10 hover:opacity-100"
       target="_blank"
       rel="noopener noreferrer"
