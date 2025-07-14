@@ -9,6 +9,7 @@ import { Locale } from '@/i18n-config';
 import { LogoWithLocaleSwitcher } from '@/components/LogoWithLocaleSwitcher';
 import { DesktopNavigation } from '@/components/DesktopNavigation';
 import { WaveOpacityDivider } from '@/components/WaveOpacityDivider';
+import { ContactForm } from '@/components/ContactForm';
 
 export const revalidate = 60;
 
@@ -34,10 +35,7 @@ export default async function Home({
           <EventList events={events} numberToShow={3} />
         </Container>
       </section>
-      <section
-        id="media"
-        className="relative scroll-mt-20 bg-[#8e43a5] py-10 pb-20"
-      >
+      <section id="media" className="relative scroll-mt-20 bg-[#8e43a5] py-10">
         <Container className="gap-10">
           <div className="flex w-full flex-col gap-3">
             {homePageData?.youtubeUrl && (
@@ -46,6 +44,14 @@ export default async function Home({
             <p className="text-center">{homePageData?.title}</p>
           </div>
           <EmbedSpotify />
+        </Container>
+      </section>
+      <section id="contact" className="relative scroll-mt-6 py-10 pb-30">
+        <Container className="gap-4">
+          <h2 className="text-center font-serif text-2xl font-bold uppercase sm:text-3xl">
+            Contact us
+          </h2>
+          <ContactForm />
         </Container>
         <WaveOpacityDivider />
       </section>
