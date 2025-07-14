@@ -9,6 +9,7 @@ import { singletonTypes } from '@/sanity.config';
 import { epk } from '@/sanity/schemaTypes/epk';
 import { mediaMention } from '@/sanity/schemaTypes/objects/mediamention';
 import { contactForm } from '@/sanity/schemaTypes/contactForm';
+import { copyButton } from '@/sanity/schemaTypes/objects/copyButton';
 
 export const schema: SchemaPluginOptions = {
   types: [
@@ -20,6 +21,7 @@ export const schema: SchemaPluginOptions = {
     epk,
     mediaMention,
     contactForm,
+    copyButton,
   ],
   templates: (templates) =>
     templates.filter(({ schemaType }) => !singletonTypes.has(schemaType)),

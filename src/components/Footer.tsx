@@ -8,7 +8,7 @@ export const Footer = async () => {
   return (
     <footer className="relative bg-[#408ea3] pb-5">
       <Container className="pt-5">
-        <div className="flex justify-center gap-5 p-4 sm:gap-10">
+        <div className="flex justify-center gap-5 p-4 lg:gap-10">
           {socials?.bandcamp && (
             <SocialIcon href={socials.bandcamp} title="Bandcamp">
               <SiBandcamp size={30} />
