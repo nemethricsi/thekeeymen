@@ -9,6 +9,7 @@ import { CopyTextButton } from '@/components/CopyTextButton';
 import { IconType } from 'react-icons/lib';
 import { SiApplemusic, SiBandcamp, SiSpotify, SiYoutube } from 'react-icons/si';
 import { type SocialLink } from '@/sanity/types';
+import { ReusableTooltip } from '@/components/ReusableTooltip';
 
 const platformIcons: Record<SocialLink['platform'], IconType> = {
   bandcamp: SiBandcamp,
@@ -126,8 +127,8 @@ export default async function ElectronicPressKitPage({
                           '/images/albumart.jpg'
                         }
                         alt={release.title}
-                        width={1000}
-                        height={1000}
+                        width={800}
+                        height={800}
                       />
                       <h2 className="text-center text-base sm:text-left">
                         {release.title} (
@@ -138,15 +139,20 @@ export default async function ElectronicPressKitPage({
                         {release.availableOn?.map(({ platform, url }) => {
                           const Icon = platformIcons[platform];
                           return (
-                            <Link
-                              href={url}
+                            <ReusableTooltip
                               key={platform}
-                              className="flex h-10 w-10 items-center justify-center bg-[#f5edfa] hover:bg-white"
-                              target="_blank"
-                              rel="noopener noreferrer"
+                              message={platform}
+                              side="bottom"
                             >
-                              <Icon className="h-6 w-6" />
-                            </Link>
+                              <Link
+                                href={url}
+                                className="flex h-10 w-10 items-center justify-center bg-[#f5edfa] hover:bg-white"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                <Icon className="h-6 w-6" />
+                              </Link>
+                            </ReusableTooltip>
                           );
                         })}
                       </div>
