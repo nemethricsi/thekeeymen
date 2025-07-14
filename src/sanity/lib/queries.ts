@@ -97,6 +97,7 @@ export const EPK_QUERY = defineQuery(`
       "description": description[_key == $locale][0].value,
     },
     "photosTitle": photosTitle[_key == $locale][0].value,
+    "releasesSectionTitle": releasesSectionTitle[_key == $locale][0].value,
     "mediaMentionsTitle": mediaMentionsTitle[_key == $locale][0].value,
     "mediaMentions": mediaMentions[]{
       ...,
@@ -156,6 +157,28 @@ export const fetchContactForm = async ({ locale }: { locale: Locale }) => {
   const result = await sanityFetch({
     query: CONTACT_FORM_QUERY,
     params: { locale },
+  });
+  return result.data;
+};
+
+export const RELEASES_QUERY = defineQuery(`
+  *[_type == "release"]{
+    ...,
+    coverImage{
+      asset->{
+        url,
+      }
+    },
+    availableOn[]{
+      platform,
+      url
+    }
+  }
+`);
+
+export const fetchReleases = async () => {
+  const result = await sanityFetch({
+    query: RELEASES_QUERY,
   });
   return result.data;
 };

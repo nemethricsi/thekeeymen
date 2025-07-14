@@ -76,6 +76,12 @@ export const epk = defineType({
       of: [{ type: 'mediaMention' }],
     }),
     defineField({
+      name: 'releasesSectionTitle',
+      title: 'Megjelenések szekció címe',
+      type: 'internationalizedArrayString',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'socialMediaSection',
       title: 'Közösségi Média',
       type: 'object',

@@ -1,11 +1,21 @@
 import { Container } from '@/components/Container';
 import { StaticNavbar } from '@/components/StaticNavbar';
-import { fetchEpk, fetchNavigation } from '@/sanity/lib/queries';
+import { fetchEpk, fetchNavigation, fetchReleases } from '@/sanity/lib/queries';
 import { Locale } from '@/i18n-config';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRightIcon, CloudDownloadIcon } from 'lucide-react';
 import { CopyTextButton } from '@/components/CopyTextButton';
+import { IconType } from 'react-icons/lib';
+import { SiApplemusic, SiBandcamp, SiSpotify, SiYoutube } from 'react-icons/si';
+import { type SocialLink } from '@/sanity/types';
+
+const platformIcons: Record<SocialLink['platform'], IconType> = {
+  bandcamp: SiBandcamp,
+  youtube: SiYoutube,
+  spotify: SiSpotify,
+  appleMusic: SiApplemusic,
+};
 
 export default async function ElectronicPressKitPage({
   params,
@@ -15,7 +25,10 @@ export default async function ElectronicPressKitPage({
   const { locale } = await params;
   const data = await fetchNavigation({ locale });
   const epk = await fetchEpk({ locale });
+  const releases = await fetchReleases();
   const mediaMentions = epk?.mediaMentions;
+
+  console.log(releases);
 
   return (
     <div className="min-h-screen bg-[#fbf6fd] text-[#38133f] sm:pt-28 lg:pt-0">
@@ -64,16 +77,6 @@ export default async function ElectronicPressKitPage({
                 <p>{epk.shortBioSection.shortBio}</p>
               </div>
             )}
-            {/* {epk?.shortBio && (
-              <div className="relative bg-[#f5edfa] p-8 pt-12 text-left text-base leading-relaxed">
-                <CopyButton
-                  text={epk.shortBio}
-                  className="absolute top-4 right-4 cursor-pointer p-4 transition-colors hover:bg-[#edd9f5]"
-                />
-
-                {epk.shortBio}
-              </div>
-            )} */}
           </section>
           <section className="flex flex-col gap-6">
             <h2 className="font-serif text-3xl font-semibold">
@@ -110,6 +113,51 @@ export default async function ElectronicPressKitPage({
               />
             </div>
           </section>
+          {epk?.releasesSectionTitle != null && (
+            <section className="flex flex-col gap-6">
+              <h2 className="font-serif text-3xl font-semibold">
+                {epk?.releasesSectionTitle}
+              </h2>
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {releases.map((release) => {
+                  return (
+                    <article key={release._id} className="flex flex-col gap-1">
+                      <Image
+                        src={
+                          release.coverImage?.asset?.url ||
+                          '/images/albumart.jpg'
+                        }
+                        alt={release.title}
+                        width={1000}
+                        height={1000}
+                      />
+                      <h2 className="text-center text-base sm:text-left">
+                        {release.title} (
+                        <span className="uppercase">{release.type}</span>,{' '}
+                        {release.releaseYear})
+                      </h2>
+                      <div className="flex flex-wrap items-center justify-center gap-1 sm:justify-start">
+                        {release.availableOn?.map(({ platform, url }) => {
+                          const Icon = platformIcons[platform];
+                          return (
+                            <Link
+                              href={url}
+                              key={platform}
+                              className="flex h-10 w-10 items-center justify-center bg-[#f5edfa] hover:bg-white"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <Icon className="h-6 w-6" />
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </article>
+                  );
+                })}
+              </div>
+            </section>
+          )}
           {Array.isArray(mediaMentions) && mediaMentions.length > 0 && (
             <section className="flex flex-col gap-6">
               <h2 className="font-serif text-3xl font-semibold">
