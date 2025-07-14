@@ -32,7 +32,7 @@ export const Footer = async () => {
             </ReusableTooltip>
           )}
         </div>
-        <p className="text-center text-sm text-neutral-200">
+        <p className="text-center text-sm text-neutral-200 uppercase">
           © The Keeymen 2013 - {new Date().getFullYear()}
         </p>
       </Container>
