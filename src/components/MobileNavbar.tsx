@@ -57,7 +57,7 @@ export const MobileNavbar = ({
     <>
       <div
         className={cn(
-          'fixed top-0 left-0 z-50 flex w-full items-center gap-3 px-4 py-2 drop-shadow-2xl lg:hidden',
+          'fixed top-0 left-0 z-50 flex w-full items-center gap-3 py-2 drop-shadow-2xl lg:hidden',
           !initiallyTransparent &&
             'bg-linear-to-b from-[#408ea3] to-[#408ea3]/80',
           initiallyTransparent &&
@@ -181,19 +181,22 @@ const HamburgerButton = ({
       <motion.span
         animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
         className={cn(
-          'block h-1 w-6 origin-center bg-[#fefefe]',
+          'block h-1 w-6 origin-center rounded-lg bg-[#fefefe]',
           isOpen && 'bg-[#408ea3]',
         )}
       />
       <motion.span
         animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
         transition={{ duration: 0.1 }}
-        className={cn('block h-1 w-6 bg-[#fefefe]', isOpen && 'bg-[#408ea3]')}
+        className={cn(
+          'block h-1 w-6 rounded-lg bg-[#fefefe]',
+          isOpen && 'bg-[#408ea3]',
+        )}
       />
       <motion.span
         animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
         className={cn(
-          'block h-1 w-6 origin-center bg-[#fefefe]',
+          'block h-1 w-6 origin-center rounded-lg bg-[#fefefe]',
           isOpen && 'bg-[#408ea3]',
         )}
       />

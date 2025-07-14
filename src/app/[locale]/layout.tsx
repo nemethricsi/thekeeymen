@@ -4,6 +4,7 @@ import { Locale } from '@/i18n-config';
 import { fetchMetadata, fetchNavigation } from '@/sanity/lib/queries';
 import { BackToTop } from '@/components/BackToTop';
 import { MobileNavbar } from '@/components/MobileNavbar';
+import { WaveOpacityDivider } from '@/components/WaveOpacityDivider';
 
 export async function generateMetadata({
   params,
@@ -45,6 +46,9 @@ export default async function LocalizedLayout({
         <MobileNavbar navItems={navigation.navigation} />
       )}
       {children}
+      <section className="relative">
+        <WaveOpacityDivider />
+      </section>
       <Footer />
     </>
   );

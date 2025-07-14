@@ -33,7 +33,7 @@ export default async function ElectronicPressKitPage({
     <div className="min-h-screen bg-[#fbf6fd] text-[#38133f] sm:pt-28 lg:pt-0">
       {data?.navigation && <StaticNavbar navItems={data.navigation} />}
       <main className="pt-[calc(80px+3rem)]">
-        <Container className="gap-10 pb-12 lg:gap-16">
+        <Container className="gap-10 pb-24 lg:gap-16">
           <div className="flex flex-col items-center gap-6">
             <h1 className="text-center font-serif text-4xl font-bold">
               {epk?.title}
@@ -43,7 +43,7 @@ export default async function ElectronicPressKitPage({
                 <Link
                   href={epk.downloadablePressKit.url}
                   target="_blank"
-                  className="flex items-center gap-2 border bg-[#f5edfa] px-4 py-2 transition-colors hover:bg-[#edd9f5]"
+                  className="flex items-center gap-2 rounded-lg border border-[#dcbdea] bg-[#f5edfa] px-4 py-2 font-medium text-[#7a3c8f] transition-colors hover:bg-[#edd9f5]"
                 >
                   <CloudDownloadIcon />
                   <span>{epk.downloadablePressKit.label}</span>
@@ -83,32 +83,32 @@ export default async function ElectronicPressKitPage({
             </h2>
             <div className="flex flex-col gap-4">
               <Image
-                src="/images/press/Keeymen.jpg"
-                alt="Keeymen"
-                width={1000}
-                height={1000}
-                className="rounded-md"
-              />
-              <Image
                 src="/images/press/Keeymen_5.jpg"
                 alt="Keeymen5"
                 width={1000}
                 height={1000}
-                className="rounded-md"
+                className="rounded-lg"
+              />
+              <Image
+                src="/images/press/Keeymen.jpg"
+                alt="Keeymen"
+                width={1000}
+                height={1000}
+                className="rounded-lg"
               />
               <Image
                 src="/images/press/Keeymen_7.jpg"
                 alt="Keeymen7"
                 width={1000}
                 height={1000}
-                className="rounded-md"
+                className="rounded-lg"
               />
               <Image
                 src="/images/press/Keeymen_8.jpg"
                 alt="Keeymen8"
                 width={1000}
                 height={1000}
-                className="rounded-md"
+                className="rounded-lg"
               />
             </div>
           </section>
@@ -129,6 +129,7 @@ export default async function ElectronicPressKitPage({
                         alt={release.title}
                         width={800}
                         height={800}
+                        className="rounded-lg"
                       />
                       <h2 className="text-center text-base sm:text-left">
                         {release.title} (
@@ -146,7 +147,7 @@ export default async function ElectronicPressKitPage({
                             >
                               <Link
                                 href={url}
-                                className="flex h-10 w-10 items-center justify-center bg-[#f5edfa] hover:bg-white"
+                                className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#f5edfa] transition-colors hover:bg-[#ebdaf4]"
                                 target="_blank"
                                 rel="noopener noreferrer"
                               >
@@ -171,7 +172,7 @@ export default async function ElectronicPressKitPage({
                 {mediaMentions?.map((mention) => (
                   <article
                     key={mention._key}
-                    className="flex flex-col gap-1 bg-[#f5edfa] p-8 text-base leading-relaxed text-neutral-900"
+                    className="flex flex-col gap-1 rounded-lg bg-[#f5edfa] p-8 text-base leading-relaxed text-neutral-900"
                   >
                     <p className="italic">&ldquo;{mention.quote}&rdquo;</p>
                     <p className="text-sm font-semibold">

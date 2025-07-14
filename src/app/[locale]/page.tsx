@@ -12,7 +12,6 @@ import {
 import { Locale } from '@/i18n-config';
 import { LogoWithLocaleSwitcher } from '@/components/LogoWithLocaleSwitcher';
 import { DesktopNavigation } from '@/components/DesktopNavigation';
-import { WaveOpacityDivider } from '@/components/WaveOpacityDivider';
 import { ContactFormComponent } from '@/components/ContactForm';
 
 export const revalidate = 60;
@@ -46,7 +45,9 @@ export default async function Home({
             {homePageData?.youtubeUrl && (
               <EmbedYoutube src={homePageData.youtubeUrl} />
             )}
-            <p className="text-center">{homePageData?.title}</p>
+            <p className="text-center text-sm text-[#faf6fd]">
+              {homePageData?.title}
+            </p>
           </div>
           <EmbedSpotify />
         </Container>
@@ -76,7 +77,6 @@ export default async function Home({
                 errorMessage={contactFormData.messages.error}
               />
             </Container>
-            <WaveOpacityDivider />
           </section>
         )}
     </main>

@@ -58,7 +58,7 @@ export const ContactFormComponent = ({
           rows={5}
           required
           className={cn(
-            'w-full resize-none border border-[#fefefe]/50 p-4 text-lg font-medium focus:bg-[#fefefe]/5 focus:outline-2 focus:outline-offset-3 focus:outline-[#fefefe]',
+            'w-full resize-none rounded-lg border border-[#fefefe]/50 p-4 text-lg font-medium focus:bg-[#fefefe]/5 focus:outline-2 focus:outline-offset-3 focus:outline-[#fefefe]',
             (state.errors?.getFieldErrors('message').length || 0 > 0) &&
               'outline-2 outline-offset-2 outline-rose-300',
           )}
@@ -68,7 +68,7 @@ export const ContactFormComponent = ({
           prefix="Message"
           field="message"
           errors={state.errors}
-          className="w-fit bg-rose-100 px-2 py-1 text-sm text-rose-500"
+          className="w-fit rounded-lg bg-rose-100 px-2 py-1 text-sm text-rose-500"
         />
       </div>
       <div className="flex flex-col gap-2">
@@ -77,7 +77,7 @@ export const ContactFormComponent = ({
           type="email"
           required
           className={cn(
-            'w-full border border-[#fefefe]/50 p-4 text-lg font-medium outline-[#fefefe] focus:bg-[#fefefe]/5 focus:outline-2 focus:outline-offset-3',
+            'w-full rounded-lg border border-[#fefefe]/50 p-4 text-lg font-medium outline-[#fefefe] focus:bg-[#fefefe]/5 focus:outline-2 focus:outline-offset-3',
             (state.errors?.getFieldErrors('email').length || 0 > 0) &&
               'outline-2 outline-offset-2 outline-rose-300',
           )}
@@ -87,7 +87,7 @@ export const ContactFormComponent = ({
           prefix="Email"
           field="email"
           errors={state.errors}
-          className="w-fit bg-rose-100 px-2 py-1 text-sm text-rose-500"
+          className="w-fit rounded-lg bg-rose-100 px-2 py-1 text-sm text-rose-500"
         />
       </div>
       <div className="flex flex-col gap-1">
@@ -95,7 +95,7 @@ export const ContactFormComponent = ({
           name="phone"
           type="tel"
           className={cn(
-            'w-full border border-[#fefefe]/50 p-4 text-lg font-medium outline-[#fefefe] focus:bg-[#fefefe]/5 focus:outline-2 focus:outline-offset-3',
+            'w-full rounded-lg border border-[#fefefe]/50 p-4 text-lg font-medium outline-[#fefefe] focus:bg-[#fefefe]/5 focus:outline-2 focus:outline-offset-3',
             (state.errors?.getFieldErrors('phone').length || 0 > 0) &&
               'outline-2 outline-offset-2 outline-rose-300',
           )}
@@ -105,13 +105,13 @@ export const ContactFormComponent = ({
           prefix="Phone"
           field="phone"
           errors={state.errors}
-          className="w-fit bg-rose-100 px-2 py-1 text-sm text-rose-500"
+          className="w-fit rounded-lg bg-rose-100 px-2 py-1 text-sm text-rose-500"
         />
       </div>
       <button
         type="submit"
         disabled={state.submitting}
-        className="group flex w-full items-center justify-center gap-2 bg-[#fefefe] px-4 py-2 font-bold text-[#8e43a5] uppercase transition-colors hover:cursor-pointer focus:outline-2 focus:outline-offset-3 focus:outline-[#fefefe] active:bg-[#fefefe]/75 active:outline-none disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-[#fefefe]"
+        className="group flex w-full items-center justify-center gap-2 rounded-lg bg-[#fefefe] px-4 py-2 font-bold text-[#8e43a5] uppercase transition-colors hover:cursor-pointer focus:outline-2 focus:outline-offset-3 focus:outline-[#fefefe] active:bg-[#fefefe]/75 active:outline-none disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-[#fefefe]"
       >
         {state.submitting && <LoaderIcon className="animate-spin" />}
         <span>
@@ -122,7 +122,7 @@ export const ContactFormComponent = ({
         )}
       </button>
       {state.succeeded && (
-        <div className="flex items-center justify-between border border-lime-600 bg-lime-100 px-2 py-1 font-medium text-lime-700 select-none">
+        <div className="flex items-center justify-between rounded-lg border border-lime-600 bg-lime-100 px-2 py-1 font-medium text-lime-700 select-none">
           <span>{successMessage}</span>
           <button
             type="button"
@@ -134,7 +134,7 @@ export const ContactFormComponent = ({
         </div>
       )}
       {state.errors != null && (
-        <div className="flex items-center justify-between border border-rose-300 bg-rose-100 px-2 py-1 font-medium text-rose-700 select-none">
+        <div className="flex items-center justify-between rounded-lg border border-rose-300 bg-rose-100 px-2 py-1 font-medium text-rose-700 select-none">
           <span>{errorMessage}</span>
           <button
             type="button"
