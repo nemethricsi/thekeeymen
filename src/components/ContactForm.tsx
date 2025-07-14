@@ -71,7 +71,8 @@ export const ContactForm = () => {
         <div className="flex items-center justify-between border border-lime-600 bg-lime-100 px-2 py-1 font-medium text-lime-700 select-none">
           <span>Message sent successfully!</span>
           <button
-            className="cursor-pointer rounded-full p-1 hover:bg-lime-200"
+            type="button"
+            className="cursor-pointer rounded-full p-1 transition-colors hover:bg-lime-200"
             onClick={reset}
           >
             <XIcon />
@@ -82,7 +83,8 @@ export const ContactForm = () => {
         <div className="flex items-center justify-between border border-rose-300 bg-rose-100 px-2 py-1 font-medium text-rose-700 select-none">
           <span>Something went wrong. Please try again.</span>
           <button
-            className="cursor-pointer rounded-full p-1 hover:bg-rose-200"
+            type="button"
+            className="cursor-pointer rounded-full p-1 transition-colors hover:bg-rose-200"
             onClick={reset}
           >
             <XIcon />
