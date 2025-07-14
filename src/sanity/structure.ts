@@ -35,7 +35,7 @@ export const structure: StructureResolver = (S) =>
       S.listItem()
         .id('epk')
         .schemaType('epk')
-        .title('Electronic Press Kit')
+        .title('Press Kit')
         .child(S.editor().id('epk').schemaType('epk').documentId('epk')),
       S.divider(),
       ...S.documentTypeListItems().filter(

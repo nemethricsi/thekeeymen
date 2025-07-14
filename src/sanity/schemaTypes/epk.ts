@@ -2,7 +2,7 @@ import { defineField, defineType } from 'sanity';
 
 export const epk = defineType({
   name: 'epk',
-  title: 'Electronic Press Kit',
+  title: 'Press Kit',
   type: 'document',
   icon: () => '🎙️',
   fields: [
