@@ -11,7 +11,7 @@ const TYPES = [
 
 export const release = defineType({
   name: 'release',
-  title: 'Kiadványok',
+  title: 'Megjelenések',
   type: 'document',
   icon: () => '📀',
   fields: [
