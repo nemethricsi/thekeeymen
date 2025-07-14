@@ -70,13 +70,13 @@ export const MobileNavbar = ({
         <Container
           className={cn(
             'flex-row items-center gap-3',
-            !scrolled && 'pt-4 sm:pt-8',
+            !scrolled && isHomePage && 'pt-4 sm:pt-8',
           )}
         >
           <motion.div
             initial={false}
             animate={{
-              width: scrolled ? 120 : '100%',
+              width: scrolled || !isHomePage ? 120 : '100%',
               opacity: isOpen ? 0 : 1,
             }}
           >

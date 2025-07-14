@@ -30,14 +30,14 @@ export default async function ElectronicPressKitPage({
   const mediaMentions = epk?.mediaMentions;
 
   return (
-    <div className="min-h-screen bg-[#fbf6fd] text-[#38133f] sm:pt-28 lg:pt-0">
+    <div className="min-h-screen bg-[#fbf6fd] text-[#38133f] lg:pt-0">
       {data?.navigation && <StaticNavbar navItems={data.navigation} />}
-      <main className="pt-[calc(80px+3rem)]">
-        <Container className="gap-10 pb-24 lg:gap-16">
+      <main className="pt-20 lg:pt-28">
+        <Container className="gap-16 pb-24 lg:gap-20">
           <div className="flex flex-col items-center gap-6">
-            <h1 className="text-center font-serif text-4xl font-bold">
+            {/* <h1 className="text-center font-serif text-4xl font-bold">
               {epk?.title}
-            </h1>
+            </h1> */}
             {epk?.downloadablePressKit != null && (
               <div>
                 <Link
