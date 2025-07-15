@@ -60,7 +60,7 @@ export default async function Home({
         contactFormData.submitButton?.sendingLabel &&
         contactFormData.messages?.success &&
         contactFormData.messages?.error && (
-          <section id="contact" className="relative scroll-mt-6 py-10 pb-30">
+          <section id="contact" className="relative scroll-mt-9 py-10 pb-30">
             <Container className="gap-4">
               <h2 className="text-center font-serif text-2xl font-bold uppercase lg:text-3xl">
                 {contactFormData.title}

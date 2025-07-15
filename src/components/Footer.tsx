@@ -1,15 +1,20 @@
 import { Container } from '@/components/Container';
-import { SiBandcamp, SiSpotify, SiApplemusic } from 'react-icons/si';
+import {
+  SiBandcamp,
+  SiSpotify,
+  SiApplemusic,
+  SiBandsintown,
+} from 'react-icons/si';
 import { fetchSocials } from '@/sanity/lib/queries';
-import { ReusableTooltip } from './ReusableTooltip';
+import { ReusableTooltip } from '@/components/ReusableTooltip';
 
 export const Footer = async () => {
   const socials = await fetchSocials();
 
   return (
-    <footer className="relative bg-[#408ea3] pb-5">
-      <Container className="pt-5">
-        <div className="flex justify-center gap-5 p-4 lg:gap-10">
+    <footer className="relative bg-[#408ea3]">
+      <Container className="pt-5 pb-4">
+        <div className="flex justify-start sm:justify-center sm:gap-5 sm:p-4 lg:gap-10">
           {socials?.bandcamp && (
             <ReusableTooltip message="Bandcamp">
               <SocialIcon href={socials.bandcamp}>
@@ -31,8 +36,15 @@ export const Footer = async () => {
               </SocialIcon>
             </ReusableTooltip>
           )}
+          {socials?.bandsInTown && (
+            <ReusableTooltip message="Bands in Town">
+              <SocialIcon href={socials.bandsInTown}>
+                <SiBandsintown size={30} />
+              </SocialIcon>
+            </ReusableTooltip>
+          )}
         </div>
-        <p className="text-center text-sm text-neutral-200 uppercase">
+        <p className="text-xs text-neutral-200 uppercase sm:text-center sm:text-sm">
           © The Keeymen 2013 - {new Date().getFullYear()}
         </p>
       </Container>

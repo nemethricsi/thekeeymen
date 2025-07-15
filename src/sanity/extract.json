@@ -981,6 +981,13 @@
           "type": "string"
         },
         "optional": true
+      },
+      "bandsInTown": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
       }
     }
   },
