@@ -9,9 +9,14 @@ import { useState } from 'react';
 interface EventListProps {
   events: BandsInTownEvent[];
   numberToShow: number;
+  noResultText: string | null | undefined;
 }
 
-export const EventList = ({ events, numberToShow }: EventListProps) => {
+export const EventList = ({
+  events,
+  numberToShow,
+  noResultText,
+}: EventListProps) => {
   const [open, setOpen] = useState(false);
 
   const visibleEvents = events.slice(0, numberToShow);
@@ -21,8 +26,10 @@ export const EventList = ({ events, numberToShow }: EventListProps) => {
     return (
       <div className="flex w-full items-start gap-3 rounded-lg border border-[#dcbdea] bg-[#ae6bca] p-4 lg:items-center">
         <GuitarIcon className="h-6 w-6 flex-shrink-0 text-[#edd9f5]" />
-        <p className="text-lg font-semibold text-[#fbf6fd]">
-          No gigs right now — we&apos;re cooking up the next ones.
+          <p className="font-semibold text-[#fbf6fd]">
+            {noResultText
+              ? noResultText
+              : 'No gigs right now — we&apos;re cooking up the next ones.'}
         </p>
         <HandMetalIcon className="h-6 w-6 flex-shrink-0 text-[#edd9f5]" />
       </div>

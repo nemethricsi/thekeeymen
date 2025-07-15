@@ -272,6 +272,11 @@ export type HomePage = {
     } & InternationalizedArrayStringValue
   >;
   youtubeUrl: string;
+  noResultText: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
 };
 
 export type InternationalizedArrayTextValue = {
@@ -444,19 +449,22 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: HOME_PAGE_QUERY
-// Query: *[_id == "homePage"][0]{    "title": title[_key == $locale][0].value,    youtubeUrl,  }
+// Query: *[_id == "homePage"][0]{    "title": title[_key == $locale][0].value,    youtubeUrl,    "noResultText": noResultText[_key == $locale][0].value,  }
 export type HOME_PAGE_QUERYResult =
   | {
       title: null;
       youtubeUrl: null;
+      noResultText: null;
     }
   | {
       title: string | null;
       youtubeUrl: null;
+      noResultText: null;
     }
   | {
       title: string | null;
       youtubeUrl: string;
+      noResultText: string | null;
     }
   | null;
 // Variable: PAGE_SETTINGS_QUERY
@@ -644,7 +652,7 @@ export type RELEASES_QUERYResult = Array<{
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
-    '\n  *[_id == "homePage"][0]{\n    "title": title[_key == $locale][0].value,\n    youtubeUrl,\n  }\n': HOME_PAGE_QUERYResult;
+    '\n  *[_id == "homePage"][0]{\n    "title": title[_key == $locale][0].value,\n    youtubeUrl,\n    "noResultText": noResultText[_key == $locale][0].value,\n  }\n': HOME_PAGE_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    navigation,\n    "seoTitle": seoTitle[_key == $locale][0].value,\n    "seoDescription": seoDescription[_key == $locale][0].value,\n  }\n': PAGE_SETTINGS_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    "seoTitle": seoTitle[_key == $locale][0].value,\n    "seoDescription": seoDescription[_key == $locale][0].value,\n  }\n': METADATA_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    "navigation": navigation[]{\n      href,\n      "label": label[_key == $locale][0].value,\n    }\n  }\n': NAVIGATION_QUERYResult;
