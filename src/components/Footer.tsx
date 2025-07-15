@@ -8,7 +8,11 @@ import {
 import { fetchSocials } from '@/sanity/lib/queries';
 import { ReusableTooltip } from '@/components/ReusableTooltip';
 
-export const Footer = async () => {
+export const Footer = async ({
+  seoTitle,
+}: {
+  seoTitle: string | null | undefined;
+}) => {
   const socials = await fetchSocials();
 
   return (
@@ -45,7 +49,8 @@ export const Footer = async () => {
           )}
         </div>
         <p className="text-xs text-neutral-200 uppercase sm:text-center sm:text-sm">
-          © The Keeymen 2013 - {new Date().getFullYear()}
+          © {seoTitle ? seoTitle : 'The Keeymen'} 2013 -{' '}
+          {new Date().getFullYear()}
         </p>
       </Container>
     </footer>
