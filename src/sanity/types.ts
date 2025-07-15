@@ -210,6 +210,7 @@ export type Socials = {
   spotify?: string;
   bandcamp?: string;
   appleMusic?: string;
+  bandsInTown?: string;
 };
 
 export type Navigation = Array<
@@ -498,17 +499,19 @@ export type NAVIGATION_QUERYResult =
     }
   | null;
 // Variable: SOCIALS_QUERY
-// Query: *[_id == "socials"][0]{    spotify,    bandcamp,    appleMusic,  }
+// Query: *[_id == "socials"][0]{    spotify,    bandcamp,    appleMusic,    bandsInTown,  }
 export type SOCIALS_QUERYResult =
   | {
       spotify: null;
       bandcamp: null;
       appleMusic: null;
+      bandsInTown: null;
     }
   | {
       spotify: string | null;
       bandcamp: string | null;
       appleMusic: string | null;
+      bandsInTown: string | null;
     }
   | null;
 // Variable: EPK_QUERY
@@ -645,7 +648,7 @@ declare module '@sanity/client' {
     '\n  *[_id == "pageSettings"][0]{\n    navigation,\n    "seoTitle": seoTitle[_key == $locale][0].value,\n    "seoDescription": seoDescription[_key == $locale][0].value,\n  }\n': PAGE_SETTINGS_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    "seoTitle": seoTitle[_key == $locale][0].value,\n    "seoDescription": seoDescription[_key == $locale][0].value,\n  }\n': METADATA_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    "navigation": navigation[]{\n      href,\n      "label": label[_key == $locale][0].value,\n    }\n  }\n': NAVIGATION_QUERYResult;
-    '\n  *[_id == "socials"][0]{\n    spotify,\n    bandcamp,\n    appleMusic,\n  }\n': SOCIALS_QUERYResult;
+    '\n  *[_id == "socials"][0]{\n    spotify,\n    bandcamp,\n    appleMusic,\n    bandsInTown,\n  }\n': SOCIALS_QUERYResult;
     '\n  *[_id == "epk"][0]{\n    "title": title[_key == $locale][0].value,\n    downloadablePressKit{\n      "label": label[_key == $locale][0].value,\n      url,\n    },\n    shortBioSection{\n      "shortBioTitle": shortBioTitle[_key == $locale][0].value,\n      "shortBio": shortBio[_key == $locale][0].value,\n      copyButtonLabels{\n        "copyLabel": copyLabel[_key == $locale][0].value,\n        "successLabel": successLabel[_key == $locale][0].value,\n        "errorLabel": errorLabel[_key == $locale][0].value,\n      }\n    },\n    socialMediaSection{\n      "title": title[_key == $locale][0].value,\n      "description": description[_key == $locale][0].value,\n    },\n    "photosTitle": photosTitle[_key == $locale][0].value,\n    "releasesSectionTitle": releasesSectionTitle[_key == $locale][0].value,\n    "mediaMentionsTitle": mediaMentionsTitle[_key == $locale][0].value,\n    "mediaMentions": mediaMentions[]{\n      ...,\n      "quote": quote[_key == $locale][0].value,\n      publication,\n      url,\n      title,\n      author,\n      date,\n    }\n  }\n': EPK_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    openGraphImage{\n      asset->{\n        url,\n      }\n    }\n  }\n': OPEN_GRAPH_IMAGE_QUERYResult;
     '\n  *[_id == "contactForm"][0]{\n    "title": title[_key == $locale][0].value,\n    placeholders{\n      "message": message[_key == $locale][0].value,\n      "email": email[_key == $locale][0].value,\n      "phone": phone[_key == $locale][0].value,\n    },\n    submitButton{\n      "sendLabel": sendLabel[_key == $locale][0].value,\n      "sendingLabel": sendingLabel[_key == $locale][0].value,\n    },\n    messages{\n      "success": success[_key == $locale][0].value,\n      "error": error[_key == $locale][0].value,\n    },\n  }\n': CONTACT_FORM_QUERYResult;

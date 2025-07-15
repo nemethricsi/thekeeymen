@@ -1,5 +1,10 @@
 import { Container } from '@/components/Container';
-import { SiBandcamp, SiSpotify, SiApplemusic } from 'react-icons/si';
+import {
+  SiBandcamp,
+  SiSpotify,
+  SiApplemusic,
+  SiBandsintown,
+} from 'react-icons/si';
 import { fetchSocials } from '@/sanity/lib/queries';
 import { ReusableTooltip } from '@/components/ReusableTooltip';
 
@@ -28,6 +33,13 @@ export const Footer = async () => {
             <ReusableTooltip message="Apple music">
               <SocialIcon href={socials.appleMusic}>
                 <SiApplemusic size={30} />
+              </SocialIcon>
+            </ReusableTooltip>
+          )}
+          {socials?.bandsInTown && (
+            <ReusableTooltip message="Bands in Town">
+              <SocialIcon href={socials.bandsInTown}>
+                <SiBandsintown size={30} />
               </SocialIcon>
             </ReusableTooltip>
           )}

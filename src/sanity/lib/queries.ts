@@ -67,6 +67,7 @@ export const SOCIALS_QUERY = defineQuery(`
     spotify,
     bandcamp,
     appleMusic,
+    bandsInTown,
   }
 `);
 export const fetchSocials = async () => {

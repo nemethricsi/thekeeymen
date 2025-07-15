@@ -21,6 +21,11 @@ export const socials = defineType({
       name: 'appleMusic',
       title: 'Apple Music',
     }),
+    defineField({
+      type: 'url',
+      name: 'bandsInTown',
+      title: 'Bands in Town',
+    }),
   ],
   preview: {
     prepare() {
