@@ -7,8 +7,13 @@ import {
 } from 'react-icons/si';
 import { fetchSocials } from '@/sanity/lib/queries';
 import { ReusableTooltip } from '@/components/ReusableTooltip';
+import { externalLink } from '@/lib/utils';
 
-export const Footer = async () => {
+export const Footer = async ({
+  seoTitle,
+}: {
+  seoTitle: string | null | undefined;
+}) => {
   const socials = await fetchSocials();
 
   return (
@@ -45,7 +50,8 @@ export const Footer = async () => {
           )}
         </div>
         <p className="text-xs text-neutral-200 uppercase sm:text-center sm:text-sm">
-          © The Keeymen 2013 - {new Date().getFullYear()}
+          © {seoTitle ? seoTitle : 'The Keeymen'} 2013 -{' '}
+          {new Date().getFullYear()}
         </p>
       </Container>
     </footer>
@@ -63,8 +69,7 @@ const SocialIcon = ({
     <a
       href={href}
       className="flex h-12 w-12 items-center justify-center rounded-full opacity-90 transition-all duration-300 hover:-rotate-12 hover:bg-white/10 hover:opacity-100"
-      target="_blank"
-      rel="noopener noreferrer"
+      {...externalLink}
     >
       {children}
     </a>

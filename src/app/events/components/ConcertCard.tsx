@@ -1,6 +1,6 @@
 import { parseBandsInTownDate } from '@/app/events/parseBandsInTownDate';
 import { BandsInTownEvent } from '@/lib/bands-in-town';
-import { cn } from '@/lib/utils';
+import { cn, externalLink } from '@/lib/utils';
 import { ArrowUpRightIcon, BellRingIcon } from 'lucide-react';
 
 export const ConcertCard = ({ event }: { event: BandsInTownEvent }) => {
@@ -87,12 +87,11 @@ const ClickableCta = ({
   return (
     <a
       href={url}
-      target="_blank"
-      rel="noopener noreferrer"
       className={cn(
         'flex w-full flex-shrink-0 items-center justify-center gap-2 rounded-lg border border-[#f5edfa] bg-[#f5edfa] px-4 py-2 font-bold text-[#8e43a5] uppercase hover:bg-[#f5edfa] hover:text-[#8e43a5] hover:drop-shadow-md lg:w-auto lg:bg-transparent lg:text-[#f5edfa]',
         className,
       )}
+      {...externalLink}
     >
       {children}
     </a>

@@ -17,6 +17,20 @@ export const homePage = defineType({
       type: 'url',
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: 'noResultText',
+      type: 'internationalizedArrayString',
+      title: 'Bands in town no concert text',
+      description:
+        'Ez akkor jelenik meg, amikor nincs egy jövőbeli koncert sem a Bands in town-ban.',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: 'bandsInTownButtonText',
+      type: 'internationalizedArrayString',
+      title: 'Bands in town button text',
+      validation: (Rule) => Rule.required(),
+    }),
   ],
   preview: {
     prepare() {

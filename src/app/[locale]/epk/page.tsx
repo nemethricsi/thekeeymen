@@ -10,6 +10,7 @@ import { IconType } from 'react-icons/lib';
 import { SiApplemusic, SiBandcamp, SiSpotify, SiYoutube } from 'react-icons/si';
 import { type SocialLink } from '@/sanity/types';
 import { ReusableTooltip } from '@/components/ReusableTooltip';
+import { externalLink } from '@/lib/utils';
 
 const platformIcons: Record<SocialLink['platform'], IconType> = {
   bandcamp: SiBandcamp,
@@ -42,8 +43,8 @@ export default async function ElectronicPressKitPage({
               <div>
                 <Link
                   href={epk.downloadablePressKit.url}
-                  target="_blank"
                   className="flex items-center gap-2 rounded-lg border border-[#dcbdea] bg-[#f5edfa] px-4 py-2 font-medium text-[#7a3c8f] transition-colors hover:bg-[#edd9f5]"
+                  {...externalLink}
                 >
                   <CloudDownloadIcon />
                   <span>{epk.downloadablePressKit.label}</span>
@@ -148,8 +149,7 @@ export default async function ElectronicPressKitPage({
                               <Link
                                 href={url}
                                 className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#f5edfa] transition-colors hover:bg-[#ebdaf4]"
-                                target="_blank"
-                                rel="noopener noreferrer"
+                                {...externalLink}
                               >
                                 <Icon className="h-6 w-6" />
                               </Link>
@@ -180,9 +180,8 @@ export default async function ElectronicPressKitPage({
                       {mention.url != null ? (
                         <a
                           href={mention.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
                           className="underline underline-offset-2"
+                          {...externalLink}
                         >
                           {mention.publication}
                         </a>

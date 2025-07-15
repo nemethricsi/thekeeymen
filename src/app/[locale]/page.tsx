@@ -36,7 +36,12 @@ export default async function Home({
         className="scroll-mt-14 bg-linear-to-b from-transparent to-[#8e43a5] py-10 lg:scroll-mt-20"
       >
         <Container className="gap-10">
-          <EventList events={events} numberToShow={3} />
+          <EventList
+            events={events}
+            numberToShow={3}
+            noResultText={homePageData?.noResultText}
+            bandsInTownButtonText={homePageData?.bandsInTownButtonText}
+          />
         </Container>
       </section>
       <section id="media" className="relative scroll-mt-20 bg-[#8e43a5] py-10">

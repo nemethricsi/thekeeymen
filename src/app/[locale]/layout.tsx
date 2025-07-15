@@ -38,6 +38,7 @@ export default async function LocalizedLayout({
 }) {
   const { locale } = await params;
   const navigation = await fetchNavigation({ locale });
+  const metadata = await fetchMetadata({ locale });
 
   return (
     <>
@@ -49,7 +50,7 @@ export default async function LocalizedLayout({
       <section className="relative">
         <WaveOpacityDivider />
       </section>
-      <Footer />
+      <Footer seoTitle={metadata?.seoTitle} />
     </>
   );
 }
