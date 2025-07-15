@@ -126,7 +126,7 @@ export const MobileNavbar = ({
                     href={href}
                     onClick={() => setIsOpen(false)}
                     className={cn(
-                      'mb-4 flex items-center justify-center gap-2 bg-[#edd9f5]/25 p-3 text-lg font-semibold',
+                      'mb-4 flex items-center justify-center gap-2 rounded-lg bg-[#edd9f5]/25 p-3 text-lg font-semibold',
                       isActive && 'border-2',
                     )}
                   >
@@ -145,7 +145,7 @@ export const MobileNavbar = ({
                     key={locale}
                     href={redirectedPathname(locale)}
                     className={cn(
-                      'flex-1 border border-[#edd9f5]/25 p-2 text-center uppercase',
+                      'flex-1 rounded-lg border border-[#edd9f5]/25 p-2 text-center uppercase',
                       locale === currentLocale && 'bg-[#edd9f5]/25',
                     )}
                   >
