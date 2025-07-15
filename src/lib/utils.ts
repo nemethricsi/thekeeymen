@@ -14,3 +14,8 @@ export function getLocaleFromPathname(pathname: string) {
   const pathnameParts = pathname.split('/');
   return pathnameParts[1] as Locale;
 }
+
+export const externalLink = {
+  target: '_blank',
+  rel: 'noopener noreferrer',
+};

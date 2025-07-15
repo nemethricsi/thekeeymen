@@ -7,6 +7,7 @@ import {
 } from 'react-icons/si';
 import { fetchSocials } from '@/sanity/lib/queries';
 import { ReusableTooltip } from '@/components/ReusableTooltip';
+import { externalLink } from '@/lib/utils';
 
 export const Footer = async ({
   seoTitle,
@@ -68,8 +69,7 @@ const SocialIcon = ({
     <a
       href={href}
       className="flex h-12 w-12 items-center justify-center rounded-full opacity-90 transition-all duration-300 hover:-rotate-12 hover:bg-white/10 hover:opacity-100"
-      target="_blank"
-      rel="noopener noreferrer"
+      {...externalLink}
     >
       {children}
     </a>
