@@ -25,6 +25,12 @@ export const homePage = defineType({
         'Ez akkor jelenik meg, amikor nincs egy jövőbeli koncert sem a Bands in town-ban.',
       validation: (Rule) => Rule.required(),
     }),
+    defineField({
+      name: 'bandsInTownButtonText',
+      type: 'internationalizedArrayString',
+      title: 'Bands in town button text',
+      validation: (Rule) => Rule.required(),
+    }),
   ],
   preview: {
     prepare() {

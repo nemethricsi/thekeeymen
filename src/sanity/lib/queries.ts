@@ -7,6 +7,7 @@ export const HOME_PAGE_QUERY = defineQuery(`
     "title": title[_key == $locale][0].value,
     youtubeUrl,
     "noResultText": noResultText[_key == $locale][0].value,
+    "bandsInTownButtonText": bandsInTownButtonText[_key == $locale][0].value,
   }
 `);
 

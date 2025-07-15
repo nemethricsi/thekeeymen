@@ -40,6 +40,7 @@ export default async function Home({
             events={events}
             numberToShow={3}
             noResultText={homePageData?.noResultText}
+            bandsInTownButtonText={homePageData?.bandsInTownButtonText}
           />
         </Container>
       </section>
