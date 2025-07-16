@@ -12,6 +12,10 @@ interface EventListProps {
   numberToShow: number;
   noResultText: string | null | undefined;
   bandsInTownButtonText: string | null | undefined;
+  soldOutLabel: string | null | undefined;
+  freeLabel: string | null | undefined;
+  ticketsLabel: string | null | undefined;
+  notifyMeLabel: string | null | undefined;
 }
 
 export const EventList = ({
@@ -19,6 +23,10 @@ export const EventList = ({
   numberToShow,
   noResultText,
   bandsInTownButtonText,
+  soldOutLabel,
+  freeLabel,
+  ticketsLabel,
+  notifyMeLabel,
 }: EventListProps) => {
   const [open, setOpen] = useState(false);
   const artist = events.length > 0 ? events[0].artist : null;
@@ -61,7 +69,14 @@ export const EventList = ({
       <div className="flex w-full flex-col gap-8 lg:gap-0">
         {/* Always visible concerts */}
         {visibleEvents.map((event) => (
-          <ConcertCard key={event.id} event={event} />
+          <ConcertCard
+            key={event.id}
+            event={event}
+            soldOutLabel={soldOutLabel}
+            freeLabel={freeLabel}
+            ticketsLabel={ticketsLabel}
+            notifyMeLabel={notifyMeLabel}
+          />
         ))}
 
         {/* Collapsible hidden concerts */}
@@ -79,7 +94,14 @@ export const EventList = ({
               className="overflow-hidden"
             >
               {hiddenEvents.map((event) => (
-                <ConcertCard key={event.id} event={event} />
+                <ConcertCard
+                  key={event.id}
+                  event={event}
+                  soldOutLabel={soldOutLabel}
+                  freeLabel={freeLabel}
+                  ticketsLabel={ticketsLabel}
+                  notifyMeLabel={notifyMeLabel}
+                />
               ))}
             </motion.div>
           )}

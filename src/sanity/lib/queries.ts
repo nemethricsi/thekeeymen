@@ -12,8 +12,14 @@ export const HOME_PAGE_QUERY = defineQuery(`
       "caption": caption[_key == $locale][0].value,
       embedCode,
     },
-    "noResultText": noResultText[_key == $locale][0].value,
-    "bandsInTownButtonText": bandsInTownButtonText[_key == $locale][0].value,
+    bandsInTownLabels{
+      "noResultText": noResultText[_key == $locale][0].value,
+      "bandsInTownButtonText": bandsInTownButtonText[_key == $locale][0].value,
+      "soldOut": soldOut[_key == $locale][0].value,
+      "free": free[_key == $locale][0].value,
+      "tickets": tickets[_key == $locale][0].value,
+      "notifyMe": notifyMe[_key == $locale][0].value,
+    },
   }
 `);
 

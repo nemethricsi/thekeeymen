@@ -300,6 +300,38 @@ export type HomePage = {
     >;
     embedCode: string;
   };
+  bandsInTownLabels?: {
+    noResultText: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    bandsInTownButtonText: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    soldOut: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    free: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    tickets: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    notifyMe: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+  };
   noResultText: Array<
     {
       _key: string;
@@ -482,13 +514,12 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: HOME_PAGE_QUERY
-// Query: *[_id == "homePage"][0]{    embedYoutube{      "caption": caption[_key == $locale][0].value,      youtubeUrl,    },    embedSpotify{      "caption": caption[_key == $locale][0].value,      embedCode,    },    "noResultText": noResultText[_key == $locale][0].value,    "bandsInTownButtonText": bandsInTownButtonText[_key == $locale][0].value,  }
+// Query: *[_id == "homePage"][0]{    embedYoutube{      "caption": caption[_key == $locale][0].value,      youtubeUrl,    },    embedSpotify{      "caption": caption[_key == $locale][0].value,      embedCode,    },    bandsInTownLabels{      "noResultText": noResultText[_key == $locale][0].value,      "bandsInTownButtonText": bandsInTownButtonText[_key == $locale][0].value,      "soldOut": soldOut[_key == $locale][0].value,      "free": free[_key == $locale][0].value,      "tickets": tickets[_key == $locale][0].value,      "notifyMe": notifyMe[_key == $locale][0].value,    },  }
 export type HOME_PAGE_QUERYResult =
   | {
       embedYoutube: null;
       embedSpotify: null;
-      noResultText: null;
-      bandsInTownButtonText: null;
+      bandsInTownLabels: null;
     }
   | {
       embedYoutube: {
@@ -499,8 +530,14 @@ export type HOME_PAGE_QUERYResult =
         caption: string | null;
         embedCode: string;
       } | null;
-      noResultText: string | null;
-      bandsInTownButtonText: string | null;
+      bandsInTownLabels: {
+        noResultText: string | null;
+        bandsInTownButtonText: string | null;
+        soldOut: string | null;
+        free: string | null;
+        tickets: string | null;
+        notifyMe: string | null;
+      } | null;
     }
   | null;
 // Variable: PAGE_SETTINGS_QUERY
@@ -704,7 +741,7 @@ export type RELEASES_QUERYResult = Array<{
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
-    '\n  *[_id == "homePage"][0]{\n    embedYoutube{\n      "caption": caption[_key == $locale][0].value,\n      youtubeUrl,\n    },\n    embedSpotify{\n      "caption": caption[_key == $locale][0].value,\n      embedCode,\n    },\n    "noResultText": noResultText[_key == $locale][0].value,\n    "bandsInTownButtonText": bandsInTownButtonText[_key == $locale][0].value,\n  }\n': HOME_PAGE_QUERYResult;
+    '\n  *[_id == "homePage"][0]{\n    embedYoutube{\n      "caption": caption[_key == $locale][0].value,\n      youtubeUrl,\n    },\n    embedSpotify{\n      "caption": caption[_key == $locale][0].value,\n      embedCode,\n    },\n    bandsInTownLabels{\n      "noResultText": noResultText[_key == $locale][0].value,\n      "bandsInTownButtonText": bandsInTownButtonText[_key == $locale][0].value,\n      "soldOut": soldOut[_key == $locale][0].value,\n      "free": free[_key == $locale][0].value,\n      "tickets": tickets[_key == $locale][0].value,\n      "notifyMe": notifyMe[_key == $locale][0].value,\n    },\n  }\n': HOME_PAGE_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    navigation,\n    "seoTitle": seoTitle[_key == $locale][0].value,\n    "seoDescription": seoDescription[_key == $locale][0].value,\n  }\n': PAGE_SETTINGS_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    "seoTitle": seoTitle[_key == $locale][0].value,\n    "seoDescription": seoDescription[_key == $locale][0].value,\n  }\n': METADATA_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    "navigation": navigation[]{\n      href,\n      "label": label[_key == $locale][0].value,\n    }\n  }\n': NAVIGATION_QUERYResult;

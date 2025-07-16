@@ -1,14 +1,29 @@
+'use client';
+
 import { parseBandsInTownDate } from '@/app/events/parseBandsInTownDate';
 import { BandsInTownEvent } from '@/lib/bands-in-town';
 import { cn, externalLink } from '@/lib/utils';
 import { ArrowUpRightIcon, BellRingIcon } from 'lucide-react';
 
-export const ConcertCard = ({ event }: { event: BandsInTownEvent }) => {
+interface ConcertCardProps {
+  event: BandsInTownEvent;
+  soldOutLabel: string | null | undefined;
+  freeLabel: string | null | undefined;
+  ticketsLabel: string | null | undefined;
+  notifyMeLabel: string | null | undefined;
+}
+export const ConcertCard = ({
+  event,
+  soldOutLabel,
+  freeLabel,
+  ticketsLabel,
+  notifyMeLabel,
+}: ConcertCardProps) => {
   const { day, month, year } = parseBandsInTownDate(event.datetime);
 
   const renderCallToAction = () => {
     if (event.sold_out) {
-      return <StaticCta>Sold out</StaticCta>;
+      return <StaticCta>{soldOutLabel}</StaticCta>;
     }
 
     const offer = event.offers.length > 0 ? event.offers[0] : undefined;
@@ -19,17 +34,17 @@ export const ConcertCard = ({ event }: { event: BandsInTownEvent }) => {
     if (isFree) {
       return url ? (
         <ClickableCta url={url}>
-          <span>Free</span>
+          <span>{freeLabel}</span>
           <ArrowUpRightIcon className="h-5 w-5" />
         </ClickableCta>
       ) : (
-        <StaticCta>Free</StaticCta>
+        <StaticCta>{freeLabel}</StaticCta>
       );
     }
 
     return url ? (
       <ClickableCta url={url}>
-        <span>Tickets</span>
+        <span>{ticketsLabel}</span>
         <ArrowUpRightIcon className="h-5 w-5" />
       </ClickableCta>
     ) : (
@@ -38,7 +53,7 @@ export const ConcertCard = ({ event }: { event: BandsInTownEvent }) => {
         className="bg-transparent text-[#fefefe] lg:border-none"
       >
         <BellRingIcon className="h-5 w-5" />
-        <span>Notify me</span>
+        <span>{notifyMeLabel}</span>
       </ClickableCta>
     );
   };
@@ -100,7 +115,7 @@ const ClickableCta = ({
 
 const StaticCta = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="pointer-events-none flex w-full flex-shrink-0 cursor-not-allowed items-center justify-center gap-2 rounded-lg border border-[#f5edfa] px-4 py-2 font-bold text-[#f5edfa] uppercase opacity-50 select-none lg:w-auto lg:border-none">
+    <div className="pointer-events-none flex w-full flex-shrink-0 cursor-not-allowed items-center justify-center gap-2 rounded-lg border border-[#f5edfa] px-4 py-2 text-sm font-bold text-[#f5edfa] uppercase opacity-50 select-none lg:w-auto lg:border-none">
       {children}
     </div>
   );

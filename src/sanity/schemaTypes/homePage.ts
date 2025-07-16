@@ -45,6 +45,51 @@ export const homePage = defineType({
       ],
     }),
     defineField({
+      name: 'bandsInTownLabels',
+      title: 'Bands in town címek',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'noResultText',
+          type: 'internationalizedArrayString',
+          title: 'Bands in town no concert text',
+          description:
+            'Ez akkor jelenik meg, amikor nincs egy jövőbeli koncert sem a Bands in town-ban.',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'bandsInTownButtonText',
+          type: 'internationalizedArrayString',
+          title: '"Follow" gomb címe',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'soldOut',
+          title: 'Sold out',
+          type: 'internationalizedArrayString',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'free',
+          title: 'Free',
+          type: 'internationalizedArrayString',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'tickets',
+          title: 'Tickets',
+          type: 'internationalizedArrayString',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'notifyMe',
+          title: 'Notify me',
+          type: 'internationalizedArrayString',
+          validation: (Rule) => Rule.required(),
+        }),
+      ],
+    }),
+    defineField({
       name: 'noResultText',
       type: 'internationalizedArrayString',
       title: 'Bands in town no concert text',
