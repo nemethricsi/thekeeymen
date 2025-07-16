@@ -18,6 +18,9 @@ export default async function Image() {
     ? urlFor(metadata.seo.openGraphImage).width(1200).url()
     : undefined;
 
+  const fallback = 'https://thekeeymen.com/images/opengraph-image.jpg';
+  const background = src || fallback;
+
   return new ImageResponse(
     (
       <div
@@ -27,15 +30,11 @@ export default async function Image() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
+          backgroundImage: `url(${background})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
         }}
-      >
-        <img
-          src={src || '/images/opengraph-image.jpg'}
-          alt="Keeymen"
-          width={1200}
-          height={630}
-        />
-      </div>
+      ></div>
     ),
     // ImageResponse options
     {
