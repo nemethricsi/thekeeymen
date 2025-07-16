@@ -29,8 +29,6 @@ export default async function Home({
     homePageData?.embedSpotify?.embedCode ?? '',
   );
 
-  console.log(homePageData?.bandsInTownLabels);
-
   return (
     <main className="flex flex-col bg-[#8e43a5]">
       {pageSettings?.navigation && (
