@@ -95,22 +95,27 @@ export const EPK_QUERY = defineQuery(`
         "errorLabel": errorLabel[_key == $locale][0].value,
       }
     },
+    pressPhotosSection{
+      "photosTitle": photosTitle[_key == $locale][0].value,
+      photos,
+    },
+    mediaMentionsSection{
+      "mediaMentionsTitle": mediaMentionsTitle[_key == $locale][0].value,
+      "mediaMentions": mediaMentions[]{
+        ...,
+        "quote": quote[_key == $locale][0].value,
+        publication,
+        url,
+        title,
+        author,
+        date,
+      }
+    },
     socialMediaSection{
       "title": title[_key == $locale][0].value,
       "description": description[_key == $locale][0].value,
     },
-    "photosTitle": photosTitle[_key == $locale][0].value,
     "releasesSectionTitle": releasesSectionTitle[_key == $locale][0].value,
-    "mediaMentionsTitle": mediaMentionsTitle[_key == $locale][0].value,
-    "mediaMentions": mediaMentions[]{
-      ...,
-      "quote": quote[_key == $locale][0].value,
-      publication,
-      url,
-      title,
-      author,
-      date,
-    }
   }
 `);
 export const fetchEpk = async ({ locale }: { locale: Locale }) => {

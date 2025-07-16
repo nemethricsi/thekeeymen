@@ -58,22 +58,55 @@ export const epk = defineType({
       ],
     }),
     defineField({
-      name: 'photosTitle',
-      title: 'Képek címe',
-      type: 'internationalizedArrayString',
-      validation: (Rule) => Rule.required(),
+      name: 'pressPhotosSection',
+      title: 'Sajtófotók szekció',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'photosTitle',
+          title: 'Szekció címe',
+          type: 'internationalizedArrayString',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'photos',
+          title: 'Sajtófotók',
+          type: 'array',
+          of: [
+            {
+              type: 'image',
+              options: { hotspot: true },
+              fields: [
+                defineField({
+                  name: 'alt',
+                  title: 'Alternatív szöveg',
+                  type: 'string',
+                  validation: (Rule) => Rule.required(),
+                }),
+              ],
+            },
+          ],
+        }),
+      ],
     }),
     defineField({
-      name: 'mediaMentionsTitle',
-      title: 'Média hivatkozások címe',
-      type: 'internationalizedArrayString',
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: 'mediaMentions',
-      title: 'Média hivatkozások',
-      type: 'array',
-      of: [{ type: 'mediaMention' }],
+      name: 'mediaMentionsSection',
+      title: 'Média hivatkozások szekció',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'mediaMentionsTitle',
+          title: 'Média hivatkozások címe',
+          type: 'internationalizedArrayString',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'mediaMentions',
+          title: 'Média hivatkozások',
+          type: 'array',
+          of: [{ type: 'mediaMention' }],
+        }),
+      ],
     }),
     defineField({
       name: 'releasesSectionTitle',
