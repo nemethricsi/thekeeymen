@@ -29,7 +29,6 @@ export default async function ElectronicPressKitPage({
   const data = await fetchNavigation({ locale });
   const epk = await fetchEpk({ locale });
   const releases = await fetchReleases();
-  const mediaMentions = epk?.mediaMentions;
 
   return (
     <div className="min-h-screen bg-[#fbf6fd] text-[#38133f] lg:pt-0">
