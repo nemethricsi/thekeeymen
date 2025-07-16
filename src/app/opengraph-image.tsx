@@ -18,6 +18,8 @@ export default async function Image() {
   const fallback = 'https://thekeeymen.com/images/opengraph-image.jpg';
   const src = remoteSrc || fallback;
 
+  console.log('---- OG image remoteSrc ----', remoteSrc);
+
   return new ImageResponse(
     (
       <div
