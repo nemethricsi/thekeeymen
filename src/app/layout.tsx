@@ -1,3 +1,4 @@
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { Reddit_Sans, Bitter } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
@@ -29,6 +30,7 @@ export default function RootLayout({
       >
         {children}
         <SanityLive />
+        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID!} />
       </body>
     </html>
   );
