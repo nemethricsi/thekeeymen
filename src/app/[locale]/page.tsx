@@ -32,7 +32,7 @@ export default async function Home({
       )}
       <section
         id="gigs"
-        className="-scroll-m-0.5 bg-linear-to-b from-transparent to-[#8e43a5] pt-24 pb-10"
+        className="scroll-mt-20 bg-linear-to-b from-transparent to-[#8e43a5] pb-10 sm:scroll-mt-24"
       >
         <Container className="gap-10">
           <EventList
@@ -43,7 +43,10 @@ export default async function Home({
           />
         </Container>
       </section>
-      <section id="media" className="relative scroll-mt-20 bg-[#8e43a5] py-10">
+      <section
+        id="media"
+        className="relative scroll-mt-8 bg-[#8e43a5] py-10 sm:scroll-mt-14"
+      >
         <Container className="gap-10">
           <div className="flex w-full flex-col gap-2 text-base font-medium">
             <p className="text-[#faf6fd]">{homePageData?.title}</p>
