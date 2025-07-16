@@ -1,8 +1,8 @@
-import { GoogleAnalytics } from '@next/third-parties/google';
 import { Reddit_Sans, Bitter } from 'next/font/google';
 import './globals.css';
 import { cn } from '@/lib/utils';
 import { SanityLive } from '@/sanity/lib/live';
+import { AnalyticsWrapper } from '@/components/AnalyticsWrapper';
 
 const redditSans = Reddit_Sans({
   variable: '--font-sans',
@@ -30,7 +30,7 @@ export default function RootLayout({
       >
         {children}
         <SanityLive />
-        <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID!} />
+        <AnalyticsWrapper />
       </body>
     </html>
   );
