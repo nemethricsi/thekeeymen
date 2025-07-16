@@ -36,7 +36,11 @@ export const METADATA_QUERY = defineQuery(`
     seo{
       "title": title[_key == $locale][0].value,
       "description": description[_key == $locale][0].value,
-      openGraphImage,
+      openGraphImage{
+        asset->{
+          url,
+        }
+      },
       "homePageTitle": homePageTitle[_key == $locale][0].value,
       "epkPageTitle": epkPageTitle[_key == $locale][0].value,
     }

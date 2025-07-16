@@ -47,6 +47,15 @@ export async function generateMetadata({
     openGraph: {
       title: `${pageTitle} • ${baseTitle}`,
       description: metadata?.seo?.description as string,
+      images: [
+        {
+          url:
+            metadata?.seo?.openGraphImage?.asset?.url ||
+            'https://thekeeymen.com/opengraph-image.jpg',
+          width: 1200,
+          height: 630,
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',
