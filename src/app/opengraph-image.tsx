@@ -13,10 +13,10 @@ export const contentType = 'image/png';
 // Image generation
 export default async function Image() {
   const metadata = await fetchOpenGraphImage();
-  const src = metadata?.seo?.openGraphImage?.asset?.url;
+  const remoteSrc = metadata?.seo?.openGraphImage?.asset?.url;
 
   const fallback = 'https://thekeeymen.com/images/opengraph-image.jpg';
-  const background = src || fallback;
+  const src = remoteSrc || fallback;
 
   return new ImageResponse(
     (
@@ -27,11 +27,10 @@ export default async function Image() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundImage: `url(${background})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
         }}
-      ></div>
+      >
+        <img src={src} alt="Keeymen" width={1200} height={630} />
+      </div>
     ),
     // ImageResponse options
     {
