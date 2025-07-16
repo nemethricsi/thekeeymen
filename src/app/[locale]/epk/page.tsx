@@ -4,10 +4,16 @@ import { fetchEpk, fetchNavigation, fetchReleases } from '@/sanity/lib/queries';
 import { Locale } from '@/i18n-config';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRightIcon, CloudDownloadIcon } from 'lucide-react';
+import { ArrowRightIcon, ArrowUpRightIcon } from 'lucide-react';
 import { CopyTextButton } from '@/components/CopyTextButton';
 import { IconType } from 'react-icons/lib';
-import { SiApplemusic, SiBandcamp, SiSpotify, SiYoutube } from 'react-icons/si';
+import {
+  SiApplemusic,
+  SiBandcamp,
+  SiGoogledrive,
+  SiSpotify,
+  SiYoutube,
+} from 'react-icons/si';
 import { type SocialLink } from '@/sanity/types';
 import { ReusableTooltip } from '@/components/ReusableTooltip';
 import { externalLink } from '@/lib/utils';
@@ -40,17 +46,18 @@ export default async function ElectronicPressKitPage({
               {epk?.title}
             </h1> */}
             {epk?.downloadablePressKit != null && (
-              <div>
-                <Link
-                  href={epk.downloadablePressKit.url}
-                  className="flex items-center gap-2 rounded-lg border border-[#dcbdea] bg-[#f5edfa] px-4 py-2 font-medium text-[#7a3c8f] transition-colors hover:bg-[#edd9f5]"
-                  {...externalLink}
-                >
-                  <CloudDownloadIcon />
-                  <span>{epk.downloadablePressKit.label}</span>
-                  <ArrowUpRightIcon />
-                </Link>
-              </div>
+              <Link
+                href={epk.downloadablePressKit.url}
+                className="group flex items-center gap-2 self-start rounded-lg border border-[#dcbdea] bg-[#f5edfa] px-4 py-2 font-medium text-[#7a3c8f] transition-colors hover:bg-[#edd9f5]"
+                {...externalLink}
+              >
+                <SiGoogledrive className="h-5 w-5" />
+                <span className="text-sm">
+                  {epk.downloadablePressKit.label}
+                </span>
+                <ArrowRightIcon className="hidden h-5 w-5 translate-x-0 transition-transform duration-100 group-hover:translate-x-1 group-active:-rotate-45 sm:block" />
+                <ArrowUpRightIcon className="h-5 w-5 sm:hidden" />
+              </Link>
             )}
           </div>
           <section className="flex flex-col gap-6">
