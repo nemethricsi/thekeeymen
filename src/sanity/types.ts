@@ -682,7 +682,7 @@ export type EPK_QUERYResult =
     }
   | null;
 // Variable: OPEN_GRAPH_IMAGE_QUERY
-// Query: *[_id == "pageSettings"][0]{    seo{      openGraphImage,    },  }
+// Query: *[_id == "pageSettings"][0]{    seo{      openGraphImage{        asset->{          url,        }      }    },  }
 export type OPEN_GRAPH_IMAGE_QUERYResult =
   | {
       seo: null;
@@ -690,16 +690,9 @@ export type OPEN_GRAPH_IMAGE_QUERYResult =
   | {
       seo: {
         openGraphImage: {
-          asset?: {
-            _ref: string;
-            _type: 'reference';
-            _weak?: boolean;
-            [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-          };
-          media?: unknown;
-          hotspot?: SanityImageHotspot;
-          crop?: SanityImageCrop;
-          _type: 'image';
+          asset: {
+            url: string | null;
+          } | null;
         };
       } | null;
     }
@@ -768,7 +761,7 @@ declare module '@sanity/client' {
     '\n  *[_id == "pageSettings"][0]{\n    "navigation": navigation[]{\n      href,\n      "label": label[_key == $locale][0].value,\n    }\n  }\n': NAVIGATION_QUERYResult;
     '\n  *[_id == "socials"][0]{\n    spotify,\n    bandcamp,\n    appleMusic,\n    bandsInTown,\n  }\n': SOCIALS_QUERYResult;
     '\n  *[_id == "epk"][0]{\n    "title": title[_key == $locale][0].value,\n    downloadablePressKit{\n      "label": label[_key == $locale][0].value,\n      url,\n    },\n    shortBioSection{\n      "shortBioTitle": shortBioTitle[_key == $locale][0].value,\n      "shortBio": shortBio[_key == $locale][0].value,\n      copyButtonLabels{\n        "copyLabel": copyLabel[_key == $locale][0].value,\n        "successLabel": successLabel[_key == $locale][0].value,\n        "errorLabel": errorLabel[_key == $locale][0].value,\n      }\n    },\n    pressPhotosSection{\n      "photosTitle": photosTitle[_key == $locale][0].value,\n      photos,\n    },\n    mediaMentionsSection{\n      "mediaMentionsTitle": mediaMentionsTitle[_key == $locale][0].value,\n      "mediaMentions": mediaMentions[]{\n        ...,\n        "quote": quote[_key == $locale][0].value,\n        publication,\n        url,\n        title,\n        author,\n        date,\n      }\n    },\n    socialMediaSection{\n      "title": title[_key == $locale][0].value,\n      "description": description[_key == $locale][0].value,\n    },\n    "releasesSectionTitle": releasesSectionTitle[_key == $locale][0].value,\n  }\n': EPK_QUERYResult;
-    '\n  *[_id == "pageSettings"][0]{\n    seo{\n      openGraphImage,\n    },\n  }\n': OPEN_GRAPH_IMAGE_QUERYResult;
+    '\n  *[_id == "pageSettings"][0]{\n    seo{\n      openGraphImage{\n        asset->{\n          url,\n        }\n      }\n    },\n  }\n': OPEN_GRAPH_IMAGE_QUERYResult;
     '\n  *[_id == "contactForm"][0]{\n    "title": title[_key == $locale][0].value,\n    placeholders{\n      "message": message[_key == $locale][0].value,\n      "email": email[_key == $locale][0].value,\n      "phone": phone[_key == $locale][0].value,\n    },\n    submitButton{\n      "sendLabel": sendLabel[_key == $locale][0].value,\n      "sendingLabel": sendingLabel[_key == $locale][0].value,\n    },\n    messages{\n      "success": success[_key == $locale][0].value,\n      "error": error[_key == $locale][0].value,\n    },\n  }\n': CONTACT_FORM_QUERYResult;
     '\n  *[_type == "release"]{\n    ...,\n    coverImage{\n      asset->{\n        url,\n      }\n    },\n    availableOn[]{\n      platform,\n      url\n    }\n  }\n': RELEASES_QUERYResult;
   }

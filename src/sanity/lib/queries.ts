@@ -131,7 +131,11 @@ export const fetchEpk = async ({ locale }: { locale: Locale }) => {
 export const OPEN_GRAPH_IMAGE_QUERY = defineQuery(`
   *[_id == "pageSettings"][0]{
     seo{
-      openGraphImage,
+      openGraphImage{
+        asset->{
+          url,
+        }
+      }
     },
   }
 `);

@@ -1,4 +1,3 @@
-import { urlFor } from '@/sanity/lib/image';
 import { fetchOpenGraphImage } from '@/sanity/lib/queries';
 import { ImageResponse } from 'next/og';
 
@@ -14,9 +13,7 @@ export const contentType = 'image/png';
 // Image generation
 export default async function Image() {
   const metadata = await fetchOpenGraphImage();
-  const src = metadata?.seo?.openGraphImage
-    ? urlFor(metadata.seo.openGraphImage).width(1200).url()
-    : undefined;
+  const src = metadata?.seo?.openGraphImage?.asset?.url;
 
   const fallback = 'https://thekeeymen.com/images/opengraph-image.jpg';
   const background = src || fallback;
