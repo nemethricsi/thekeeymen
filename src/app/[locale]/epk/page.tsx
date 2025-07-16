@@ -33,7 +33,7 @@ export default async function ElectronicPressKitPage({
   return (
     <div className="min-h-screen bg-[#fbf6fd] text-[#38133f] lg:pt-0">
       {data?.navigation && <StaticNavbar navItems={data.navigation} />}
-      <main className="pt-20 lg:pt-28">
+      <main className="pt-32 lg:pt-36">
         <Container className="gap-16 pb-24 lg:gap-20">
           <div className="flex flex-col items-center gap-6">
             {/* <h1 className="text-center font-serif text-4xl font-bold">
