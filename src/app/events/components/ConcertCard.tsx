@@ -1,6 +1,7 @@
 'use client';
 
 import { parseBandsInTownDate } from '@/app/events/parseBandsInTownDate';
+import { Locale } from '@/i18n-config';
 import { BandsInTownEvent } from '@/lib/bands-in-town';
 import { cn, externalLink } from '@/lib/utils';
 import { ArrowUpRightIcon, BellRingIcon } from 'lucide-react';
@@ -11,6 +12,7 @@ interface ConcertCardProps {
   freeLabel: string | null | undefined;
   ticketsLabel: string | null | undefined;
   notifyMeLabel: string | null | undefined;
+  locale: Locale;
 }
 export const ConcertCard = ({
   event,
@@ -18,8 +20,9 @@ export const ConcertCard = ({
   freeLabel,
   ticketsLabel,
   notifyMeLabel,
+  locale,
 }: ConcertCardProps) => {
-  const { day, month, year } = parseBandsInTownDate(event.datetime);
+  const { day, month, year } = parseBandsInTownDate(event.datetime, locale);
 
   const renderCallToAction = () => {
     if (event.sold_out) {

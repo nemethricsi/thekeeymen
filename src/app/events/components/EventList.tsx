@@ -6,6 +6,7 @@ import { GuitarIcon, HandMetalIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
 import { BandsInTownButton } from '@/app/events/components/BandsInTownButton';
+import { Locale } from '@/i18n-config';
 
 interface EventListProps {
   events: BandsInTownEvent[];
@@ -16,6 +17,7 @@ interface EventListProps {
   freeLabel: string | null | undefined;
   ticketsLabel: string | null | undefined;
   notifyMeLabel: string | null | undefined;
+  locale: Locale;
 }
 
 export const EventList = ({
@@ -27,6 +29,7 @@ export const EventList = ({
   freeLabel,
   ticketsLabel,
   notifyMeLabel,
+  locale,
 }: EventListProps) => {
   const [open, setOpen] = useState(false);
   const artist = events.length > 0 ? events[0].artist : null;
@@ -76,6 +79,7 @@ export const EventList = ({
             freeLabel={freeLabel}
             ticketsLabel={ticketsLabel}
             notifyMeLabel={notifyMeLabel}
+            locale={locale}
           />
         ))}
 
@@ -101,6 +105,7 @@ export const EventList = ({
                   freeLabel={freeLabel}
                   ticketsLabel={ticketsLabel}
                   notifyMeLabel={notifyMeLabel}
+                  locale={locale}
                 />
               ))}
             </motion.div>

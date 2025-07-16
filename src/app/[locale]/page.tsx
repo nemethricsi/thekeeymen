@@ -50,6 +50,7 @@ export default async function Home({
             freeLabel={homePageData?.bandsInTownLabels?.free}
             ticketsLabel={homePageData?.bandsInTownLabels?.tickets}
             notifyMeLabel={homePageData?.bandsInTownLabels?.notifyMe}
+            locale={locale}
           />
         </Container>
       </section>
