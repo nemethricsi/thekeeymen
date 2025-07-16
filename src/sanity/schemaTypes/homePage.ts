@@ -7,15 +7,42 @@ export const homePage = defineType({
   icon: () => '🏠',
   fields: [
     defineField({
-      name: 'title',
-      type: 'internationalizedArrayString',
-      title: 'Title',
+      name: 'embedYoutube',
+      title: 'Youtube videó',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'caption',
+          title: 'Youtube beágyazás címe',
+          type: 'internationalizedArrayString',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'youtubeUrl',
+          title: 'Youtube URL',
+          type: 'url',
+          validation: (Rule) => Rule.required(),
+        }),
+      ],
     }),
     defineField({
-      name: 'youtubeUrl',
-      title: 'Youtube URL',
-      type: 'url',
-      validation: (Rule) => Rule.required(),
+      name: 'embedSpotify',
+      title: 'Spotify beágyazás',
+      type: 'object',
+      fields: [
+        defineField({
+          name: 'caption',
+          title: 'Spotify beágyazás címe',
+          type: 'internationalizedArrayString',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'embedCode',
+          title: 'Spotify embed code',
+          type: 'text',
+          validation: (Rule) => Rule.required(),
+        }),
+      ],
     }),
     defineField({
       name: 'noResultText',

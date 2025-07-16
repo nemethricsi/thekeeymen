@@ -1,8 +1,8 @@
-export const EmbedSpotify = () => {
+export const EmbedSpotify = ({ src }: { src: string }) => {
   return (
     <iframe
       style={{ borderRadius: 12 }}
-      src="https://open.spotify.com/embed/artist/70r42zt8pupSRwWRGq8b7M?utm_source=generator&theme=0"
+      src={`${src}?theme=0`}
       width="100%"
       height="352"
       allowFullScreen

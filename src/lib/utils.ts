@@ -19,3 +19,14 @@ export const externalLink = {
   target: '_blank',
   rel: 'noopener noreferrer',
 };
+
+export function parseSpotifyIframe(iframeHtml: string): string | null {
+  const srcMatch = iframeHtml.match(/src="([^"]+)"/);
+  if (!srcMatch) return null;
+
+  const url = new URL(srcMatch[1]);
+  // Töröljük a fölös query paramétereket, hogy letisztult legyen
+  url.search = ''; // így sötét téma lesz
+
+  return url.toString();
+}

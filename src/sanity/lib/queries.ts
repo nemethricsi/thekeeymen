@@ -4,8 +4,14 @@ import { type Locale } from '@/i18n-config';
 
 export const HOME_PAGE_QUERY = defineQuery(`
   *[_id == "homePage"][0]{
-    "title": title[_key == $locale][0].value,
-    youtubeUrl,
+    embedYoutube{
+      "caption": caption[_key == $locale][0].value,
+      youtubeUrl,
+    },
+    embedSpotify{
+      "caption": caption[_key == $locale][0].value,
+      embedCode,
+    },
     "noResultText": noResultText[_key == $locale][0].value,
     "bandsInTownButtonText": bandsInTownButtonText[_key == $locale][0].value,
   }

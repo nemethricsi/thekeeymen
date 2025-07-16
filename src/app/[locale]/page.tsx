@@ -11,6 +11,7 @@ import {
 import { Locale } from '@/i18n-config';
 import { ContactFormComponent } from '@/components/ContactForm';
 import { HeroSectionWithNav } from '@/components/HeroSectionWithNav';
+import { parseSpotifyIframe } from '@/lib/utils';
 
 export const revalidate = 60;
 
@@ -24,6 +25,9 @@ export default async function Home({
   const homePageData = await fetchHomePage({ locale });
   const contactFormData = await fetchContactForm({ locale });
   const pageSettings = await fetchNavigation({ locale });
+  const spotifySrc = parseSpotifyIframe(
+    homePageData?.embedSpotify?.embedCode ?? '',
+  );
 
   return (
     <main className="flex flex-col bg-[#8e43a5]">
@@ -48,13 +52,20 @@ export default async function Home({
         className="relative scroll-mt-8 bg-[#8e43a5] py-10 sm:scroll-mt-14"
       >
         <Container className="gap-10">
-          <div className="flex w-full flex-col gap-2 text-base font-medium">
-            <p className="text-[#faf6fd]">{homePageData?.title}</p>
-            {homePageData?.youtubeUrl && (
-              <EmbedYoutube src={homePageData.youtubeUrl} />
+          <div className="flex flex-col gap-2 text-base font-medium">
+            <p className="text-[#faf6fd]">
+              {homePageData?.embedYoutube?.caption}
+            </p>
+            {homePageData?.embedYoutube?.youtubeUrl && (
+              <EmbedYoutube src={homePageData.embedYoutube.youtubeUrl} />
             )}
           </div>
-          <EmbedSpotify />
+          <div className="flex flex-col gap-2 text-base font-medium">
+            <p className="text-[#faf6fd]">
+              {homePageData?.embedSpotify?.caption}
+            </p>
+            {spotifySrc != null && <EmbedSpotify src={spotifySrc} />}
+          </div>
         </Container>
       </section>
       {contactFormData != null &&
