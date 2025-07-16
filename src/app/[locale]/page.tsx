@@ -1,5 +1,4 @@
 import { Container } from '@/components/Container';
-import { HeroSection } from '@/components/HeroSection';
 import { EmbedYoutube } from '@/components/EmbedYoutube';
 import { fetchBandsInTownEvents } from '@/server/actions';
 import { EventList } from '@/app/events/components/EventList';
@@ -10,9 +9,8 @@ import {
   fetchNavigation,
 } from '@/sanity/lib/queries';
 import { Locale } from '@/i18n-config';
-import { LogoWithLocaleSwitcher } from '@/components/LogoWithLocaleSwitcher';
-import { DesktopNavigation } from '@/components/DesktopNavigation';
 import { ContactFormComponent } from '@/components/ContactForm';
+import { HeroSectionWithNav } from '@/components/HeroSectionWithNav';
 
 export const revalidate = 60;
 
@@ -25,15 +23,16 @@ export default async function Home({
   const events = await fetchBandsInTownEvents();
   const homePageData = await fetchHomePage({ locale });
   const contactFormData = await fetchContactForm({ locale });
+  const pageSettings = await fetchNavigation({ locale });
 
   return (
     <main className="flex flex-col bg-[#8e43a5]">
-      <HeroSection>
-        <DesktopHeroContent locale={locale} />
-      </HeroSection>
+      {pageSettings?.navigation && (
+        <HeroSectionWithNav navigation={pageSettings.navigation} />
+      )}
       <section
         id="gigs"
-        className="scroll-mt-14 bg-linear-to-b from-transparent to-[#8e43a5] py-10 lg:scroll-mt-20"
+        className="-scroll-m-0.5 bg-linear-to-b from-transparent to-[#8e43a5] pt-24 pb-10"
       >
         <Container className="gap-10">
           <EventList
@@ -87,14 +86,3 @@ export default async function Home({
     </main>
   );
 }
-
-const DesktopHeroContent = async ({ locale }: { locale: Locale }) => {
-  const data = await fetchNavigation({ locale });
-
-  return (
-    <div className="container mx-auto hidden h-full w-full max-w-3xl flex-col justify-between gap-3 px-4 lg:flex">
-      <LogoWithLocaleSwitcher />
-      {data?.navigation && <DesktopNavigation navigation={data.navigation} />}
-    </div>
-  );
-};
