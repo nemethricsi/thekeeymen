@@ -76,7 +76,7 @@ export default async function ElectronicPressKitPage({
   const releases = await fetchReleases();
 
   return (
-    <div className="min-h-screen bg-[#fbf6fd] text-[#38133f] lg:pt-0">
+    <div className="min-h-screen bg-[#fefefe] text-[#2e2e2e] lg:pt-0">
       {data?.navigation && <StaticNavbar navItems={data.navigation} />}
       <main className="pt-32 lg:pt-36">
         <Container className="gap-16 pb-24 lg:gap-20">
@@ -87,7 +87,7 @@ export default async function ElectronicPressKitPage({
             {epk?.downloadablePressKit != null && (
               <Link
                 href={epk.downloadablePressKit.url}
-                className="group flex items-center gap-2 self-start rounded-lg border border-[#dcbdea] bg-[#f5edfa] px-4 py-2 font-medium text-[#7a3c8f] transition-colors hover:bg-[#edd9f5]"
+                className="group flex items-center gap-2 self-start rounded-lg border border-slate-300 bg-slate-100 px-4 py-2 font-medium text-slate-700 transition-colors hover:bg-slate-200"
                 {...externalLink}
               >
                 <SiGoogledrive className="h-5 w-5" />
@@ -141,9 +141,9 @@ export default async function ElectronicPressKitPage({
                           <Image
                             src={urlFor(photo).width(800).url()}
                             alt={photo.alt}
-                            width={800}
-                            height={800}
-                            className="rounded-lg group-hover/photo:brightness-110"
+                            width={1000}
+                            height={1000}
+                            className="h-56 rounded-lg object-cover group-hover/photo:brightness-110"
                           />
                           <ReusableTooltip
                             message="Open original size"
@@ -202,7 +202,7 @@ export default async function ElectronicPressKitPage({
                             >
                               <Link
                                 href={url}
-                                className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#f5edfa] transition-colors hover:bg-[#ebdaf4]"
+                                className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 transition-colors hover:bg-slate-200"
                                 {...externalLink}
                               >
                                 <Icon className="h-6 w-6" />
@@ -228,7 +228,7 @@ export default async function ElectronicPressKitPage({
                   epk.mediaMentionsSection.mediaMentions.map((mention) => (
                     <article
                       key={mention._key}
-                      className="flex flex-col gap-1 rounded-lg bg-[#f5edfa] p-5 text-base leading-relaxed text-neutral-900 sm:p-8"
+                      className="flex flex-col gap-1 rounded-lg bg-slate-100 p-5 text-base leading-relaxed text-slate-800 sm:p-8"
                     >
                       <p className="italic">&ldquo;{mention.quote}&rdquo;</p>
                       <p className="text-sm font-semibold">
