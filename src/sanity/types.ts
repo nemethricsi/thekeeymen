@@ -254,27 +254,39 @@ export type PageSettings = {
   _updatedAt: string;
   _rev: string;
   navigation: Navigation;
-  seoTitle: Array<
-    {
-      _key: string;
-    } & InternationalizedArrayStringValue
-  >;
-  seoDescription: Array<
-    {
-      _key: string;
-    } & InternationalizedArrayTextValue
-  >;
-  openGraphImage: {
-    asset?: {
-      _ref: string;
-      _type: 'reference';
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+  seo?: {
+    title: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    description: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayTextValue
+    >;
+    openGraphImage: {
+      asset?: {
+        _ref: string;
+        _type: 'reference';
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+      };
+      media?: unknown;
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: 'image';
     };
-    media?: unknown;
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: 'image';
+    homePageTitle: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    epkPageTitle: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
   };
 };
 
@@ -540,30 +552,31 @@ export type HOME_PAGE_QUERYResult =
       } | null;
     }
   | null;
-// Variable: PAGE_SETTINGS_QUERY
-// Query: *[_id == "pageSettings"][0]{    navigation,    "seoTitle": seoTitle[_key == $locale][0].value,    "seoDescription": seoDescription[_key == $locale][0].value,  }
-export type PAGE_SETTINGS_QUERYResult =
-  | {
-      navigation: Navigation;
-      seoTitle: string | null;
-      seoDescription: string | null;
-    }
-  | {
-      navigation: null;
-      seoTitle: null;
-      seoDescription: null;
-    }
-  | null;
 // Variable: METADATA_QUERY
-// Query: *[_id == "pageSettings"][0]{    "seoTitle": seoTitle[_key == $locale][0].value,    "seoDescription": seoDescription[_key == $locale][0].value,  }
+// Query: *[_id == "pageSettings"][0]{    seo{      "title": title[_key == $locale][0].value,      "description": description[_key == $locale][0].value,      openGraphImage,      "homePageTitle": homePageTitle[_key == $locale][0].value,      "epkPageTitle": epkPageTitle[_key == $locale][0].value,    }  }
 export type METADATA_QUERYResult =
   | {
-      seoTitle: null;
-      seoDescription: null;
+      seo: null;
     }
   | {
-      seoTitle: string | null;
-      seoDescription: string | null;
+      seo: {
+        title: string | null;
+        description: string | null;
+        openGraphImage: {
+          asset?: {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          _type: 'image';
+        };
+        homePageTitle: string | null;
+        epkPageTitle: string | null;
+      } | null;
     }
   | null;
 // Variable: NAVIGATION_QUERY
@@ -669,17 +682,26 @@ export type EPK_QUERYResult =
     }
   | null;
 // Variable: OPEN_GRAPH_IMAGE_QUERY
-// Query: *[_id == "pageSettings"][0]{    openGraphImage{      asset->{        url,      }    }  }
+// Query: *[_id == "pageSettings"][0]{    seo{      openGraphImage,    },  }
 export type OPEN_GRAPH_IMAGE_QUERYResult =
   | {
-      openGraphImage: null;
+      seo: null;
     }
   | {
-      openGraphImage: {
-        asset: {
-          url: string | null;
-        } | null;
-      };
+      seo: {
+        openGraphImage: {
+          asset?: {
+            _ref: string;
+            _type: 'reference';
+            _weak?: boolean;
+            [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+          };
+          media?: unknown;
+          hotspot?: SanityImageHotspot;
+          crop?: SanityImageCrop;
+          _type: 'image';
+        };
+      } | null;
     }
   | null;
 // Variable: CONTACT_FORM_QUERY
@@ -742,12 +764,11 @@ import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
     '\n  *[_id == "homePage"][0]{\n    embedYoutube{\n      "caption": caption[_key == $locale][0].value,\n      youtubeUrl,\n    },\n    embedSpotify{\n      "caption": caption[_key == $locale][0].value,\n      embedCode,\n    },\n    bandsInTownLabels{\n      "noResultText": noResultText[_key == $locale][0].value,\n      "bandsInTownButtonText": bandsInTownButtonText[_key == $locale][0].value,\n      "soldOut": soldOut[_key == $locale][0].value,\n      "free": free[_key == $locale][0].value,\n      "tickets": tickets[_key == $locale][0].value,\n      "notifyMe": notifyMe[_key == $locale][0].value,\n    },\n  }\n': HOME_PAGE_QUERYResult;
-    '\n  *[_id == "pageSettings"][0]{\n    navigation,\n    "seoTitle": seoTitle[_key == $locale][0].value,\n    "seoDescription": seoDescription[_key == $locale][0].value,\n  }\n': PAGE_SETTINGS_QUERYResult;
-    '\n  *[_id == "pageSettings"][0]{\n    "seoTitle": seoTitle[_key == $locale][0].value,\n    "seoDescription": seoDescription[_key == $locale][0].value,\n  }\n': METADATA_QUERYResult;
+    '\n  *[_id == "pageSettings"][0]{\n    seo{\n      "title": title[_key == $locale][0].value,\n      "description": description[_key == $locale][0].value,\n      openGraphImage,\n      "homePageTitle": homePageTitle[_key == $locale][0].value,\n      "epkPageTitle": epkPageTitle[_key == $locale][0].value,\n    }\n  }\n': METADATA_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    "navigation": navigation[]{\n      href,\n      "label": label[_key == $locale][0].value,\n    }\n  }\n': NAVIGATION_QUERYResult;
     '\n  *[_id == "socials"][0]{\n    spotify,\n    bandcamp,\n    appleMusic,\n    bandsInTown,\n  }\n': SOCIALS_QUERYResult;
     '\n  *[_id == "epk"][0]{\n    "title": title[_key == $locale][0].value,\n    downloadablePressKit{\n      "label": label[_key == $locale][0].value,\n      url,\n    },\n    shortBioSection{\n      "shortBioTitle": shortBioTitle[_key == $locale][0].value,\n      "shortBio": shortBio[_key == $locale][0].value,\n      copyButtonLabels{\n        "copyLabel": copyLabel[_key == $locale][0].value,\n        "successLabel": successLabel[_key == $locale][0].value,\n        "errorLabel": errorLabel[_key == $locale][0].value,\n      }\n    },\n    pressPhotosSection{\n      "photosTitle": photosTitle[_key == $locale][0].value,\n      photos,\n    },\n    mediaMentionsSection{\n      "mediaMentionsTitle": mediaMentionsTitle[_key == $locale][0].value,\n      "mediaMentions": mediaMentions[]{\n        ...,\n        "quote": quote[_key == $locale][0].value,\n        publication,\n        url,\n        title,\n        author,\n        date,\n      }\n    },\n    socialMediaSection{\n      "title": title[_key == $locale][0].value,\n      "description": description[_key == $locale][0].value,\n    },\n    "releasesSectionTitle": releasesSectionTitle[_key == $locale][0].value,\n  }\n': EPK_QUERYResult;
-    '\n  *[_id == "pageSettings"][0]{\n    openGraphImage{\n      asset->{\n        url,\n      }\n    }\n  }\n': OPEN_GRAPH_IMAGE_QUERYResult;
+    '\n  *[_id == "pageSettings"][0]{\n    seo{\n      openGraphImage,\n    },\n  }\n': OPEN_GRAPH_IMAGE_QUERYResult;
     '\n  *[_id == "contactForm"][0]{\n    "title": title[_key == $locale][0].value,\n    placeholders{\n      "message": message[_key == $locale][0].value,\n      "email": email[_key == $locale][0].value,\n      "phone": phone[_key == $locale][0].value,\n    },\n    submitButton{\n      "sendLabel": sendLabel[_key == $locale][0].value,\n      "sendingLabel": sendingLabel[_key == $locale][0].value,\n    },\n    messages{\n      "success": success[_key == $locale][0].value,\n      "error": error[_key == $locale][0].value,\n    },\n  }\n': CONTACT_FORM_QUERYResult;
     '\n  *[_type == "release"]{\n    ...,\n    coverImage{\n      asset->{\n        url,\n      }\n    },\n    availableOn[]{\n      platform,\n      url\n    }\n  }\n': RELEASES_QUERYResult;
   }

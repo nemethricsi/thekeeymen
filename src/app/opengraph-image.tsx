@@ -1,3 +1,4 @@
+import { urlFor } from '@/sanity/lib/image';
 import { fetchOpenGraphImage } from '@/sanity/lib/queries';
 import { ImageResponse } from 'next/og';
 
@@ -12,8 +13,10 @@ export const contentType = 'image/png';
 
 // Image generation
 export default async function Image() {
-  const image = await fetchOpenGraphImage();
-  const src = image?.openGraphImage?.asset?.url;
+  const metadata = await fetchOpenGraphImage();
+  const src = metadata?.seo?.openGraphImage
+    ? urlFor(metadata.seo.openGraphImage).width(1200).url()
+    : undefined;
 
   return new ImageResponse(
     (

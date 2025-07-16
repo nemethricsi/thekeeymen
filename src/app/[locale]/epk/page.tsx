@@ -1,6 +1,11 @@
 import { Container } from '@/components/Container';
 import { StaticNavbar } from '@/components/StaticNavbar';
-import { fetchEpk, fetchNavigation, fetchReleases } from '@/sanity/lib/queries';
+import {
+  fetchEpk,
+  fetchMetadata,
+  fetchNavigation,
+  fetchReleases,
+} from '@/sanity/lib/queries';
 import { Locale } from '@/i18n-config';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -25,6 +30,31 @@ const platformIcons: Record<SocialLink['platform'], IconType> = {
   spotify: SiSpotify,
   appleMusic: SiApplemusic,
 };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const metadata = await fetchMetadata({ locale });
+  const baseTitle = metadata?.seo?.title as string;
+  const pageTitle = metadata?.seo?.epkPageTitle;
+
+  return {
+    title: `${pageTitle} • ${baseTitle}`,
+    description: metadata?.seo?.description,
+    openGraph: {
+      title: `${pageTitle} • ${baseTitle}`,
+      description: metadata?.seo?.description as string,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `Electronic Press Kit • ${baseTitle}`,
+      description: metadata?.seo?.description as string,
+    },
+  };
+}
 
 export default async function ElectronicPressKitPage({
   params,

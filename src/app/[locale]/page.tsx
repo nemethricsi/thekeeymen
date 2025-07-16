@@ -6,6 +6,7 @@ import { EmbedSpotify } from '@/components/EmbedSpotify';
 import {
   fetchContactForm,
   fetchHomePage,
+  fetchMetadata,
   fetchNavigation,
 } from '@/sanity/lib/queries';
 import { Locale } from '@/i18n-config';
@@ -14,6 +15,31 @@ import { HeroSectionWithNav } from '@/components/HeroSectionWithNav';
 import { parseSpotifyIframe } from '@/lib/utils';
 
 export const revalidate = 60;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}) {
+  const { locale } = await params;
+  const metadata = await fetchMetadata({ locale });
+  const baseTitle = metadata?.seo?.title;
+  const pageTitle = metadata?.seo?.homePageTitle;
+
+  return {
+    title: `${pageTitle} • ${baseTitle}`,
+    description: metadata?.seo?.description,
+    openGraph: {
+      title: `Home • ${baseTitle}`,
+      description: metadata?.seo?.description as string,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `Home • ${baseTitle}`,
+      description: metadata?.seo?.description as string,
+    },
+  };
+}
 
 export default async function Home({
   params,

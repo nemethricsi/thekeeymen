@@ -15,16 +15,16 @@ export async function generateMetadata({
   const metadata = await fetchMetadata({ locale });
 
   return {
-    title: metadata?.seoTitle as string,
-    description: metadata?.seoDescription as string,
+    title: metadata?.seo?.title as string,
+    description: metadata?.seo?.description as string,
     openGraph: {
-      title: metadata?.seoTitle as string,
-      description: metadata?.seoDescription as string,
+      title: metadata?.seo?.title as string,
+      description: metadata?.seo?.description as string,
     },
     twitter: {
       card: 'summary_large_image',
-      title: metadata?.seoTitle as string,
-      description: metadata?.seoDescription as string,
+      title: metadata?.seo?.title as string,
+      description: metadata?.seo?.description as string,
     },
   };
 }
@@ -50,7 +50,7 @@ export default async function LocalizedLayout({
       <section className="relative">
         <WaveOpacityDivider />
       </section>
-      <Footer seoTitle={metadata?.seoTitle} />
+      <Footer seoTitle={metadata?.seo?.title} />
     </>
   );
 }

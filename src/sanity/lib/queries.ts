@@ -31,25 +31,15 @@ export const fetchHomePage = async ({ locale }: { locale: Locale }) => {
   return result.data;
 };
 
-export const PAGE_SETTINGS_QUERY = defineQuery(`
-  *[_id == "pageSettings"][0]{
-    navigation,
-    "seoTitle": seoTitle[_key == $locale][0].value,
-    "seoDescription": seoDescription[_key == $locale][0].value,
-  }
-`);
-export const fetchPageSettings = async ({ locale }: { locale: Locale }) => {
-  const result = await sanityFetch({
-    query: PAGE_SETTINGS_QUERY,
-    params: { locale },
-  });
-  return result.data;
-};
-
 export const METADATA_QUERY = defineQuery(`
   *[_id == "pageSettings"][0]{
-    "seoTitle": seoTitle[_key == $locale][0].value,
-    "seoDescription": seoDescription[_key == $locale][0].value,
+    seo{
+      "title": title[_key == $locale][0].value,
+      "description": description[_key == $locale][0].value,
+      openGraphImage,
+      "homePageTitle": homePageTitle[_key == $locale][0].value,
+      "epkPageTitle": epkPageTitle[_key == $locale][0].value,
+    }
   }
 `);
 export const fetchMetadata = async ({ locale }: { locale: Locale }) => {
@@ -140,11 +130,9 @@ export const fetchEpk = async ({ locale }: { locale: Locale }) => {
 
 export const OPEN_GRAPH_IMAGE_QUERY = defineQuery(`
   *[_id == "pageSettings"][0]{
-    openGraphImage{
-      asset->{
-        url,
-      }
-    }
+    seo{
+      openGraphImage,
+    },
   }
 `);
 
