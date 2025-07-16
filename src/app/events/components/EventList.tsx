@@ -58,7 +58,7 @@ export const EventList = ({
           className="self-start"
         />
       )}
-      <div className="flex w-full flex-col gap-6 lg:gap-0">
+      <div className="flex w-full flex-col gap-8 lg:gap-0">
         {/* Always visible concerts */}
         {visibleEvents.map((event) => (
           <ConcertCard key={event.id} event={event} />

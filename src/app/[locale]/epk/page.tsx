@@ -182,7 +182,7 @@ export default async function ElectronicPressKitPage({
                   epk.mediaMentionsSection.mediaMentions.map((mention) => (
                     <article
                       key={mention._key}
-                      className="flex flex-col gap-1 rounded-lg bg-[#f5edfa] p-8 text-base leading-relaxed text-neutral-900"
+                      className="flex flex-col gap-1 rounded-lg bg-[#f5edfa] p-5 text-base leading-relaxed text-neutral-900 sm:p-8"
                     >
                       <p className="italic">&ldquo;{mention.quote}&rdquo;</p>
                       <p className="text-sm font-semibold">

@@ -20,7 +20,7 @@ export const ConcertCard = ({ event }: { event: BandsInTownEvent }) => {
       return url ? (
         <ClickableCta url={url}>
           <span>Free</span>
-          <ArrowUpRightIcon />
+          <ArrowUpRightIcon className="h-5 w-5" />
         </ClickableCta>
       ) : (
         <StaticCta>Free</StaticCta>
@@ -30,7 +30,7 @@ export const ConcertCard = ({ event }: { event: BandsInTownEvent }) => {
     return url ? (
       <ClickableCta url={url}>
         <span>Tickets</span>
-        <ArrowUpRightIcon />
+        <ArrowUpRightIcon className="h-5 w-5" />
       </ClickableCta>
     ) : (
       <ClickableCta
@@ -44,7 +44,7 @@ export const ConcertCard = ({ event }: { event: BandsInTownEvent }) => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-between gap-2 px-0 hover:bg-[#b367ce] lg:flex-row lg:gap-4 lg:p-4 lg:[&:not(:last-child)]:border-b lg:[&:not(:last-child)]:border-[#cc92e0]">
+    <div className="flex flex-col items-center justify-between gap-1 px-0 hover:bg-[#b367ce] lg:flex-row lg:gap-4 lg:p-4 lg:[&:not(:last-child)]:border-b lg:[&:not(:last-child)]:border-[#cc92e0]">
       <div className="flex w-full items-center gap-4 lg:gap-8">
         {/* Date */}
         <div className="flex flex-shrink-0 items-center gap-3">
@@ -88,7 +88,7 @@ const ClickableCta = ({
     <a
       href={url}
       className={cn(
-        'flex w-full flex-shrink-0 items-center justify-center gap-2 rounded-lg border border-[#f5edfa] bg-[#f5edfa] px-4 py-2 font-bold text-[#8e43a5] uppercase hover:bg-[#f5edfa] hover:text-[#8e43a5] hover:drop-shadow-md lg:w-auto lg:bg-transparent lg:text-[#f5edfa]',
+        'flex w-full flex-shrink-0 items-center justify-center gap-2 rounded-lg border border-[#f5edfa] bg-[#f5edfa] px-4 py-2 text-sm font-bold text-[#8e43a5] uppercase hover:bg-[#f5edfa] hover:text-[#8e43a5] hover:drop-shadow-md lg:w-auto lg:bg-transparent lg:text-[#f5edfa]',
         className,
       )}
       {...externalLink}
