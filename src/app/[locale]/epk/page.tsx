@@ -11,6 +11,7 @@ import { SiApplemusic, SiBandcamp, SiSpotify, SiYoutube } from 'react-icons/si';
 import { type SocialLink } from '@/sanity/types';
 import { ReusableTooltip } from '@/components/ReusableTooltip';
 import { externalLink } from '@/lib/utils';
+import { urlFor } from '@/sanity/lib/image';
 
 const platformIcons: Record<SocialLink['platform'], IconType> = {
   bandcamp: SiBandcamp,
@@ -28,7 +29,6 @@ export default async function ElectronicPressKitPage({
   const data = await fetchNavigation({ locale });
   const epk = await fetchEpk({ locale });
   const releases = await fetchReleases();
-  const mediaMentions = epk?.mediaMentions;
 
   return (
     <div className="min-h-screen bg-[#fbf6fd] text-[#38133f] lg:pt-0">
@@ -78,50 +78,63 @@ export default async function ElectronicPressKitPage({
               </div>
             )}
           </section>
-          <section className="flex flex-col gap-6">
-            <h2 className="font-serif text-3xl font-semibold">
-              {epk?.photosTitle}
-            </h2>
-            <div className="flex flex-col gap-4">
-              <Image
-                src="/images/press/Keeymen_5.jpg"
-                alt="Keeymen5"
-                width={1000}
-                height={1000}
-                className="rounded-lg"
-              />
-              <Image
-                src="/images/press/Keeymen.jpg"
-                alt="Keeymen"
-                width={1000}
-                height={1000}
-                className="rounded-lg"
-              />
-              <Image
-                src="/images/press/Keeymen_7.jpg"
-                alt="Keeymen7"
-                width={1000}
-                height={1000}
-                className="rounded-lg"
-              />
-              <Image
-                src="/images/press/Keeymen_8.jpg"
-                alt="Keeymen8"
-                width={1000}
-                height={1000}
-                className="rounded-lg"
-              />
-            </div>
-          </section>
+          {epk?.pressPhotosSection && (
+            <section className="flex flex-col gap-6">
+              <h2 className="font-serif text-3xl font-semibold">
+                {epk?.pressPhotosSection?.photosTitle}
+              </h2>
+              {epk?.pressPhotosSection &&
+                Array.isArray(epk.pressPhotosSection.photos) &&
+                epk.pressPhotosSection.photos.length > 0 && (
+                  <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-2">
+                    {epk.pressPhotosSection.photos.map((photo) => {
+                      if (photo == null) return null;
+
+                      return (
+                        <div key={photo._key} className="group/photo relative">
+                          <Image
+                            src={urlFor(photo).width(800).url()}
+                            alt={photo.alt}
+                            width={800}
+                            height={800}
+                            className="rounded-lg group-hover/photo:brightness-110"
+                          />
+                          <ReusableTooltip
+                            message="Open original size"
+                            side="left"
+                          >
+                            <Link
+                              href={urlFor(photo).url()}
+                              className="group/button absolute top-3 right-3 flex h-10 w-10 items-center justify-center rounded-full bg-white/25 transition-colors hover:bg-white/50"
+                              {...externalLink}
+                            >
+                              <ArrowUpRightIcon className="h-6 w-6 text-white/75 group-hover/button:text-white" />
+                            </Link>
+                          </ReusableTooltip>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+            </section>
+          )}
           {epk?.releasesSectionTitle != null && (
             <section className="flex flex-col gap-6">
               <h2 className="font-serif text-3xl font-semibold">
                 {epk?.releasesSectionTitle}
               </h2>
-              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
                 {releases.map((release) => {
                   return (
-                    <article key={release._id} className="flex flex-col gap-1">
+                    <article
+                      key={release._id}
+                      className="flex flex-col gap-1 overflow-hidden rounded-lg"
+                    >
+                      <h2 className="text-left text-sm font-medium">
+                        {release.title} (
+                        <span className="uppercase">{release.type}</span>,{' '}
+                        {release.releaseYear})
+                      </h2>
                       <Image
                         src={
                           release.coverImage?.asset?.url ||
@@ -132,12 +145,7 @@ export default async function ElectronicPressKitPage({
                         height={800}
                         className="rounded-lg"
                       />
-                      <h2 className="text-center text-base sm:text-left">
-                        {release.title} (
-                        <span className="uppercase">{release.type}</span>,{' '}
-                        {release.releaseYear})
-                      </h2>
-                      <div className="flex flex-wrap items-center justify-center gap-1 sm:justify-start">
+                      <div className="flex flex-wrap items-center justify-start gap-1">
                         {release.availableOn?.map(({ platform, url }) => {
                           const Icon = platformIcons[platform];
                           return (
@@ -163,38 +171,40 @@ export default async function ElectronicPressKitPage({
               </div>
             </section>
           )}
-          {Array.isArray(mediaMentions) && mediaMentions.length > 0 && (
+
+          {epk?.mediaMentionsSection && (
             <section className="flex flex-col gap-6">
               <h2 className="font-serif text-3xl font-semibold">
-                {epk?.mediaMentionsTitle}
+                {epk?.mediaMentionsSection?.mediaMentionsTitle}
               </h2>
               <div className="flex flex-col gap-4">
-                {mediaMentions?.map((mention) => (
-                  <article
-                    key={mention._key}
-                    className="flex flex-col gap-1 rounded-lg bg-[#f5edfa] p-8 text-base leading-relaxed text-neutral-900"
-                  >
-                    <p className="italic">&ldquo;{mention.quote}&rdquo;</p>
-                    <p className="text-sm font-semibold">
-                      &mdash;{' '}
-                      {mention.url != null ? (
-                        <a
-                          href={mention.url}
-                          className="underline underline-offset-2"
-                          {...externalLink}
-                        >
-                          {mention.publication}
-                        </a>
-                      ) : (
-                        <span>{mention.publication}</span>
-                      )}
-                    </p>
-                  </article>
-                ))}
+                {Array.isArray(epk.mediaMentionsSection.mediaMentions) &&
+                  epk.mediaMentionsSection.mediaMentions.map((mention) => (
+                    <article
+                      key={mention._key}
+                      className="flex flex-col gap-1 rounded-lg bg-[#f5edfa] p-8 text-base leading-relaxed text-neutral-900"
+                    >
+                      <p className="italic">&ldquo;{mention.quote}&rdquo;</p>
+                      <p className="text-sm font-semibold">
+                        &mdash;{' '}
+                        {mention.url != null ? (
+                          <a
+                            href={mention.url}
+                            className="underline underline-offset-2"
+                            {...externalLink}
+                          >
+                            {mention.publication}
+                          </a>
+                        ) : (
+                          <span>{mention.publication}</span>
+                        )}
+                      </p>
+                    </article>
+                  ))}
               </div>
             </section>
           )}
-          {epk?.socialMediaSection && (
+          {epk?.socialMediaSection != null && (
             <section className="flex flex-col gap-6">
               <h2 className="font-serif text-3xl font-semibold">
                 {epk.socialMediaSection.title}
