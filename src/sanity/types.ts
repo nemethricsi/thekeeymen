@@ -344,16 +344,6 @@ export type HomePage = {
       } & InternationalizedArrayStringValue
     >;
   };
-  noResultText: Array<
-    {
-      _key: string;
-    } & InternationalizedArrayStringValue
-  >;
-  bandsInTownButtonText: Array<
-    {
-      _key: string;
-    } & InternationalizedArrayStringValue
-  >;
 };
 
 export type InternationalizedArrayTextValue = {
