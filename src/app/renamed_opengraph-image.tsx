@@ -2,13 +2,13 @@ import { fetchOpenGraphImage } from '@/sanity/lib/queries';
 import { ImageResponse } from 'next/og';
 
 // Image metadata
-export const alt = 'About Acme';
+export const alt = 'The Keeymen Open Graph Image';
 export const size = {
   width: 1200,
   height: 630,
 };
 
-export const contentType = 'image/png';
+export const contentType = 'image/jpg';
 
 // Image generation
 export default async function Image() {
@@ -17,8 +17,6 @@ export default async function Image() {
 
   const fallback = 'https://thekeeymen.com/images/opengraph-image.jpg';
   const src = remoteSrc || fallback;
-
-  console.log('---- OG image remoteSrc ----', remoteSrc);
 
   return new ImageResponse(
     (
