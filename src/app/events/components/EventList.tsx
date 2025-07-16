@@ -50,7 +50,7 @@ export const EventList = ({
   }
 
   return (
-    <div className="flex w-full flex-col gap-6">
+    <div className="flex w-full flex-col gap-3">
       {artist != null && bandsInTownButtonText != null && (
         <BandsInTownButton
           artist={artist}
