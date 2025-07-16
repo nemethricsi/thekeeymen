@@ -45,7 +45,7 @@ export default async function Home({
       </section>
       <section id="media" className="relative scroll-mt-20 bg-[#8e43a5] py-10">
         <Container className="gap-10">
-          <div className="flex w-full flex-col gap-2">
+          <div className="flex w-full flex-col gap-2 text-base font-medium">
             <p className="text-[#faf6fd]">{homePageData?.title}</p>
             {homePageData?.youtubeUrl && (
               <EmbedYoutube src={homePageData.youtubeUrl} />
