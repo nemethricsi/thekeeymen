@@ -6,12 +6,14 @@ import Image from 'next/image';
 import { LocalizedLink } from './LocalizedLink';
 import { ProcessedMenuItem } from '@/types';
 import { LocaleSwitcher } from './LocaleSwitcher';
+import { usePathname } from 'next/navigation';
 
 interface StaticNavbarProps {
   navItems: ProcessedMenuItem[];
 }
 
 export const StaticNavbar = ({ navItems }: StaticNavbarProps) => {
+  const pathname = usePathname();
   return (
     <header className="fixed top-0 left-0 z-40 hidden h-20 w-full bg-linear-to-b from-[#408ea3] to-[#408ea3]/80 drop-shadow-xl drop-shadow-black/20 backdrop-blur-sm lg:flex">
       <div className="container mx-auto flex max-w-5xl flex-row items-center justify-between px-4">
@@ -25,15 +27,22 @@ export const StaticNavbar = ({ navItems }: StaticNavbarProps) => {
         </LocalizedLink>
         <div className="flex items-center gap-10">
           <nav className="hidden flex-row items-center gap-10 font-serif uppercase lg:flex">
-            {navItems.map(({ href, label }) => (
-              <NavLink key={href} href={href}>
-                <span>{label}</span>
-                <span
-                  className="absolute -bottom-0.5 left-1/2 h-0.5 w-0 -translate-x-1/2 bg-[#fefefe] transition-all duration-200 group-hover:w-full"
-                  aria-hidden="true"
-                />
-              </NavLink>
-            ))}
+            {navItems.map(({ href, label }) => {
+              const isActive = pathname.endsWith(href);
+
+              return (
+                <NavLink key={href} href={href}>
+                  <span>{label}</span>
+                  <span
+                    className="absolute -bottom-0.5 left-1/2 h-0.5 w-0 -translate-x-1/2 bg-[#fefefe] transition-all duration-200 group-hover:w-full"
+                    aria-hidden="true"
+                  />
+                  {isActive && (
+                    <span className="absolute -bottom-0.5 left-0 h-0.5 w-full bg-[#fefefe]" />
+                  )}
+                </NavLink>
+              );
+            })}
           </nav>
           <LocaleSwitcher />
         </div>
