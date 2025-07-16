@@ -21,24 +21,43 @@ export const HeroSectionWithNav = ({ navigation }: HeroSectionWithNavProps) => {
   const [activeItem, setActiveItem] = useState('');
 
   useEffect(() => {
-    const target = heroRef.current;
-    if (!target) return;
+    const heroTarget = heroRef.current;
+    const sectionTargets = document.querySelectorAll('section[id]');
+    const observers: IntersectionObserver[] = [];
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setShowNav(!entry.isIntersecting);
+    if (heroTarget != null) {
+      const heroObserver = new IntersectionObserver(
+        ([entry]) => {
+          setShowNav(!entry.isIntersecting);
+        },
+        {
+          root: null,
+          threshold: 0,
+          rootMargin: '-100px 0px 0px 0px',
+        },
+      );
+      heroObserver.observe(heroTarget);
+      observers.push(heroObserver);
+    }
+
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            if (id != null) {
+              setActiveItem(id);
+            }
+          }
+        });
       },
-      {
-        root: null,
-        threshold: 0,
-        rootMargin: '-100px 0px 0px 0px',
-      },
+      { threshold: 0.6 },
     );
-
-    observer.observe(target);
+    sectionTargets.forEach((section) => sectionObserver.observe(section));
+    observers.push(sectionObserver);
 
     return () => {
-      observer.unobserve(target);
+      observers.forEach((observer) => observer.disconnect());
     };
   }, []);
 
@@ -76,7 +95,7 @@ export const HeroSectionWithNav = ({ navigation }: HeroSectionWithNavProps) => {
               <div className="flex items-center gap-10">
                 <nav className="hidden flex-row items-center gap-10 font-serif uppercase lg:flex">
                   {navigation.map(({ href, label }) => {
-                    const isActive = href === activeItem;
+                    const isActive = href === `/#${activeItem}`;
 
                     return (
                       <NavLink
