@@ -60,7 +60,7 @@ export const ContactFormComponent = ({
           rows={5}
           required
           className={cn(
-            'w-full resize-none rounded-lg border border-white/50 p-4 text-lg font-medium focus:bg-white/5 focus:outline-2 focus:outline-offset-3 focus:outline-white',
+            'input-field resize-none',
             (state.errors?.getFieldErrors('message').length || 0 > 0) &&
               'outline-2 outline-offset-2 outline-rose-300',
           )}
@@ -79,7 +79,7 @@ export const ContactFormComponent = ({
           type="email"
           required
           className={cn(
-            'w-full rounded-lg border border-white/50 p-4 text-lg font-medium outline-white focus:bg-white/5 focus:outline-2 focus:outline-offset-3',
+            'input-field',
             (state.errors?.getFieldErrors('email').length || 0 > 0) &&
               'outline-2 outline-offset-2 outline-rose-300',
           )}
@@ -97,7 +97,7 @@ export const ContactFormComponent = ({
           name="phone"
           type="tel"
           className={cn(
-            'w-full rounded-lg border border-white/50 p-4 text-lg font-medium outline-white focus:bg-white/5 focus:outline-2 focus:outline-offset-3',
+            'input-field',
             (state.errors?.getFieldErrors('phone').length || 0 > 0) &&
               'outline-2 outline-offset-2 outline-rose-300',
           )}

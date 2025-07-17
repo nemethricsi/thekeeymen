@@ -40,3 +40,7 @@
   --color-tk-vviolet-900: #592c63;
   --color-tk-vviolet-950: #38133f;
 }
+
+@utility input-field {
+  @apply w-full rounded-lg border border-white/50 bg-white/10 p-4 text-lg font-medium outline-white focus:bg-transparent focus:outline-2 focus:outline-offset-3;
+}
