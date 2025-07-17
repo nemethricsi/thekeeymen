@@ -289,6 +289,13 @@
         },
         "optional": false
       },
+      "emailSubject": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": false
+      },
       "placeholders": {
         "type": "objectAttribute",
         "value": {

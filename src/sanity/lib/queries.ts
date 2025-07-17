@@ -158,6 +158,7 @@ export const fetchOpenGraphImage = async () => {
 export const CONTACT_FORM_QUERY = defineQuery(`
   *[_id == "contactForm"][0]{
     "title": title[_key == $locale][0].value,
+    emailSubject,
     placeholders{
       "message": message[_key == $locale][0].value,
       "email": email[_key == $locale][0].value,

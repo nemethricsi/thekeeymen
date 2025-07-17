@@ -13,6 +13,7 @@ interface ContactFormProps {
   submitButtonSendingLabel: string;
   successMessage: string;
   errorMessage: string;
+  emailSubject: string;
 }
 
 export const ContactFormComponent = ({
@@ -23,13 +24,14 @@ export const ContactFormComponent = ({
   submitButtonSendingLabel,
   successMessage,
   errorMessage,
+  emailSubject,
 }: ContactFormProps) => {
   const formRef = useRef<HTMLFormElement>(null);
   const [state, handleSubmit, reset] = useForm(
     process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID!,
     {
       data: {
-        subject: '🙀 Someone messaged The Keeymen!',
+        subject: emailSubject,
       },
     },
   );

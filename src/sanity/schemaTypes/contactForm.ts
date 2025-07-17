@@ -13,6 +13,13 @@ export const contactForm = defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: 'emailSubject',
+      type: 'string',
+      title: 'Email tárgymező',
+      description: 'Ilyen tárggyal fog email érkezni hozzánk.',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'placeholders',
       type: 'object',
       title: 'Placeholders',

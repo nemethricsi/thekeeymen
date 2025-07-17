@@ -133,6 +133,7 @@ export default async function Home({
                 }
                 successMessage={contactFormData.messages.success}
                 errorMessage={contactFormData.messages.error}
+                emailSubject={contactFormData.emailSubject}
               />
             </Container>
           </section>
