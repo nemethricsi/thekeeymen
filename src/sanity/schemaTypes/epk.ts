@@ -34,6 +34,27 @@ export const epk = defineType({
       ],
     }),
     defineField({
+      name: 'downloadableRider',
+      type: 'object',
+      title: 'Letölthető Rider',
+      fields: [
+        defineField({
+          name: 'label',
+          title: 'Letölthető Rider címe',
+          type: 'internationalizedArrayString',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
+          name: 'url',
+          title: 'Rider link',
+          description:
+            'Például Google Drive link, ahonnan le tudják tölteni a Ridert.',
+          type: 'url',
+          validation: (Rule) => Rule.required(),
+        }),
+      ],
+    }),
+    defineField({
       name: 'shortBioSection',
       title: 'Rövid bio',
       type: 'object',
