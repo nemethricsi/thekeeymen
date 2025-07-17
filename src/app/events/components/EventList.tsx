@@ -37,7 +37,7 @@ export const EventList = ({
   const visibleEvents = events.slice(0, numberToShow);
   const hiddenEvents = events.slice(numberToShow);
 
-  if (events.length === 0) {
+  if (events.length === 0 || true) {
     return (
       <div className="flex w-full flex-col gap-3">
         {artist != null && bandsInTownButtonText != null && (
@@ -47,7 +47,7 @@ export const EventList = ({
             className="self-start"
           />
         )}
-        <div className="flex w-full items-start gap-3 rounded-lg border border-[#dcbdea] bg-[#ae6bca] p-4 lg:items-center">
+        <div className="border-tk-vviolet-300 bg-tk-vviolet-500 flex w-full items-start gap-3 rounded-lg border p-4 lg:items-center">
           <GuitarIcon className="text-tk-vviolet-200 h-6 w-6 flex-shrink-0" />
           <p className="text-tk-vviolet-50 font-semibold">
             {noResultText

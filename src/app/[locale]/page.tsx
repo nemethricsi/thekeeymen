@@ -96,17 +96,13 @@ export default async function Home({
       >
         <Container className="gap-10">
           <div className="flex flex-col gap-2 text-base font-medium">
-            <p className="text-[#faf6fd]">
-              {homePageData?.embedYoutube?.caption}
-            </p>
+            <p className="text-white">{homePageData?.embedYoutube?.caption}</p>
             {homePageData?.embedYoutube?.youtubeUrl && (
               <EmbedYoutube src={homePageData.embedYoutube.youtubeUrl} />
             )}
           </div>
           <div className="flex flex-col gap-2 text-base font-medium">
-            <p className="text-[#faf6fd]">
-              {homePageData?.embedSpotify?.caption}
-            </p>
+            <p className="text-white">{homePageData?.embedSpotify?.caption}</p>
             {spotifySrc != null && <EmbedSpotify src={spotifySrc} />}
           </div>
         </Container>

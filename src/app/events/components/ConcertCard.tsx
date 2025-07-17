@@ -53,7 +53,7 @@ export const ConcertCard = ({
     ) : (
       <ClickableCta
         url={notifyMeUrl}
-        className="bg-transparent text-[#fefefe] lg:border-none"
+        className="bg-transparent text-white lg:border-none"
       >
         <BellRingIcon className="h-5 w-5" />
         <span>{notifyMeLabel}</span>

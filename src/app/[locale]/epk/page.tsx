@@ -78,7 +78,7 @@ export default async function ElectronicPressKitPage({
   const releases = await fetchReleases();
 
   return (
-    <div className="min-h-screen bg-[#fefefe] text-[#2e2e2e] lg:pt-0">
+    <div className="min-h-screen border bg-white text-black lg:pt-0">
       {data?.navigation && <StaticNavbar navItems={data.navigation} />}
       <main className="pt-32 lg:pt-36">
         <Container className="gap-16 pb-24 lg:gap-20">

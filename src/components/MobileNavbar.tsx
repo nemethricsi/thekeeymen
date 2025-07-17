@@ -173,15 +173,15 @@ const HamburgerButton = ({
       aria-label="Toggle menu"
       onClick={() => setIsOpen(!isOpen)}
       className={cn(
-        'z-50 flex h-10 w-10 flex-col items-center justify-center gap-1 rounded-full bg-transparent p-1 text-[#fefefe] shadow-none transition-all',
-        isOpen && 'text-tk-bblue-500 bg-[#fefefe] shadow-lg',
+        'z-50 flex h-10 w-10 flex-col items-center justify-center gap-1 rounded-full bg-transparent p-1 text-white shadow-none transition-all',
+        isOpen && 'text-tk-bblue-500 bg-white shadow-lg',
       )}
     >
       {/* Hamburger lines */}
       <motion.span
         animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
         className={cn(
-          'block h-1 w-6 origin-center rounded-lg bg-[#fefefe]',
+          'block h-1 w-6 origin-center rounded-lg bg-white',
           isOpen && 'bg-tk-bblue-500',
         )}
       />
@@ -189,14 +189,14 @@ const HamburgerButton = ({
         animate={isOpen ? { opacity: 0 } : { opacity: 1 }}
         transition={{ duration: 0.1 }}
         className={cn(
-          'block h-1 w-6 rounded-lg bg-[#fefefe]',
+          'block h-1 w-6 rounded-lg bg-white',
           isOpen && 'bg-tk-bblue-500',
         )}
       />
       <motion.span
         animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
         className={cn(
-          'block h-1 w-6 origin-center rounded-lg bg-[#fefefe]',
+          'block h-1 w-6 origin-center rounded-lg bg-white',
           isOpen && 'bg-tk-bblue-500',
         )}
       />

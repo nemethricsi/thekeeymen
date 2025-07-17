@@ -9,6 +9,8 @@
 
 @theme {
   /* --color-*: initial; */
+  --color-white: #fefefe;
+  --color-black: #2e2e2e;
 
   /* Bondi Blue */
   /* https://uicolors.app/generate/408ea3 */

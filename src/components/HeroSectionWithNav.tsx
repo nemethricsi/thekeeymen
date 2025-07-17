@@ -105,11 +105,11 @@ export const HeroSectionWithNav = ({ navigation }: HeroSectionWithNavProps) => {
                       >
                         <span>{label}</span>
                         <span
-                          className="absolute -bottom-0.5 left-1/2 h-0.5 w-0 -translate-x-1/2 bg-[#fefefe] transition-all duration-200 group-hover:w-full"
+                          className="absolute -bottom-0.5 left-1/2 h-0.5 w-0 -translate-x-1/2 bg-white transition-all duration-200 group-hover:w-full"
                           aria-hidden="true"
                         />
                         {isActive && (
-                          <span className="absolute -bottom-0.5 left-0 h-0.5 w-full bg-[#fefefe]" />
+                          <span className="absolute -bottom-0.5 left-0 h-0.5 w-full bg-white" />
                         )}
                       </NavLink>
                     );

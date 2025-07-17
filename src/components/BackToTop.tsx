@@ -42,7 +42,7 @@ export const BackToTop = () => {
       {isVisible && (
         <ReusableTooltip message="Back to top">
           <button
-            className="text-tk-bblue-500 fixed right-4 bottom-4 z-50 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-[#fefefe] opacity-0 shadow-lg transition-all duration-300 hover:scale-110 hover:bg-[#e5e5e5] active:scale-95 data-[state=visible]:opacity-100 sm:right-6 sm:bottom-6"
+            className="text-tk-bblue-500 fixed right-4 bottom-4 z-50 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-white opacity-0 shadow-lg transition-all duration-300 hover:scale-110 active:scale-95 data-[state=visible]:opacity-100 sm:right-6 sm:bottom-6"
             aria-label="Back to top"
             data-state={isVisible ? 'visible' : 'hidden'}
             onClick={scrollToTop}

@@ -26,7 +26,7 @@ export const BandsInTownButton = ({
         <SiBandsintown className="h-4 w-4" />
         <span className="flex items-center gap-2 text-xs font-semibold uppercase">
           <span>{label}</span>
-          <span className="group-hover:bg-tk-vviolet-100 text-tk-vviolet-600 flex items-center justify-center rounded bg-[#faf6fd] p-1 font-normal">
+          <span className="group-hover:bg-tk-vviolet-100 text-tk-vviolet-600 flex items-center justify-center rounded bg-white p-1 font-normal">
             {artist.tracker_count}
           </span>
         </span>
