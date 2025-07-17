@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { Footer } from '@/components/Footer';
 import { Locale } from '@/i18n-config';
 
@@ -10,7 +11,7 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: Locale }>;
-}) {
+}): Promise<Metadata> {
   const { locale } = await params;
   const metadata = await fetchMetadata({ locale });
 

@@ -58,7 +58,7 @@ export const ContactFormComponent = ({
           rows={5}
           required
           className={cn(
-            'w-full resize-none rounded-lg border border-[#fefefe]/50 p-4 text-lg font-medium focus:bg-[#fefefe]/5 focus:outline-2 focus:outline-offset-3 focus:outline-[#fefefe]',
+            'w-full resize-none rounded-lg border border-white/50 p-4 text-lg font-medium focus:bg-white/5 focus:outline-2 focus:outline-offset-3 focus:outline-white',
             (state.errors?.getFieldErrors('message').length || 0 > 0) &&
               'outline-2 outline-offset-2 outline-rose-300',
           )}
@@ -77,7 +77,7 @@ export const ContactFormComponent = ({
           type="email"
           required
           className={cn(
-            'w-full rounded-lg border border-[#fefefe]/50 p-4 text-lg font-medium outline-[#fefefe] focus:bg-[#fefefe]/5 focus:outline-2 focus:outline-offset-3',
+            'w-full rounded-lg border border-white/50 p-4 text-lg font-medium outline-white focus:bg-white/5 focus:outline-2 focus:outline-offset-3',
             (state.errors?.getFieldErrors('email').length || 0 > 0) &&
               'outline-2 outline-offset-2 outline-rose-300',
           )}
@@ -95,7 +95,7 @@ export const ContactFormComponent = ({
           name="phone"
           type="tel"
           className={cn(
-            'w-full rounded-lg border border-[#fefefe]/50 p-4 text-lg font-medium outline-[#fefefe] focus:bg-[#fefefe]/5 focus:outline-2 focus:outline-offset-3',
+            'w-full rounded-lg border border-white/50 p-4 text-lg font-medium outline-white focus:bg-white/5 focus:outline-2 focus:outline-offset-3',
             (state.errors?.getFieldErrors('phone').length || 0 > 0) &&
               'outline-2 outline-offset-2 outline-rose-300',
           )}
@@ -111,7 +111,7 @@ export const ContactFormComponent = ({
       <button
         type="submit"
         disabled={state.submitting}
-        className="group flex w-full items-center justify-center gap-2 rounded-lg bg-[#fefefe] px-4 py-2 font-bold text-[#8e43a5] uppercase transition-colors hover:cursor-pointer focus:outline-2 focus:outline-offset-3 focus:outline-[#fefefe] active:bg-[#fefefe]/75 active:outline-none disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-[#fefefe]"
+        className="group text-tk-vviolet-600 flex w-full items-center justify-center gap-2 rounded-lg bg-white px-4 py-2 font-bold uppercase transition-colors focus:outline-2 focus:outline-offset-3 focus:outline-white active:bg-white/75 active:outline-none disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-white"
       >
         {state.submitting && <LoaderIcon className="animate-spin" />}
         <span>
@@ -126,7 +126,7 @@ export const ContactFormComponent = ({
           <span>{successMessage}</span>
           <button
             type="button"
-            className="cursor-pointer rounded-full p-1 transition-colors hover:bg-lime-200"
+            className="rounded-full p-1 transition-colors hover:bg-lime-200"
             onClick={reset}
           >
             <XIcon />
@@ -138,7 +138,7 @@ export const ContactFormComponent = ({
           <span>{errorMessage}</span>
           <button
             type="button"
-            className="cursor-pointer rounded-full p-1 transition-colors hover:bg-rose-200"
+            className="rounded-full p-1 transition-colors hover:bg-rose-200"
             onClick={reset}
           >
             <XIcon />

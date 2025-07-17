@@ -92,6 +92,10 @@ export const EPK_QUERY = defineQuery(`
       "label": label[_key == $locale][0].value,
       url,
     },
+    downloadableRider{
+      "label": label[_key == $locale][0].value,
+      url,
+    },
     shortBioSection{
       "shortBioTitle": shortBioTitle[_key == $locale][0].value,
       "shortBio": shortBio[_key == $locale][0].value,

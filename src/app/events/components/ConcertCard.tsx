@@ -53,7 +53,7 @@ export const ConcertCard = ({
     ) : (
       <ClickableCta
         url={notifyMeUrl}
-        className="bg-transparent text-[#fefefe] lg:border-none"
+        className="bg-transparent text-white lg:border-none"
       >
         <BellRingIcon className="h-5 w-5" />
         <span>{notifyMeLabel}</span>
@@ -62,7 +62,7 @@ export const ConcertCard = ({
   };
 
   return (
-    <div className="flex flex-col items-center justify-between gap-1 px-0 hover:bg-[#b367ce] lg:flex-row lg:gap-4 lg:p-4 lg:[&:not(:last-child)]:border-b lg:[&:not(:last-child)]:border-[#cc92e0]">
+    <div className="lg:[&:not(:last-child)]:border-tk-vviolet-400 hover:bg-tk-vviolet-500 flex flex-col items-center justify-between gap-1 px-0 lg:flex-row lg:gap-4 lg:p-4 lg:[&:not(:last-child)]:border-b">
       <div className="flex w-full items-center gap-4 lg:gap-8">
         {/* Date */}
         <div className="flex flex-shrink-0 items-center gap-3">
@@ -77,7 +77,7 @@ export const ConcertCard = ({
           </div>
         </div>
         {/*Separator*/}
-        <div className="h-10 w-px bg-[#cc92e0]" />
+        <div className="bg-tk-vviolet-400 h-10 w-px" />
         {/*Name and venue*/}
         <div className="flex flex-col">
           <div className="text-base font-medium uppercase lg:text-xl">
@@ -106,7 +106,7 @@ const ClickableCta = ({
     <a
       href={url}
       className={cn(
-        'flex w-full flex-shrink-0 items-center justify-center gap-2 rounded-lg border border-[#f5edfa] bg-[#f5edfa] px-4 py-2 text-sm font-bold text-[#8e43a5] uppercase hover:bg-[#f5edfa] hover:text-[#8e43a5] hover:drop-shadow-md lg:w-auto lg:bg-transparent lg:text-[#f5edfa]',
+        'border-tk-vviolet-100 bg-tk-vviolet-100 hover:bg-tk-vviolet-100 lg:text-tk-vviolet-100 text-tk-vviolet-600 hover:text-tk-vviolet-600 flex w-full flex-shrink-0 items-center justify-center gap-2 rounded-lg border px-4 py-2 text-sm font-bold uppercase hover:drop-shadow-md lg:w-auto lg:bg-transparent',
         className,
       )}
       {...externalLink}
@@ -118,7 +118,7 @@ const ClickableCta = ({
 
 const StaticCta = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="pointer-events-none flex w-full flex-shrink-0 cursor-not-allowed items-center justify-center gap-2 rounded-lg border border-[#f5edfa] px-4 py-2 text-sm font-bold text-[#f5edfa] uppercase opacity-50 select-none lg:w-auto lg:border-none">
+    <div className="border-tk-vviolet-100 text-tk-vviolet-100 pointer-events-none flex w-full flex-shrink-0 cursor-not-allowed items-center justify-center gap-2 rounded-lg border px-4 py-2 text-sm font-bold uppercase opacity-50 select-none lg:w-auto lg:border-none">
       {children}
     </div>
   );

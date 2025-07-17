@@ -47,14 +47,14 @@ export const EventList = ({
             className="self-start"
           />
         )}
-        <div className="flex w-full items-start gap-3 rounded-lg border border-[#dcbdea] bg-[#ae6bca] p-4 lg:items-center">
-          <GuitarIcon className="h-6 w-6 flex-shrink-0 text-[#edd9f5]" />
-          <p className="font-semibold text-[#fbf6fd]">
+        <div className="border-tk-vviolet-300 bg-tk-vviolet-500 flex w-full items-start gap-3 rounded-lg border p-4 lg:items-center">
+          <GuitarIcon className="text-tk-vviolet-200 h-6 w-6 flex-shrink-0" />
+          <p className="text-tk-vviolet-50 font-semibold">
             {noResultText
               ? noResultText
               : 'No gigs right now — we&apos;re cooking up the next ones.'}
           </p>
-          <HandMetalIcon className="h-6 w-6 flex-shrink-0 text-[#edd9f5]" />
+          <HandMetalIcon className="text-tk-vviolet-200 h-6 w-6 flex-shrink-0" />
         </div>
       </div>
     );
@@ -116,7 +116,7 @@ export const EventList = ({
         {events.length > numberToShow && (
           <button
             onClick={() => setOpen(!open)}
-            className="mt-4 flex w-full cursor-pointer justify-center uppercase underline underline-offset-4 hover:no-underline"
+            className="mt-4 flex w-full justify-center uppercase underline underline-offset-4 hover:no-underline"
           >
             {open ? 'Show less' : 'Show all'}
           </button>

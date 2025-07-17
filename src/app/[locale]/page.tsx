@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { Container } from '@/components/Container';
 import { EmbedYoutube } from '@/components/EmbedYoutube';
 import { fetchBandsInTownEvents } from '@/server/actions';
@@ -20,7 +21,7 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: Locale }>;
-}) {
+}): Promise<Metadata> {
   const { locale } = await params;
   const metadata = await fetchMetadata({ locale });
   const baseTitle = metadata?.seo?.title;
@@ -65,13 +66,13 @@ export default async function Home({
   );
 
   return (
-    <main className="flex flex-col bg-[#8e43a5]">
+    <main className="bg-tk-vviolet-600 flex flex-col">
       {pageSettings?.navigation && (
         <HeroSectionWithNav navigation={pageSettings.navigation} />
       )}
       <section
         id="gigs"
-        className="scroll-mt-20 bg-linear-to-b from-transparent to-[#8e43a5] pb-10 sm:scroll-mt-24"
+        className="to-tk-vviolet-600 scroll-mt-20 bg-linear-to-b from-transparent pb-10 sm:scroll-mt-24"
       >
         <Container className="gap-10">
           <EventList
@@ -91,21 +92,17 @@ export default async function Home({
       </section>
       <section
         id="media"
-        className="relative scroll-mt-8 bg-[#8e43a5] py-10 sm:scroll-mt-14"
+        className="bg-tk-vviolet-600 relative scroll-mt-8 py-10 sm:scroll-mt-14"
       >
         <Container className="gap-10">
           <div className="flex flex-col gap-2 text-base font-medium">
-            <p className="text-[#faf6fd]">
-              {homePageData?.embedYoutube?.caption}
-            </p>
+            <p className="text-white">{homePageData?.embedYoutube?.caption}</p>
             {homePageData?.embedYoutube?.youtubeUrl && (
               <EmbedYoutube src={homePageData.embedYoutube.youtubeUrl} />
             )}
           </div>
           <div className="flex flex-col gap-2 text-base font-medium">
-            <p className="text-[#faf6fd]">
-              {homePageData?.embedSpotify?.caption}
-            </p>
+            <p className="text-white">{homePageData?.embedSpotify?.caption}</p>
             {spotifySrc != null && <EmbedSpotify src={spotifySrc} />}
           </div>
         </Container>

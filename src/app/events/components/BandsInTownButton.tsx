@@ -18,7 +18,7 @@ export const BandsInTownButton = ({
       <Link
         href={artist.url}
         className={cn(
-          'group flex items-center gap-2 rounded-lg px-2 py-1 text-sm hover:bg-[#f5edfa] hover:text-[#8e43a5]',
+          'group hover:bg-tk-vviolet-100 hover:text-tk-vviolet-600 flex items-center gap-2 rounded-lg px-2 py-1 text-sm',
           className,
         )}
         {...externalLink}
@@ -26,7 +26,7 @@ export const BandsInTownButton = ({
         <SiBandsintown className="h-4 w-4" />
         <span className="flex items-center gap-2 text-xs font-semibold uppercase">
           <span>{label}</span>
-          <span className="flex items-center justify-center rounded bg-[#faf6fd] p-1 font-normal text-[#8e43a5] group-hover:bg-[#f5edfa]">
+          <span className="group-hover:bg-tk-vviolet-100 text-tk-vviolet-600 flex items-center justify-center rounded bg-white p-1 font-normal">
             {artist.tracker_count}
           </span>
         </span>

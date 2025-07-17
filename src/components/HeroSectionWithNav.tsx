@@ -81,7 +81,7 @@ export const HeroSectionWithNav = ({ navigation }: HeroSectionWithNavProps) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '-100%' }}
             transition={{ duration: 0.25 }}
-            className="fixed top-0 left-0 z-40 hidden h-20 w-full bg-linear-to-b from-[#408ea3] to-[#408ea3]/80 drop-shadow-xl drop-shadow-black/20 backdrop-blur-sm lg:flex"
+            className="from-tk-bblue-500 to-tk-bblue-500/80 fixed top-0 left-0 z-40 hidden h-20 w-full bg-linear-to-b drop-shadow-xl drop-shadow-black/20 backdrop-blur-sm lg:flex"
           >
             <div className="container mx-auto flex max-w-5xl flex-row items-center justify-between px-4">
               <LocalizedLink href="/">
@@ -105,11 +105,11 @@ export const HeroSectionWithNav = ({ navigation }: HeroSectionWithNavProps) => {
                       >
                         <span>{label}</span>
                         <span
-                          className="absolute -bottom-0.5 left-1/2 h-0.5 w-0 -translate-x-1/2 bg-[#fefefe] transition-all duration-200 group-hover:w-full"
+                          className="absolute -bottom-0.5 left-1/2 h-0.5 w-0 -translate-x-1/2 bg-white transition-all duration-200 group-hover:w-full"
                           aria-hidden="true"
                         />
                         {isActive && (
-                          <span className="absolute -bottom-0.5 left-0 h-0.5 w-full bg-[#fefefe]" />
+                          <span className="absolute -bottom-0.5 left-0 h-0.5 w-full bg-white" />
                         )}
                       </NavLink>
                     );
