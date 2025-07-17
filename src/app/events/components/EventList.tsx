@@ -48,13 +48,13 @@ export const EventList = ({
           />
         )}
         <div className="flex w-full items-start gap-3 rounded-lg border border-[#dcbdea] bg-[#ae6bca] p-4 lg:items-center">
-          <GuitarIcon className="h-6 w-6 flex-shrink-0 text-[#edd9f5]" />
-          <p className="font-semibold text-[#fbf6fd]">
+          <GuitarIcon className="text-tk-vviolet-200 h-6 w-6 flex-shrink-0" />
+          <p className="text-tk-vviolet-50 font-semibold">
             {noResultText
               ? noResultText
               : 'No gigs right now — we&apos;re cooking up the next ones.'}
           </p>
-          <HandMetalIcon className="h-6 w-6 flex-shrink-0 text-[#edd9f5]" />
+          <HandMetalIcon className="text-tk-vviolet-200 h-6 w-6 flex-shrink-0" />
         </div>
       </div>
     );

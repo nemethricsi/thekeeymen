@@ -59,11 +59,11 @@ export const MobileNavbar = ({
         className={cn(
           'fixed top-0 left-0 z-50 flex w-full items-center gap-3 py-2 drop-shadow-2xl lg:hidden',
           !initiallyTransparent &&
-            'bg-linear-to-b from-[#408ea3] to-[#408ea3]/80',
+            'from-tk-bblue-500 to-tk-bblue-500/80 bg-linear-to-b',
           initiallyTransparent &&
-            'bg-linear-to-b from-[#408ea3] to-transparent',
+            'from-tk-bblue-500 bg-linear-to-b to-transparent',
           scrolled &&
-            'bg-linear-to-b from-[#408ea3] to-[#408ea3]/80 backdrop-blur-sm',
+            'from-tk-bblue-500 to-tk-bblue-500/80 bg-linear-to-b backdrop-blur-sm',
           isOpen && 'bg-none',
         )}
       >
@@ -114,7 +114,7 @@ export const MobileNavbar = ({
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="fixed top-0 left-0 z-50 flex h-full w-[80%] flex-col justify-between bg-[#408ea3]/80 backdrop-blur-sm"
+            className="bg-tk-bblue-500/80 fixed top-0 left-0 z-50 flex h-full w-[80%] flex-col justify-between backdrop-blur-sm"
           >
             <div className="flex flex-col px-4 py-8">
               {navItems.map(({ label, href }) => {
@@ -126,7 +126,7 @@ export const MobileNavbar = ({
                     href={href}
                     onClick={() => setIsOpen(false)}
                     className={cn(
-                      'mb-4 flex items-center justify-center gap-2 rounded-lg bg-[#edd9f5]/25 p-3 text-lg font-semibold',
+                      'bg-tk-vviolet-200/25 mb-4 flex items-center justify-center gap-2 rounded-lg p-3 text-lg font-semibold',
                       isActive && 'border-2',
                     )}
                   >
@@ -145,8 +145,8 @@ export const MobileNavbar = ({
                     key={locale}
                     href={redirectedPathname(locale)}
                     className={cn(
-                      'flex-1 rounded-lg border border-[#edd9f5]/25 p-2 text-center uppercase',
-                      locale === currentLocale && 'bg-[#edd9f5]/25',
+                      'border-tk-vviolet-200/25 flex-1 rounded-lg border p-2 text-center uppercase',
+                      locale === currentLocale && 'bg-tk-vviolet-200/25',
                     )}
                   >
                     {locale}
@@ -174,7 +174,7 @@ const HamburgerButton = ({
       onClick={() => setIsOpen(!isOpen)}
       className={cn(
         'z-50 flex h-10 w-10 flex-col items-center justify-center gap-1 rounded-full bg-transparent p-1 text-[#fefefe] shadow-none transition-all',
-        isOpen && 'bg-[#fefefe] text-[#408ea3] shadow-lg',
+        isOpen && 'text-tk-bblue-500 bg-[#fefefe] shadow-lg',
       )}
     >
       {/* Hamburger lines */}
@@ -182,7 +182,7 @@ const HamburgerButton = ({
         animate={isOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
         className={cn(
           'block h-1 w-6 origin-center rounded-lg bg-[#fefefe]',
-          isOpen && 'bg-[#408ea3]',
+          isOpen && 'bg-tk-bblue-500',
         )}
       />
       <motion.span
@@ -190,14 +190,14 @@ const HamburgerButton = ({
         transition={{ duration: 0.1 }}
         className={cn(
           'block h-1 w-6 rounded-lg bg-[#fefefe]',
-          isOpen && 'bg-[#408ea3]',
+          isOpen && 'bg-tk-bblue-500',
         )}
       />
       <motion.span
         animate={isOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
         className={cn(
           'block h-1 w-6 origin-center rounded-lg bg-[#fefefe]',
-          isOpen && 'bg-[#408ea3]',
+          isOpen && 'bg-tk-bblue-500',
         )}
       />
     </button>

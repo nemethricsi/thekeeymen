@@ -6,3 +6,35 @@
     cursor: pointer;
   }
 }
+
+@theme {
+  /* --color-*: initial; */
+
+  /* Bondi Blue */
+  /* https://uicolors.app/generate/408ea3 */
+  --color-tk-bblue-50: #f1f8fa;
+  --color-tk-bblue-100: #dceef1;
+  --color-tk-bblue-200: #bcdde5;
+  --color-tk-bblue-300: #8ec5d2;
+  --color-tk-bblue-400: #59a5b7;
+  --color-tk-bblue-500: #408ea3;
+  --color-tk-bblue-600: #367084;
+  --color-tk-bblue-700: #315c6d;
+  --color-tk-bblue-800: #2f4e5b;
+  --color-tk-bblue-900: #2b434e;
+  --color-tk-bblue-950: #182a34;
+
+  /* Vivid Violet */
+  /* https://uicolors.app/generate/8e43a5 */
+  --color-tk-vviolet-50: #fbf6fd;
+  --color-tk-vviolet-100: #f5edfa;
+  --color-tk-vviolet-200: #edd9f5;
+  --color-tk-vviolet-300: #dfbbec;
+  --color-tk-vviolet-400: #cc92e0;
+  --color-tk-vviolet-500: #b367ce;
+  --color-tk-vviolet-600: #8e43a5;
+  --color-tk-vviolet-700: #7f3992;
+  --color-tk-vviolet-800: #693078;
+  --color-tk-vviolet-900: #592c63;
+  --color-tk-vviolet-950: #38133f;
+}

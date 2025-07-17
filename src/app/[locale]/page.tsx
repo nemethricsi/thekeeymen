@@ -66,13 +66,13 @@ export default async function Home({
   );
 
   return (
-    <main className="flex flex-col bg-[#8e43a5]">
+    <main className="bg-tk-vviolet-600 flex flex-col">
       {pageSettings?.navigation && (
         <HeroSectionWithNav navigation={pageSettings.navigation} />
       )}
       <section
         id="gigs"
-        className="scroll-mt-20 bg-linear-to-b from-transparent to-[#8e43a5] pb-10 sm:scroll-mt-24"
+        className="to-tk-vviolet-600 scroll-mt-20 bg-linear-to-b from-transparent pb-10 sm:scroll-mt-24"
       >
         <Container className="gap-10">
           <EventList
@@ -92,7 +92,7 @@ export default async function Home({
       </section>
       <section
         id="media"
-        className="relative scroll-mt-8 bg-[#8e43a5] py-10 sm:scroll-mt-14"
+        className="bg-tk-vviolet-600 relative scroll-mt-8 py-10 sm:scroll-mt-14"
       >
         <Container className="gap-10">
           <div className="flex flex-col gap-2 text-base font-medium">
