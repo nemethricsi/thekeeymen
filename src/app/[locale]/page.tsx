@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { Container } from '@/components/Container';
 import { EmbedYoutube } from '@/components/EmbedYoutube';
 import { fetchBandsInTownEvents } from '@/server/actions';
@@ -20,7 +21,7 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: Locale }>;
-}) {
+}): Promise<Metadata> {
   const { locale } = await params;
   const metadata = await fetchMetadata({ locale });
   const baseTitle = metadata?.seo?.title;
