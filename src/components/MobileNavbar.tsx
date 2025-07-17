@@ -173,7 +173,7 @@ const HamburgerButton = ({
       aria-label="Toggle menu"
       onClick={() => setIsOpen(!isOpen)}
       className={cn(
-        'z-50 flex h-10 w-10 cursor-pointer flex-col items-center justify-center gap-1 rounded-full bg-transparent p-1 text-[#fefefe] shadow-none transition-all',
+        'z-50 flex h-10 w-10 flex-col items-center justify-center gap-1 rounded-full bg-transparent p-1 text-[#fefefe] shadow-none transition-all',
         isOpen && 'bg-[#fefefe] text-[#408ea3] shadow-lg',
       )}
     >

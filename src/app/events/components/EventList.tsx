@@ -116,7 +116,7 @@ export const EventList = ({
         {events.length > numberToShow && (
           <button
             onClick={() => setOpen(!open)}
-            className="mt-4 flex w-full cursor-pointer justify-center uppercase underline underline-offset-4 hover:no-underline"
+            className="mt-4 flex w-full justify-center uppercase underline underline-offset-4 hover:no-underline"
           >
             {open ? 'Show less' : 'Show all'}
           </button>

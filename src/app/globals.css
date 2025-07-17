@@ -1,15 +1,8 @@
 @import 'tailwindcss';
 
-/* 'vivid-violet': {
-    '50': '#fbf6fd',
-    '100': '#f5edfa',
-    '200': '#edd9f5',
-    '300': '#dfbbec',
-    '400': '#cc92e0',
-    '500': '#b367ce',
-    '600': '#8e43a5', // primary
-    '700': '#7f3992',
-    '800': '#693078',
-    '900': '#592c63',
-    '950': '#38133f',
-}, */
+@layer base {
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
+  }
+}
