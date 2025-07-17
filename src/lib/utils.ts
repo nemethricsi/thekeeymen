@@ -30,3 +30,26 @@ export function parseSpotifyIframe(iframeHtml: string): string | null {
 
   return url.toString();
 }
+
+const renderTemplate = <T extends Record<string, string>>(
+  template: string,
+  variables: T,
+): string => {
+  return template.replace(/{{\s*(\w+)\s*}}/g, (_, key: string) => {
+    if (key in variables) {
+      return variables[key as keyof T];
+    }
+    return '';
+  });
+};
+
+type EmailSubjectVariables = {
+  email: string;
+};
+
+export const renderEmailSubject = (
+  template: string,
+  variables: EmailSubjectVariables,
+) => {
+  return renderTemplate(template, variables);
+};
