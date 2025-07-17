@@ -37,7 +37,7 @@ export const EventList = ({
   const visibleEvents = events.slice(0, numberToShow);
   const hiddenEvents = events.slice(numberToShow);
 
-  if (events.length === 0 || true) {
+  if (events.length === 0) {
     return (
       <div className="flex w-full flex-col gap-3">
         {artist != null && bandsInTownButtonText != null && (
