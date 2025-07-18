@@ -84,5 +84,5 @@
 }
 
 @utility input-field {
-  @apply w-full rounded-lg border border-white/50 bg-white/10 p-4 text-lg font-medium outline-white focus:bg-transparent focus:outline-2 focus:outline-offset-3;
+  @apply outline-lila-400 w-full rounded-lg border border-neutral-300 bg-white p-4 text-lg font-medium focus:outline-2 focus:outline-offset-3;
 }

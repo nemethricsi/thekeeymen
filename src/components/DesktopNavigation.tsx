@@ -9,7 +9,7 @@ export const DesktopNavigation = ({
   navigation: ProcessedMenuItem[];
 }) => {
   return (
-    <div className="flex w-full items-center justify-center gap-11 pb-8 font-serif text-2xl font-bold tracking-wider uppercase">
+    <div className="flex w-full items-center justify-center gap-11 pb-20 font-serif text-2xl font-bold tracking-wider uppercase">
       {navigation.map(({ href, label }) => (
         <LocalizedLink
           key={href}

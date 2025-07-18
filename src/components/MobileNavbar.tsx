@@ -58,12 +58,10 @@ export const MobileNavbar = ({
       <div
         className={cn(
           'fixed top-0 left-0 z-50 flex w-full items-center gap-3 py-2 drop-shadow-2xl lg:hidden',
-          !initiallyTransparent &&
-            'from-tk-bblue-500 to-tk-bblue-500/80 bg-linear-to-b',
+          !initiallyTransparent && 'bg-kashmir-600',
           initiallyTransparent &&
-            'from-tk-bblue-500 bg-linear-to-b to-transparent',
-          scrolled &&
-            'from-tk-bblue-500 to-tk-bblue-500/80 bg-linear-to-b backdrop-blur-sm',
+            'from-kashmir-600 bg-linear-to-b to-transparent',
+          scrolled && 'bg-kashmir-600 backdrop-blur-sm',
           isOpen && 'bg-none',
         )}
       >
@@ -114,7 +112,7 @@ export const MobileNavbar = ({
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="bg-tk-bblue-500/80 fixed top-0 left-0 z-50 flex h-full w-[80%] flex-col justify-between backdrop-blur-sm"
+            className="bg-kashmir-600 fixed top-0 left-0 z-50 flex h-full w-[80%] flex-col justify-between backdrop-blur-sm"
           >
             <div className="flex flex-col px-4 py-8">
               {navItems.map(({ label, href }) => {
@@ -126,8 +124,8 @@ export const MobileNavbar = ({
                     href={href}
                     onClick={() => setIsOpen(false)}
                     className={cn(
-                      'bg-tk-vviolet-200/25 mb-4 flex items-center justify-center gap-2 rounded-lg p-3 text-lg font-semibold',
-                      isActive && 'border-2',
+                      'mb-4 flex items-center justify-center gap-2 rounded-lg bg-white/25 p-3 text-lg font-semibold text-white',
+                      isActive && 'border-2 bg-white/40',
                     )}
                   >
                     <span className="text-xl font-semibold uppercase">
@@ -145,8 +143,8 @@ export const MobileNavbar = ({
                     key={locale}
                     href={redirectedPathname(locale)}
                     className={cn(
-                      'border-tk-vviolet-200/25 flex-1 rounded-lg border p-2 text-center uppercase',
-                      locale === currentLocale && 'bg-tk-vviolet-200/25',
+                      'border-linen-50 flex-1 rounded-lg border p-2 text-center text-white uppercase',
+                      locale === currentLocale && 'bg-white/40 font-semibold',
                     )}
                   >
                     {locale}

@@ -113,7 +113,7 @@ export const ContactFormComponent = ({
       <button
         type="submit"
         disabled={state.submitting}
-        className="group text-tk-vviolet-600 flex w-full items-center justify-center gap-2 rounded-lg bg-white px-4 py-2 font-bold uppercase transition-colors focus:outline-2 focus:outline-offset-3 focus:outline-white active:bg-white/75 active:outline-none disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-white"
+        className="group bg-lila-700 hover:bg-lila-500 flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 font-bold text-white uppercase transition-colors focus:outline-2 focus:outline-offset-3 focus:outline-white active:bg-white/75 active:outline-none disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-white"
       >
         {state.submitting && <LoaderIcon className="animate-spin" />}
         <span>
