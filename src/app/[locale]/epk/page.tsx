@@ -78,7 +78,7 @@ export default async function ElectronicPressKitPage({
   const releases = await fetchReleases();
 
   return (
-    <div className="min-h-screen border bg-white text-black lg:pt-0">
+    <div className="text-linen-950 min-h-screen lg:pt-0">
       {data?.navigation && <StaticNavbar navItems={data.navigation} />}
       <main className="pt-32 lg:pt-36">
         <Container className="gap-16 pb-24 lg:gap-20">
@@ -90,26 +90,26 @@ export default async function ElectronicPressKitPage({
               {epk?.downloadablePressKit != null && (
                 <Link
                   href={epk.downloadablePressKit.url}
-                  className="group flex items-center gap-2 rounded-lg border border-slate-300 bg-slate-100 px-4 py-2 font-medium text-slate-700 transition-colors hover:bg-slate-200 sm:w-fit"
+                  className="group bg-linen-100 border-linen-300 hover:bg-linen-200 text-linen-800 flex items-center gap-2 rounded-lg border px-4 py-2 font-medium transition-colors sm:w-fit"
                   {...externalLink}
                 >
                   <SiGoogledrive className="h-5 w-5" />
                   <span className="text-sm">
                     {epk.downloadablePressKit.label}
                   </span>
-                  <ArrowRightIcon className="hidden h-5 w-5 translate-x-0 transition-transform duration-100 group-hover:translate-x-1 group-active:-rotate-45 sm:block" />
+                  <ArrowRightIcon className="tranneutral-x-0 group-hover:tranneutral-x-1 hidden h-5 w-5 transition-transform duration-100 group-active:-rotate-45 sm:block" />
                   <ArrowUpRightIcon className="h-5 w-5 sm:hidden" />
                 </Link>
               )}
               {epk?.downloadableRider != null && (
                 <Link
                   href={epk.downloadableRider.url}
-                  className="group flex items-center gap-2 self-start rounded-lg border border-slate-300 bg-slate-100 px-4 py-2 font-medium text-slate-700 transition-colors hover:bg-slate-200"
+                  className="group bg-linen-100 border-linen-300 hover:bg-linen-200 text-linen-800 flex items-center gap-2 self-start rounded-lg border px-4 py-2 font-medium transition-colors"
                   {...externalLink}
                 >
                   <FaFilePdf className="h-5 w-5" />
                   <span className="text-sm">{epk.downloadableRider.label}</span>
-                  <ArrowRightIcon className="hidden h-5 w-5 translate-x-0 transition-transform duration-100 group-hover:translate-x-1 group-active:-rotate-45 sm:block" />
+                  <ArrowRightIcon className="tranneutral-x-0 group-hover:tranneutral-x-1 hidden h-5 w-5 transition-transform duration-100 group-active:-rotate-45 sm:block" />
                   <ArrowUpRightIcon className="h-5 w-5 sm:hidden" />
                 </Link>
               )}
@@ -120,7 +120,7 @@ export default async function ElectronicPressKitPage({
               {epk?.shortBioSection?.shortBioTitle}
             </h2>
             {epk?.shortBioSection?.shortBio && (
-              <div className="flex flex-col-reverse items-center gap-2 lg:flex-col">
+              <div className="flex flex-col-reverse items-center gap-2 text-base sm:text-lg lg:flex-col">
                 <CopyTextButton
                   textToCopy={epk.shortBioSection.shortBio}
                   copyLabel={
@@ -218,7 +218,7 @@ export default async function ElectronicPressKitPage({
                             >
                               <Link
                                 href={url}
-                                className="flex h-10 w-10 items-center justify-center rounded-lg bg-slate-100 transition-colors hover:bg-slate-200"
+                                className="bg-linen-100 hover:bg-linen-200 flex h-10 w-10 items-center justify-center rounded-lg transition-colors"
                                 {...externalLink}
                               >
                                 <Icon className="h-6 w-6" />
@@ -244,7 +244,7 @@ export default async function ElectronicPressKitPage({
                   epk.mediaMentionsSection.mediaMentions.map((mention) => (
                     <article
                       key={mention._key}
-                      className="flex flex-col gap-1 rounded-lg bg-slate-100 p-5 text-base leading-relaxed text-slate-800 sm:p-8"
+                      className="bg-linen-100 flex flex-col gap-1 rounded-lg p-5 text-base leading-relaxed sm:p-8"
                     >
                       <p className="italic">&ldquo;{mention.quote}&rdquo;</p>
                       <p className="text-sm font-semibold">
