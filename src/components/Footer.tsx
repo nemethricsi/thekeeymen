@@ -25,7 +25,7 @@ export const Footer = async ({
               <SocialIcon href={socials.bandcamp}>
                 <SiBandcamp
                   size={30}
-                  className="text-white opacity-95 group-hover:opacity-100"
+                  className="text-white sm:opacity-95 sm:group-hover:opacity-100"
                 />
               </SocialIcon>
             </ReusableTooltip>
@@ -35,7 +35,7 @@ export const Footer = async ({
               <SocialIcon href={socials.spotify}>
                 <SiSpotify
                   size={30}
-                  className="text-white opacity-95 group-hover:opacity-100"
+                  className="text-white sm:opacity-95 sm:group-hover:opacity-100"
                 />
               </SocialIcon>
             </ReusableTooltip>
@@ -45,7 +45,7 @@ export const Footer = async ({
               <SocialIcon href={socials.appleMusic}>
                 <SiApplemusic
                   size={30}
-                  className="text-white opacity-95 group-hover:opacity-100"
+                  className="text-white sm:opacity-95 sm:group-hover:opacity-100"
                 />
               </SocialIcon>
             </ReusableTooltip>
