@@ -131,7 +131,7 @@ export const MobileNavbar = ({
                     <span className="text-xl font-semibold uppercase">
                       {label}
                     </span>
-                    {/* {external && <ArrowUpRightIcon className="flex-shrink-0" />} */}
+                    {/* {external && <ArrowUpRightIcon className="shrink-0" />} */}
                   </LocalizedLink>
                 );
               })}

@@ -74,7 +74,7 @@ export default async function Home({
       )}
       <section
         id="gigs"
-        className="relative scroll-mt-14 pt-4 pb-14 sm:scroll-mt-20 sm:pb-16"
+        className="relative scroll-mt-14 pt-6 pb-14 sm:scroll-mt-20 sm:pb-28"
       >
         <Container className="gap-10">
           <EventList
