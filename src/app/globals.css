@@ -12,6 +12,48 @@
   --color-white: #fefefe;
   --color-black: #2e2e2e;
 
+  /* Lila - Eminence */
+  /* https://uicolors.app/generate/693382 */
+  --color-lila-50: #faf6fd;
+  --color-lila-100: #f4ecfb;
+  --color-lila-200: #e9d9f5;
+  --color-lila-300: #d9baed;
+  --color-lila-400: #c391e1;
+  --color-lila-500: #a866cf;
+  --color-lila-600: #8c47b2;
+  --color-lila-700: #753893;
+  --color-lila-800: #693382;
+  --color-lila-900: #532b64;
+  --color-lila-950: #331240;
+
+  /* Kashmir Blue */
+  /* https://uicolors.app/generate/467199 */
+  --color-kashmir-50: #f5f7fa;
+  --color-kashmir-100: #e9eef5;
+  --color-kashmir-200: #cfdbe8;
+  --color-kashmir-300: #a4bed5;
+  --color-kashmir-400: #749cbc;
+  --color-kashmir-500: #527fa5;
+  --color-kashmir-600: #467199;
+  --color-kashmir-700: #345270;
+  --color-kashmir-800: #2e465e;
+  --color-kashmir-900: #2a3d50;
+  --color-kashmir-950: #1c2735;
+
+  /* Linen */
+  /* https://uicolors.app/generate/f5ece0 */
+  --color-linen-50: #fbf7f1;
+  --color-linen-100: #f5ece0;
+  --color-linen-200: #ead6be;
+  --color-linen-300: #dcb995;
+  --color-linen-400: #cc976b;
+  --color-linen-500: #c27d4d;
+  --color-linen-600: #b46942;
+  --color-linen-700: #965438;
+  --color-linen-800: #794533;
+  --color-linen-900: #623a2c;
+  --color-linen-950: #341c16;
+
   /* Bondi Blue */
   /* https://uicolors.app/generate/408ea3 */
   --color-tk-bblue-50: #f1f8fa;
