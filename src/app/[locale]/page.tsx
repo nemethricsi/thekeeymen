@@ -91,7 +91,7 @@ export default async function Home({
             locale={locale}
           />
         </Container>
-        <WaveDivider2 className="fill-lila-800" svgClassName="h-4 sm:h-10" />
+        <WaveDivider2 className="fill-lila-800" svgClassName="h-4 sm:h-6" />
       </section>
       <section
         id="media"
