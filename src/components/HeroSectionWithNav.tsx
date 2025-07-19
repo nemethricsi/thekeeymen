@@ -10,6 +10,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { LocalizedLink } from '@/components/LocalizedLink';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { cn } from '@/lib/utils';
+import { WaveDividerNavbar } from './WaveDivider-navbar';
 
 interface HeroSectionWithNavProps {
   navigation: ProcessedMenuItem[];
@@ -118,6 +119,7 @@ export const HeroSectionWithNav = ({ navigation }: HeroSectionWithNavProps) => {
                 <LocaleSwitcher />
               </div>
             </div>
+            <WaveDividerNavbar />
           </motion.header>
         )}
       </AnimatePresence>

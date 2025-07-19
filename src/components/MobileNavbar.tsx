@@ -13,7 +13,8 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { useLocaleSwitcher } from '@/hooks/useLocaleSwitcher';
 import { ProcessedMenuItem } from '@/types';
-import { Container } from './Container';
+import { Container } from '@/components/Container';
+import { WaveDividerNavbar } from '@/components/WaveDivider-navbar';
 
 export const MobileNavbar = ({
   navItems,
@@ -55,7 +56,7 @@ export const MobileNavbar = ({
 
   return (
     <>
-      <div
+      <header
         className={cn(
           'fixed top-0 left-0 z-50 flex w-full items-center gap-3 py-2 drop-shadow-2xl lg:hidden',
           !initiallyTransparent && 'bg-kashmir-600',
@@ -91,7 +92,8 @@ export const MobileNavbar = ({
             <HamburgerButton isOpen={isOpen} setIsOpen={setIsOpen} />
           </div>
         </Container>
-      </div>
+        {(scrolled || !isHomePage) && <WaveDividerNavbar />}
+      </header>
       {/* Overlay background */}
       <AnimatePresence>
         {isOpen && (
