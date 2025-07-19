@@ -78,7 +78,7 @@ export default async function ElectronicPressKitPage({
   const releases = await fetchReleases();
 
   return (
-    <div className="text-linen-950 min-h-screen lg:pt-0">
+    <div className="min-h-screen bg-neutral-50 text-neutral-950 lg:pt-0">
       {data?.navigation && <StaticNavbar navItems={data.navigation} />}
       <main className="pt-32 lg:pt-36">
         <Container className="gap-16 pb-24 lg:gap-20">
@@ -90,7 +90,7 @@ export default async function ElectronicPressKitPage({
               {epk?.downloadablePressKit != null && (
                 <Link
                   href={epk.downloadablePressKit.url}
-                  className="group bg-linen-100 border-linen-300 hover:bg-linen-200 text-linen-800 flex items-center gap-2 rounded-lg border px-4 py-2 font-medium transition-colors sm:w-fit"
+                  className="group flex items-center gap-2 rounded-lg border border-neutral-300 bg-neutral-100 px-4 py-2 font-medium text-neutral-800 transition-colors hover:bg-neutral-200 sm:w-fit"
                   {...externalLink}
                 >
                   <SiGoogledrive className="h-5 w-5" />
@@ -104,7 +104,7 @@ export default async function ElectronicPressKitPage({
               {epk?.downloadableRider != null && (
                 <Link
                   href={epk.downloadableRider.url}
-                  className="group bg-linen-100 border-linen-300 hover:bg-linen-200 text-linen-800 flex items-center gap-2 self-start rounded-lg border px-4 py-2 font-medium transition-colors"
+                  className="group flex items-center gap-2 self-start rounded-lg border border-neutral-300 bg-neutral-100 px-4 py-2 font-medium text-neutral-800 transition-colors hover:bg-neutral-200"
                   {...externalLink}
                 >
                   <FaFilePdf className="h-5 w-5" />
@@ -218,7 +218,7 @@ export default async function ElectronicPressKitPage({
                             >
                               <Link
                                 href={url}
-                                className="bg-linen-100 hover:bg-linen-200 flex h-10 w-10 items-center justify-center rounded-lg transition-colors"
+                                className="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-200 transition-colors hover:bg-neutral-300"
                                 {...externalLink}
                               >
                                 <Icon className="h-6 w-6" />
@@ -244,7 +244,7 @@ export default async function ElectronicPressKitPage({
                   epk.mediaMentionsSection.mediaMentions.map((mention) => (
                     <article
                       key={mention._key}
-                      className="bg-linen-100 flex flex-col gap-1 rounded-lg p-5 text-base leading-relaxed sm:p-8"
+                      className="flex flex-col gap-1 rounded-lg bg-neutral-100 p-5 text-base leading-relaxed sm:p-8"
                     >
                       <p className="italic">&ldquo;{mention.quote}&rdquo;</p>
                       <p className="text-sm font-semibold">

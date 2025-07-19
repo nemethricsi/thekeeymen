@@ -29,7 +29,7 @@ export const CopyTextButton = ({
     <button
       type="button"
       className={cn(
-        'bg-linen-100 border-linen-300 hover:bg-linen-200 text-linen-800 flex items-center gap-2 rounded-lg border px-4 py-2 text-sm font-medium transition-colors',
+        'flex items-center gap-2 rounded-lg border border-neutral-300 bg-neutral-100 px-4 py-2 text-sm font-medium text-neutral-800 transition-colors hover:bg-neutral-200',
         className,
         copyState === 'copied' &&
           'border-lime-300 bg-lime-100 text-lime-700 hover:bg-lime-100',
