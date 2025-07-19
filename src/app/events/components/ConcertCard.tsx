@@ -38,7 +38,7 @@ export const ConcertCard = ({
       return url ? (
         <ClickableCta
           url={url}
-          className="border bg-transparent text-neutral-600 hover:text-white lg:border-none"
+          className="bg-transparent text-neutral-600 hover:text-white lg:border-none"
         >
           <span>{freeLabel}</span>
           <ArrowUpRightIcon className="h-5 w-5" />
@@ -109,7 +109,7 @@ const ClickableCta = ({
     <a
       href={url}
       className={cn(
-        'bg-lila-700 hover:bg-lila-500 flex w-full shrink-0 items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-white uppercase transition-colors hover:drop-shadow-md lg:w-auto',
+        'bg-lila-700 hover:bg-lila-500 flex w-full shrink-0 items-center justify-center gap-2 rounded-lg border px-4 py-2 text-sm font-bold text-white uppercase transition-colors hover:drop-shadow-md lg:w-auto',
         className,
       )}
       {...externalLink}
