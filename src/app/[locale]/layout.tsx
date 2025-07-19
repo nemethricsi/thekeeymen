@@ -59,7 +59,7 @@ export default async function LocalizedLayout({
       {children}
       <section className="relative">
         <WaveOpacityDivider
-          className="fill-kashmir-600"
+          className="fill-lila-900"
           svgClassName="h-6 sm:h-12"
         />
       </section>

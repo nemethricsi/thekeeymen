@@ -17,7 +17,7 @@ export const Footer = async ({
   const socials = await fetchSocials();
 
   return (
-    <footer className="bg-kashmir-600 relative">
+    <footer className="from-lila-900 to-kashmir-600 relative bg-linear-to-b">
       <Container className="flex flex-col gap-1 py-6">
         <div className="flex justify-start sm:justify-center sm:gap-5 sm:p-4 lg:gap-10">
           {socials?.bandcamp && (
