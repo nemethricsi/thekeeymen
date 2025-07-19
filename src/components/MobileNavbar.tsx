@@ -68,7 +68,7 @@ export const MobileNavbar = ({
       >
         <Container
           className={cn(
-            'flex-row items-center gap-3',
+            'flex-row items-start gap-3',
             !scrolled && isHomePage && 'pt-4 sm:pt-8',
           )}
         >
