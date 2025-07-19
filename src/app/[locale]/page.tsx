@@ -101,7 +101,19 @@ export default async function Home({
           <div className="flex flex-col gap-2 text-base font-medium">
             <p className="text-white">{homePageData?.embedYoutube?.caption}</p>
             {homePageData?.embedYoutube?.youtubeUrl && (
-              <EmbedYoutube src={homePageData.embedYoutube.youtubeUrl} />
+              <>
+                <EmbedYoutube
+                  src={homePageData.embedYoutube.youtubeUrl}
+                  className="hidden sm:block"
+                  playing
+                  muted
+                />
+                <EmbedYoutube
+                  src={homePageData.embedYoutube.youtubeUrl}
+                  className="sm:hidden"
+                  light
+                />
+              </>
             )}
           </div>
           <div className="flex flex-col gap-2 text-base font-medium">
