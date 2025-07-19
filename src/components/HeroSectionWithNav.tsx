@@ -52,7 +52,7 @@ export const HeroSectionWithNav = ({ navigation }: HeroSectionWithNavProps) => {
           }
         });
       },
-      { threshold: 0.6 },
+      { threshold: 0.9 },
     );
     sectionTargets.forEach((section) => sectionObserver.observe(section));
     observers.push(sectionObserver);
