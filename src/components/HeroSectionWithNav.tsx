@@ -10,6 +10,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { LocalizedLink } from '@/components/LocalizedLink';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { cn } from '@/lib/utils';
+import { WaveDividerNavbar } from './WaveDivider-navbar';
 
 interface HeroSectionWithNavProps {
   navigation: ProcessedMenuItem[];
@@ -51,7 +52,7 @@ export const HeroSectionWithNav = ({ navigation }: HeroSectionWithNavProps) => {
           }
         });
       },
-      { threshold: 0.6 },
+      { threshold: 0.9 },
     );
     sectionTargets.forEach((section) => sectionObserver.observe(section));
     observers.push(sectionObserver);
@@ -81,7 +82,7 @@ export const HeroSectionWithNav = ({ navigation }: HeroSectionWithNavProps) => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '-100%' }}
             transition={{ duration: 0.25 }}
-            className="from-tk-bblue-500 to-tk-bblue-500/80 fixed top-0 left-0 z-40 hidden h-20 w-full bg-linear-to-b drop-shadow-xl drop-shadow-black/20 backdrop-blur-sm lg:flex"
+            className="bg-kashmir-600 fixed top-0 left-0 z-40 hidden h-20 w-full drop-shadow-xl drop-shadow-black/20 backdrop-blur-sm lg:flex"
           >
             <div className="container mx-auto flex max-w-5xl flex-row items-center justify-between px-4">
               <LocalizedLink href="/">
@@ -118,6 +119,7 @@ export const HeroSectionWithNav = ({ navigation }: HeroSectionWithNavProps) => {
                 <LocaleSwitcher />
               </div>
             </div>
+            <WaveDividerNavbar />
           </motion.header>
         )}
       </AnimatePresence>

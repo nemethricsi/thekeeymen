@@ -14,6 +14,8 @@ import { Locale } from '@/i18n-config';
 import { ContactFormComponent } from '@/components/ContactForm';
 import { HeroSectionWithNav } from '@/components/HeroSectionWithNav';
 import { parseSpotifyIframe } from '@/lib/utils';
+import { WaveDivider2 } from '@/components/WaveDivider-2';
+import { WaveDivider3 } from '@/components/WaveDivider-3';
 
 export const revalidate = 60;
 
@@ -66,13 +68,13 @@ export default async function Home({
   );
 
   return (
-    <main className="bg-tk-vviolet-600 flex flex-col">
+    <main className="flex flex-col">
       {pageSettings?.navigation && (
         <HeroSectionWithNav navigation={pageSettings.navigation} />
       )}
       <section
         id="gigs"
-        className="to-tk-vviolet-600 scroll-mt-20 bg-linear-to-b from-transparent pb-10 sm:scroll-mt-24"
+        className="relative scroll-mt-14 pt-6 pb-14 sm:scroll-mt-20 sm:pb-28"
       >
         <Container className="gap-10">
           <EventList
@@ -89,16 +91,29 @@ export default async function Home({
             locale={locale}
           />
         </Container>
+        <WaveDivider2 className="fill-lila-800" svgClassName="h-4 sm:h-6" />
       </section>
       <section
         id="media"
-        className="bg-tk-vviolet-600 relative scroll-mt-8 py-10 sm:scroll-mt-14"
+        className="from-lila-800 to-kashmir-600 relative scroll-mt-8 bg-linear-to-b py-10 sm:scroll-mt-14 sm:py-16"
       >
         <Container className="gap-10">
           <div className="flex flex-col gap-2 text-base font-medium">
             <p className="text-white">{homePageData?.embedYoutube?.caption}</p>
             {homePageData?.embedYoutube?.youtubeUrl && (
-              <EmbedYoutube src={homePageData.embedYoutube.youtubeUrl} />
+              <>
+                <EmbedYoutube
+                  src={homePageData.embedYoutube.youtubeUrl}
+                  className="hidden sm:block"
+                  playing
+                  muted
+                />
+                <EmbedYoutube
+                  src={homePageData.embedYoutube.youtubeUrl}
+                  className="sm:hidden"
+                  light
+                />
+              </>
             )}
           </div>
           <div className="flex flex-col gap-2 text-base font-medium">
@@ -117,8 +132,12 @@ export default async function Home({
         contactFormData.messages?.error && (
           <section
             id="contact"
-            className="relative scroll-mt-9 py-10 pb-30 sm:scroll-mt-16"
+            className="relative scroll-mt-9 py-14 pb-30 sm:scroll-mt-16 sm:py-30"
           >
+            <WaveDivider3
+              className="fill-kashmir-600"
+              svgClassName="h-4 sm:h-10"
+            />
             <Container className="gap-4">
               <h2 className="text-center font-serif text-2xl font-bold uppercase lg:text-3xl">
                 {contactFormData.title}

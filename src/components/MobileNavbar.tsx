@@ -13,7 +13,8 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { useLocaleSwitcher } from '@/hooks/useLocaleSwitcher';
 import { ProcessedMenuItem } from '@/types';
-import { Container } from './Container';
+import { Container } from '@/components/Container';
+import { WaveDividerNavbar } from '@/components/WaveDivider-navbar';
 
 export const MobileNavbar = ({
   navItems,
@@ -55,21 +56,19 @@ export const MobileNavbar = ({
 
   return (
     <>
-      <div
+      <header
         className={cn(
           'fixed top-0 left-0 z-50 flex w-full items-center gap-3 py-2 drop-shadow-2xl lg:hidden',
-          !initiallyTransparent &&
-            'from-tk-bblue-500 to-tk-bblue-500/80 bg-linear-to-b',
+          !initiallyTransparent && 'bg-kashmir-600',
           initiallyTransparent &&
-            'from-tk-bblue-500 bg-linear-to-b to-transparent',
-          scrolled &&
-            'from-tk-bblue-500 to-tk-bblue-500/80 bg-linear-to-b backdrop-blur-sm',
+            'from-kashmir-600 bg-linear-to-b to-transparent',
+          scrolled && 'bg-kashmir-600 backdrop-blur-sm',
           isOpen && 'bg-none',
         )}
       >
         <Container
           className={cn(
-            'flex-row items-center gap-3',
+            'flex-row items-start gap-3',
             !scrolled && isHomePage && 'pt-4 sm:pt-8',
           )}
         >
@@ -93,7 +92,8 @@ export const MobileNavbar = ({
             <HamburgerButton isOpen={isOpen} setIsOpen={setIsOpen} />
           </div>
         </Container>
-      </div>
+        {(scrolled || !isHomePage) && <WaveDividerNavbar />}
+      </header>
       {/* Overlay background */}
       <AnimatePresence>
         {isOpen && (
@@ -114,7 +114,7 @@ export const MobileNavbar = ({
             animate={{ x: 0 }}
             exit={{ x: '-100%' }}
             transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-            className="bg-tk-bblue-500/80 fixed top-0 left-0 z-50 flex h-full w-[80%] flex-col justify-between backdrop-blur-sm"
+            className="bg-kashmir-600 fixed top-0 left-0 z-50 flex h-full w-[80%] flex-col justify-between backdrop-blur-sm"
           >
             <div className="flex flex-col px-4 py-8">
               {navItems.map(({ label, href }) => {
@@ -126,14 +126,14 @@ export const MobileNavbar = ({
                     href={href}
                     onClick={() => setIsOpen(false)}
                     className={cn(
-                      'bg-tk-vviolet-200/25 mb-4 flex items-center justify-center gap-2 rounded-lg p-3 text-lg font-semibold',
-                      isActive && 'border-2',
+                      'mb-4 flex items-center justify-center gap-2 rounded-lg bg-white/25 p-3 text-lg font-semibold text-white',
+                      isActive && 'border-2 bg-white/40',
                     )}
                   >
                     <span className="text-xl font-semibold uppercase">
                       {label}
                     </span>
-                    {/* {external && <ArrowUpRightIcon className="flex-shrink-0" />} */}
+                    {/* {external && <ArrowUpRightIcon className="shrink-0" />} */}
                   </LocalizedLink>
                 );
               })}
@@ -145,8 +145,8 @@ export const MobileNavbar = ({
                     key={locale}
                     href={redirectedPathname(locale)}
                     className={cn(
-                      'border-tk-vviolet-200/25 flex-1 rounded-lg border p-2 text-center uppercase',
-                      locale === currentLocale && 'bg-tk-vviolet-200/25',
+                      'border-linen-50 flex-1 rounded-lg border p-2 text-center text-white uppercase',
+                      locale === currentLocale && 'bg-white/40 font-semibold',
                     )}
                   >
                     {locale}

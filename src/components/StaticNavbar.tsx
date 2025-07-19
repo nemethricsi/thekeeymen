@@ -3,10 +3,11 @@
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 
-import { LocalizedLink } from './LocalizedLink';
+import { LocalizedLink } from '@/components/LocalizedLink';
 import { ProcessedMenuItem } from '@/types';
-import { LocaleSwitcher } from './LocaleSwitcher';
+import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { usePathname } from 'next/navigation';
+import { WaveDividerNavbar } from '@/components/WaveDivider-navbar';
 
 interface StaticNavbarProps {
   navItems: ProcessedMenuItem[];
@@ -15,7 +16,7 @@ interface StaticNavbarProps {
 export const StaticNavbar = ({ navItems }: StaticNavbarProps) => {
   const pathname = usePathname();
   return (
-    <header className="from-tk-bblue-500 to-tk-bblue-500/80 fixed top-0 left-0 z-40 hidden h-20 w-full bg-linear-to-b drop-shadow-xl drop-shadow-black/20 backdrop-blur-sm lg:flex">
+    <header className="bg-kashmir-600 fixed top-0 left-0 z-40 hidden h-20 w-full drop-shadow-xl drop-shadow-black/20 backdrop-blur-sm lg:flex">
       <div className="container mx-auto flex max-w-5xl flex-row items-center justify-between px-4">
         <LocalizedLink href="/">
           <Image
@@ -47,6 +48,7 @@ export const StaticNavbar = ({ navItems }: StaticNavbarProps) => {
           <LocaleSwitcher />
         </div>
       </div>
+      <WaveDividerNavbar />
     </header>
   );
 };

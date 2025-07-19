@@ -58,7 +58,10 @@ export default async function LocalizedLayout({
       )}
       {children}
       <section className="relative">
-        <WaveOpacityDivider />
+        <WaveOpacityDivider
+          className="fill-lila-900"
+          svgClassName="h-6 sm:h-12"
+        />
       </section>
       <Footer seoTitle={metadata?.seo?.title} />
     </>

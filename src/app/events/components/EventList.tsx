@@ -39,7 +39,7 @@ export const EventList = ({
 
   if (events.length === 0) {
     return (
-      <div className="flex w-full flex-col gap-3">
+      <div className="mb-20 flex w-full flex-col gap-3">
         {artist != null && bandsInTownButtonText != null && (
           <BandsInTownButton
             artist={artist}
@@ -47,21 +47,21 @@ export const EventList = ({
             className="self-start"
           />
         )}
-        <div className="border-tk-vviolet-300 bg-tk-vviolet-500 flex w-full items-start gap-3 rounded-lg border p-4 lg:items-center">
-          <GuitarIcon className="text-tk-vviolet-200 h-6 w-6 flex-shrink-0" />
-          <p className="text-tk-vviolet-50 font-semibold">
+        <div className="border-linen-300 bg-linen-100 flex w-full items-start gap-3 rounded-lg border p-4 lg:items-center">
+          <GuitarIcon className="text-linen-700 h-6 w-6 shrink-0" />
+          <p className="text-linen-700 font-medium">
             {noResultText
               ? noResultText
               : 'No gigs right now — we&apos;re cooking up the next ones.'}
           </p>
-          <HandMetalIcon className="text-tk-vviolet-200 h-6 w-6 flex-shrink-0" />
+          <HandMetalIcon className="text-linen-700 h-6 w-6 shrink-0" />
         </div>
       </div>
     );
   }
 
   return (
-    <div className="flex w-full flex-col gap-3">
+    <div className="flex w-full flex-col gap-3 text-neutral-600">
       {artist != null && bandsInTownButtonText != null && (
         <BandsInTownButton
           artist={artist}
@@ -91,7 +91,7 @@ export const EventList = ({
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{
-                duration: 0.4,
+                duration: 0.2,
                 ease: 'easeInOut',
                 opacity: { duration: 0.3 },
               }}
@@ -116,7 +116,7 @@ export const EventList = ({
         {events.length > numberToShow && (
           <button
             onClick={() => setOpen(!open)}
-            className="mt-4 flex w-full justify-center uppercase underline underline-offset-4 hover:no-underline"
+            className="mt-4 flex w-full justify-center text-xs font-bold uppercase underline underline-offset-4 hover:no-underline"
           >
             {open ? 'Show less' : 'Show all'}
           </button>
