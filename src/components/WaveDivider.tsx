@@ -16,7 +16,7 @@ export const WaveDivider = ({
         viewBox="0 0 1200 120"
         preserveAspectRatio="none"
         className={cn(
-          'relative block w-[calc(100%+1.3px)] rotate-y-180 transform',
+          'relative block w-[calc(100%+1.3px)] translate-y-px rotate-y-180 transform',
           svgClassName,
         )}
       >
