@@ -16,6 +16,9 @@ export default {
         sans: ['var(--font-sans)', ...defaultTheme.fontFamily.sans],
         serif: ['var(--font-serif)', ...defaultTheme.fontFamily.serif],
       },
+      screens: {
+        landscape: { raw: '(orientation: landscape)' },
+      },
     },
   },
 } satisfies Config;
