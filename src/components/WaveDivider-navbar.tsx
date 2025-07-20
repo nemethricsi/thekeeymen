@@ -9,7 +9,7 @@ export const WaveDividerNavbar = ({
   svgClassName?: ClassValue;
 }) => {
   return (
-    <div className="line-height-0 absolute bottom-0 left-0 w-full translate-y-full rotate-y-180 transform overflow-hidden">
+    <div className="line-height-0 absolute bottom-0 left-0 w-full translate-y-[calc(100%-1px)] rotate-y-180 transform overflow-hidden">
       <svg
         data-name="Layer 1"
         xmlns="http://www.w3.org/2000/svg"

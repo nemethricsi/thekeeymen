@@ -8,7 +8,7 @@ export const WaveOpacityDivider = ({
   svgClassName?: string;
 }) => {
   return (
-    <div className="line-height-0 absolute bottom-0 left-0 w-full rotate-180 transform overflow-hidden">
+    <div className="line-height-0 absolute bottom-0 left-0 w-full translate-y-px rotate-180 transform overflow-hidden">
       <svg
         data-name="Layer 1"
         xmlns="http://www.w3.org/2000/svg"
