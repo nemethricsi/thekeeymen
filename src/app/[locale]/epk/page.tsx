@@ -46,6 +46,12 @@ export async function generateMetadata({
   return {
     title: `${pageTitle} • ${baseTitle}`,
     description: metadata?.seo?.description,
+    alternates: {
+      languages: {
+        en: 'https://www.thekeeymen.com/en/epk',
+        hu: 'https://www.thekeeymen.com/hu/epk',
+      },
+    },
     openGraph: {
       title: `${pageTitle} • ${baseTitle}`,
       description: metadata?.seo?.description as string,

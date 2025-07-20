@@ -32,6 +32,12 @@ export async function generateMetadata({
   return {
     title: `${pageTitle} • ${baseTitle}`,
     description: metadata?.seo?.description,
+    alternates: {
+      languages: {
+        en: 'https://www.thekeeymen.com/en',
+        hu: 'https://www.thekeeymen.com/hu',
+      },
+    },
     openGraph: {
       title: `Home • ${baseTitle}`,
       description: metadata?.seo?.description as string,
