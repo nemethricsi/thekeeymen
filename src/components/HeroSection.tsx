@@ -15,6 +15,7 @@ export const HeroSection = ({
         backgroundImage: `linear-gradient(to bottom, #467199 0%, #532b64 75%), url('/images/hero-blur-3.png')`,
       }}
     >
+      <div className="to-lila-900 absolute bottom-0 left-0 hidden h-60 w-full bg-linear-to-b from-transparent lg:block" />
       {children}
       <WaveDivider className="fill-linen-50" svgClassName="h-4 sm:h-10" />
     </section>
