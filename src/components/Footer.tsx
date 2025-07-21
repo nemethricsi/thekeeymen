@@ -22,7 +22,7 @@ export const Footer = async ({
         <div className="flex justify-start sm:justify-center sm:gap-5 sm:p-4 lg:gap-10">
           {socials?.bandcamp && (
             <ReusableTooltip message="Bandcamp">
-              <SocialIcon href={socials.bandcamp}>
+              <SocialIcon href={socials.bandcamp} ariaLabel="Bandcamp">
                 <SiBandcamp
                   size={30}
                   className="text-white sm:opacity-95 sm:group-hover:opacity-100"
@@ -32,7 +32,7 @@ export const Footer = async ({
           )}
           {socials?.spotify && (
             <ReusableTooltip message="Spotify">
-              <SocialIcon href={socials.spotify}>
+              <SocialIcon href={socials.spotify} ariaLabel="Spotify">
                 <SiSpotify
                   size={30}
                   className="text-white sm:opacity-95 sm:group-hover:opacity-100"
@@ -42,7 +42,7 @@ export const Footer = async ({
           )}
           {socials?.appleMusic && (
             <ReusableTooltip message="Apple music">
-              <SocialIcon href={socials.appleMusic}>
+              <SocialIcon href={socials.appleMusic} ariaLabel="Apple music">
                 <SiApplemusic
                   size={30}
                   className="text-white sm:opacity-95 sm:group-hover:opacity-100"
@@ -52,7 +52,7 @@ export const Footer = async ({
           )}
           {socials?.bandsInTown && (
             <ReusableTooltip message="Bands in Town">
-              <SocialIcon href={socials.bandsInTown}>
+              <SocialIcon href={socials.bandsInTown} ariaLabel="Bandsintown">
                 <SiBandsintown
                   size={30}
                   className="text-white opacity-95 group-hover:opacity-100"
@@ -73,12 +73,15 @@ export const Footer = async ({
 const SocialIcon = ({
   children,
   href,
+  ariaLabel,
 }: {
   children: React.ReactNode;
   href: string;
+  ariaLabel: string;
 }) => {
   return (
     <a
+      aria-label={ariaLabel}
       href={href}
       className="group flex h-12 w-12 items-center justify-center rounded-full opacity-90 transition-all duration-300 hover:-rotate-12 hover:bg-white/10 hover:opacity-100"
       {...externalLink}
