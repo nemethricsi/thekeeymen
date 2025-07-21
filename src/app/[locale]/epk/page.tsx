@@ -43,6 +43,7 @@ export async function generateMetadata({
   const metadata = await fetchMetadata({ locale });
   const baseTitle = metadata?.seo?.title as string;
   const pageTitle = metadata?.seo?.epkPageTitle;
+  const fullUrl = `${baseURL}/${locale}/epk`;
 
   return {
     title: `${pageTitle} • ${baseTitle}`,
@@ -52,11 +53,14 @@ export async function generateMetadata({
         en: `${baseURL}/en/epk`,
         hu: `${baseURL}/hu/epk`,
       },
+      canonical: {
+        url: fullUrl,
+      },
     },
     openGraph: {
       title: `${pageTitle} • ${baseTitle}`,
       description: metadata?.seo?.description as string,
-      url: `${baseURL}/${locale}/epk`,
+      url: fullUrl,
       siteName: metadata?.seo?.title as string,
       locale,
       type: 'website',

@@ -15,6 +15,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const metadata = await fetchMetadata({ locale });
+  const fullUrl = `${baseURL}/${locale}`;
 
   return {
     title: metadata?.seo?.title as string,
@@ -24,11 +25,14 @@ export async function generateMetadata({
         en: `${baseURL}/en`,
         hu: `${baseURL}/hu`,
       },
+      canonical: {
+        url: fullUrl,
+      },
     },
     openGraph: {
       title: metadata?.seo?.title as string,
       description: metadata?.seo?.description as string,
-      url: `${baseURL}/${locale}`,
+      url: fullUrl,
       siteName: metadata?.seo?.title as string,
       locale,
       type: 'website',

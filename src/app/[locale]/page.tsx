@@ -29,6 +29,7 @@ export async function generateMetadata({
   const metadata = await fetchMetadata({ locale });
   const baseTitle = metadata?.seo?.title;
   const pageTitle = metadata?.seo?.homePageTitle;
+  const fullUrl = `${baseURL}/${locale}`;
 
   return {
     title: `${pageTitle} • ${baseTitle}`,
@@ -38,11 +39,14 @@ export async function generateMetadata({
         en: 'https://www.thekeeymen.com/en',
         hu: 'https://www.thekeeymen.com/hu',
       },
+      canonical: {
+        url: fullUrl,
+      },
     },
     openGraph: {
       title: `${pageTitle} • ${baseTitle}`,
       description: metadata?.seo?.description as string,
-      url: `${baseURL}/${locale}`,
+      url: fullUrl,
       siteName: metadata?.seo?.title as string,
       locale,
       type: 'website',
