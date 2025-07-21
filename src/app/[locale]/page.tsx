@@ -39,7 +39,7 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: `Home • ${baseTitle}`,
+      title: `${pageTitle} • ${baseTitle}`,
       description: metadata?.seo?.description as string,
       images: [
         {
