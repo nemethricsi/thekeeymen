@@ -1,6 +1,7 @@
 export const EmbedSpotify = ({ src }: { src: string }) => {
   return (
     <iframe
+      title="embed-thekeeymen-spotify"
       style={{ borderRadius: 12 }}
       src={`${src}?theme=0`}
       width="100%"
