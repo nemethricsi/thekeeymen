@@ -16,6 +16,7 @@ import { HeroSectionWithNav } from '@/components/HeroSectionWithNav';
 import { parseSpotifyIframe } from '@/lib/utils';
 import { WaveDivider2 } from '@/components/WaveDivider-2';
 import { WaveDivider3 } from '@/components/WaveDivider-3';
+import { baseURL } from '@/lib/constans';
 
 export const revalidate = 60;
 
@@ -41,6 +42,10 @@ export async function generateMetadata({
     openGraph: {
       title: `${pageTitle} • ${baseTitle}`,
       description: metadata?.seo?.description as string,
+      url: `${baseURL}/${locale}`,
+      siteName: metadata?.seo?.title as string,
+      locale,
+      type: 'website',
       images: [
         {
           url:

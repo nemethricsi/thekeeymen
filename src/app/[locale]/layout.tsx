@@ -6,6 +6,7 @@ import { fetchMetadata, fetchNavigation } from '@/sanity/lib/queries';
 import { BackToTop } from '@/components/BackToTop';
 import { MobileNavbar } from '@/components/MobileNavbar';
 import { WaveOpacityDivider } from '@/components/WaveOpacityDivider';
+import { baseURL } from '@/lib/constans';
 
 export async function generateMetadata({
   params,
@@ -20,13 +21,17 @@ export async function generateMetadata({
     description: metadata?.seo?.description as string,
     alternates: {
       languages: {
-        en: 'https://www.thekeeymen.com/en',
-        hu: 'https://www.thekeeymen.com/hu',
+        en: `${baseURL}/en`,
+        hu: `${baseURL}/hu`,
       },
     },
     openGraph: {
       title: metadata?.seo?.title as string,
       description: metadata?.seo?.description as string,
+      url: `${baseURL}/${locale}`,
+      siteName: metadata?.seo?.title as string,
+      locale,
+      type: 'website',
       images: [
         {
           url:

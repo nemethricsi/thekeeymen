@@ -25,6 +25,7 @@ import { type SocialLink } from '@/sanity/types';
 import { ReusableTooltip } from '@/components/ReusableTooltip';
 import { externalLink } from '@/lib/utils';
 import { urlFor } from '@/sanity/lib/image';
+import { baseURL } from '@/lib/constans';
 
 const platformIcons: Record<SocialLink['platform'], IconType> = {
   bandcamp: SiBandcamp,
@@ -48,13 +49,17 @@ export async function generateMetadata({
     description: metadata?.seo?.description,
     alternates: {
       languages: {
-        en: 'https://www.thekeeymen.com/en/epk',
-        hu: 'https://www.thekeeymen.com/hu/epk',
+        en: `${baseURL}/en/epk`,
+        hu: `${baseURL}/hu/epk`,
       },
     },
     openGraph: {
       title: `${pageTitle} • ${baseTitle}`,
       description: metadata?.seo?.description as string,
+      url: `${baseURL}/${locale}/epk`,
+      siteName: metadata?.seo?.title as string,
+      locale,
+      type: 'website',
       images: [
         {
           url:
