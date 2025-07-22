@@ -20,6 +20,9 @@ export async function generateMetadata({
   return {
     title: metadata?.seo?.title as string,
     description: metadata?.seo?.description as string,
+    icons: {
+      icon: '/favicon.ico',
+    },
     alternates: {
       languages: {
         en: `${baseURL}/en`,

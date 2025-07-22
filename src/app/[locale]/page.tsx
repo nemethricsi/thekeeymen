@@ -34,6 +34,9 @@ export async function generateMetadata({
   return {
     title: `${pageTitle} • ${baseTitle}`,
     description: metadata?.seo?.description,
+    icons: {
+      icon: '/favicon.ico',
+    },
     alternates: {
       languages: {
         en: 'https://www.thekeeymen.com/en',
