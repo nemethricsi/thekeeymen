@@ -21,7 +21,7 @@ export async function generateMetadata({
     title: metadata?.seo?.title as string,
     description: metadata?.seo?.description as string,
     icons: {
-      icon: '/favicon.ico',
+      icon: '/icon.ico',
     },
     alternates: {
       languages: {

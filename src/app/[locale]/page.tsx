@@ -35,7 +35,7 @@ export async function generateMetadata({
     title: `${pageTitle} • ${baseTitle}`,
     description: metadata?.seo?.description,
     icons: {
-      icon: '/favicon.ico',
+      icon: '/icon.ico',
     },
     alternates: {
       languages: {
