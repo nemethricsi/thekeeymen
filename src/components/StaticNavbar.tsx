@@ -7,7 +7,7 @@ import { LocalizedLink } from '@/components/LocalizedLink';
 import { ProcessedMenuItem } from '@/types';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { usePathname } from 'next/navigation';
-import { WaveDividerNavbar } from '@/components/WaveDivider-navbar';
+import { WaveDividerNavbar2 } from '@/components/WaveDivider-navbar-2';
 
 interface StaticNavbarProps {
   navItems: ProcessedMenuItem[];
@@ -16,7 +16,7 @@ interface StaticNavbarProps {
 export const StaticNavbar = ({ navItems }: StaticNavbarProps) => {
   const pathname = usePathname();
   return (
-    <header className="bg-kashmir-600 fixed top-0 left-0 z-40 hidden h-20 w-full drop-shadow-xl drop-shadow-black/20 backdrop-blur-sm lg:flex">
+    <header className="bg-kashmir-600 fixed top-0 left-0 z-40 hidden h-20 w-full lg:flex">
       <div className="container mx-auto flex max-w-5xl flex-row items-center justify-between px-4">
         <LocalizedLink href="/">
           <Image
@@ -48,7 +48,7 @@ export const StaticNavbar = ({ navItems }: StaticNavbarProps) => {
           <LocaleSwitcher />
         </div>
       </div>
-      <WaveDividerNavbar />
+      <WaveDividerNavbar2 className="fill-kashmir-600" />
     </header>
   );
 };

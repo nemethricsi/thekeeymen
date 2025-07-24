@@ -14,7 +14,7 @@ import Link from 'next/link';
 import { useLocaleSwitcher } from '@/hooks/useLocaleSwitcher';
 import { ProcessedMenuItem } from '@/types';
 import { Container } from '@/components/Container';
-import { WaveDividerNavbar } from '@/components/WaveDivider-navbar';
+import { WaveDividerNavbar2 } from '@/components/WaveDivider-navbar-2';
 
 export const MobileNavbar = ({
   navItems,
@@ -92,7 +92,9 @@ export const MobileNavbar = ({
             <HamburgerButton isOpen={isOpen} setIsOpen={setIsOpen} />
           </div>
         </Container>
-        {(scrolled || !isHomePage) && <WaveDividerNavbar />}
+        {(scrolled || !isHomePage) && (
+          <WaveDividerNavbar2 className="fill-kashmir-600" />
+        )}
       </header>
       {/* Overlay background */}
       <AnimatePresence>

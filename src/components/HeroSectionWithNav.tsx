@@ -10,7 +10,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { LocalizedLink } from '@/components/LocalizedLink';
 import { LocaleSwitcher } from '@/components/LocaleSwitcher';
 import { cn } from '@/lib/utils';
-import { WaveDividerNavbar } from './WaveDivider-navbar';
+import { WaveDividerNavbar2 } from '@/components/WaveDivider-navbar-2';
 
 interface HeroSectionWithNavProps {
   navigation: ProcessedMenuItem[];
@@ -119,7 +119,7 @@ export const HeroSectionWithNav = ({ navigation }: HeroSectionWithNavProps) => {
                 <LocaleSwitcher />
               </div>
             </div>
-            <WaveDividerNavbar />
+            <WaveDividerNavbar2 className="fill-kashmir-600" />
           </motion.header>
         )}
       </AnimatePresence>
