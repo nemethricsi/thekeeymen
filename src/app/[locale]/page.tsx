@@ -104,6 +104,7 @@ export default async function Home({
             }
             soldOutLabel={homePageData?.bandsInTownLabels?.soldOut}
             freeLabel={homePageData?.bandsInTownLabels?.free}
+            eventLabel={homePageData?.bandsInTownLabels?.event}
             ticketsLabel={homePageData?.bandsInTownLabels?.tickets}
             notifyMeLabel={homePageData?.bandsInTownLabels?.notifyMe}
             locale={locale}

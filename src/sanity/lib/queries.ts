@@ -17,6 +17,7 @@ export const HOME_PAGE_QUERY = defineQuery(`
       "bandsInTownButtonText": bandsInTownButtonText[_key == $locale][0].value,
       "soldOut": soldOut[_key == $locale][0].value,
       "free": free[_key == $locale][0].value,
+      "event": event[_key == $locale][0].value,
       "tickets": tickets[_key == $locale][0].value,
       "notifyMe": notifyMe[_key == $locale][0].value,
     },

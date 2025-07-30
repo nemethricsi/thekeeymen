@@ -76,6 +76,12 @@ export const homePage = defineType({
           validation: (Rule) => Rule.required(),
         }),
         defineField({
+          name: 'event',
+          title: 'Event',
+          type: 'internationalizedArrayString',
+          validation: (Rule) => Rule.required(),
+        }),
+        defineField({
           name: 'tickets',
           title: 'Tickets',
           type: 'internationalizedArrayString',

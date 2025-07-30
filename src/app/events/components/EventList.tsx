@@ -15,6 +15,7 @@ interface EventListProps {
   bandsInTownButtonText: string | null | undefined;
   soldOutLabel: string | null | undefined;
   freeLabel: string | null | undefined;
+  eventLabel: string | null | undefined;
   ticketsLabel: string | null | undefined;
   notifyMeLabel: string | null | undefined;
   locale: Locale;
@@ -27,6 +28,7 @@ export const EventList = ({
   bandsInTownButtonText,
   soldOutLabel,
   freeLabel,
+  eventLabel,
   ticketsLabel,
   notifyMeLabel,
   locale,
@@ -77,6 +79,7 @@ export const EventList = ({
             event={event}
             soldOutLabel={soldOutLabel}
             freeLabel={freeLabel}
+            eventLabel={eventLabel}
             ticketsLabel={ticketsLabel}
             notifyMeLabel={notifyMeLabel}
             locale={locale}
@@ -103,6 +106,7 @@ export const EventList = ({
                   event={event}
                   soldOutLabel={soldOutLabel}
                   freeLabel={freeLabel}
+                  eventLabel={eventLabel}
                   ticketsLabel={ticketsLabel}
                   notifyMeLabel={notifyMeLabel}
                   locale={locale}

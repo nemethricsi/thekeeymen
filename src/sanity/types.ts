@@ -342,6 +342,11 @@ export type HomePage = {
         _key: string;
       } & InternationalizedArrayStringValue
     >;
+    event: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
     tickets: Array<
       {
         _key: string;
@@ -525,7 +530,7 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: HOME_PAGE_QUERY
-// Query: *[_id == "homePage"][0]{    embedYoutube{      "caption": caption[_key == $locale][0].value,      youtubeUrl,    },    embedSpotify{      "caption": caption[_key == $locale][0].value,      embedCode,    },    bandsInTownLabels{      "noResultText": noResultText[_key == $locale][0].value,      "bandsInTownButtonText": bandsInTownButtonText[_key == $locale][0].value,      "soldOut": soldOut[_key == $locale][0].value,      "free": free[_key == $locale][0].value,      "tickets": tickets[_key == $locale][0].value,      "notifyMe": notifyMe[_key == $locale][0].value,    },  }
+// Query: *[_id == "homePage"][0]{    embedYoutube{      "caption": caption[_key == $locale][0].value,      youtubeUrl,    },    embedSpotify{      "caption": caption[_key == $locale][0].value,      embedCode,    },    bandsInTownLabels{      "noResultText": noResultText[_key == $locale][0].value,      "bandsInTownButtonText": bandsInTownButtonText[_key == $locale][0].value,      "soldOut": soldOut[_key == $locale][0].value,      "free": free[_key == $locale][0].value,      "event": event[_key == $locale][0].value,      "tickets": tickets[_key == $locale][0].value,      "notifyMe": notifyMe[_key == $locale][0].value,    },  }
 export type HOME_PAGE_QUERYResult =
   | {
       embedYoutube: null;
@@ -546,6 +551,7 @@ export type HOME_PAGE_QUERYResult =
         bandsInTownButtonText: string | null;
         soldOut: string | null;
         free: string | null;
+        event: string | null;
         tickets: string | null;
         notifyMe: string | null;
       } | null;
@@ -757,7 +763,7 @@ export type RELEASES_QUERYResult = Array<{
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
-    '\n  *[_id == "homePage"][0]{\n    embedYoutube{\n      "caption": caption[_key == $locale][0].value,\n      youtubeUrl,\n    },\n    embedSpotify{\n      "caption": caption[_key == $locale][0].value,\n      embedCode,\n    },\n    bandsInTownLabels{\n      "noResultText": noResultText[_key == $locale][0].value,\n      "bandsInTownButtonText": bandsInTownButtonText[_key == $locale][0].value,\n      "soldOut": soldOut[_key == $locale][0].value,\n      "free": free[_key == $locale][0].value,\n      "tickets": tickets[_key == $locale][0].value,\n      "notifyMe": notifyMe[_key == $locale][0].value,\n    },\n  }\n': HOME_PAGE_QUERYResult;
+    '\n  *[_id == "homePage"][0]{\n    embedYoutube{\n      "caption": caption[_key == $locale][0].value,\n      youtubeUrl,\n    },\n    embedSpotify{\n      "caption": caption[_key == $locale][0].value,\n      embedCode,\n    },\n    bandsInTownLabels{\n      "noResultText": noResultText[_key == $locale][0].value,\n      "bandsInTownButtonText": bandsInTownButtonText[_key == $locale][0].value,\n      "soldOut": soldOut[_key == $locale][0].value,\n      "free": free[_key == $locale][0].value,\n      "event": event[_key == $locale][0].value,\n      "tickets": tickets[_key == $locale][0].value,\n      "notifyMe": notifyMe[_key == $locale][0].value,\n    },\n  }\n': HOME_PAGE_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    seo{\n      "title": title[_key == $locale][0].value,\n      "description": description[_key == $locale][0].value,\n      openGraphImage{\n        asset->{\n          url,\n        }\n      },\n      "homePageTitle": homePageTitle[_key == $locale][0].value,\n      "epkPageTitle": epkPageTitle[_key == $locale][0].value,\n    }\n  }\n': METADATA_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    "navigation": navigation[]{\n      href,\n      "label": label[_key == $locale][0].value,\n    }\n  }\n': NAVIGATION_QUERYResult;
     '\n  *[_id == "socials"][0]{\n    spotify,\n    bandcamp,\n    appleMusic,\n    bandsInTown,\n  }\n': SOCIALS_QUERYResult;

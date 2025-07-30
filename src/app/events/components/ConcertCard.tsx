@@ -10,6 +10,7 @@ interface ConcertCardProps {
   event: BandsInTownEvent;
   soldOutLabel: string | null | undefined;
   freeLabel: string | null | undefined;
+  eventLabel: string | null | undefined;
   ticketsLabel: string | null | undefined;
   notifyMeLabel: string | null | undefined;
   locale: Locale;
@@ -18,6 +19,7 @@ export const ConcertCard = ({
   event,
   soldOutLabel,
   freeLabel,
+  eventLabel,
   ticketsLabel,
   notifyMeLabel,
   locale,
@@ -40,7 +42,7 @@ export const ConcertCard = ({
           url={url}
           className="bg-transparent text-neutral-600 hover:text-white lg:border-none"
         >
-          <span>{freeLabel}</span>
+          <span>{eventLabel}</span>
           <ArrowUpRightIcon className="h-5 w-5" />
         </ClickableCta>
       ) : (
@@ -109,7 +111,7 @@ const ClickableCta = ({
     <a
       href={url}
       className={cn(
-        'bg-lila-700 hover:bg-lila-500 flex w-full shrink-0 items-center justify-center gap-2 rounded-lg border px-4 py-2 text-sm font-bold text-white uppercase transition-colors hover:drop-shadow-md lg:w-auto',
+        'bg-lila-700 hover:bg-lila-500 hover:border-lila-500 border-lila-700 flex w-full shrink-0 items-center justify-center gap-2 rounded-lg border px-4 py-2 text-sm font-bold text-white uppercase transition-colors hover:drop-shadow-md lg:w-auto',
         className,
       )}
       {...externalLink}
