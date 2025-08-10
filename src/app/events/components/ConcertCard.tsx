@@ -67,7 +67,7 @@ export const ConcertCard = ({
   };
 
   return (
-    <div className="hover:bg-linen-100 flex flex-col items-center justify-between gap-1 px-0 lg:flex-row lg:gap-4 lg:p-4 lg:[&:not(:last-child)]:border-b lg:[&:not(:last-child)]:border-neutral-200">
+    <div className="hover:bg-linen-100 flex flex-col items-center justify-between gap-1 rounded-lg px-0 lg:flex-row lg:gap-4 lg:p-4 lg:[&:not(:last-child)]:border-b lg:[&:not(:last-child)]:border-neutral-200">
       <div className="flex w-full items-center gap-4 lg:gap-8">
         {/* Date */}
         <div className="flex shrink-0 items-center gap-3">

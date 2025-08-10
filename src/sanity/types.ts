@@ -13,6 +13,34 @@
  */
 
 // Source: schema.json
+export type News = {
+  _id: string;
+  _type: 'news';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  publishedAt: string;
+  title: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
+  description: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayTextValue
+  >;
+  callToAction?: {
+    label: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    href: string;
+    isExternal?: boolean;
+  };
+};
+
 export type SocialLink = {
   _type: 'socialLink';
   platform: 'youtube' | 'spotify' | 'appleMusic' | 'bandcamp';
@@ -305,6 +333,13 @@ export type HomePage = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  featuredNews?: Array<{
+    _ref: string;
+    _type: 'reference';
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: 'news';
+  }>;
   embedYoutube?: {
     caption: Array<
       {
@@ -501,6 +536,7 @@ export type SanityAssetSourceData = {
 };
 
 export type AllSanitySchemaTypes =
+  | News
   | SocialLink
   | Release
   | ContactForm
@@ -530,14 +566,26 @@ export type AllSanitySchemaTypes =
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: HOME_PAGE_QUERY
-// Query: *[_id == "homePage"][0]{    embedYoutube{      "caption": caption[_key == $locale][0].value,      youtubeUrl,    },    embedSpotify{      "caption": caption[_key == $locale][0].value,      embedCode,    },    bandsInTownLabels{      "noResultText": noResultText[_key == $locale][0].value,      "bandsInTownButtonText": bandsInTownButtonText[_key == $locale][0].value,      "soldOut": soldOut[_key == $locale][0].value,      "free": free[_key == $locale][0].value,      "event": event[_key == $locale][0].value,      "tickets": tickets[_key == $locale][0].value,      "notifyMe": notifyMe[_key == $locale][0].value,    },  }
+// Query: *[_id == "homePage"][0]{    featuredNews[]->{      _id,      "title": title[_key == $locale][0].value,      publishedAt,      "description": description[_key == $locale][0].value,      "callToAction": callToAction{        "label": label[_key == $locale][0].value,        href,        isExternal,      },    },    embedYoutube{      "caption": caption[_key == $locale][0].value,      youtubeUrl,    },    embedSpotify{      "caption": caption[_key == $locale][0].value,      embedCode,    },    bandsInTownLabels{      "noResultText": noResultText[_key == $locale][0].value,      "bandsInTownButtonText": bandsInTownButtonText[_key == $locale][0].value,      "soldOut": soldOut[_key == $locale][0].value,      "free": free[_key == $locale][0].value,      "event": event[_key == $locale][0].value,      "tickets": tickets[_key == $locale][0].value,      "notifyMe": notifyMe[_key == $locale][0].value,    },  }
 export type HOME_PAGE_QUERYResult =
   | {
+      featuredNews: null;
       embedYoutube: null;
       embedSpotify: null;
       bandsInTownLabels: null;
     }
   | {
+      featuredNews: Array<{
+        _id: string;
+        title: string | null;
+        publishedAt: string;
+        description: string | null;
+        callToAction: {
+          label: string | null;
+          href: string;
+          isExternal: boolean | null;
+        } | null;
+      }> | null;
       embedYoutube: {
         caption: string | null;
         youtubeUrl: string;
@@ -763,7 +811,7 @@ export type RELEASES_QUERYResult = Array<{
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
-    '\n  *[_id == "homePage"][0]{\n    embedYoutube{\n      "caption": caption[_key == $locale][0].value,\n      youtubeUrl,\n    },\n    embedSpotify{\n      "caption": caption[_key == $locale][0].value,\n      embedCode,\n    },\n    bandsInTownLabels{\n      "noResultText": noResultText[_key == $locale][0].value,\n      "bandsInTownButtonText": bandsInTownButtonText[_key == $locale][0].value,\n      "soldOut": soldOut[_key == $locale][0].value,\n      "free": free[_key == $locale][0].value,\n      "event": event[_key == $locale][0].value,\n      "tickets": tickets[_key == $locale][0].value,\n      "notifyMe": notifyMe[_key == $locale][0].value,\n    },\n  }\n': HOME_PAGE_QUERYResult;
+    '\n  *[_id == "homePage"][0]{\n    featuredNews[]->{\n      _id,\n      "title": title[_key == $locale][0].value,\n      publishedAt,\n      "description": description[_key == $locale][0].value,\n      "callToAction": callToAction{\n        "label": label[_key == $locale][0].value,\n        href,\n        isExternal,\n      },\n    },\n    embedYoutube{\n      "caption": caption[_key == $locale][0].value,\n      youtubeUrl,\n    },\n    embedSpotify{\n      "caption": caption[_key == $locale][0].value,\n      embedCode,\n    },\n    bandsInTownLabels{\n      "noResultText": noResultText[_key == $locale][0].value,\n      "bandsInTownButtonText": bandsInTownButtonText[_key == $locale][0].value,\n      "soldOut": soldOut[_key == $locale][0].value,\n      "free": free[_key == $locale][0].value,\n      "event": event[_key == $locale][0].value,\n      "tickets": tickets[_key == $locale][0].value,\n      "notifyMe": notifyMe[_key == $locale][0].value,\n    },\n  }\n': HOME_PAGE_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    seo{\n      "title": title[_key == $locale][0].value,\n      "description": description[_key == $locale][0].value,\n      openGraphImage{\n        asset->{\n          url,\n        }\n      },\n      "homePageTitle": homePageTitle[_key == $locale][0].value,\n      "epkPageTitle": epkPageTitle[_key == $locale][0].value,\n    }\n  }\n': METADATA_QUERYResult;
     '\n  *[_id == "pageSettings"][0]{\n    "navigation": navigation[]{\n      href,\n      "label": label[_key == $locale][0].value,\n    }\n  }\n': NAVIGATION_QUERYResult;
     '\n  *[_id == "socials"][0]{\n    spotify,\n    bandcamp,\n    appleMusic,\n    bandsInTown,\n  }\n': SOCIALS_QUERYResult;

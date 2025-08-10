@@ -4,6 +4,17 @@ import { type Locale } from '@/i18n-config';
 
 export const HOME_PAGE_QUERY = defineQuery(`
   *[_id == "homePage"][0]{
+    featuredNews[]->{
+      _id,
+      "title": title[_key == $locale][0].value,
+      publishedAt,
+      "description": description[_key == $locale][0].value,
+      "callToAction": callToAction{
+        "label": label[_key == $locale][0].value,
+        href,
+        isExternal,
+      },
+    },
     embedYoutube{
       "caption": caption[_key == $locale][0].value,
       youtubeUrl,
