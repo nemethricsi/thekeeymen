@@ -13,10 +13,17 @@ import {
 import { Locale } from '@/i18n-config';
 import { ContactFormComponent } from '@/components/ContactForm';
 import { HeroSectionWithNav } from '@/components/HeroSectionWithNav';
-import { parseSpotifyIframe } from '@/lib/utils';
+import {
+  externalLink,
+  localeToDateFnsLocale,
+  parseSpotifyIframe,
+} from '@/lib/utils';
 import { WaveDivider2 } from '@/components/WaveDivider-2';
 import { WaveDivider3 } from '@/components/WaveDivider-3';
 import { baseURL } from '@/lib/constans';
+import Link from 'next/link';
+import { formatDistanceToNow, format } from 'date-fns';
+import { ArrowRightIcon, MegaphoneIcon } from 'lucide-react';
 
 export const revalidate = 60;
 
@@ -90,6 +97,64 @@ export default async function Home({
       {pageSettings?.navigation && (
         <HeroSectionWithNav navigation={pageSettings.navigation} />
       )}
+      {homePageData?.featuredNews != null &&
+        homePageData.featuredNews.length > 0 && (
+          <section id="featuredNews" className="my-8 sm:my-10">
+            <Container className="gap-10">
+              <div className="flex flex-col gap-10">
+                {homePageData.featuredNews.map(
+                  ({ _id, title, description, callToAction, publishedAt }) => {
+                    return (
+                      <article
+                        key={_id}
+                        className="flex flex-col gap-6 rounded-lg border border-neutral-200 bg-white/75 p-6"
+                      >
+                        <div className="flex flex-col gap-3">
+                          <div className="flex items-center gap-2">
+                            <MegaphoneIcon
+                              className="text-linen-200 hidden h-14 w-14 sm:block"
+                              strokeWidth={1}
+                            />
+                            <div className="flex flex-col gap-1">
+                              <h2 className="font-serif text-xl font-semibold sm:text-2xl">
+                                {title}
+                              </h2>
+                              <p
+                                className="text-sm text-neutral-400"
+                                title={format(
+                                  new Date(publishedAt),
+                                  'yyyy-MM-dd',
+                                )}
+                              >
+                                {formatDistanceToNow(new Date(publishedAt), {
+                                  addSuffix: true,
+                                  locale: localeToDateFnsLocale(locale),
+                                })}
+                              </p>
+                            </div>
+                          </div>
+                          <p className="text-base text-neutral-700 sm:text-lg">
+                            {description}
+                          </p>
+                          {callToAction != null && (
+                            <Link
+                              href={callToAction.href}
+                              {...(callToAction.isExternal && externalLink)}
+                              className="bg-lila-700 group hover:bg-lila-500 mt-4 flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-white uppercase transition-colors sm:w-fit"
+                            >
+                              <span>{callToAction.label}</span>
+                              <ArrowRightIcon className="h-5 w-5 translate-x-0 transition-transform duration-100 group-hover:translate-x-1" />
+                            </Link>
+                          )}
+                        </div>
+                      </article>
+                    );
+                  },
+                )}
+              </div>
+            </Container>
+          </section>
+        )}
       <section
         id="gigs"
         className="relative scroll-mt-14 pt-6 pb-14 sm:scroll-mt-20 sm:pb-28"

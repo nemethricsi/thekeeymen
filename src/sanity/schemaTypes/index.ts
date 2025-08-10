@@ -12,6 +12,7 @@ import { contactForm } from '@/sanity/schemaTypes/contactForm';
 import { copyButton } from '@/sanity/schemaTypes/objects/copyButton';
 import { release } from '@/sanity/schemaTypes/release';
 import { socialLink } from '@/sanity/schemaTypes/objects/socialLink';
+import { news } from '@/sanity/schemaTypes/news';
 
 export const schema: SchemaPluginOptions = {
   types: [
@@ -26,6 +27,7 @@ export const schema: SchemaPluginOptions = {
     copyButton,
     release,
     socialLink,
+    news,
   ],
   templates: (templates) =>
     templates.filter(({ schemaType }) => !singletonTypes.has(schemaType)),

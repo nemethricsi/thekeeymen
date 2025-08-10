@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { Locale } from '@/i18n-config';
+import { enUS, hu } from 'date-fns/locale';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -25,7 +26,7 @@ export function parseSpotifyIframe(iframeHtml: string): string | null {
   if (!srcMatch) return null;
 
   const url = new URL(srcMatch[1]);
-  // Töröljük a fölös query paramétereket, hogy letisztult legyen
+  // Töröljük a fölösleges query paramétereket, hogy letisztult legyen
   url.search = ''; // így sötét téma lesz
 
   return url.toString();
@@ -52,4 +53,15 @@ export const renderEmailSubject = (
   variables: EmailSubjectVariables,
 ) => {
   return renderTemplate(template, variables);
+};
+
+export const localeToDateFnsLocale = (locale: Locale) => {
+  switch (locale) {
+    case 'hu':
+      return hu;
+    case 'en':
+      return enUS;
+    default:
+      return enUS;
+  }
 };

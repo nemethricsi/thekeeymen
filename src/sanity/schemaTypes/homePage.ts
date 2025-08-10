@@ -7,6 +7,13 @@ export const homePage = defineType({
   icon: () => '🏠',
   fields: [
     defineField({
+      name: 'featuredNews',
+      title: 'Featured news',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'news' }] }],
+      validation: (Rule) => Rule.max(3).unique(),
+    }),
+    defineField({
       name: 'embedYoutube',
       title: 'Youtube videó',
       type: 'object',
