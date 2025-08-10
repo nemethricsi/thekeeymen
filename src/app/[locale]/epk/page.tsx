@@ -115,7 +115,7 @@ export default async function ElectronicPressKitPage({
                   <span className="text-sm">
                     {epk.downloadablePressKit.label}
                   </span>
-                  <ArrowRightIcon className="tranneutral-x-0 group-hover:tranneutral-x-1 hidden h-5 w-5 transition-transform duration-100 group-active:-rotate-45 sm:block" />
+                  <ArrowRightIcon className="hidden h-5 w-5 translate-x-0 transition-transform duration-100 group-hover:translate-x-1 group-active:-rotate-45 sm:block" />
                   <ArrowUpRightIcon className="h-5 w-5 sm:hidden" />
                 </Link>
               )}
@@ -127,7 +127,7 @@ export default async function ElectronicPressKitPage({
                 >
                   <FaFilePdf className="h-5 w-5" />
                   <span className="text-sm">{epk.downloadableRider.label}</span>
-                  <ArrowRightIcon className="tranneutral-x-0 group-hover:tranneutral-x-1 hidden h-5 w-5 transition-transform duration-100 group-active:-rotate-45 sm:block" />
+                  <ArrowRightIcon className="hidden h-5 w-5 translate-x-0 transition-transform duration-100 group-hover:translate-x-1 group-active:-rotate-45 sm:block" />
                   <ArrowUpRightIcon className="h-5 w-5 sm:hidden" />
                 </Link>
               )}
