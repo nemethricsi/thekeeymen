@@ -48,9 +48,6 @@ export async function generateMetadata({
   return {
     title: `${pageTitle} • ${baseTitle}`,
     description: metadata?.seo?.description,
-    icons: {
-      icon: '/icon.ico',
-    },
     alternates: {
       languages: {
         en: `${baseURL}/en/epk`,
