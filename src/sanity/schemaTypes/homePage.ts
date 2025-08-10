@@ -8,7 +8,8 @@ export const homePage = defineType({
   fields: [
     defineField({
       name: 'featuredNews',
-      title: 'Featured news',
+      title: 'Főoldalon megjelenő hírek',
+      description: 'Maximum 3 hír jelenhet meg',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'news' }] }],
       validation: (Rule) => Rule.max(3).unique(),
