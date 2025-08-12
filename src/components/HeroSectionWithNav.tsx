@@ -43,16 +43,22 @@ export const HeroSectionWithNav = ({ navigation }: HeroSectionWithNavProps) => {
 
     const sectionObserver = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const id = entry.target.getAttribute('id');
-            if (id != null) {
-              setActiveItem(id);
-            }
+        const visibleSections = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+
+        if (visibleSections.length > 0) {
+          const firstVisible = visibleSections[0];
+          const id = firstVisible.target.getAttribute('id');
+          if (id) {
+            setActiveItem(id);
           }
-        });
+        }
       },
-      { threshold: 0.9 },
+      {
+        threshold: 0.2,
+        rootMargin: '-85px 0px -50% 0px', // a "középponthoz" igazítja
+      },
     );
     sectionTargets.forEach((section) => sectionObserver.observe(section));
     observers.push(sectionObserver);
@@ -69,7 +75,7 @@ export const HeroSectionWithNav = ({ navigation }: HeroSectionWithNavProps) => {
   return (
     <>
       <HeroSection ref={heroRef}>
-        <div className="container mx-auto hidden h-full w-full max-w-3xl flex-col justify-between gap-3 px-4 lg:flex">
+        <div className="container mx-auto hidden h-full w-full max-w-3xl flex-col justify-between gap-3 px-4 sm:px-8 lg:flex">
           <LogoWithLocaleSwitcher />
           <DesktopNavigation navigation={navigation} />
         </div>
