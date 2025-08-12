@@ -1,7 +1,7 @@
 'use client';
 
 import { ProcessedMenuItem } from '@/types';
-import { LocalizedLink } from './LocalizedLink';
+import { LocalizedLink } from '@/components/LocalizedLink';
 
 export const DesktopNavigation = ({
   navigation,
@@ -9,7 +9,7 @@ export const DesktopNavigation = ({
   navigation: ProcessedMenuItem[];
 }) => {
   return (
-    <div className="flex w-full items-center justify-center gap-11 pb-20 font-serif text-xl font-bold tracking-wider uppercase">
+    <div className="flex w-full items-center justify-between gap-11 pb-20 font-serif text-xl font-bold tracking-wider uppercase">
       {navigation.map(({ href, label }) => (
         <LocalizedLink
           key={href}
