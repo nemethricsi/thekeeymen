@@ -3,7 +3,7 @@ import './globals.css';
 import { cn } from '@/lib/utils';
 import { SanityLive } from '@/sanity/lib/live';
 import { AnalyticsWrapper } from '@/components/AnalyticsWrapper';
-import { ToastContainer, Slide } from 'react-toastify';
+import { ToastContainer, Bounce } from 'react-toastify';
 
 const redditSans = Reddit_Sans({
   variable: '--font-sans',
@@ -43,7 +43,7 @@ export default function RootLayout({
           draggable
           pauseOnHover
           theme="colored"
-          transition={Slide}
+          transition={Bounce}
         />
       </body>
     </html>
