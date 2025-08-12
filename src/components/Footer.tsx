@@ -8,6 +8,7 @@ import {
 import { fetchSocials } from '@/sanity/lib/queries';
 import { ReusableTooltip } from '@/components/ReusableTooltip';
 import { externalLink } from '@/lib/utils';
+import { MailerliteSubForm } from '@/components/MailerliteSubForm';
 
 export const Footer = async ({
   seoTitle,
@@ -17,8 +18,11 @@ export const Footer = async ({
   const socials = await fetchSocials();
 
   return (
-    <footer className="from-lila-900 to-kashmir-600 relative bg-linear-to-b">
-      <Container className="flex flex-col gap-1 py-6">
+    <footer
+      id="footer"
+      className="from-lila-900 to-kashmir-600 relative bg-linear-to-b"
+    >
+      <Container className="flex flex-col gap-8 py-6">
         <div className="flex justify-start sm:justify-center sm:gap-5 sm:p-4 lg:gap-10">
           {socials?.bandcamp && (
             <ReusableTooltip message="Bandcamp">
@@ -61,7 +65,8 @@ export const Footer = async ({
             </ReusableTooltip>
           )}
         </div>
-        <p className="text-kashmir-50 text-xs uppercase sm:text-center sm:text-sm">
+        <MailerliteSubForm />
+        <p className="text-xs text-white/75 uppercase sm:text-center sm:text-sm">
           © {seoTitle ? seoTitle : 'The Keeymen'} 2013 -{' '}
           {new Date().getFullYear()}
         </p>
