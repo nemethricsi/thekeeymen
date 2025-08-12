@@ -333,7 +333,7 @@ export type HomePage = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  featuredNews?: Array<{
+  featuredNews: Array<{
     _ref: string;
     _type: 'reference';
     _weak?: boolean;
@@ -585,7 +585,7 @@ export type HOME_PAGE_QUERYResult =
           href: string;
           isExternal: boolean | null;
         } | null;
-      }> | null;
+      }>;
       embedYoutube: {
         caption: string | null;
         youtubeUrl: string;
