@@ -19,7 +19,7 @@
     "@sanity/icons": "^3.7.4",
     "@sanity/image-url": "1",
     "@sanity/vision": "3",
-    "@t3-oss/env-core": "^0.13.8",
+    "@t3-oss/env-nextjs": "^0.13.8",
     "@types/negotiator": "^0.6.4",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
