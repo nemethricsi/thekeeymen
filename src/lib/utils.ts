@@ -2,6 +2,7 @@ import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import { Locale } from '@/i18n-config';
 import { enUS, hu } from 'date-fns/locale';
+import { MAILERLITE_GROUPS } from '@/lib/constans';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -63,5 +64,16 @@ export const localeToDateFnsLocale = (locale: Locale) => {
       return enUS;
     default:
       return enUS;
+  }
+};
+
+export const getMailingGroupByLocale = (locale: Locale) => {
+  switch (locale) {
+    case 'hu':
+      return MAILERLITE_GROUPS.HUNGARIAN;
+    case 'en':
+      return MAILERLITE_GROUPS.ENGLISH;
+    default:
+      return MAILERLITE_GROUPS.ENGLISH;
   }
 };
