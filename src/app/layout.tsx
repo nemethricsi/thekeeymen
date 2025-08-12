@@ -3,6 +3,7 @@ import './globals.css';
 import { cn } from '@/lib/utils';
 import { SanityLive } from '@/sanity/lib/live';
 import { AnalyticsWrapper } from '@/components/AnalyticsWrapper';
+import { ToastContainer, Bounce } from 'react-toastify';
 
 const redditSans = Reddit_Sans({
   variable: '--font-sans',
@@ -31,6 +32,19 @@ export default function RootLayout({
         {children}
         <SanityLive />
         <AnalyticsWrapper />
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="colored"
+          transition={Bounce}
+        />
       </body>
     </html>
   );

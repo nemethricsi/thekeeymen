@@ -1632,7 +1632,7 @@
             }
           }
         },
-        "optional": true
+        "optional": false
       },
       "embedYoutube": {
         "type": "objectAttribute",

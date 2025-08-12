@@ -9,10 +9,10 @@ export const homePage = defineType({
     defineField({
       name: 'featuredNews',
       title: 'Főoldalon megjelenő hírek',
-      description: 'Maximum 3 hír jelenhet meg',
+      description: 'Minimum 1, maximum 3 hír jelenhet meg',
       type: 'array',
       of: [{ type: 'reference', to: [{ type: 'news' }] }],
-      validation: (Rule) => Rule.max(3).unique(),
+      validation: (Rule) => Rule.required().min(1).max(3).unique(),
     }),
     defineField({
       name: 'embedYoutube',
