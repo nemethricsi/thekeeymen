@@ -23,7 +23,7 @@ import { WaveDivider3 } from '@/components/WaveDivider-3';
 import { baseURL } from '@/lib/constans';
 import Link from 'next/link';
 import { formatDistanceToNow, format } from 'date-fns';
-import { ArrowRightIcon, MegaphoneIcon } from 'lucide-react';
+import { ArrowRightIcon } from 'lucide-react';
 
 export const revalidate = 60;
 

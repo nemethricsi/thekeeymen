@@ -1,6 +1,5 @@
 'use client';
 
-import { MAILERLITE_GROUPS } from '@/lib/constans';
 import { createSubscriber } from '@/lib/mailerlite';
 import { getLocaleFromPathname, getMailingGroupByLocale } from '@/lib/utils';
 import { MailIcon } from 'lucide-react';
