@@ -27,10 +27,13 @@ export const MailerliteSubForm = () => {
     }
 
     try {
-      const { data } = await createSubscriber({
-        email,
-        groups: [getMailingGroupByLocale(locale)],
-      });
+      const { data } = await createSubscriber(
+        {
+          email,
+          groups: [getMailingGroupByLocale(locale)],
+        },
+        locale,
+      );
       console.log(data);
       toast.success('You are now subscribed to The Keeymen Mailing List!');
       setEmail('');

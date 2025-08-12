@@ -4,6 +4,8 @@ import { env } from '@/env';
 import MailerLite, {
   CreateOrUpdateSubscriberParams,
 } from '@mailerlite/mailerlite-nodejs';
+import { getMailingGroupByLocale } from './utils';
+import { Locale } from '@/i18n-config';
 
 const mailerlite = new MailerLite({
   api_key: env.MAILERLITE_API_TOKEN,
@@ -11,9 +13,15 @@ const mailerlite = new MailerLite({
 
 export const createSubscriber = async (
   params: CreateOrUpdateSubscriberParams,
+  locale: Locale,
 ) => {
   const existingSubscriber = await mailerlite.subscribers.find(params.email);
-  if (existingSubscriber.data.data != null) {
+  const currentLocaleGroup = getMailingGroupByLocale(locale);
+  const groupsSubscribedTo = existingSubscriber.data.data.groups?.map(
+    ({ id }) => id,
+  );
+
+  if (groupsSubscribedTo?.includes(currentLocaleGroup)) {
     throw Error('You are already subscribed to the newsletter');
   }
 
