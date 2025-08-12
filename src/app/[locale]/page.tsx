@@ -96,39 +96,33 @@ export default async function Home({
       )}
       {homePageData?.featuredNews != null &&
         homePageData.featuredNews.length > 0 && (
-          <section id="featuredNews" className="my-8 sm:my-10">
+          <section
+            id="featuredNews"
+            className="my-8 scroll-mt-20 sm:my-10 sm:scroll-mt-28"
+          >
             <Container className="gap-10">
               <div className="flex flex-col gap-10">
                 {homePageData.featuredNews.map(
                   ({ _id, title, description, callToAction, publishedAt }) => {
                     return (
-                      <article
-                        key={_id}
-                        className="flex flex-col gap-6 rounded-lg border border-neutral-200 bg-white/75 p-6"
-                      >
+                      <article key={_id} className="flex flex-col gap-6">
                         <div className="flex flex-col gap-3">
-                          <div className="flex items-center gap-2">
-                            <MegaphoneIcon
-                              className="text-linen-200 hidden h-14 w-14 sm:block"
-                              strokeWidth={1}
-                            />
-                            <div className="flex flex-col gap-1">
-                              <h2 className="font-serif text-xl font-semibold sm:text-2xl">
-                                {title}
-                              </h2>
-                              <p
-                                className="text-sm text-neutral-400"
-                                title={format(
-                                  new Date(publishedAt),
-                                  'yyyy-MM-dd',
-                                )}
-                              >
-                                {formatDistanceToNow(new Date(publishedAt), {
-                                  addSuffix: true,
-                                  locale: localeToDateFnsLocale(locale),
-                                })}
-                              </p>
-                            </div>
+                          <div className="flex flex-col gap-1">
+                            <h2 className="font-serif text-xl font-semibold sm:text-2xl">
+                              {title}
+                            </h2>
+                            <p
+                              className="text-sm text-neutral-400"
+                              title={format(
+                                new Date(publishedAt),
+                                'yyyy-MM-dd',
+                              )}
+                            >
+                              {formatDistanceToNow(new Date(publishedAt), {
+                                addSuffix: true,
+                                locale: localeToDateFnsLocale(locale),
+                              })}
+                            </p>
                           </div>
                           <p className="text-base text-neutral-700 sm:text-lg">
                             {description}
