@@ -22,6 +22,7 @@ export const singletonTypes = new Set([
   'socials',
   'epk',
   'contactForm',
+  'mailerlite',
 ]);
 
 export default defineConfig({
@@ -52,7 +53,8 @@ export default defineConfig({
           item.templateId !== 'pageSettings' &&
           item.templateId !== 'socials' &&
           item.templateId !== 'epk' &&
-          item.templateId !== 'contactForm',
+          item.templateId !== 'contactForm' &&
+          item.templateId !== 'mailerlite',
       ),
     actions: (input, context) =>
       singletonTypes.has(context.schemaType)
