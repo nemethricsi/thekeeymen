@@ -107,52 +107,64 @@ export default async function Home({
                   strokeWidth={1}
                 />
                 <div className="flex flex-col gap-10">
-                  {homePageData.featuredNews.map(
-                    ({
-                      _id,
-                      title,
-                      description,
-                      callToAction,
-                      publishedAt,
-                    }) => {
-                      return (
-                        <article key={_id} className="flex flex-col gap-6">
-                          <div className="flex flex-col gap-3">
-                            <div className="flex flex-col gap-1">
-                              <h2 className="font-serif text-xl font-semibold sm:text-2xl">
-                                {title}
-                              </h2>
-                              <p
-                                className="text-sm text-neutral-400"
-                                title={format(
-                                  new Date(publishedAt),
-                                  'yyyy-MM-dd',
-                                )}
-                              >
-                                {formatDistanceToNow(new Date(publishedAt), {
-                                  addSuffix: true,
-                                  locale: localeToDateFnsLocale(locale),
-                                })}
+                  <>
+                    {homePageData.featuredNews.map(
+                      ({
+                        _id,
+                        title,
+                        description,
+                        callToAction,
+                        publishedAt,
+                      }) => {
+                        return (
+                          <article key={_id} className="flex flex-col gap-6">
+                            <div className="flex flex-col gap-3">
+                              <div className="flex flex-col gap-1">
+                                <h2 className="font-serif text-xl font-semibold sm:text-2xl">
+                                  {title}
+                                </h2>
+                                <p
+                                  className="text-sm text-neutral-400"
+                                  title={format(
+                                    new Date(publishedAt),
+                                    'yyyy-MM-dd',
+                                  )}
+                                >
+                                  {formatDistanceToNow(new Date(publishedAt), {
+                                    addSuffix: true,
+                                    locale: localeToDateFnsLocale(locale),
+                                  })}
+                                </p>
+                              </div>
+                              <p className="text-base text-neutral-700 sm:text-lg">
+                                {description}
                               </p>
+                              {callToAction != null && (
+                                <Link
+                                  href={callToAction.href}
+                                  {...(callToAction.isExternal && externalLink)}
+                                  className="bg-lila-700 group hover:bg-lila-500 mt-4 flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-white uppercase transition-colors sm:w-fit"
+                                >
+                                  <span>{callToAction.label}</span>
+                                  <ArrowRightIcon className="h-5 w-5 translate-x-0 transition-transform duration-100 group-hover:translate-x-1" />
+                                </Link>
+                              )}
                             </div>
-                            <p className="text-base text-neutral-700 sm:text-lg">
-                              {description}
-                            </p>
-                            {callToAction != null && (
-                              <Link
-                                href={callToAction.href}
-                                {...(callToAction.isExternal && externalLink)}
-                                className="bg-lila-700 group hover:bg-lila-500 mt-4 flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-white uppercase transition-colors sm:w-fit"
-                              >
-                                <span>{callToAction.label}</span>
-                                <ArrowRightIcon className="h-5 w-5 translate-x-0 transition-transform duration-100 group-hover:translate-x-1" />
-                              </Link>
-                            )}
-                          </div>
-                        </article>
-                      );
-                    },
-                  )}
+                          </article>
+                        );
+                      },
+                    )}
+                    <p className="text-base text-neutral-700">
+                      Ha szeretnél értesítést kapni a legfrissebb híreinkről,{' '}
+                      <Link
+                        href="#footer"
+                        className="font-medium underline underline-offset-4 hover:no-underline"
+                      >
+                        iratkozz fel a Keeymen levlistára
+                      </Link>
+                      !
+                    </p>
+                  </>
                 </div>
               </div>
             </Container>
