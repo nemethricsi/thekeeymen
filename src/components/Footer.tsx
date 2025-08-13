@@ -8,7 +8,7 @@ import {
 import { fetchSocials } from '@/sanity/lib/queries';
 import { ReusableTooltip } from '@/components/ReusableTooltip';
 import { externalLink } from '@/lib/utils';
-// import { MailerliteSubForm } from '@/components/MailerliteSubForm';
+import { MailerliteSubForm } from '@/components/MailerliteSubForm';
 
 export const Footer = async ({
   seoTitle,
@@ -65,7 +65,7 @@ export const Footer = async ({
             </ReusableTooltip>
           )}
         </div>
-        {/* <MailerliteSubForm /> */}
+        <MailerliteSubForm />
         <p className="text-xs text-white/75 uppercase sm:text-center sm:text-sm">
           © {seoTitle ? seoTitle : 'The Keeymen'} 2013 -{' '}
           {new Date().getFullYear()}
