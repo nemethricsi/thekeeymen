@@ -78,7 +78,7 @@ export default async function LocalizedLayout({
           svgClassName="h-6 sm:h-12"
         />
       </section>
-      <Footer seoTitle={metadata?.seo?.title} />
+      <Footer seoTitle={metadata?.seo?.title} locale={locale} />
     </>
   );
 }

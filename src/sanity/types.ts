@@ -13,6 +13,63 @@
  */
 
 // Source: schema.json
+export type Mailerlite = {
+  _id: string;
+  _type: 'mailerlite';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
+  description: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayTextValue
+  >;
+  inputPlaceholder: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
+  buttonLabel: Array<
+    {
+      _key: string;
+    } & InternationalizedArrayStringValue
+  >;
+  toastMessages?: {
+    success: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    error: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    invalidEmail: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+  };
+  linkToSubscriptionForm?: {
+    text: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+    linkText: Array<
+      {
+        _key: string;
+      } & InternationalizedArrayStringValue
+    >;
+  };
+};
+
 export type News = {
   _id: string;
   _type: 'news';
@@ -536,6 +593,7 @@ export type SanityAssetSourceData = {
 };
 
 export type AllSanitySchemaTypes =
+  | Mailerlite
   | News
   | SocialLink
   | Release
@@ -806,6 +864,49 @@ export type RELEASES_QUERYResult = Array<{
     url: string;
   }> | null;
 }>;
+// Variable: MAILERLITE_QUERY
+// Query: *[_id == "mailerlite"][0]{    "title": title[_key == $locale][0].value,    "description": description[_key == $locale][0].value,    "inputPlaceholder": inputPlaceholder[_key == $locale][0].value,    "buttonLabel": buttonLabel[_key == $locale][0].value,    toastMessages{      "success": success[_key == $locale][0].value,      "error": error[_key == $locale][0].value,      "invalidEmail": invalidEmail[_key == $locale][0].value,    },    linkToSubscriptionForm{      "text": text[_key == $locale][0].value,      "linkText": linkText[_key == $locale][0].value,    }  }
+export type MAILERLITE_QUERYResult =
+  | {
+      title: null;
+      description: null;
+      inputPlaceholder: null;
+      buttonLabel: null;
+      toastMessages: null;
+      linkToSubscriptionForm: null;
+    }
+  | {
+      title: string | null;
+      description: null;
+      inputPlaceholder: null;
+      buttonLabel: null;
+      toastMessages: null;
+      linkToSubscriptionForm: null;
+    }
+  | {
+      title: string | null;
+      description: string | null;
+      inputPlaceholder: null;
+      buttonLabel: null;
+      toastMessages: null;
+      linkToSubscriptionForm: null;
+    }
+  | {
+      title: string | null;
+      description: string | null;
+      inputPlaceholder: string | null;
+      buttonLabel: string | null;
+      toastMessages: {
+        success: string | null;
+        error: string | null;
+        invalidEmail: string | null;
+      } | null;
+      linkToSubscriptionForm: {
+        text: string | null;
+        linkText: string | null;
+      } | null;
+    }
+  | null;
 
 // Query TypeMap
 import '@sanity/client';
@@ -819,5 +920,6 @@ declare module '@sanity/client' {
     '\n  *[_id == "pageSettings"][0]{\n    seo{\n      openGraphImage{\n        asset->{\n          url,\n        }\n      }\n    },\n  }\n': OPEN_GRAPH_IMAGE_QUERYResult;
     '\n  *[_id == "contactForm"][0]{\n    "title": title[_key == $locale][0].value,\n    emailSubject,\n    placeholders{\n      "message": message[_key == $locale][0].value,\n      "email": email[_key == $locale][0].value,\n      "phone": phone[_key == $locale][0].value,\n    },\n    submitButton{\n      "sendLabel": sendLabel[_key == $locale][0].value,\n      "sendingLabel": sendingLabel[_key == $locale][0].value,\n    },\n    messages{\n      "success": success[_key == $locale][0].value,\n      "error": error[_key == $locale][0].value,\n    },\n  }\n': CONTACT_FORM_QUERYResult;
     '\n  *[_type == "release"]{\n    ...,\n    coverImage{\n      asset->{\n        url,\n      }\n    },\n    availableOn[]{\n      platform,\n      url\n    }\n  }\n': RELEASES_QUERYResult;
+    '\n  *[_id == "mailerlite"][0]{\n    "title": title[_key == $locale][0].value,\n    "description": description[_key == $locale][0].value,\n    "inputPlaceholder": inputPlaceholder[_key == $locale][0].value,\n    "buttonLabel": buttonLabel[_key == $locale][0].value,\n    toastMessages{\n      "success": success[_key == $locale][0].value,\n      "error": error[_key == $locale][0].value,\n      "invalidEmail": invalidEmail[_key == $locale][0].value,\n    },\n    linkToSubscriptionForm{\n      "text": text[_key == $locale][0].value,\n      "linkText": linkText[_key == $locale][0].value,\n    }\n  }\n': MAILERLITE_QUERYResult;
   }
 }

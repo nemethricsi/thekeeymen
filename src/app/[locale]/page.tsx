@@ -7,6 +7,7 @@ import { EmbedSpotify } from '@/components/EmbedSpotify';
 import {
   fetchContactForm,
   fetchHomePage,
+  fetchMailerlite,
   fetchMetadata,
   fetchNavigation,
 } from '@/sanity/lib/queries';
@@ -88,6 +89,7 @@ export default async function Home({
   const spotifySrc = parseSpotifyIframe(
     homePageData?.embedSpotify?.embedCode ?? '',
   );
+  const mailerlite = await fetchMailerlite({ locale });
 
   return (
     <main className="flex flex-col">
@@ -155,12 +157,12 @@ export default async function Home({
                       },
                     )}
                     <p className="text-base text-neutral-700">
-                      Ha szeretnél értesítést kapni a legfrissebb híreinkről,{' '}
+                      {mailerlite?.linkToSubscriptionForm?.text}{' '}
                       <Link
                         href="#footer"
-                        className="font-medium underline underline-offset-4 hover:no-underline"
+                        className="font-semibold underline underline-offset-2 hover:no-underline"
                       >
-                        iratkozz fel a Keeymen levlistára
+                        {mailerlite?.linkToSubscriptionForm?.linkText}
                       </Link>
                       !
                     </p>

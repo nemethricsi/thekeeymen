@@ -47,6 +47,16 @@ export const structure: StructureResolver = (S) =>
             .schemaType('contactForm')
             .documentId('contactForm'),
         ),
+      S.listItem()
+        .id('mailerlite')
+        .schemaType('mailerlite')
+        .title('Email marketing (Mailerlite)')
+        .child(
+          S.editor()
+            .id('mailerlite')
+            .schemaType('mailerlite')
+            .documentId('mailerlite'),
+        ),
       S.divider(),
       ...S.documentTypeListItems().filter(
         (item) =>
@@ -55,6 +65,7 @@ export const structure: StructureResolver = (S) =>
           item.getId() !== 'pageSettings' &&
           item.getId() !== 'socials' &&
           item.getId() !== 'epk' &&
-          item.getId() !== 'contactForm',
+          item.getId() !== 'contactForm' &&
+          item.getId() !== 'mailerlite',
       ),
     ]);

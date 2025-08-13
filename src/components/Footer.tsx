@@ -5,17 +5,21 @@ import {
   SiApplemusic,
   SiBandsintown,
 } from 'react-icons/si';
-import { fetchSocials } from '@/sanity/lib/queries';
+import { fetchMailerlite, fetchSocials } from '@/sanity/lib/queries';
 import { ReusableTooltip } from '@/components/ReusableTooltip';
 import { externalLink } from '@/lib/utils';
 import { MailerliteSubForm } from '@/components/MailerliteSubForm';
+import { Locale } from '@/i18n-config';
 
 export const Footer = async ({
   seoTitle,
+  locale,
 }: {
   seoTitle: string | null | undefined;
+  locale: Locale;
 }) => {
   const socials = await fetchSocials();
+  const mailerlite = await fetchMailerlite({ locale });
 
   return (
     <footer
@@ -65,7 +69,7 @@ export const Footer = async ({
             </ReusableTooltip>
           )}
         </div>
-        <MailerliteSubForm />
+        <MailerliteSubForm mailerlite={mailerlite} />
         <p className="text-xs text-white/75 uppercase sm:text-center sm:text-sm">
           © {seoTitle ? seoTitle : 'The Keeymen'} 2013 -{' '}
           {new Date().getFullYear()}

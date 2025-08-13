@@ -215,3 +215,29 @@ export const fetchReleases = async () => {
   });
   return result.data;
 };
+
+export const MAILERLITE_QUERY = defineQuery(`
+  *[_id == "mailerlite"][0]{
+    "title": title[_key == $locale][0].value,
+    "description": description[_key == $locale][0].value,
+    "inputPlaceholder": inputPlaceholder[_key == $locale][0].value,
+    "buttonLabel": buttonLabel[_key == $locale][0].value,
+    toastMessages{
+      "success": success[_key == $locale][0].value,
+      "error": error[_key == $locale][0].value,
+      "invalidEmail": invalidEmail[_key == $locale][0].value,
+    },
+    linkToSubscriptionForm{
+      "text": text[_key == $locale][0].value,
+      "linkText": linkText[_key == $locale][0].value,
+    }
+  }
+`);
+
+export const fetchMailerlite = async ({ locale }: { locale: Locale }) => {
+  const result = await sanityFetch({
+    query: MAILERLITE_QUERY,
+    params: { locale },
+  });
+  return result.data;
+};
