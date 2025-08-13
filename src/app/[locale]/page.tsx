@@ -23,7 +23,7 @@ import { WaveDivider3 } from '@/components/WaveDivider-3';
 import { baseURL } from '@/lib/constans';
 import Link from 'next/link';
 import { formatDistanceToNow, format } from 'date-fns';
-import { ArrowRightIcon } from 'lucide-react';
+import { ArrowRightIcon, MegaphoneIcon } from 'lucide-react';
 
 export const revalidate = 60;
 
@@ -101,47 +101,59 @@ export default async function Home({
             className="my-8 scroll-mt-20 sm:my-10 sm:scroll-mt-28"
           >
             <Container className="gap-10">
-              <div className="flex flex-col gap-10">
-                {homePageData.featuredNews.map(
-                  ({ _id, title, description, callToAction, publishedAt }) => {
-                    return (
-                      <article key={_id} className="flex flex-col gap-6">
-                        <div className="flex flex-col gap-3">
-                          <div className="flex flex-col gap-1">
-                            <h2 className="font-serif text-xl font-semibold sm:text-2xl">
-                              {title}
-                            </h2>
-                            <p
-                              className="text-sm text-neutral-400"
-                              title={format(
-                                new Date(publishedAt),
-                                'yyyy-MM-dd',
-                              )}
-                            >
-                              {formatDistanceToNow(new Date(publishedAt), {
-                                addSuffix: true,
-                                locale: localeToDateFnsLocale(locale),
-                              })}
+              <div className="flex flex-col gap-5">
+                <MegaphoneIcon
+                  className="h-16 w-16 text-neutral-400"
+                  strokeWidth={1}
+                />
+                <div className="flex flex-col gap-10">
+                  {homePageData.featuredNews.map(
+                    ({
+                      _id,
+                      title,
+                      description,
+                      callToAction,
+                      publishedAt,
+                    }) => {
+                      return (
+                        <article key={_id} className="flex flex-col gap-6">
+                          <div className="flex flex-col gap-3">
+                            <div className="flex flex-col gap-1">
+                              <h2 className="font-serif text-xl font-semibold sm:text-2xl">
+                                {title}
+                              </h2>
+                              <p
+                                className="text-sm text-neutral-400"
+                                title={format(
+                                  new Date(publishedAt),
+                                  'yyyy-MM-dd',
+                                )}
+                              >
+                                {formatDistanceToNow(new Date(publishedAt), {
+                                  addSuffix: true,
+                                  locale: localeToDateFnsLocale(locale),
+                                })}
+                              </p>
+                            </div>
+                            <p className="text-base text-neutral-700 sm:text-lg">
+                              {description}
                             </p>
+                            {callToAction != null && (
+                              <Link
+                                href={callToAction.href}
+                                {...(callToAction.isExternal && externalLink)}
+                                className="bg-lila-700 group hover:bg-lila-500 mt-4 flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-white uppercase transition-colors sm:w-fit"
+                              >
+                                <span>{callToAction.label}</span>
+                                <ArrowRightIcon className="h-5 w-5 translate-x-0 transition-transform duration-100 group-hover:translate-x-1" />
+                              </Link>
+                            )}
                           </div>
-                          <p className="text-base text-neutral-700 sm:text-lg">
-                            {description}
-                          </p>
-                          {callToAction != null && (
-                            <Link
-                              href={callToAction.href}
-                              {...(callToAction.isExternal && externalLink)}
-                              className="bg-lila-700 group hover:bg-lila-500 mt-4 flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-white uppercase transition-colors sm:w-fit"
-                            >
-                              <span>{callToAction.label}</span>
-                              <ArrowRightIcon className="h-5 w-5 translate-x-0 transition-transform duration-100 group-hover:translate-x-1" />
-                            </Link>
-                          )}
-                        </div>
-                      </article>
-                    );
-                  },
-                )}
+                        </article>
+                      );
+                    },
+                  )}
+                </div>
               </div>
             </Container>
           </section>
