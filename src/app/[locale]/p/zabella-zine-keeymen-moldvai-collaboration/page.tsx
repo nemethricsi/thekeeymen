@@ -25,15 +25,15 @@ export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
             {locale === 'hu' ? (
               <p className="font-bold lg:text-lg">
                 Elkészült a 14. Zabella Zine, egy rendhagyó kollaborációs
-                kiadvány. Szövegeit és rajzait az új,{' '}
-                <span className="font-bold">MOLDVAI</span> című albumunk
-                ihlette.
+                kiadvány. Szövegeit és rajzait új, csángó dallamokból
+                inspirálódott, MOLDVAI címre keresztelt albumunk ihlette.
               </p>
             ) : (
               <p className="text-lg font-bold">
-                The 14th Zabella Zine is a unique collaboration publication. The
-                text and illustrations are inspired by our new album,{' '}
-                <span className="font-bold">MOLDVAI</span>.
+                The 14th Zabella Zine is complete — an unconventional
+                collaborative release. Its texts and illustrations were inspired
+                by our new album titled MOLDVAI, which draws from traditional
+                csángó melodies.
               </p>
             )}
             <Image
@@ -46,22 +46,22 @@ export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
             <div className="flex flex-col gap-3">
               {locale === 'hu' ? (
                 <p>
-                  A MOLDVAI zine-ből összesen 150 példány készült. Rendeld meg
-                  most a saját egyedi példányodat, és küldünk mellé egy exkluzív
-                  letöltő kódot, aminek segítségével már most, jóval megjelenés
-                  előtt meghallgathatod az új, MOLDVAI című albumunkat.
+                  Összesen 150 db, kézzel fűzött MOLDVAI zine-t készítettünk.
+                  Rendeld meg még ma a saját egyedi példányodat, mi pedig
+                  küldünk mellé egy exkluzív letöltő kódot, melynek segítségével
+                  már most, jóval megjelenés előtt meghallgathatod a teljes
+                  MOLDVAI albumot!
                 </p>
               ) : (
                 <p>
-                  There are only a total of 150 copies of the MOLDVAI zine.
-                  Order your own unique copy now, and we&apos;ll post it to you
-                  along with an exclusive download code, which allows you to
-                  listen to our new album, MOLDVAI on bandcamp, before its
-                  release.
+                  We created a total of 150 hand-stitched MOLDVAI zines. Order
+                  your own unique copy today, and we&apos;ll include an
+                  exclusive download code that lets you listen to the full
+                  MOLDVAI album right now — well ahead of its official release.
                 </p>
               )}
             </div>
-            <div className="my-4 flex justify-center">
+            <div className="my-4 flex justify-center lg:my-8">
               <CheckoutSessionButton locale={locale} />
             </div>
             {locale === 'hu' ? (
