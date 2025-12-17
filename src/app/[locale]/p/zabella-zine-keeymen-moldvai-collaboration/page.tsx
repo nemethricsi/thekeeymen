@@ -8,7 +8,7 @@ import { Container } from '@/components/Container';
 import { ReusableTooltip } from '@/components/ReusableTooltip';
 
 const STRIPE_PAYMENT_LINK =
-  'https://buy.stripe.com/test_fZu4gz3be4tm4HQemI7Vm00';
+  'https://buy.stripe.com/test_8x2aEY8Rh9bpe0mbef8Ra01';
 
 export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
   params,
