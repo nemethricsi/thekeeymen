@@ -1,14 +1,9 @@
-import { ArrowRightIcon } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Locale } from '@/i18n-config';
 import { StaticNavbar } from '@/components/StaticNavbar';
 import { fetchNavigation } from '@/sanity/lib/queries';
 import { Container } from '@/components/Container';
-import { ReusableTooltip } from '@/components/ReusableTooltip';
-
-const STRIPE_PAYMENT_LINK =
-  'https://buy.stripe.com/test_8x2aEY8Rh9bpe0mbef8Ra01';
+import { CheckoutSessionButton } from '@/components/CheckoutSessionButton';
 
 export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
   params,
@@ -30,15 +25,15 @@ export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
             {locale === 'hu' ? (
               <p className="font-bold lg:text-lg">
                 Elkészült a 14. Zabella Zine, egy rendhagyó kollaborációs
-                kiadvány. Szövegeit és rajzait az új,{' '}
-                <span className="font-bold">MOLDVAI</span> című albumunk
-                ihlette.
+                kiadvány. Szövegeit és rajzait új, csángó dallamokból
+                inspirálódott, MOLDVAI címre keresztelt albumunk ihlette.
               </p>
             ) : (
               <p className="text-lg font-bold">
-                The 14th Zabella Zine is a unique collaboration publication. The
-                text and illustrations are inspired by our new album,{' '}
-                <span className="font-bold">MOLDVAI</span>.
+                The 14th Zabella Zine is complete — an unconventional
+                collaborative release. Its texts and illustrations were inspired
+                by our new album titled MOLDVAI, which draws from traditional
+                csángó melodies.
               </p>
             )}
             <Image
@@ -51,37 +46,23 @@ export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
             <div className="flex flex-col gap-3">
               {locale === 'hu' ? (
                 <p>
-                  A MOLDVAI zine-ből összesen 150 példány készült. Rendeld meg
-                  most a saját egyedi példányodat, és küldünk mellé egy exkluzív
-                  letöltő kódot, aminek segítségével már most, jóval megjelenés
-                  előtt meghallgathatod az új, MOLDVAI című albumunkat.
+                  Összesen 150 db, kézzel fűzött MOLDVAI zine-t készítettünk.
+                  Rendeld meg még ma a saját egyedi példányodat, mi pedig
+                  küldünk mellé egy exkluzív letöltő kódot, melynek segítségével
+                  már most, jóval megjelenés előtt meghallgathatod a teljes
+                  MOLDVAI albumot!
                 </p>
               ) : (
                 <p>
-                  There are only a total of 150 copies of the MOLDVAI zine.
-                  Order your own unique copy now, and we&apos;ll post it to you
-                  along with an exclusive download code, which allows you to
-                  listen to our new album, MOLDVAI on bandcamp, before its
-                  release.
+                  We created a total of 150 hand-stitched MOLDVAI zines. Order
+                  your own unique copy today, and we&apos;ll include an
+                  exclusive download code that lets you listen to the full
+                  MOLDVAI album right now — well ahead of its official release.
                 </p>
               )}
             </div>
-            <div className="my-4 flex justify-center">
-              <ReusableTooltip
-                message={
-                  locale === 'hu'
-                    ? 'A zine-t postán küldjük el neked. Jelenleg csak Magyarországon elérhető. A kiadvány ára az album letöltő kódjával együtt 3990 Ft.'
-                    : 'The zine will be sent to you by post. Currently only available in Hungary. The price of the zine includes the download code for the album is 3990 Ft.'
-                }
-              >
-                <Link
-                  href={STRIPE_PAYMENT_LINK}
-                  className="bg-lila-700 group hover:bg-lila-500 flex w-full items-center justify-center gap-2 rounded-lg px-6 py-3 text-base font-bold text-white uppercase transition-colors sm:w-fit"
-                >
-                  <span>{locale === 'hu' ? 'Megrendelem!' : 'Buy now!'}</span>
-                  <ArrowRightIcon className="h-5 w-5 translate-x-0 transition-transform duration-100 group-hover:translate-x-1" />
-                </Link>
-              </ReusableTooltip>
+            <div className="my-4 flex justify-center lg:my-8">
+              <CheckoutSessionButton locale={locale} />
             </div>
             {locale === 'hu' ? (
               <p className="text-lg">
@@ -135,6 +116,21 @@ export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
                 </p>
               )}
             </div>
+            {locale === 'hu' ? (
+              <p>
+                Ebbek a számnak a különlegessége, hogy a szerkesztők magukkal
+                együtt tíz irót, és öt illusztrátort kértek fel, akik a MOLDVAI
+                albumunk egy-egy (illetve két-két) zenéjét kapták meg, amiből
+                inspirálódtak.
+              </p>
+            ) : (
+              <p>
+                What makes this issue special is that the editors invited ten
+                writers and five illustrators alongside themselves. Each of them
+                received one (the designers received two) tracks from our
+                MOLDVAI album to use as their source of inspiration.
+              </p>
+            )}
             <div className="flex flex-col gap-2">
               <Image
                 src="/images/zabella_team.jpg"
@@ -206,6 +202,9 @@ export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
               height={1000}
               className="aspect-auto w-full rounded-lg object-cover"
             />
+            <div className="mb-2 flex justify-center lg:my-4 lg:mb-0">
+              <CheckoutSessionButton locale={locale} />
+            </div>
             <div className="flex flex-col gap-3 rounded-lg border border-neutral-700 p-3 text-sm text-neutral-700">
               {locale === 'hu' ? (
                 <p>
@@ -240,15 +239,6 @@ export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
                   .
                 </p>
               )}
-            </div>
-            <div className="mb-2 flex justify-center lg:my-4 lg:mb-0">
-              <Link
-                href={STRIPE_PAYMENT_LINK}
-                className="bg-lila-700 group hover:bg-lila-500 flex w-full items-center justify-center gap-2 rounded-lg px-6 py-3 text-base font-bold text-white uppercase transition-colors sm:w-fit"
-              >
-                <span>{locale === 'hu' ? 'Megrendelem!' : 'Buy now!'}</span>
-                <ArrowRightIcon className="h-5 w-5 translate-x-0 transition-transform duration-100 group-hover:translate-x-1" />
-              </Link>
             </div>
           </div>
         </Container>
