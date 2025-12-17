@@ -4,7 +4,6 @@ import { StaticNavbar } from '@/components/StaticNavbar';
 import { Locale } from '@/i18n-config';
 import { fetchNavigation } from '@/sanity/lib/queries';
 import { CheckCircleIcon } from 'lucide-react';
-import Link from 'next/link';
 
 export default async function ZabellaMoldvaiZineConfirmationThankYouPage({
   params,
