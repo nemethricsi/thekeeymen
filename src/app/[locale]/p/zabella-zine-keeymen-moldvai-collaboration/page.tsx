@@ -116,6 +116,21 @@ export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
                 </p>
               )}
             </div>
+            {locale === 'hu' ? (
+              <p>
+                Ebbek a számnak a különlegessége, hogy a szerkesztők magukkal
+                együtt tíz irót, és öt illusztrátort kértek fel, akik a MOLDVAI
+                albumunk egy-egy (illetve két-két) zenéjét kapták meg, amiből
+                inspirálódtak.
+              </p>
+            ) : (
+              <p>
+                What makes this issue special is that the editors invited ten
+                writers and five illustrators alongside themselves. Each of them
+                received one (the designers received two) tracks from our
+                MOLDVAI album to use as their source of inspiration.
+              </p>
+            )}
             <div className="flex flex-col gap-2">
               <Image
                 src="/images/zabella_team.jpg"
@@ -187,6 +202,9 @@ export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
               height={1000}
               className="aspect-auto w-full rounded-lg object-cover"
             />
+            <div className="mb-2 flex justify-center lg:my-4 lg:mb-0">
+              <CheckoutSessionButton locale={locale} />
+            </div>
             <div className="flex flex-col gap-3 rounded-lg border border-neutral-700 p-3 text-sm text-neutral-700">
               {locale === 'hu' ? (
                 <p>
@@ -221,9 +239,6 @@ export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
                   .
                 </p>
               )}
-            </div>
-            <div className="mb-2 flex justify-center lg:my-4 lg:mb-0">
-              <CheckoutSessionButton locale={locale} />
             </div>
           </div>
         </Container>
