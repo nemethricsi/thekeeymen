@@ -1,14 +1,9 @@
-import { ArrowRightIcon } from 'lucide-react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Locale } from '@/i18n-config';
 import { StaticNavbar } from '@/components/StaticNavbar';
 import { fetchNavigation } from '@/sanity/lib/queries';
 import { Container } from '@/components/Container';
-import { ReusableTooltip } from '@/components/ReusableTooltip';
-
-const STRIPE_PAYMENT_LINK =
-  'https://buy.stripe.com/test_8x2aEY8Rh9bpe0mbef8Ra01';
+import { CheckoutSessionButton } from '@/components/CheckoutSessionButton';
 
 export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
   params,
@@ -67,21 +62,7 @@ export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
               )}
             </div>
             <div className="my-4 flex justify-center">
-              <ReusableTooltip
-                message={
-                  locale === 'hu'
-                    ? 'A zine-t postán küldjük el neked. Jelenleg csak Magyarországon elérhető. A kiadvány ára az album letöltő kódjával együtt 3990 Ft.'
-                    : 'The zine will be sent to you by post. Currently only available in Hungary. The price of the zine includes the download code for the album is 3990 Ft.'
-                }
-              >
-                <Link
-                  href={STRIPE_PAYMENT_LINK}
-                  className="bg-lila-700 group hover:bg-lila-500 flex w-full items-center justify-center gap-2 rounded-lg px-6 py-3 text-base font-bold text-white uppercase transition-colors sm:w-fit"
-                >
-                  <span>{locale === 'hu' ? 'Megrendelem!' : 'Buy now!'}</span>
-                  <ArrowRightIcon className="h-5 w-5 translate-x-0 transition-transform duration-100 group-hover:translate-x-1" />
-                </Link>
-              </ReusableTooltip>
+              <CheckoutSessionButton locale={locale} />
             </div>
             {locale === 'hu' ? (
               <p className="text-lg">
@@ -242,13 +223,7 @@ export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
               )}
             </div>
             <div className="mb-2 flex justify-center lg:my-4 lg:mb-0">
-              <Link
-                href={STRIPE_PAYMENT_LINK}
-                className="bg-lila-700 group hover:bg-lila-500 flex w-full items-center justify-center gap-2 rounded-lg px-6 py-3 text-base font-bold text-white uppercase transition-colors sm:w-fit"
-              >
-                <span>{locale === 'hu' ? 'Megrendelem!' : 'Buy now!'}</span>
-                <ArrowRightIcon className="h-5 w-5 translate-x-0 transition-transform duration-100 group-hover:translate-x-1" />
-              </Link>
+              <CheckoutSessionButton locale={locale} />
             </div>
           </div>
         </Container>
