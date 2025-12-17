@@ -13,7 +13,7 @@ export const ReusableTooltip = ({
   return (
     <Tooltip>
       <TooltipTrigger asChild>{children}</TooltipTrigger>
-      <TooltipContent side={side}>
+      <TooltipContent side={side} className="max-w-xs p-4 text-base">
         <p>{message}</p>
       </TooltipContent>
     </Tooltip>
