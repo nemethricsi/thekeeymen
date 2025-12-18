@@ -1,9 +1,65 @@
 import Image from 'next/image';
+import { Metadata } from 'next';
+
 import { Locale } from '@/i18n-config';
 import { StaticNavbar } from '@/components/StaticNavbar';
-import { fetchNavigation } from '@/sanity/lib/queries';
+import { fetchMetadata, fetchNavigation } from '@/sanity/lib/queries';
 import { Container } from '@/components/Container';
 import { CheckoutSessionButton } from '@/components/CheckoutSessionButton';
+import { baseURL } from '@/lib/constans';
+import { env } from '@/env';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const metadata = await fetchMetadata({ locale });
+  const baseTitle = metadata?.seo?.title as string;
+  const pageTitle = metadata?.seo?.epkPageTitle;
+  const fullUrl = `${baseURL}/${locale}/p/zabella-zine-keeymen-moldvai-collaboration`;
+
+  return {
+    title: `MOLDVAI Zine • ${baseTitle}`,
+    description:
+      locale === 'hu'
+        ? 'Elkészült a 14. Zabella Zine, egy rendhagyó kollaborációs kiadvány. Szövegeit és rajzait új, csángó dallamokból inspirálódott, MOLDVAI címre keresztelt albumunk ihlette.'
+        : 'The 14th Zabella Zine is complete — an unconventional collaborative release. Its texts and illustrations were inspired by our new album titled MOLDVAI, which draws from traditional csángó melodies.',
+    alternates: {
+      languages: {
+        en: `${baseURL}/en/p/zabella-zine-keeymen-moldvai-collaboration`,
+        hu: `${baseURL}/hu/p/zabella-zine-keeymen-moldvai-collaboration`,
+      },
+      canonical: {
+        url: fullUrl,
+      },
+    },
+    openGraph: {
+      title: `MOLDVAI Zine • ${baseTitle}`,
+      description:
+        locale === 'hu'
+          ? 'Elkészült a 14. Zabella Zine, egy rendhagyó kollaborációs kiadvány. Szövegeit és rajzait új, csángó dallamokból inspirálódott, MOLDVAI címre keresztelt albumunk ihlette.'
+          : 'The 14th Zabella Zine is complete — an unconventional collaborative release. Its texts and illustrations were inspired by our new album titled MOLDVAI, which draws from traditional csángó melodies.',
+      url: fullUrl,
+      siteName: metadata?.seo?.title as string,
+      locale,
+      type: 'website',
+      images: [
+        {
+          url: `${env.NEXT_PUBLIC_APP_URL}/images/OG_zabella.png`,
+          width: 1200,
+          height: 630,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${pageTitle} • ${baseTitle}`,
+      description: metadata?.seo?.description as string,
+    },
+  };
+}
 
 export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
   params,
