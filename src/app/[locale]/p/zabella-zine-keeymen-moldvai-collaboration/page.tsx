@@ -8,6 +8,7 @@ import { Container } from '@/components/Container';
 import { CheckoutSessionButton } from '@/components/CheckoutSessionButton';
 import { baseURL } from '@/lib/constans';
 import { env } from '@/env';
+import { getDictionary } from '@/app/[locale]/dictionaries';
 
 export async function generateMetadata({
   params,
@@ -68,6 +69,7 @@ export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
 }) {
   const { locale } = await params;
   const data = await fetchNavigation({ locale });
+  const dict = await getDictionary(locale);
 
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-950 lg:pt-0">
@@ -75,23 +77,12 @@ export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
       <main className="pt-32 lg:pt-36">
         <Container className="gap-16 pb-24 lg:gap-20">
           <div className="flex flex-col gap-6">
-            <h1 className="mb-4 font-serif text-3xl font-bold">
+            <h1 className="font-serif text-3xl font-bold lg:text-4xl">
               The Keeymen & Zabella Zine: Moldvai Zine
             </h1>
-            {locale === 'hu' ? (
-              <p className="font-bold lg:text-lg">
-                Elkészült a 14. Zabella Zine, egy rendhagyó kollaborációs
-                kiadvány. Szövegeit és rajzait új, csángó dallamokból
-                inspirálódott, MOLDVAI címre keresztelt albumunk ihlette.
-              </p>
-            ) : (
-              <p className="text-lg font-bold">
-                The 14th Zabella Zine is complete — an unconventional
-                collaborative release. Its texts and illustrations were inspired
-                by our new album titled MOLDVAI, which draws from traditional
-                csángó melodies.
-              </p>
-            )}
+            <p className="text-base font-semibold lg:text-lg">
+              {dict.zabella.excerpt}
+            </p>
             <Image
               src="/images/zines.jpg"
               alt="Zabella Zine x Keeymen x Moldvai Collaboration"
@@ -100,59 +91,23 @@ export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
               className="aspect-square w-full rounded-lg object-cover"
             />
             <div className="flex flex-col gap-3">
-              {locale === 'hu' ? (
-                <p>
-                  Összesen 150 db, kézzel fűzött MOLDVAI zine-t készítettünk.
-                  Rendeld meg még ma a saját egyedi példányodat, mi pedig
-                  küldünk mellé egy exkluzív letöltő kódot, melynek segítségével
-                  már most, jóval megjelenés előtt meghallgathatod a teljes
-                  MOLDVAI albumot!
-                </p>
-              ) : (
-                <p>
-                  We created a total of 150 hand-stitched MOLDVAI zines. Order
-                  your own unique copy today, and we&apos;ll include an
-                  exclusive download code that lets you listen to the full
-                  MOLDVAI album right now — well ahead of its official release.
-                </p>
-              )}
+              <p>{dict.zabella.limitedOffer}</p>
             </div>
             <div className="my-4 flex justify-center lg:my-8">
               <CheckoutSessionButton locale={locale} />
             </div>
-            {locale === 'hu' ? (
-              <p className="text-lg">
-                A{' '}
-                <a
-                  href="https://www.facebook.com/zabellazine"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 underline underline-offset-4 hover:no-underline"
-                >
-                  Zabella Zine
-                </a>{' '}
-                egy független, irodalmi fanzine. Lapszámaik különböző témákban,
-                más-más alkotók illusztrációival és vendégverseivel jelennek
-                meg. Céljuk, hogy esélyt adjanak a kezdő, kísérletező íróknak és
-                illusztrátoroknak egyaránt.
-              </p>
-            ) : (
-              <p className="text-lg">
-                The{' '}
-                <a
-                  href="https://www.facebook.com/zabellazine"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-500 underline underline-offset-4 hover:no-underline"
-                >
-                  Zabella Zine
-                </a>{' '}
-                is an independent, literary fanzine. Their issues feature
-                different themes, with different artists&apos; illustrations and
-                guest poems. Their goal is to give opportunities to both
-                beginning, experimental writers and illustrators.
-              </p>
-            )}
+            <p className="text-lg">
+              {dict.zabella.aboutZabella.beforeLink}{' '}
+              <a
+                href="https://www.facebook.com/zabellazine"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline underline-offset-4 hover:no-underline"
+              >
+                Zabella Zine
+              </a>{' '}
+              {dict.zabella.aboutZabella.afterLink}
+            </p>
             <div className="flex flex-col gap-2">
               <Image
                 src="/images/zabella_editors.jpg"
@@ -161,32 +116,11 @@ export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
                 height={1000}
                 className="aspect-square w-full rounded-lg object-cover"
               />
-              {locale === 'hu' ? (
-                <p className="text-sm">
-                  A Zabella Zine szerkesztői: Domján Julcsi és Kisvarga Anika.
-                </p>
-              ) : (
-                <p className="text-sm">
-                  The editors of the Zabella Zine are Domján Julcsi and Kisvarga
-                  Anika.
-                </p>
-              )}
+              <p className="text-sm text-neutral-600">
+                {dict.zabella.captionEditors}
+              </p>
             </div>
-            {locale === 'hu' ? (
-              <p>
-                Ebbek a számnak a különlegessége, hogy a szerkesztők magukkal
-                együtt tíz irót, és öt illusztrátort kértek fel, akik a MOLDVAI
-                albumunk egy-egy (illetve két-két) zenéjét kapták meg, amiből
-                inspirálódtak.
-              </p>
-            ) : (
-              <p>
-                What makes this issue special is that the editors invited ten
-                writers and five illustrators alongside themselves. Each of them
-                received one (the designers received two) tracks from our
-                MOLDVAI album to use as their source of inspiration.
-              </p>
-            )}
+            <p>{dict.zabella.specialFeature}</p>
             <div className="flex flex-col gap-2">
               <Image
                 src="/images/zabella_team.jpg"
@@ -195,15 +129,14 @@ export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
                 height={1000}
                 className="aspect-video w-full rounded-lg object-cover"
               />
-              <p className="text-sm">
-                {locale === 'hu' ? 'Versek' : 'Poems'}: Bakos Barna, Domján
-                Julcsi, Filotás Karina, Gaál- Nyeste Katalin, Gerjeni Mirjam,
-                Kisvarga Anika, Lakos Benedek, Nagy-Gulyka Brigitta, Nádas
-                Dávid, Stermeczky Zsolt
+              <p className="text-sm text-neutral-600">
+                {dict.zabella.poems}: Bakos Barna, Domján Julcsi, Filotás
+                Karina, Gaál- Nyeste Katalin, Gerjeni Mirjam, Kisvarga Anika,
+                Lakos Benedek, Nagy-Gulyka Brigitta, Nádas Dávid, Stermeczky
+                Zsolt
               </p>
-              <p className="text-sm">
-                {locale === 'hu' ? 'Illusztrátorok' : 'Illustrators'}: Khor
-                Fruzsi (
+              <p className="text-sm text-neutral-600">
+                {dict.zabella.illustrators}: Khor Fruzsi (
                 <a
                   href="https://www.instagram.com/khorfruzsi"
                   target="_blank"
@@ -258,43 +191,20 @@ export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
               height={1000}
               className="aspect-auto w-full rounded-lg object-cover"
             />
-            <div className="mb-2 flex justify-center lg:my-4 lg:mb-0">
-              <CheckoutSessionButton locale={locale} />
-            </div>
             <div className="flex flex-col gap-3 rounded-lg border border-neutral-700 p-3 text-sm text-neutral-700">
-              {locale === 'hu' ? (
-                <p>
-                  A zine-t postán küldjük el neked. Jelenleg csak Magyarországon
-                  elérhető.
-                </p>
-              ) : (
-                <p>
-                  The zine will be sent to you by post. Currently only available
-                  in Hungary.
-                </p>
-              )}
-              {locale === 'hu' ? (
-                <p>
-                  A kiadvány ára az album letöltő kódjával együtt{' '}
-                  {new Intl.NumberFormat(locale, {
-                    style: 'currency',
-                    currency: 'HUF',
-                    minimumFractionDigits: 0,
-                  }).format(3990)}
-                  .
-                </p>
-              ) : (
-                <p>
-                  The price of the zine includes the download code for the album
-                  is{' '}
-                  {new Intl.NumberFormat(locale, {
-                    style: 'currency',
-                    currency: 'HUF',
-                    minimumFractionDigits: 0,
-                  }).format(3990)}
-                  .
-                </p>
-              )}
+              <p>{dict.zabella.aboutShipping.postalService}</p>
+              <p>
+                {dict.zabella.aboutShipping.priceExplainer}{' '}
+                {new Intl.NumberFormat(locale, {
+                  style: 'currency',
+                  currency: 'HUF',
+                  minimumFractionDigits: 0,
+                }).format(3990)}
+                .
+              </p>
+            </div>
+            <div className="my-2 flex justify-center lg:my-4">
+              <CheckoutSessionButton locale={locale} />
             </div>
           </div>
         </Container>
