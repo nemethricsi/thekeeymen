@@ -79,7 +79,7 @@ export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
               The Keeymen & Zabella Zine: Moldvai Zine
             </h1>
             {locale === 'hu' ? (
-              <p className="font-bold lg:text-lg">
+              <p className="font-semibold lg:text-lg">
                 Elkészült a 14. Zabella Zine, egy rendhagyó kollaborációs
                 kiadvány. Szövegeit és rajzait új, csángó dallamokból
                 inspirálódott, MOLDVAI címre keresztelt albumunk ihlette.
@@ -174,17 +174,15 @@ export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
             </div>
             {locale === 'hu' ? (
               <p>
-                Ebbek a számnak a különlegessége, hogy a szerkesztők magukkal
-                együtt tíz irót, és öt illusztrátort kértek fel, akik a MOLDVAI
-                albumunk egy-egy (illetve két-két) zenéjét kapták meg, amiből
-                inspirálódtak.
+                A lapszám különlegessége, hogy a résztvevő alkotók (összesen 10
+                író és 5 illusztrátor) a MOLDVAI albumunk 1-1 zenéjét használták
+                kiindulási alapként.
               </p>
             ) : (
               <p>
-                What makes this issue special is that the editors invited ten
-                writers and five illustrators alongside themselves. Each of them
-                received one (the designers received two) tracks from our
-                MOLDVAI album to use as their source of inspiration.
+                What makes this issue special is that the participating creators
+                — a total of ten writers and five illustrators — each used a
+                track from our MOLDVAI album as their starting point.
               </p>
             )}
             <div className="flex flex-col gap-2">

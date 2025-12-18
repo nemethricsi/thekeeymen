@@ -64,7 +64,7 @@ export default async function ZabellaMoldvaiZineConfirmationThankYouPage({
             </h1>
             <p className="text-center opacity-70">
               {locale === 'hu'
-                ? 'Köszönjük a megrendelést! Az MOLDVAI zine-ed hamarosan postán küldjük el neked.'
+                ? 'Köszönjük a megrendelést! A MOLDVAI zine-ed hamarosan postán küldjük el neked.'
                 : `Thank you for your order! Your MOLDVAI zine will be sent to you by post soon.`}
             </p>
             <div className="flex flex-col gap-2">
