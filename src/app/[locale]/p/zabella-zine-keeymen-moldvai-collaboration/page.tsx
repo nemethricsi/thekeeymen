@@ -48,7 +48,7 @@ export async function generateMetadata({
       type: 'website',
       images: [
         {
-          url: `${env.NEXT_PUBLIC_APP_URL}/images/OG_zabella.png`,
+          url: `${env.NEXT_PUBLIC_APP_URL}/images/SEO_OG_zabella.png`,
           width: 1200,
           height: 630,
         },
