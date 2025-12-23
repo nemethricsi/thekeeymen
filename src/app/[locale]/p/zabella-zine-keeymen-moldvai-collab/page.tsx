@@ -19,7 +19,7 @@ export async function generateMetadata({
   const metadata = await fetchMetadata({ locale });
   const baseTitle = metadata?.seo?.title as string;
   const pageTitle = metadata?.seo?.epkPageTitle;
-  const fullUrl = `${baseURL}/${locale}/p/zabella-zine-keeymen-moldvai-collab`;
+  const fullUrl = `${baseURL}/${locale}/p/moldvai-zabella-zine-collaboration`;
 
   return {
     title: `MOLDVAI Zine • ${baseTitle}`,
@@ -29,8 +29,8 @@ export async function generateMetadata({
         : 'The 14th Zabella Zine is complete — an unconventional collaborative release. Its texts and illustrations were inspired by our new album titled MOLDVAI, which draws from traditional csángó melodies.',
     alternates: {
       languages: {
-        en: `${baseURL}/en/p/zabella-zine-keeymen-moldvai-collab`,
-        hu: `${baseURL}/hu/p/zabella-zine-keeymen-moldvai-collab`,
+        en: `${baseURL}/en/p/moldvai-zabella-zine-collaboration`,
+        hu: `${baseURL}/hu/p/moldvai-zabella-zine-collaboration`,
       },
       canonical: {
         url: fullUrl,

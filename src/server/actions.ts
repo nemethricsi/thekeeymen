@@ -50,8 +50,8 @@ export const createCheckoutSession = async (
     shipping_address_collection: {
       allowed_countries: ['HU'],
     },
-    success_url: `${env.NEXT_PUBLIC_APP_URL}/${locale}/zabella-moldvai-zine-confirmation?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${env.NEXT_PUBLIC_APP_URL}/${locale}/p/zabella-zine-keeymen-moldvai-collab`,
+    success_url: `${env.NEXT_PUBLIC_APP_URL}/${locale}/moldvai-zine-confirmation?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${env.NEXT_PUBLIC_APP_URL}/${locale}/p/moldvai-zabella-zine-collaboration`,
   });
 
   if (!url) {
