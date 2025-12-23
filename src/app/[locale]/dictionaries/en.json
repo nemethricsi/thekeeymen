@@ -12,7 +12,10 @@
     "illustrators": "Illustrators",
     "aboutShipping": {
       "postalService": "The zine will be sent to you by post. Currently only available in Hungary.",
-      "priceExplainer": "The zine, including the album download code, costs"
+      "priceExplainer": {
+        "beforePrice": "The price of the zine is",
+        "afterPrice": "postage"
+      }
     }
   }
 }

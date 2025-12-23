@@ -3,6 +3,7 @@
 import { env } from '@/env';
 import { Locale } from '@/i18n-config';
 import { BandsInTownEvent } from '@/lib/bands-in-town';
+import { MOLDVAI_ZINE_SHIPPING_PRICE_IN_CENTS } from '@/lib/constans';
 import { stripe } from '@/lib/stripe';
 
 export const fetchBandsInTownEvents = async (): Promise<BandsInTownEvent[]> => {
@@ -34,12 +35,24 @@ export const createCheckoutSession = async (
         },
       },
     ],
+    shipping_options: [
+      {
+        shipping_rate_data: {
+          type: 'fixed_amount',
+          fixed_amount: {
+            amount: MOLDVAI_ZINE_SHIPPING_PRICE_IN_CENTS,
+            currency: 'HUF',
+          },
+          display_name: 'Posta',
+        },
+      },
+    ],
     billing_address_collection: 'required',
     shipping_address_collection: {
       allowed_countries: ['HU'],
     },
-    success_url: `${env.NEXT_PUBLIC_APP_URL}/${locale}/zabella-moldvai-zine-confirmation?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${env.NEXT_PUBLIC_APP_URL}/${locale}/p/zabella-zine-keeymen-moldvai-collaboration`,
+    success_url: `${env.NEXT_PUBLIC_APP_URL}/${locale}/moldvai-zine-confirmation?session_id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${env.NEXT_PUBLIC_APP_URL}/${locale}/p/moldvai-zabella-zine-collaboration`,
   });
 
   if (!url) {

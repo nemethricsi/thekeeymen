@@ -156,15 +156,7 @@ export default async function ZabellaMoldvaiZineConfirmationThankYouPage({
                             style: 'currency',
                             currency: 'HUF',
                             minimumFractionDigits: 0,
-                          }).format((li.price?.unit_amount ?? 0) / 100)}{' '}
-                          ={' '}
-                          <span className="font-semibold">
-                            {new Intl.NumberFormat(locale, {
-                              style: 'currency',
-                              currency: 'HUF',
-                              minimumFractionDigits: 0,
-                            }).format((session.amount_total ?? 0) / 100)}
-                          </span>
+                          }).format((li.price?.unit_amount ?? 0) / 100)}
                         </p>
                       </div>
                     </div>

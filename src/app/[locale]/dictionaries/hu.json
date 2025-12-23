@@ -12,7 +12,10 @@
     "illustrators": "Illusztrátorok",
     "aboutShipping": {
       "postalService": "A zine-t postán küldjük el neked. Jelenleg csak Magyarországon elérhető.",
-      "priceExplainer": "A kiadvány ára az album letöltő kódjával együtt"
+      "priceExplainer": {
+        "beforePrice": "A kiadvány ára az album letöltő kódjával együtt",
+        "afterPrice": "postaköltség"
+      }
     }
   }
 }
