@@ -1,5 +1,6 @@
 'use server';
 
+import { getDictionary } from '@/app/[locale]/dictionaries';
 import { env } from '@/env';
 import { Locale } from '@/i18n-config';
 import { BandsInTownEvent } from '@/lib/bands-in-town';
@@ -21,9 +22,11 @@ export const createCheckoutSession = async (
   message: string;
   data?: { url: string };
 }> => {
+  const dict = await getDictionary(locale);
   const { url } = await stripe.checkout.sessions.create({
     payment_method_types: ['card', 'revolut_pay'],
     mode: 'payment',
+    locale,
     line_items: [
       {
         price: env.PRICE_ID_ZABELLA_ZINE_MOLDVAI,
@@ -43,7 +46,7 @@ export const createCheckoutSession = async (
             amount: MOLDVAI_ZINE_SHIPPING_PRICE_IN_CENTS,
             currency: 'HUF',
           },
-          display_name: 'Posta',
+          display_name: dict.zabella.postalShipment,
         },
       },
     ],

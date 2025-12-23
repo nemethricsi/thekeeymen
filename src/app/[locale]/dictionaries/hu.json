@@ -16,6 +16,7 @@
         "beforePrice": "A kiadvány ára az album letöltő kódjával együtt",
         "afterPrice": "postaköltség"
       }
-    }
+    },
+    "postalShipment": "Postai küldemény"
   }
 }
