@@ -30,7 +30,7 @@ export async function generateMetadata({
     description:
       locale === 'hu'
         ? 'Elkészült a 14. Zabella Zine, egy rendhagyó kollaborációs kiadvány. Szövegeit és rajzait új, csángó dallamokból inspirálódott, MOLDVAI címre keresztelt albumunk ihlette.'
-        : 'The 14th Zabella Zine is complete — an unconventional collaborative release. Its texts and illustrations were inspired by our new album titled MOLDVAI, which draws from traditional csángó melodies.',
+        : 'The 14th Zabella Zine is out now — an unconventional collaborative release. Its texts and illustrations were inspired by our new album titled MOLDVAI, which draws from traditional csángó melodies.',
     alternates: {
       languages: {
         en: `${baseURL}/en/p/moldvai-zabella-zine-collaboration`,
@@ -45,7 +45,7 @@ export async function generateMetadata({
       description:
         locale === 'hu'
           ? 'Elkészült a 14. Zabella Zine, egy rendhagyó kollaborációs kiadvány. Szövegeit és rajzait új, csángó dallamokból inspirálódott, MOLDVAI címre keresztelt albumunk ihlette.'
-          : 'The 14th Zabella Zine is complete — an unconventional collaborative release. Its texts and illustrations were inspired by our new album titled MOLDVAI, which draws from traditional csángó melodies.',
+          : 'The 14th Zabella Zine is out now — an unconventional collaborative release. Its texts and illustrations were inspired by our new album titled MOLDVAI, which draws from traditional csángó melodies.',
       url: fullUrl,
       siteName: metadata?.seo?.title as string,
       locale,
