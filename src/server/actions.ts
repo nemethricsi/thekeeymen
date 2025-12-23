@@ -34,12 +34,24 @@ export const createCheckoutSession = async (
         },
       },
     ],
+    shipping_options: [
+      {
+        shipping_rate_data: {
+          type: 'fixed_amount',
+          fixed_amount: {
+            amount: 40000,
+            currency: 'HUF',
+          },
+          display_name: 'Posta',
+        },
+      },
+    ],
     billing_address_collection: 'required',
     shipping_address_collection: {
       allowed_countries: ['HU'],
     },
     success_url: `${env.NEXT_PUBLIC_APP_URL}/${locale}/zabella-moldvai-zine-confirmation?session_id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${env.NEXT_PUBLIC_APP_URL}/${locale}/p/zabella-zine-keeymen-moldvai-collaboration`,
+    cancel_url: `${env.NEXT_PUBLIC_APP_URL}/${locale}/p/zabella-zine-keeymen-moldvai-collab`,
   });
 
   if (!url) {
