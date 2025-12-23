@@ -3,6 +3,7 @@
 import { env } from '@/env';
 import { Locale } from '@/i18n-config';
 import { BandsInTownEvent } from '@/lib/bands-in-town';
+import { MOLDVAI_ZINE_SHIPPING_PRICE_IN_CENTS } from '@/lib/constans';
 import { stripe } from '@/lib/stripe';
 
 export const fetchBandsInTownEvents = async (): Promise<BandsInTownEvent[]> => {
@@ -39,7 +40,7 @@ export const createCheckoutSession = async (
         shipping_rate_data: {
           type: 'fixed_amount',
           fixed_amount: {
-            amount: 40000,
+            amount: MOLDVAI_ZINE_SHIPPING_PRICE_IN_CENTS,
             currency: 'HUF',
           },
           display_name: 'Posta',

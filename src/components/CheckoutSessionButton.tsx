@@ -6,6 +6,10 @@ import { ArrowRightIcon, Loader2Icon } from 'lucide-react';
 import { createCheckoutSession } from '@/server/actions';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
+import {
+  MOLDVAI_ZINE_PRICE_IN_CENTS,
+  MOLDVAI_ZINE_SHIPPING_PRICE_IN_CENTS,
+} from '@/lib/constans';
 
 export const CheckoutSessionButton = ({ locale }: { locale: Locale }) => {
   const [isLoading, setIsLoading] = useState(false);
@@ -26,8 +30,38 @@ export const CheckoutSessionButton = ({ locale }: { locale: Locale }) => {
     <ReusableTooltip
       message={
         locale === 'hu'
-          ? 'A zine-t postán küldjük el neked. Jelenleg csak Magyarországon elérhető. A kiadvány ára az album letöltő kódjával együtt 3990 Ft.'
-          : 'The zine will be sent to you by post. Currently only available in Hungary. The price of the zine includes the download code for the album is 3990 Ft.'
+          ? `A zine-t postán küldjük el neked. Jelenleg csak Magyarországon elérhető. A kiadvány ára az album letöltő kódjával együtt ${new Intl.NumberFormat(
+              locale,
+              {
+                style: 'currency',
+                currency: 'HUF',
+                minimumFractionDigits: 0,
+              },
+            ).format(
+              MOLDVAI_ZINE_PRICE_IN_CENTS / 100,
+            )} + ${new Intl.NumberFormat(locale, {
+              style: 'currency',
+              currency: 'HUF',
+              minimumFractionDigits: 0,
+            }).format(
+              MOLDVAI_ZINE_SHIPPING_PRICE_IN_CENTS / 100,
+            )} postaköltség.`
+          : `The zine will be sent to you by post. Currently only available in Hungary. The price of the zine is ${new Intl.NumberFormat(
+              locale,
+              {
+                style: 'currency',
+                currency: 'HUF',
+                minimumFractionDigits: 0,
+              },
+            ).format(
+              MOLDVAI_ZINE_PRICE_IN_CENTS / 100,
+            )}, plus ${new Intl.NumberFormat(locale, {
+              style: 'currency',
+              currency: 'HUF',
+              minimumFractionDigits: 0,
+            }).format(
+              MOLDVAI_ZINE_SHIPPING_PRICE_IN_CENTS / 100,
+            )} for postage. The price also includes the download code for the album.`
       }
     >
       <button

@@ -6,7 +6,11 @@ import { StaticNavbar } from '@/components/StaticNavbar';
 import { fetchMetadata, fetchNavigation } from '@/sanity/lib/queries';
 import { Container } from '@/components/Container';
 import { CheckoutSessionButton } from '@/components/CheckoutSessionButton';
-import { baseURL } from '@/lib/constans';
+import {
+  baseURL,
+  MOLDVAI_ZINE_PRICE_IN_CENTS,
+  MOLDVAI_ZINE_SHIPPING_PRICE_IN_CENTS,
+} from '@/lib/constans';
 import { env } from '@/env';
 import { getDictionary } from '@/app/[locale]/dictionaries';
 
@@ -194,13 +198,19 @@ export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
             <div className="flex flex-col gap-3 rounded-lg border border-neutral-700 p-3 text-sm text-neutral-700">
               <p>{dict.zabella.aboutShipping.postalService}</p>
               <p>
-                {dict.zabella.aboutShipping.priceExplainer}{' '}
+                {dict.zabella.aboutShipping.priceExplainer.beforePrice}{' '}
                 {new Intl.NumberFormat(locale, {
                   style: 'currency',
                   currency: 'HUF',
                   minimumFractionDigits: 0,
-                }).format(3990)}
-                .
+                }).format(MOLDVAI_ZINE_PRICE_IN_CENTS / 100)}{' '}
+                +{' '}
+                {new Intl.NumberFormat(locale, {
+                  style: 'currency',
+                  currency: 'HUF',
+                  minimumFractionDigits: 0,
+                }).format(MOLDVAI_ZINE_SHIPPING_PRICE_IN_CENTS / 100)}{' '}
+                {dict.zabella.aboutShipping.priceExplainer.afterPrice}.
               </p>
             </div>
             <div className="my-2 flex justify-center lg:my-4">
