@@ -13,6 +13,7 @@ import {
 } from '@/lib/constans';
 import { env } from '@/env';
 import { getDictionary } from '@/app/[locale]/dictionaries';
+import { LocalizedLink } from '@/components/LocalizedLink';
 
 export async function generateMetadata({
   params,
@@ -196,7 +197,16 @@ export default async function ZabellaZineKeeymenMoldvaiCollaborationPage({
               className="aspect-auto w-full rounded-lg object-cover"
             />
             <div className="flex flex-col gap-3 rounded-lg border border-neutral-700 p-3 text-sm text-neutral-700">
-              <p>{dict.zabella.aboutShipping.postalService}</p>
+              <p>
+                {dict.zabella.aboutShipping.postalService}{' '}
+                <LocalizedLink
+                  href="/#contact"
+                  className="text-blue-500 underline underline-offset-4 hover:no-underline"
+                >
+                  {dict.zabella.aboutShipping.contactUs}
+                </LocalizedLink>
+                .
+              </p>
               <p>
                 {dict.zabella.aboutShipping.priceExplainer.beforePrice}{' '}
                 {new Intl.NumberFormat(locale, {
