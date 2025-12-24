@@ -1,6 +1,6 @@
 'use client';
 
-import { createSubscriber } from '@/lib/mailerlite';
+import { createOrUpdateSubscriber } from '@/lib/mailerlite';
 import { getLocaleFromPathname, getMailingGroupByLocale } from '@/lib/utils';
 import { MAILERLITE_QUERYResult } from '@/sanity/types';
 import { MailIcon } from 'lucide-react';
@@ -38,13 +38,10 @@ export const MailerliteSubForm = ({
     }
 
     try {
-      const { data } = await createSubscriber(
-        {
-          email,
-          groups: [getMailingGroupByLocale(locale)],
-        },
-        locale,
-      );
+      const { data } = await createOrUpdateSubscriber({
+        email,
+        groups: [getMailingGroupByLocale(locale)],
+      });
       console.log(data);
       toast.success(
         mailerlite?.toastMessages?.success ??

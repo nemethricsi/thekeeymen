@@ -32,7 +32,8 @@ export function middleware(request: NextRequest) {
     pathname.startsWith('/svg') ||
     pathname.startsWith('/sitemap') ||
     pathname.startsWith('/opengraph') ||
-    pathname.startsWith('/robots')
+    pathname.startsWith('/robots') ||
+    pathname.startsWith('/api')
   ) {
     return;
   }
