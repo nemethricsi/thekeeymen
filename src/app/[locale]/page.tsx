@@ -25,6 +25,7 @@ import { baseURL } from '@/lib/constans';
 import Link from 'next/link';
 import { formatDistanceToNow, format } from 'date-fns';
 import { ArrowRightIcon, MegaphoneIcon } from 'lucide-react';
+import { LocalizedLink } from '@/components/LocalizedLink';
 
 export const revalidate = 60;
 
@@ -118,6 +119,8 @@ export default async function Home({
                         callToAction,
                         publishedAt,
                       }) => {
+                        const isInternalLink =
+                          callToAction?.href.startsWith('/') ?? false;
                         return (
                           <article key={_id} className="flex flex-col gap-6">
                             <div className="flex flex-col gap-3">
@@ -142,14 +145,29 @@ export default async function Home({
                                 {description}
                               </p>
                               {callToAction != null && (
-                                <Link
-                                  href={callToAction.href}
-                                  {...(callToAction.isExternal && externalLink)}
-                                  className="bg-lila-700 group hover:bg-lila-500 mt-4 flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-white uppercase transition-colors sm:w-fit"
-                                >
-                                  <span>{callToAction.label}</span>
-                                  <ArrowRightIcon className="h-5 w-5 translate-x-0 transition-transform duration-100 group-hover:translate-x-1" />
-                                </Link>
+                                <>
+                                  {isInternalLink ? (
+                                    <LocalizedLink
+                                      href={callToAction.href}
+                                      {...(callToAction.isExternal &&
+                                        externalLink)}
+                                      className="bg-lila-700 group hover:bg-lila-500 mt-4 flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-white uppercase transition-colors sm:w-fit"
+                                    >
+                                      <span>{callToAction.label}</span>
+                                      <ArrowRightIcon className="h-5 w-5 translate-x-0 transition-transform duration-100 group-hover:translate-x-1" />
+                                    </LocalizedLink>
+                                  ) : (
+                                    <Link
+                                      href={callToAction.href}
+                                      {...(callToAction.isExternal &&
+                                        externalLink)}
+                                      className="bg-lila-700 group hover:bg-lila-500 mt-4 flex w-full items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-bold text-white uppercase transition-colors sm:w-fit"
+                                    >
+                                      <span>{callToAction.label}</span>
+                                      <ArrowRightIcon className="h-5 w-5 translate-x-0 transition-transform duration-100 group-hover:translate-x-1" />
+                                    </Link>
+                                  )}
+                                </>
                               )}
                             </div>
                           </article>
