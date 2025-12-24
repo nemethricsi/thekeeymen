@@ -11,7 +11,8 @@
     "poems": "Versek",
     "illustrators": "Illusztrátorok",
     "aboutShipping": {
-      "postalService": "A zine-t postán küldjük el neked. Jelenleg csak Magyarországon elérhető.",
+      "postalService": "A zine-t postán küldjük el neked. Jelenleg csak Magyarországon elérhető. Amennyiben külföldre szeretnéd megrendelni, kérlek ",
+      "contactUs": "írj nekünk egy üzenetet",
       "priceExplainer": {
         "beforePrice": "A kiadvány ára az album letöltő kódjával együtt",
         "afterPrice": "postaköltség"
