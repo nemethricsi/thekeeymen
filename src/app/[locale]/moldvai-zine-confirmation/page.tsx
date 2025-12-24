@@ -81,6 +81,15 @@ export default async function ZabellaMoldvaiZineConfirmationThankYouPage({
                       .line1
                   }
                 </p>
+                {session.collected_information?.shipping_details?.address
+                  .line2 && (
+                  <p>
+                    {
+                      session.collected_information.shipping_details.address
+                        .line2
+                    }
+                  </p>
+                )}
                 <p>
                   {
                     session.collected_information?.shipping_details?.address
