@@ -32,3 +32,20 @@ export const createOrUpdateSubscriber = async (
     );
   }
 };
+
+export const checkIfSubscribed = async (email: string | null | undefined) => {
+  if (email == null)
+    return { error: true, message: 'Email is required', data: {} };
+
+  try {
+    const existingSubscriber = await mailerlite.subscribers.find(email);
+    return {
+      error: false,
+      message: 'Subscribed',
+      data: existingSubscriber.data,
+    };
+  } catch (err) {
+    console.log(err);
+    return { error: true, message: 'Something went wrong', data: err };
+  }
+};

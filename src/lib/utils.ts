@@ -70,10 +70,10 @@ export const localeToDateFnsLocale = (locale: Locale) => {
 export const getMailingGroupByLocale = (locale: Locale) => {
   switch (locale) {
     case 'hu':
-      return MAILERLITE_GROUPS.HUNGARIAN;
+      return MAILERLITE_GROUPS.NEWSLETTER_HUNGARIAN;
     case 'en':
-      return MAILERLITE_GROUPS.ENGLISH;
+      return MAILERLITE_GROUPS.NEWSLETTER_ENGLISH;
     default:
-      return MAILERLITE_GROUPS.ENGLISH;
+      return MAILERLITE_GROUPS.NEWSLETTER_ENGLISH;
   }
 };

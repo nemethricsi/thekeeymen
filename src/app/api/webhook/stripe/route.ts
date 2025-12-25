@@ -1,9 +1,8 @@
 import { env } from '@/env';
 import { Locale } from '@/i18n-config';
-import { MAILERLITE_GROUPS } from '@/lib/constans';
-import { syncSubscriber } from '@/lib/mailerlite/subscriber.service';
+import { MAILERSEND_TEMPLATE_IDS } from '@/lib/constans';
+import { sendOrderConfirmationEmail } from '@/lib/mailersend';
 import { stripe } from '@/lib/stripe';
-import { getMailingGroupByLocale } from '@/lib/utils';
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
@@ -46,14 +45,16 @@ export const POST = async (req: NextRequest) => {
            * Make sure this is only happens in production.
            * If the local stripe listener is active this will be triggered for every request.
            */
-          const { data } = await syncSubscriber({
+          const res = await sendOrderConfirmationEmail({
             email,
-            groups: [
-              MAILERLITE_GROUPS.PURCHASED_MOLDVAI_ZINE_ONLINE,
-              getMailingGroupByLocale(locale),
-            ],
+            orderUrl: `${env.NEXT_PUBLIC_APP_URL}/${locale}/moldvai-zine-confirmation?session_id=${cs.id}`,
+            templateId:
+              locale === 'hu'
+                ? MAILERSEND_TEMPLATE_IDS.MOLDVAI_ZINE_ORDER_CONFIRMATION_HU
+                : MAILERSEND_TEMPLATE_IDS.MOLDVAI_ZINE_ORDER_CONFIRMATION_EN,
           });
-          console.log('--- mailerlite response: ', data);
+
+          console.log('--- mailersend response: ', res);
         }
         break;
       default:

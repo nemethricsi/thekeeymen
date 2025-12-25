@@ -1,9 +1,12 @@
 import { Reddit_Sans, Bitter } from 'next/font/google';
-import './globals.css';
+import { ToastContainer, Bounce } from 'react-toastify';
+
+import { AnalyticsWrapper } from '@/components/AnalyticsWrapper';
+import { Providers } from '@/components/Providers';
 import { cn } from '@/lib/utils';
 import { SanityLive } from '@/sanity/lib/live';
-import { AnalyticsWrapper } from '@/components/AnalyticsWrapper';
-import { ToastContainer, Bounce } from 'react-toastify';
+
+import './globals.css';
 
 const redditSans = Reddit_Sans({
   variable: '--font-sans',
@@ -29,7 +32,7 @@ export default function RootLayout({
           'bg-linen-50 min-h-screen font-sans text-lg leading-relaxed text-black antialiased',
         )}
       >
-        {children}
+        <Providers>{children}</Providers>
         <SanityLive />
         <AnalyticsWrapper />
         <ToastContainer
