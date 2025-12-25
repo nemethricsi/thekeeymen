@@ -5,6 +5,7 @@ export const env = createEnv({
   server: {
     BANDSINTOWN_API_KEY: z.string().min(1),
     MAILERLITE_API_TOKEN: z.string().min(1),
+    MAILERSEND_API_TOKEN: z.string().min(1),
     STRIPE_WEBHOOK_SECRET: z.string().min(1),
     STRIPE_API_KEY: z.string().min(1),
     PRICE_ID_ZABELLA_ZINE_MOLDVAI: z.string().min(1),
