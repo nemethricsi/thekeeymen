@@ -18,6 +18,12 @@
         "afterPrice": "postaköltség"
       }
     },
-    "postalShipment": "Postai küldemény"
+    "postalShipment": "Postai küldemény",
+    "newsletterConsent": {
+      "text": "Nem vagyunk fent social-ön, szóval ha szeretnéd tudni, mikor és hol koncertezünk, mik történnek a zenekarral, akkor iratkozz fel a ",
+      "strong": "Keeymen Levlistára",
+      "buttonLabel": "Kérem!",
+      "alreadySubscribed": "Már feliratkoztál"
+    }
   }
 }
