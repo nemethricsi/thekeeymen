@@ -87,7 +87,7 @@ export default async function ZabellaMoldvaiZineConfirmationThankYouPage({
               </p>
             </div>
             {session.customer_details?.email && !isSubscribed && (
-              <div className="bg-linen-50 flex flex-col gap-3 rounded-lg border-2 border-dashed border-neutral-700/30 p-4 text-sm lg:text-base">
+              <div className="bg-lila-100 border-lila-700/50 flex flex-col gap-3 rounded-lg border-2 border-dashed p-4 text-sm lg:text-base">
                 <span>
                   {dict.zabella.newsletterConsent.text}
                   💌 <strong>{dict.zabella.newsletterConsent.strong}</strong>!
