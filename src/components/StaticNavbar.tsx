@@ -16,7 +16,7 @@ interface StaticNavbarProps {
 export const StaticNavbar = ({ navItems }: StaticNavbarProps) => {
   const pathname = usePathname();
   return (
-    <header className="bg-kashmir-600 fixed top-0 left-0 z-40 hidden h-20 w-full lg:flex">
+    <header className="bg-kashmir-600 fixed top-0 left-0 z-40 hidden h-20 w-full drop-shadow-xl drop-shadow-black/20 lg:flex">
       <div className="container mx-auto flex max-w-5xl flex-row items-center justify-between px-4">
         <LocalizedLink href="/">
           <Image
