@@ -104,6 +104,10 @@ export default async function ZabellaMoldvaiZineConfirmationThankYouPage({
                   alreadySubscribedLabel={
                     dict.zabella.newsletterConsent.alreadySubscribed
                   }
+                  privacyText={dict.zabella.newsletterConsent.privacyText}
+                  privacyLinkText={
+                    dict.zabella.newsletterConsent.privacyLinkText
+                  }
                 />
               </div>
             )}
