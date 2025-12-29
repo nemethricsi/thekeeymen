@@ -5,6 +5,7 @@ import { CheckCircleIcon, Loader2Icon } from 'lucide-react';
 import { useState, useTransition } from 'react';
 
 import Button from '@/components/ui/button';
+import PrivacyConsent from '@/components/PrivacyConsent';
 
 export default function MailerLiteNewsletterConsentButton({
   isSubscribed: initialIsSubscribed,
@@ -12,12 +13,16 @@ export default function MailerLiteNewsletterConsentButton({
   groups,
   buttonLabel,
   alreadySubscribedLabel,
+  privacyText,
+  privacyLinkText,
 }: {
   isSubscribed: boolean;
   email: string;
   groups: string[];
   buttonLabel: string;
   alreadySubscribedLabel: string;
+  privacyText: string;
+  privacyLinkText: string;
 }) {
   const [isPending, startTransition] = useTransition();
   const [isSubscribed, setIsSubscribed] = useState(initialIsSubscribed);
@@ -52,8 +57,12 @@ export default function MailerLiteNewsletterConsentButton({
   };
 
   return (
-    <form action={handleSubmit}>
+    <form action={handleSubmit} className="flex flex-col gap-2">
       <SubscribeButton />
+      <PrivacyConsent
+        privacyText={privacyText}
+        privacyLinkText={privacyLinkText}
+      />
     </form>
   );
 }

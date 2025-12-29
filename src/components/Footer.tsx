@@ -14,9 +14,13 @@ import { Locale } from '@/i18n-config';
 export const Footer = async ({
   seoTitle,
   locale,
+  privacyText,
+  privacyLinkText,
 }: {
   seoTitle: string | null | undefined;
   locale: Locale;
+  privacyText: string;
+  privacyLinkText: string;
 }) => {
   const socials = await fetchSocials();
   const mailerlite = await fetchMailerlite({ locale });
@@ -69,7 +73,11 @@ export const Footer = async ({
             </ReusableTooltip>
           )}
         </div>
-        <MailerliteSubForm mailerlite={mailerlite} />
+        <MailerliteSubForm
+          mailerlite={mailerlite}
+          privacyText={privacyText}
+          privacyLinkText={privacyLinkText}
+        />
         <p className="text-xs text-white/75 uppercase sm:text-center sm:text-sm">
           © {seoTitle ? seoTitle : 'The Keeymen'} 2013 -{' '}
           {new Date().getFullYear()}

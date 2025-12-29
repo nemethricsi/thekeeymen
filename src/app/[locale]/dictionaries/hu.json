@@ -22,8 +22,10 @@
     "newsletterConsent": {
       "text": "Nem vagyunk fent social-ön, szóval ha szeretnéd tudni, mikor és hol koncertezünk, mik történnek a zenekarral, akkor iratkozz fel a ",
       "strong": "Keeymen Levlistára",
-      "buttonLabel": "Jöhetnek az infók!",
-      "alreadySubscribed": "Köszönjük, már feliratkoztál! 💌"
+      "buttonLabel": "Jöhetnek az infók!*",
+      "alreadySubscribed": "Köszönjük, már feliratkoztál! 💌",
+      "privacyText": "A kattintással elfogadod az ",
+      "privacyLinkText": "adatkezelési tájékoztatót"
     }
   }
 }
