@@ -5,8 +5,7 @@ import { CheckCircleIcon, Loader2Icon } from 'lucide-react';
 import { useState, useTransition } from 'react';
 
 import Button from '@/components/ui/button';
-import { LocalizedLink } from './LocalizedLink';
-import { externalLink } from '@/lib/utils';
+import PrivacyConsent from '@/components/PrivacyConsent';
 
 export default function MailerLiteNewsletterConsentButton({
   isSubscribed: initialIsSubscribed,
@@ -60,17 +59,10 @@ export default function MailerLiteNewsletterConsentButton({
   return (
     <form action={handleSubmit} className="flex flex-col gap-2">
       <SubscribeButton />
-      <p className="text-xs text-neutral-500">
-        *{privacyText}{' '}
-        <LocalizedLink
-          href="/privacy"
-          className="text-neutral-500 underline"
-          {...externalLink}
-        >
-          {privacyLinkText}
-        </LocalizedLink>
-        .
-      </p>
+      <PrivacyConsent
+        privacyText={privacyText}
+        privacyLinkText={privacyLinkText}
+      />
     </form>
   );
 }

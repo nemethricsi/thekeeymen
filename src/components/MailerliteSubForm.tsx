@@ -8,11 +8,16 @@ import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { z } from 'zod';
+import PrivacyConsent from './PrivacyConsent';
 
 export const MailerliteSubForm = ({
   mailerlite,
+  privacyText,
+  privacyLinkText,
 }: {
   mailerlite: MAILERLITE_QUERYResult;
+  privacyText: string;
+  privacyLinkText: string;
 }) => {
   const emailSchema = z.object({
     email: z.email(
@@ -67,26 +72,33 @@ export const MailerliteSubForm = ({
           {mailerlite?.description}
         </p>
       </div>
-      <form
-        onSubmit={handleSubmit}
-        className="mb-10 flex flex-col gap-3 sm:flex-row"
-      >
-        <input
-          type="email"
-          name="email"
-          required
-          placeholder={mailerlite?.inputPlaceholder ?? 'Email address'}
-          className="outline-lila-400 w-full rounded-lg border-white/20 bg-white/10 px-5 py-3 text-base font-medium text-white focus:bg-white/20 focus:outline-2 focus:outline-offset-3"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <button
-          type="submit"
-          className="text-lila-700 outline-lila-400 rounded-lg border border-white bg-white px-4 py-2 leading-6 font-semibold transition-colors hover:border-neutral-200 hover:bg-neutral-200 focus:outline-2 focus:outline-offset-3"
+      <div className="mb-10 flex flex-col gap-4">
+        <form
+          onSubmit={handleSubmit}
+          className="flex flex-col gap-3 sm:flex-row"
         >
-          {mailerlite?.buttonLabel ?? 'Subscribe'}
-        </button>
-      </form>
+          <input
+            type="email"
+            name="email"
+            required
+            placeholder={mailerlite?.inputPlaceholder ?? 'Email address'}
+            className="outline-lila-400 w-full rounded-lg border-white/20 bg-white/10 px-5 py-3 text-base font-medium text-white focus:bg-white/20 focus:outline-2 focus:outline-offset-3"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <button
+            type="submit"
+            className="text-lila-700 outline-lila-400 rounded-lg border border-white bg-white px-4 py-2 leading-6 font-semibold transition-colors hover:border-neutral-200 hover:bg-neutral-200 focus:outline-2 focus:outline-offset-3"
+          >
+            {mailerlite?.buttonLabel ?? 'Subscribe'}
+          </button>
+        </form>
+        <PrivacyConsent
+          privacyText={privacyText}
+          privacyLinkText={privacyLinkText}
+          className="text-white/75"
+        />
+      </div>
     </div>
   );
 };

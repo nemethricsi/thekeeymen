@@ -7,6 +7,7 @@ import { BackToTop } from '@/components/BackToTop';
 import { MobileNavbar } from '@/components/MobileNavbar';
 import { WaveOpacityDivider } from '@/components/WaveOpacityDivider';
 import { baseURL } from '@/lib/constans';
+import { getDictionary } from '@/app/[locale]/dictionaries';
 
 export async function generateMetadata({
   params,
@@ -64,6 +65,7 @@ export default async function LocalizedLayout({
   const { locale } = await params;
   const navigation = await fetchNavigation({ locale });
   const metadata = await fetchMetadata({ locale });
+  const dict = await getDictionary(locale);
 
   return (
     <>
@@ -78,7 +80,12 @@ export default async function LocalizedLayout({
           svgClassName="h-6 sm:h-12"
         />
       </section>
-      <Footer seoTitle={metadata?.seo?.title} locale={locale} />
+      <Footer
+        seoTitle={metadata?.seo?.title}
+        locale={locale}
+        privacyText={dict.zabella.newsletterConsent.privacyText}
+        privacyLinkText={dict.zabella.newsletterConsent.privacyLinkText}
+      />
     </>
   );
 }
