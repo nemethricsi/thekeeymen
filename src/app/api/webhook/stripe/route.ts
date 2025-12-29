@@ -1,5 +1,4 @@
 import { env } from '@/env';
-import { Locale } from '@/i18n-config';
 import { MAILERSEND_TEMPLATE_IDS } from '@/lib/constans';
 import { sendOrderConfirmationEmail } from '@/lib/mailersend';
 import { stripe } from '@/lib/stripe';
@@ -38,7 +37,10 @@ export const POST = async (req: NextRequest) => {
         );
 
         const email = cs.customer_details?.email;
-        const locale = (cs.locale ?? 'hu') as Locale;
+
+        console.log({ lineItems });
+        console.log({ didPurchaseMoldvaiZine });
+        console.log({ email });
 
         if (email != null && didPurchaseMoldvaiZine) {
           /**
@@ -47,11 +49,9 @@ export const POST = async (req: NextRequest) => {
            */
           const res = await sendOrderConfirmationEmail({
             email,
-            orderUrl: `${env.NEXT_PUBLIC_APP_URL}/${locale}/moldvai-zine-confirmation?session_id=${cs.id}`,
-            templateId:
-              locale === 'hu'
-                ? MAILERSEND_TEMPLATE_IDS.MOLDVAI_ZINE_ORDER_CONFIRMATION_HU
-                : MAILERSEND_TEMPLATE_IDS.MOLDVAI_ZINE_ORDER_CONFIRMATION_EN,
+            orderUrlHu: `${env.NEXT_PUBLIC_APP_URL}/hu/moldvai-zine-confirmation?session_id=${cs.id}`,
+            orderUrlEn: `${env.NEXT_PUBLIC_APP_URL}/en/moldvai-zine-confirmation?session_id=${cs.id}`,
+            templateId: MAILERSEND_TEMPLATE_IDS.MOLDVAI_ZINE_ORDER_CONFIRMATION,
           });
 
           console.log('--- mailersend response: ', res);

@@ -10,11 +10,13 @@ const mailerSend = new MailerSend({
 
 export const sendOrderConfirmationEmail = async ({
   email,
-  orderUrl,
+  orderUrlHu,
+  orderUrlEn,
   templateId,
 }: {
   email: string;
-  orderUrl: string;
+  orderUrlHu: string;
+  orderUrlEn: string;
   templateId: string;
 }) => {
   const recipients = [new Recipient(email)];
@@ -23,7 +25,8 @@ export const sendOrderConfirmationEmail = async ({
     {
       email,
       data: {
-        order_url: orderUrl,
+        order_url_hu: orderUrlHu,
+        order_url_en: orderUrlEn,
       },
     },
   ];
