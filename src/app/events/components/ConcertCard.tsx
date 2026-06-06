@@ -1,8 +1,9 @@
 'use client';
 
+import React from 'react';
 import { parseBandsInTownDate } from '@/app/events/parseBandsInTownDate';
 import { Locale } from '@/i18n-config';
-import { BandsInTownEvent } from '@/lib/bands-in-town';
+import type { BandsInTownEvent } from '@/lib/bands-in-town';
 import { cn, externalLink } from '@/lib/utils';
 import { ArrowUpRightIcon, BellRingIcon } from 'lucide-react';
 
@@ -66,8 +67,25 @@ export const ConcertCard = ({
     );
   };
 
+  const handleCardClick = () => {
+    window.open(event.url, '_blank');
+  };
+
+  const handleCardKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      window.open(event.url, '_blank');
+    }
+  };
+
   return (
-    <div className="hover:bg-linen-100 flex flex-col items-center justify-between gap-1 rounded-lg px-0 lg:flex-row lg:gap-4 lg:p-4 lg:[&:not(:last-child)]:border-b lg:[&:not(:last-child)]:border-neutral-200">
+    <div
+      role="link"
+      tabIndex={0}
+      onClick={handleCardClick}
+      onKeyDown={handleCardKeyDown}
+      className="hover:bg-linen-100 flex flex-col items-center justify-between gap-1 rounded-lg px-0 hover:cursor-pointer lg:flex-row lg:gap-4 lg:p-4 lg:[&:not(:last-child)]:border-b lg:[&:not(:last-child)]:border-neutral-200"
+    >
       <div className="flex w-full items-center gap-4 lg:gap-8">
         {/* Date */}
         <div className="flex shrink-0 items-center gap-3">
@@ -110,6 +128,12 @@ const ClickableCta = ({
   return (
     <a
       href={url}
+      onClick={(e) => e.stopPropagation()}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.stopPropagation();
+        }
+      }}
       className={cn(
         'bg-lila-700 hover:bg-lila-500 hover:border-lila-500 border-lila-700 flex w-full shrink-0 items-center justify-center gap-2 rounded-lg border px-4 py-2 text-sm font-bold text-white uppercase transition-colors hover:drop-shadow-md lg:w-auto',
         className,
