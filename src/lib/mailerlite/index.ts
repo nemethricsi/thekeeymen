@@ -10,8 +10,16 @@ const mailerlite = new MailerLite({
 });
 
 export const createOrUpdateSubscriber = async (
-  params: CreateOrUpdateSubscriberParams,
+  params: CreateOrUpdateSubscriberParams & { website?: string },
 ) => {
+  const { website, ...subscriberParams } = params;
+
+  // Honeypot: if this hidden field has a value, it was filled by a bot.
+  // Return a fake success — don't call MailerLite, don't reveal the check.
+  if (website) {
+    return { data: null };
+  }
+
   // console.log({ locale });
   // const existingSubscriber = await mailerlite.subscribers.find(params.email);
   // const currentLocaleGroup = getMailingGroupByLocale(locale);
@@ -24,7 +32,9 @@ export const createOrUpdateSubscriber = async (
   // }
 
   try {
-    const response = await mailerlite.subscribers.createOrUpdate(params);
+    const response = await mailerlite.subscribers.createOrUpdate(
+      subscriberParams,
+    );
     return response.data;
   } catch (error) {
     throw new Error(
