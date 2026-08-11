@@ -27,11 +27,24 @@ export const MailerliteSubForm = ({
   });
 
   const [email, setEmail] = useState('');
+  const [website, setWebsite] = useState('');
   const pathname = usePathname();
   const locale = getLocaleFromPathname(pathname);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // Honeypot: if this hidden field has a value, it was filled by a bot.
+    // Return a fake success — don't call MailerLite, don't reveal the check.
+    if (website) {
+      setEmail('');
+      toast.success(
+        mailerlite?.toastMessages?.success ??
+          'You are now subscribed to The Keeymen Mailing List!',
+      );
+      return;
+    }
+
     const validationResult = emailSchema.safeParse({ email });
 
     if (!validationResult.success) {
@@ -46,6 +59,7 @@ export const MailerliteSubForm = ({
       const { data } = await createOrUpdateSubscriber({
         email,
         groups: [getMailingGroupByLocale(locale)],
+        website,
       });
       console.log(data);
       toast.success(
@@ -77,6 +91,16 @@ export const MailerliteSubForm = ({
           onSubmit={handleSubmit}
           className="flex flex-col gap-3 sm:flex-row"
         >
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            className="absolute -left-[9999px] h-0 w-0 overflow-hidden opacity-0"
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+          />
           <input
             type="email"
             name="email"
