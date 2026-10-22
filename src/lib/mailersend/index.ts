@@ -3,6 +3,7 @@
 import { MailerSend, EmailParams, Recipient } from 'mailersend';
 
 import { env } from '@/env';
+import { CONTACT_EMAIL } from '@/lib/constans';
 
 const mailerSend = new MailerSend({
   apiKey: env.MAILERSEND_API_TOKEN,
@@ -20,6 +21,7 @@ export const sendOrderConfirmationEmail = async ({
   templateId: string;
 }) => {
   const recipients = [new Recipient(email)];
+  const cc = [new Recipient(CONTACT_EMAIL)];
 
   const personalization = [
     {
@@ -33,6 +35,7 @@ export const sendOrderConfirmationEmail = async ({
 
   const emailParams = new EmailParams()
     .setTo(recipients)
+    .setCc(cc)
     .setTemplateId(templateId)
     .setPersonalization(personalization);
 
